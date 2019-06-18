@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.j1902.beststore.mapper.ItemPropertyMapper">
-  <resultMap id="BaseResultMap" type="com.j1902.beststore.pojo.ItemProperty">
+<mapper namespace="com.j1902.beststore.mapper.ShoppingRecordMapper">
+  <resultMap id="BaseResultMap" type="com.j1902.beststore.pojo.ShoppingRecord">
     <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="item_id" jdbcType="INTEGER" property="itemId" />
-    <result column="size_id" jdbcType="INTEGER" property="sizeId" />
-    <result column="color_id" jdbcType="INTEGER" property="colorId" />
-    <result column="inventory" jdbcType="INTEGER" property="inventory" />
+    <result column="item_property_id" jdbcType="INTEGER" property="itemPropertyId" />
+    <result column="shopping_time" jdbcType="TIMESTAMP" property="shoppingTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -67,15 +67,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, item_id, size_id, color_id, inventory
+    id, user_id, item_id, item_property_id, shopping_time
   </sql>
-  <select id="selectByExample" parameterType="com.j1902.beststore.pojo.ItemPropertyExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.j1902.beststore.pojo.ShoppingRecordExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from item-property
+    from shopping-record
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -86,85 +86,85 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from item-property
+    from shopping-record
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from item-property
+    delete from shopping-record
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.j1902.beststore.pojo.ItemPropertyExample">
-    delete from item-property
+  <delete id="deleteByExample" parameterType="com.j1902.beststore.pojo.ShoppingRecordExample">
+    delete from shopping-record
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.j1902.beststore.pojo.ItemProperty">
-    insert into item-property (id, item_id, size_id, 
-      color_id, inventory)
-    values (#{id,jdbcType=INTEGER}, #{itemId,jdbcType=INTEGER}, #{sizeId,jdbcType=INTEGER}, 
-      #{colorId,jdbcType=INTEGER}, #{inventory,jdbcType=INTEGER})
+  <insert id="insert" parameterType="com.j1902.beststore.pojo.ShoppingRecord">
+    insert into shopping-record (id, user_id, item_id, 
+      item_property_id, shopping_time)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{itemId,jdbcType=INTEGER}, 
+      #{itemPropertyId,jdbcType=INTEGER}, #{shoppingTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.j1902.beststore.pojo.ItemProperty">
-    insert into item-property
+  <insert id="insertSelective" parameterType="com.j1902.beststore.pojo.ShoppingRecord">
+    insert into shopping-record
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
       </if>
+      <if test="userId != null">
+        user_id,
+      </if>
       <if test="itemId != null">
         item_id,
       </if>
-      <if test="sizeId != null">
-        size_id,
+      <if test="itemPropertyId != null">
+        item_property_id,
       </if>
-      <if test="colorId != null">
-        color_id,
-      </if>
-      <if test="inventory != null">
-        inventory,
+      <if test="shoppingTime != null">
+        shopping_time,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
       <if test="itemId != null">
         #{itemId,jdbcType=INTEGER},
       </if>
-      <if test="sizeId != null">
-        #{sizeId,jdbcType=INTEGER},
+      <if test="itemPropertyId != null">
+        #{itemPropertyId,jdbcType=INTEGER},
       </if>
-      <if test="colorId != null">
-        #{colorId,jdbcType=INTEGER},
-      </if>
-      <if test="inventory != null">
-        #{inventory,jdbcType=INTEGER},
+      <if test="shoppingTime != null">
+        #{shoppingTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.j1902.beststore.pojo.ItemPropertyExample" resultType="java.lang.Long">
-    select count(*) from item-property
+  <select id="countByExample" parameterType="com.j1902.beststore.pojo.ShoppingRecordExample" resultType="java.lang.Long">
+    select count(*) from shopping-record
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update item-property
+    update shopping-record
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
       <if test="record.itemId != null">
         item_id = #{record.itemId,jdbcType=INTEGER},
       </if>
-      <if test="record.sizeId != null">
-        size_id = #{record.sizeId,jdbcType=INTEGER},
+      <if test="record.itemPropertyId != null">
+        item_property_id = #{record.itemPropertyId,jdbcType=INTEGER},
       </if>
-      <if test="record.colorId != null">
-        color_id = #{record.colorId,jdbcType=INTEGER},
-      </if>
-      <if test="record.inventory != null">
-        inventory = #{record.inventory,jdbcType=INTEGER},
+      <if test="record.shoppingTime != null">
+        shopping_time = #{record.shoppingTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null">
@@ -172,40 +172,40 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update item-property
+    update shopping-record
     set id = #{record.id,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
       item_id = #{record.itemId,jdbcType=INTEGER},
-      size_id = #{record.sizeId,jdbcType=INTEGER},
-      color_id = #{record.colorId,jdbcType=INTEGER},
-      inventory = #{record.inventory,jdbcType=INTEGER}
+      item_property_id = #{record.itemPropertyId,jdbcType=INTEGER},
+      shopping_time = #{record.shoppingTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.j1902.beststore.pojo.ItemProperty">
-    update item-property
+  <update id="updateByPrimaryKeySelective" parameterType="com.j1902.beststore.pojo.ShoppingRecord">
+    update shopping-record
     <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
       <if test="itemId != null">
         item_id = #{itemId,jdbcType=INTEGER},
       </if>
-      <if test="sizeId != null">
-        size_id = #{sizeId,jdbcType=INTEGER},
+      <if test="itemPropertyId != null">
+        item_property_id = #{itemPropertyId,jdbcType=INTEGER},
       </if>
-      <if test="colorId != null">
-        color_id = #{colorId,jdbcType=INTEGER},
-      </if>
-      <if test="inventory != null">
-        inventory = #{inventory,jdbcType=INTEGER},
+      <if test="shoppingTime != null">
+        shopping_time = #{shoppingTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.j1902.beststore.pojo.ItemProperty">
-    update item-property
-    set item_id = #{itemId,jdbcType=INTEGER},
-      size_id = #{sizeId,jdbcType=INTEGER},
-      color_id = #{colorId,jdbcType=INTEGER},
-      inventory = #{inventory,jdbcType=INTEGER}
+  <update id="updateByPrimaryKey" parameterType="com.j1902.beststore.pojo.ShoppingRecord">
+    update shopping-record
+    set user_id = #{userId,jdbcType=INTEGER},
+      item_id = #{itemId,jdbcType=INTEGER},
+      item_property_id = #{itemPropertyId,jdbcType=INTEGER},
+      shopping_time = #{shoppingTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

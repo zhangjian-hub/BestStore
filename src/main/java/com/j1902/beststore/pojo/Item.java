@@ -17,6 +17,8 @@ public class Item {
 
     private Integer inventory;
 
+    private String image;
+
     public Integer getId() {
         return id;
     }
@@ -79,5 +81,13 @@ public class Item {
 
     public void setInventory(Integer inventory) {
         this.inventory = inventory;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image == null ? null : image.trim();
     }
 }

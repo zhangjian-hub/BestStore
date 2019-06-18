@@ -112,21 +112,4 @@ public class User {
     public void setNowIp(String nowIp) {
         this.nowIp = nowIp == null ? null : nowIp.trim();
     }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", nikename='" + nikename + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", icon='" + icon + '\'' +
-                ", phone='" + phone + '\'' +
-                ", address='" + address + '\'' +
-                ", lastLogin=" + lastLogin +
-                ", nowLogin=" + nowLogin +
-                ", lastIp='" + lastIp + '\'' +
-                ", nowIp='" + nowIp + '\'' +
-                '}';
-    }
 }

@@ -10,6 +10,7 @@
     <result column="volume" jdbcType="INTEGER" property="volume" />
     <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="inventory" jdbcType="INTEGER" property="inventory" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -70,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, type, price, tag, volume, description, inventory
+    id, name, type, price, tag, volume, description, inventory, image
   </sql>
   <select id="selectByExample" parameterType="com.j1902.beststore.pojo.ItemExample" resultMap="BaseResultMap">
     select
@@ -105,10 +106,10 @@
   <insert id="insert" parameterType="com.j1902.beststore.pojo.Item">
     insert into item (id, name, type, 
       price, tag, volume, description, 
-      inventory)
+      inventory, image)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
       #{price,jdbcType=REAL}, #{tag,jdbcType=VARCHAR}, #{volume,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, 
-      #{inventory,jdbcType=INTEGER})
+      #{inventory,jdbcType=INTEGER}, #{image,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.j1902.beststore.pojo.Item">
     insert into item
@@ -137,6 +138,9 @@
       <if test="inventory != null">
         inventory,
       </if>
+      <if test="image != null">
+        image,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -162,6 +166,9 @@
       </if>
       <if test="inventory != null">
         #{inventory,jdbcType=INTEGER},
+      </if>
+      <if test="image != null">
+        #{image,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -198,6 +205,9 @@
       <if test="record.inventory != null">
         inventory = #{record.inventory,jdbcType=INTEGER},
       </if>
+      <if test="record.image != null">
+        image = #{record.image,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -212,7 +222,8 @@
       tag = #{record.tag,jdbcType=VARCHAR},
       volume = #{record.volume,jdbcType=INTEGER},
       description = #{record.description,jdbcType=VARCHAR},
-      inventory = #{record.inventory,jdbcType=INTEGER}
+      inventory = #{record.inventory,jdbcType=INTEGER},
+      image = #{record.image,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -241,6 +252,9 @@
       <if test="inventory != null">
         inventory = #{inventory,jdbcType=INTEGER},
       </if>
+      <if test="image != null">
+        image = #{image,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -252,7 +266,8 @@
       tag = #{tag,jdbcType=VARCHAR},
       volume = #{volume,jdbcType=INTEGER},
       description = #{description,jdbcType=VARCHAR},
-      inventory = #{inventory,jdbcType=INTEGER}
+      inventory = #{inventory,jdbcType=INTEGER},
+      image = #{image,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
