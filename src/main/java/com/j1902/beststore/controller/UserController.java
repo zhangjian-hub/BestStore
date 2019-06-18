@@ -1,6 +1,5 @@
 package com.j1902.beststore.controller;
 
-import com.j1902.beststore.pojo.User;
 import com.j1902.beststore.service.UserService;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;

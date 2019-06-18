@@ -1,7 +1,5 @@
 package com.j1902.beststore.mapper;
 
-import com.j1902.beststore.pojo.ShoppingCart;
-import com.j1902.beststore.pojo.ShoppingCartExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
