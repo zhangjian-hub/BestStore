@@ -1,5 +1,7 @@
 package com.j1902.beststore.mapper;
 
+import com.j1902.beststore.pojo.User;
+import com.j1902.beststore.pojo.UserExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
