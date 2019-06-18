@@ -1,0 +1,39 @@
+server:
+  port: 8080
+spring:
+  mvc:
+    view:
+      suffix: .html
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    platform: mysql
+    username: root
+    password: 123456
+    url: jdbc:mysql:///best_store?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT1FROMDUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    filters: stat,wall,log4j
+    logSlowSql: true
+#  redis:
+#    database: 0
+#    host: 47.101.209.27
+#    port: 6379
+#    timeout: 1000
+#    lettuce:
+#      pool:
+#        max-active: 8 #\u6700\u5927\u8FDE\u63A5\u6570
+#        #max-wait: -1 #\u9ED8\u8BA4-1 \u6700\u5927\u8FDE\u63A5\u963B\u585E\u7B49\u5F85\u65F6\u95F4
+#        max-idle: 3 #\u6700\u5927\u7A7A\u95F2\u8FDE\u63A5 \u9ED8\u8BA48
+#        min-idle: 1 #\u6700\u5C0F\u7A7A\u95F2\u8FDE\u63A5
+mybatis:
+  mapper-locations: "classpath:mapper/*Mapper.xml"
+
