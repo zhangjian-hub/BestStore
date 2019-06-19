@@ -1,6 +1,6 @@
 package com.j1902.beststore.pojo;
 
-public class Size {
+public class ItemSize {
     private Integer id;
 
     private String size;

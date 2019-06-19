@@ -1,6 +1,6 @@
 package com.j1902.beststore.pojo;
 
-public class State {
+public class OrderState {
     private Integer id;
 
     private String state;

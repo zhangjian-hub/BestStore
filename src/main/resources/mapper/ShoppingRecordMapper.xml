@@ -75,7 +75,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from shopping-record
+    from shopping_record
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -86,27 +86,27 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from shopping-record
+    from shopping_record
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from shopping-record
+    delete from shopping_record
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.j1902.beststore.pojo.ShoppingRecordExample">
-    delete from shopping-record
+    delete from shopping_record
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   <insert id="insert" parameterType="com.j1902.beststore.pojo.ShoppingRecord">
-    insert into shopping-record (id, user_id, item_id, 
+    insert into shopping_record (id, user_id, item_id, 
       item_property_id, shopping_time)
     values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{itemId,jdbcType=INTEGER}, 
       #{itemPropertyId,jdbcType=INTEGER}, #{shoppingTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.j1902.beststore.pojo.ShoppingRecord">
-    insert into shopping-record
+    insert into shopping_record
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -143,13 +143,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.j1902.beststore.pojo.ShoppingRecordExample" resultType="java.lang.Long">
-    select count(*) from shopping-record
+    select count(*) from shopping_record
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update shopping-record
+    update shopping_record
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
@@ -172,7 +172,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update shopping-record
+    update shopping_record
     set id = #{record.id,jdbcType=INTEGER},
       user_id = #{record.userId,jdbcType=INTEGER},
       item_id = #{record.itemId,jdbcType=INTEGER},
@@ -183,7 +183,7 @@
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.j1902.beststore.pojo.ShoppingRecord">
-    update shopping-record
+    update shopping_record
     <set>
       <if test="userId != null">
         user_id = #{userId,jdbcType=INTEGER},
@@ -201,7 +201,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.j1902.beststore.pojo.ShoppingRecord">
-    update shopping-record
+    update shopping_record
     set user_id = #{userId,jdbcType=INTEGER},
       item_id = #{itemId,jdbcType=INTEGER},
       item_property_id = #{itemPropertyId,jdbcType=INTEGER},

@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.j1902.beststore.mapper.ItemMapper">
-  <resultMap id="BaseResultMap" type="com.j1902.beststore.pojo.Item">
+<mapper namespace="com.j1902.beststore.mapper.ItemItemMapper">
+  <resultMap id="BaseResultMap" type="com.j1902.beststore.pojo.ItemItem">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="type" jdbcType="VARCHAR" property="type" />
-    <result column="price" jdbcType="REAL" property="price" />
-    <result column="tag" jdbcType="VARCHAR" property="tag" />
-    <result column="volume" jdbcType="INTEGER" property="volume" />
-    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="item_property_id" jdbcType="INTEGER" property="itemPropertyId" />
+    <result column="size_id" jdbcType="INTEGER" property="sizeId" />
+    <result column="color_id" jdbcType="INTEGER" property="colorId" />
     <result column="inventory" jdbcType="INTEGER" property="inventory" />
     <result column="image" jdbcType="VARCHAR" property="image" />
   </resultMap>
@@ -71,15 +68,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, type, price, tag, volume, description, inventory, image
+    id, item_property_id, size_id, color_id, inventory, image
   </sql>
-  <select id="selectByExample" parameterType="com.j1902.beststore.pojo.ItemExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.j1902.beststore.pojo.ItemItemExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from item
+    from item_item
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -90,50 +87,41 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from item
+    from item_item
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from item
+    delete from item_item
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.j1902.beststore.pojo.ItemExample">
-    delete from item
+  <delete id="deleteByExample" parameterType="com.j1902.beststore.pojo.ItemItemExample">
+    delete from item_item
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.j1902.beststore.pojo.Item">
-    insert into item (id, name, type, 
-      price, tag, volume, description, 
-      inventory, image)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
-      #{price,jdbcType=REAL}, #{tag,jdbcType=VARCHAR}, #{volume,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, 
-      #{inventory,jdbcType=INTEGER}, #{image,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="com.j1902.beststore.pojo.ItemItem">
+    insert into item_item (id, item_property_id, size_id, 
+      color_id, inventory, image
+      )
+    values (#{id,jdbcType=INTEGER}, #{itemPropertyId,jdbcType=INTEGER}, #{sizeId,jdbcType=INTEGER}, 
+      #{colorId,jdbcType=INTEGER}, #{inventory,jdbcType=INTEGER}, #{image,jdbcType=VARCHAR}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.j1902.beststore.pojo.Item">
-    insert into item
+  <insert id="insertSelective" parameterType="com.j1902.beststore.pojo.ItemItem">
+    insert into item_item
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
       </if>
-      <if test="name != null">
-        name,
+      <if test="itemPropertyId != null">
+        item_property_id,
       </if>
-      <if test="type != null">
-        type,
+      <if test="sizeId != null">
+        size_id,
       </if>
-      <if test="price != null">
-        price,
-      </if>
-      <if test="tag != null">
-        tag,
-      </if>
-      <if test="volume != null">
-        volume,
-      </if>
-      <if test="description != null">
-        description,
+      <if test="colorId != null">
+        color_id,
       </if>
       <if test="inventory != null">
         inventory,
@@ -146,23 +134,14 @@
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
+      <if test="itemPropertyId != null">
+        #{itemPropertyId,jdbcType=INTEGER},
       </if>
-      <if test="type != null">
-        #{type,jdbcType=VARCHAR},
+      <if test="sizeId != null">
+        #{sizeId,jdbcType=INTEGER},
       </if>
-      <if test="price != null">
-        #{price,jdbcType=REAL},
-      </if>
-      <if test="tag != null">
-        #{tag,jdbcType=VARCHAR},
-      </if>
-      <if test="volume != null">
-        #{volume,jdbcType=INTEGER},
-      </if>
-      <if test="description != null">
-        #{description,jdbcType=VARCHAR},
+      <if test="colorId != null">
+        #{colorId,jdbcType=INTEGER},
       </if>
       <if test="inventory != null">
         #{inventory,jdbcType=INTEGER},
@@ -172,35 +151,26 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.j1902.beststore.pojo.ItemExample" resultType="java.lang.Long">
-    select count(*) from item
+  <select id="countByExample" parameterType="com.j1902.beststore.pojo.ItemItemExample" resultType="java.lang.Long">
+    select count(*) from item_item
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update item
+    update item_item
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.name != null">
-        name = #{record.name,jdbcType=VARCHAR},
+      <if test="record.itemPropertyId != null">
+        item_property_id = #{record.itemPropertyId,jdbcType=INTEGER},
       </if>
-      <if test="record.type != null">
-        type = #{record.type,jdbcType=VARCHAR},
+      <if test="record.sizeId != null">
+        size_id = #{record.sizeId,jdbcType=INTEGER},
       </if>
-      <if test="record.price != null">
-        price = #{record.price,jdbcType=REAL},
-      </if>
-      <if test="record.tag != null">
-        tag = #{record.tag,jdbcType=VARCHAR},
-      </if>
-      <if test="record.volume != null">
-        volume = #{record.volume,jdbcType=INTEGER},
-      </if>
-      <if test="record.description != null">
-        description = #{record.description,jdbcType=VARCHAR},
+      <if test="record.colorId != null">
+        color_id = #{record.colorId,jdbcType=INTEGER},
       </if>
       <if test="record.inventory != null">
         inventory = #{record.inventory,jdbcType=INTEGER},
@@ -214,40 +184,28 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update item
+    update item_item
     set id = #{record.id,jdbcType=INTEGER},
-      name = #{record.name,jdbcType=VARCHAR},
-      type = #{record.type,jdbcType=VARCHAR},
-      price = #{record.price,jdbcType=REAL},
-      tag = #{record.tag,jdbcType=VARCHAR},
-      volume = #{record.volume,jdbcType=INTEGER},
-      description = #{record.description,jdbcType=VARCHAR},
+      item_property_id = #{record.itemPropertyId,jdbcType=INTEGER},
+      size_id = #{record.sizeId,jdbcType=INTEGER},
+      color_id = #{record.colorId,jdbcType=INTEGER},
       inventory = #{record.inventory,jdbcType=INTEGER},
       image = #{record.image,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.j1902.beststore.pojo.Item">
-    update item
+  <update id="updateByPrimaryKeySelective" parameterType="com.j1902.beststore.pojo.ItemItem">
+    update item_item
     <set>
-      <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
+      <if test="itemPropertyId != null">
+        item_property_id = #{itemPropertyId,jdbcType=INTEGER},
       </if>
-      <if test="type != null">
-        type = #{type,jdbcType=VARCHAR},
+      <if test="sizeId != null">
+        size_id = #{sizeId,jdbcType=INTEGER},
       </if>
-      <if test="price != null">
-        price = #{price,jdbcType=REAL},
-      </if>
-      <if test="tag != null">
-        tag = #{tag,jdbcType=VARCHAR},
-      </if>
-      <if test="volume != null">
-        volume = #{volume,jdbcType=INTEGER},
-      </if>
-      <if test="description != null">
-        description = #{description,jdbcType=VARCHAR},
+      <if test="colorId != null">
+        color_id = #{colorId,jdbcType=INTEGER},
       </if>
       <if test="inventory != null">
         inventory = #{inventory,jdbcType=INTEGER},
@@ -258,14 +216,11 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.j1902.beststore.pojo.Item">
-    update item
-    set name = #{name,jdbcType=VARCHAR},
-      type = #{type,jdbcType=VARCHAR},
-      price = #{price,jdbcType=REAL},
-      tag = #{tag,jdbcType=VARCHAR},
-      volume = #{volume,jdbcType=INTEGER},
-      description = #{description,jdbcType=VARCHAR},
+  <update id="updateByPrimaryKey" parameterType="com.j1902.beststore.pojo.ItemItem">
+    update item_item
+    set item_property_id = #{itemPropertyId,jdbcType=INTEGER},
+      size_id = #{sizeId,jdbcType=INTEGER},
+      color_id = #{colorId,jdbcType=INTEGER},
       inventory = #{inventory,jdbcType=INTEGER},
       image = #{image,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}

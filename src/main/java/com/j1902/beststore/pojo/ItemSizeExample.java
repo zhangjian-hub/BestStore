@@ -3,14 +3,14 @@ package com.j1902.beststore.pojo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SizeExample {
+public class ItemSizeExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public SizeExample() {
+    public ItemSizeExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 

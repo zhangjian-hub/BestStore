@@ -3,14 +3,14 @@ package com.j1902.beststore.pojo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StateExample {
+public class ItemColorExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public StateExample() {
+    public ItemColorExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -164,73 +164,73 @@ public class StateExample {
             return (Criteria) this;
         }
 
-        public Criteria andStateIsNull() {
-            addCriterion("state is null");
+        public Criteria andColorIsNull() {
+            addCriterion("color is null");
             return (Criteria) this;
         }
 
-        public Criteria andStateIsNotNull() {
-            addCriterion("state is not null");
+        public Criteria andColorIsNotNull() {
+            addCriterion("color is not null");
             return (Criteria) this;
         }
 
-        public Criteria andStateEqualTo(String value) {
-            addCriterion("state =", value, "state");
+        public Criteria andColorEqualTo(String value) {
+            addCriterion("color =", value, "color");
             return (Criteria) this;
         }
 
-        public Criteria andStateNotEqualTo(String value) {
-            addCriterion("state <>", value, "state");
+        public Criteria andColorNotEqualTo(String value) {
+            addCriterion("color <>", value, "color");
             return (Criteria) this;
         }
 
-        public Criteria andStateGreaterThan(String value) {
-            addCriterion("state >", value, "state");
+        public Criteria andColorGreaterThan(String value) {
+            addCriterion("color >", value, "color");
             return (Criteria) this;
         }
 
-        public Criteria andStateGreaterThanOrEqualTo(String value) {
-            addCriterion("state >=", value, "state");
+        public Criteria andColorGreaterThanOrEqualTo(String value) {
+            addCriterion("color >=", value, "color");
             return (Criteria) this;
         }
 
-        public Criteria andStateLessThan(String value) {
-            addCriterion("state <", value, "state");
+        public Criteria andColorLessThan(String value) {
+            addCriterion("color <", value, "color");
             return (Criteria) this;
         }
 
-        public Criteria andStateLessThanOrEqualTo(String value) {
-            addCriterion("state <=", value, "state");
+        public Criteria andColorLessThanOrEqualTo(String value) {
+            addCriterion("color <=", value, "color");
             return (Criteria) this;
         }
 
-        public Criteria andStateLike(String value) {
-            addCriterion("state like", value, "state");
+        public Criteria andColorLike(String value) {
+            addCriterion("color like", value, "color");
             return (Criteria) this;
         }
 
-        public Criteria andStateNotLike(String value) {
-            addCriterion("state not like", value, "state");
+        public Criteria andColorNotLike(String value) {
+            addCriterion("color not like", value, "color");
             return (Criteria) this;
         }
 
-        public Criteria andStateIn(List<String> values) {
-            addCriterion("state in", values, "state");
+        public Criteria andColorIn(List<String> values) {
+            addCriterion("color in", values, "color");
             return (Criteria) this;
         }
 
-        public Criteria andStateNotIn(List<String> values) {
-            addCriterion("state not in", values, "state");
+        public Criteria andColorNotIn(List<String> values) {
+            addCriterion("color not in", values, "color");
             return (Criteria) this;
         }
 
-        public Criteria andStateBetween(String value1, String value2) {
-            addCriterion("state between", value1, value2, "state");
+        public Criteria andColorBetween(String value1, String value2) {
+            addCriterion("color between", value1, value2, "color");
             return (Criteria) this;
         }
 
-        public Criteria andStateNotBetween(String value1, String value2) {
-            addCriterion("state not between", value1, value2, "state");
+        public Criteria andColorNotBetween(String value1, String value2) {
+            addCriterion("color not between", value1, value2, "color");
             return (Criteria) this;
         }
     }

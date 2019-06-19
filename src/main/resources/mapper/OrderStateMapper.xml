@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.j1902.beststore.mapper.SizeMapper">
-  <resultMap id="BaseResultMap" type="com.j1902.beststore.pojo.Size">
+<mapper namespace="com.j1902.beststore.mapper.OrderStateMapper">
+  <resultMap id="BaseResultMap" type="com.j1902.beststore.pojo.OrderState">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="size" jdbcType="VARCHAR" property="size" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -64,15 +64,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, size
+    id, state
   </sql>
-  <select id="selectByExample" parameterType="com.j1902.beststore.pojo.SizeExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.j1902.beststore.pojo.OrderStateExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from size
+    from order_state
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -83,56 +83,56 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from size
+    from order_state
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from size
+    delete from order_state
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.j1902.beststore.pojo.SizeExample">
-    delete from size
+  <delete id="deleteByExample" parameterType="com.j1902.beststore.pojo.OrderStateExample">
+    delete from order_state
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.j1902.beststore.pojo.Size">
-    insert into size (id, size)
-    values (#{id,jdbcType=INTEGER}, #{size,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="com.j1902.beststore.pojo.OrderState">
+    insert into order_state (id, state)
+    values (#{id,jdbcType=INTEGER}, #{state,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.j1902.beststore.pojo.Size">
-    insert into size
+  <insert id="insertSelective" parameterType="com.j1902.beststore.pojo.OrderState">
+    insert into order_state
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
       </if>
-      <if test="size != null">
-        size,
+      <if test="state != null">
+        state,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="size != null">
-        #{size,jdbcType=VARCHAR},
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.j1902.beststore.pojo.SizeExample" resultType="java.lang.Long">
-    select count(*) from size
+  <select id="countByExample" parameterType="com.j1902.beststore.pojo.OrderStateExample" resultType="java.lang.Long">
+    select count(*) from order_state
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update size
+    update order_state
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.size != null">
-        size = #{record.size,jdbcType=VARCHAR},
+      <if test="record.state != null">
+        state = #{record.state,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -140,25 +140,25 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update size
+    update order_state
     set id = #{record.id,jdbcType=INTEGER},
-      size = #{record.size,jdbcType=VARCHAR}
+      state = #{record.state,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.j1902.beststore.pojo.Size">
-    update size
+  <update id="updateByPrimaryKeySelective" parameterType="com.j1902.beststore.pojo.OrderState">
+    update order_state
     <set>
-      <if test="size != null">
-        size = #{size,jdbcType=VARCHAR},
+      <if test="state != null">
+        state = #{state,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.j1902.beststore.pojo.Size">
-    update size
-    set size = #{size,jdbcType=VARCHAR}
+  <update id="updateByPrimaryKey" parameterType="com.j1902.beststore.pojo.OrderState">
+    update order_state
+    set state = #{state,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

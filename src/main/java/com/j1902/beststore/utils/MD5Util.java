@@ -4,7 +4,7 @@ import java.security.MessageDigest;
 
 public class MD5Util {
 	// 加盐
-	private static final String slat = "bb*32@$#%^bb%$logj1902a@#￥aa";
+	private static final String slat = "bb*32@$#%";
 
 	public static String encrypt(String dataStr) {
 		try {

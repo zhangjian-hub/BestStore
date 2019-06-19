@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.j1902.beststore.mapper.OrderFormMapper">
-  <resultMap id="BaseResultMap" type="com.j1902.beststore.pojo.OrderForm">
+<mapper namespace="com.j1902.beststore.mapper.ItemColorMapper">
+  <resultMap id="BaseResultMap" type="com.j1902.beststore.pojo.ItemColor">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="order_number" jdbcType="INTEGER" property="orderNumber" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="item_id" jdbcType="INTEGER" property="itemId" />
-    <result column="item_property_id" jdbcType="INTEGER" property="itemPropertyId" />
-    <result column="state_id" jdbcType="INTEGER" property="stateId" />
+    <result column="color" jdbcType="VARCHAR" property="color" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,15 +64,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, order_number, user_id, item_id, item_property_id, state_id
+    id, color
   </sql>
-  <select id="selectByExample" parameterType="com.j1902.beststore.pojo.OrderFormExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.j1902.beststore.pojo.ItemColorExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from order_form
+    from item_color
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -87,96 +83,56 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from order_form
+    from item_color
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from order_form
+    delete from item_color
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.j1902.beststore.pojo.OrderFormExample">
-    delete from order_form
+  <delete id="deleteByExample" parameterType="com.j1902.beststore.pojo.ItemColorExample">
+    delete from item_color
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.j1902.beststore.pojo.OrderForm">
-    insert into order_form (id, order_number, user_id, 
-      item_id, item_property_id, state_id
-      )
-    values (#{id,jdbcType=INTEGER}, #{orderNumber,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
-      #{itemId,jdbcType=INTEGER}, #{itemPropertyId,jdbcType=INTEGER}, #{stateId,jdbcType=INTEGER}
-      )
+  <insert id="insert" parameterType="com.j1902.beststore.pojo.ItemColor">
+    insert into item_color (id, color)
+    values (#{id,jdbcType=INTEGER}, #{color,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.j1902.beststore.pojo.OrderForm">
-    insert into order_form
+  <insert id="insertSelective" parameterType="com.j1902.beststore.pojo.ItemColor">
+    insert into item_color
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
       </if>
-      <if test="orderNumber != null">
-        order_number,
-      </if>
-      <if test="userId != null">
-        user_id,
-      </if>
-      <if test="itemId != null">
-        item_id,
-      </if>
-      <if test="itemPropertyId != null">
-        item_property_id,
-      </if>
-      <if test="stateId != null">
-        state_id,
+      <if test="color != null">
+        color,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="orderNumber != null">
-        #{orderNumber,jdbcType=INTEGER},
-      </if>
-      <if test="userId != null">
-        #{userId,jdbcType=INTEGER},
-      </if>
-      <if test="itemId != null">
-        #{itemId,jdbcType=INTEGER},
-      </if>
-      <if test="itemPropertyId != null">
-        #{itemPropertyId,jdbcType=INTEGER},
-      </if>
-      <if test="stateId != null">
-        #{stateId,jdbcType=INTEGER},
+      <if test="color != null">
+        #{color,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.j1902.beststore.pojo.OrderFormExample" resultType="java.lang.Long">
-    select count(*) from order_form
+  <select id="countByExample" parameterType="com.j1902.beststore.pojo.ItemColorExample" resultType="java.lang.Long">
+    select count(*) from item_color
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update order_form
+    update item_color
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.orderNumber != null">
-        order_number = #{record.orderNumber,jdbcType=INTEGER},
-      </if>
-      <if test="record.userId != null">
-        user_id = #{record.userId,jdbcType=INTEGER},
-      </if>
-      <if test="record.itemId != null">
-        item_id = #{record.itemId,jdbcType=INTEGER},
-      </if>
-      <if test="record.itemPropertyId != null">
-        item_property_id = #{record.itemPropertyId,jdbcType=INTEGER},
-      </if>
-      <if test="record.stateId != null">
-        state_id = #{record.stateId,jdbcType=INTEGER},
+      <if test="record.color != null">
+        color = #{record.color,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -184,45 +140,25 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update order_form
+    update item_color
     set id = #{record.id,jdbcType=INTEGER},
-      order_number = #{record.orderNumber,jdbcType=INTEGER},
-      user_id = #{record.userId,jdbcType=INTEGER},
-      item_id = #{record.itemId,jdbcType=INTEGER},
-      item_property_id = #{record.itemPropertyId,jdbcType=INTEGER},
-      state_id = #{record.stateId,jdbcType=INTEGER}
+      color = #{record.color,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.j1902.beststore.pojo.OrderForm">
-    update order_form
+  <update id="updateByPrimaryKeySelective" parameterType="com.j1902.beststore.pojo.ItemColor">
+    update item_color
     <set>
-      <if test="orderNumber != null">
-        order_number = #{orderNumber,jdbcType=INTEGER},
-      </if>
-      <if test="userId != null">
-        user_id = #{userId,jdbcType=INTEGER},
-      </if>
-      <if test="itemId != null">
-        item_id = #{itemId,jdbcType=INTEGER},
-      </if>
-      <if test="itemPropertyId != null">
-        item_property_id = #{itemPropertyId,jdbcType=INTEGER},
-      </if>
-      <if test="stateId != null">
-        state_id = #{stateId,jdbcType=INTEGER},
+      <if test="color != null">
+        color = #{color,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.j1902.beststore.pojo.OrderForm">
-    update order_form
-    set order_number = #{orderNumber,jdbcType=INTEGER},
-      user_id = #{userId,jdbcType=INTEGER},
-      item_id = #{itemId,jdbcType=INTEGER},
-      item_property_id = #{itemPropertyId,jdbcType=INTEGER},
-      state_id = #{stateId,jdbcType=INTEGER}
+  <update id="updateByPrimaryKey" parameterType="com.j1902.beststore.pojo.ItemColor">
+    update item_color
+    set color = #{color,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
