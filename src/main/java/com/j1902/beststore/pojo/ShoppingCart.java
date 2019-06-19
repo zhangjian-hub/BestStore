@@ -9,7 +9,7 @@ public class ShoppingCart {
 
     private Integer number;
 
-    private Integer propertyId;
+    private Integer itemPropertyId;
 
     public Integer getId() {
         return id;
@@ -43,11 +43,11 @@ public class ShoppingCart {
         this.number = number;
     }
 
-    public Integer getPropertyId() {
-        return propertyId;
+    public Integer getItemPropertyId() {
+        return itemPropertyId;
     }
 
-    public void setPropertyId(Integer propertyId) {
-        this.propertyId = propertyId;
+    public void setItemPropertyId(Integer itemPropertyId) {
+        this.itemPropertyId = itemPropertyId;
     }
 }

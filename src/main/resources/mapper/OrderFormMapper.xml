@@ -7,7 +7,7 @@
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="item_id" jdbcType="INTEGER" property="itemId" />
     <result column="item_property_id" jdbcType="INTEGER" property="itemPropertyId" />
-    <result column="state_id" jdbcType="INTEGER" property="stateId" />
+    <result column="order_state_id" jdbcType="INTEGER" property="orderStateId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, order_number, user_id, item_id, item_property_id, state_id
+    id, order_number, user_id, item_id, item_property_id, order_state_id
   </sql>
   <select id="selectByExample" parameterType="com.j1902.beststore.pojo.OrderFormExample" resultMap="BaseResultMap">
     select
@@ -102,10 +102,10 @@
   </delete>
   <insert id="insert" parameterType="com.j1902.beststore.pojo.OrderForm">
     insert into order_form (id, order_number, user_id, 
-      item_id, item_property_id, state_id
+      item_id, item_property_id, order_state_id
       )
     values (#{id,jdbcType=INTEGER}, #{orderNumber,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
-      #{itemId,jdbcType=INTEGER}, #{itemPropertyId,jdbcType=INTEGER}, #{stateId,jdbcType=INTEGER}
+      #{itemId,jdbcType=INTEGER}, #{itemPropertyId,jdbcType=INTEGER}, #{orderStateId,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.j1902.beststore.pojo.OrderForm">
@@ -126,8 +126,8 @@
       <if test="itemPropertyId != null">
         item_property_id,
       </if>
-      <if test="stateId != null">
-        state_id,
+      <if test="orderStateId != null">
+        order_state_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -146,8 +146,8 @@
       <if test="itemPropertyId != null">
         #{itemPropertyId,jdbcType=INTEGER},
       </if>
-      <if test="stateId != null">
-        #{stateId,jdbcType=INTEGER},
+      <if test="orderStateId != null">
+        #{orderStateId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -175,8 +175,8 @@
       <if test="record.itemPropertyId != null">
         item_property_id = #{record.itemPropertyId,jdbcType=INTEGER},
       </if>
-      <if test="record.stateId != null">
-        state_id = #{record.stateId,jdbcType=INTEGER},
+      <if test="record.orderStateId != null">
+        order_state_id = #{record.orderStateId,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -190,7 +190,7 @@
       user_id = #{record.userId,jdbcType=INTEGER},
       item_id = #{record.itemId,jdbcType=INTEGER},
       item_property_id = #{record.itemPropertyId,jdbcType=INTEGER},
-      state_id = #{record.stateId,jdbcType=INTEGER}
+      order_state_id = #{record.orderStateId,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -210,8 +210,8 @@
       <if test="itemPropertyId != null">
         item_property_id = #{itemPropertyId,jdbcType=INTEGER},
       </if>
-      <if test="stateId != null">
-        state_id = #{stateId,jdbcType=INTEGER},
+      <if test="orderStateId != null">
+        order_state_id = #{orderStateId,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -222,7 +222,7 @@
       user_id = #{userId,jdbcType=INTEGER},
       item_id = #{itemId,jdbcType=INTEGER},
       item_property_id = #{itemPropertyId,jdbcType=INTEGER},
-      state_id = #{stateId,jdbcType=INTEGER}
+      order_state_id = #{orderStateId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

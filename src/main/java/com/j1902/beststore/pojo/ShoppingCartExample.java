@@ -344,63 +344,63 @@ public class ShoppingCartExample {
             return (Criteria) this;
         }
 
-        public Criteria andPropertyIdIsNull() {
-            addCriterion("property_id is null");
+        public Criteria andItemPropertyIdIsNull() {
+            addCriterion("item_property_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andPropertyIdIsNotNull() {
-            addCriterion("property_id is not null");
+        public Criteria andItemPropertyIdIsNotNull() {
+            addCriterion("item_property_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPropertyIdEqualTo(Integer value) {
-            addCriterion("property_id =", value, "propertyId");
+        public Criteria andItemPropertyIdEqualTo(Integer value) {
+            addCriterion("item_property_id =", value, "itemPropertyId");
             return (Criteria) this;
         }
 
-        public Criteria andPropertyIdNotEqualTo(Integer value) {
-            addCriterion("property_id <>", value, "propertyId");
+        public Criteria andItemPropertyIdNotEqualTo(Integer value) {
+            addCriterion("item_property_id <>", value, "itemPropertyId");
             return (Criteria) this;
         }
 
-        public Criteria andPropertyIdGreaterThan(Integer value) {
-            addCriterion("property_id >", value, "propertyId");
+        public Criteria andItemPropertyIdGreaterThan(Integer value) {
+            addCriterion("item_property_id >", value, "itemPropertyId");
             return (Criteria) this;
         }
 
-        public Criteria andPropertyIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("property_id >=", value, "propertyId");
+        public Criteria andItemPropertyIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("item_property_id >=", value, "itemPropertyId");
             return (Criteria) this;
         }
 
-        public Criteria andPropertyIdLessThan(Integer value) {
-            addCriterion("property_id <", value, "propertyId");
+        public Criteria andItemPropertyIdLessThan(Integer value) {
+            addCriterion("item_property_id <", value, "itemPropertyId");
             return (Criteria) this;
         }
 
-        public Criteria andPropertyIdLessThanOrEqualTo(Integer value) {
-            addCriterion("property_id <=", value, "propertyId");
+        public Criteria andItemPropertyIdLessThanOrEqualTo(Integer value) {
+            addCriterion("item_property_id <=", value, "itemPropertyId");
             return (Criteria) this;
         }
 
-        public Criteria andPropertyIdIn(List<Integer> values) {
-            addCriterion("property_id in", values, "propertyId");
+        public Criteria andItemPropertyIdIn(List<Integer> values) {
+            addCriterion("item_property_id in", values, "itemPropertyId");
             return (Criteria) this;
         }
 
-        public Criteria andPropertyIdNotIn(List<Integer> values) {
-            addCriterion("property_id not in", values, "propertyId");
+        public Criteria andItemPropertyIdNotIn(List<Integer> values) {
+            addCriterion("item_property_id not in", values, "itemPropertyId");
             return (Criteria) this;
         }
 
-        public Criteria andPropertyIdBetween(Integer value1, Integer value2) {
-            addCriterion("property_id between", value1, value2, "propertyId");
+        public Criteria andItemPropertyIdBetween(Integer value1, Integer value2) {
+            addCriterion("item_property_id between", value1, value2, "itemPropertyId");
             return (Criteria) this;
         }
 
-        public Criteria andPropertyIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("property_id not between", value1, value2, "propertyId");
+        public Criteria andItemPropertyIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("item_property_id not between", value1, value2, "itemPropertyId");
             return (Criteria) this;
         }
     }

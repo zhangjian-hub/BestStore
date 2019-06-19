@@ -4,8 +4,8 @@
   <resultMap id="BaseResultMap" type="com.j1902.beststore.pojo.ItemItem">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="item_property_id" jdbcType="INTEGER" property="itemPropertyId" />
-    <result column="size_id" jdbcType="INTEGER" property="sizeId" />
-    <result column="color_id" jdbcType="INTEGER" property="colorId" />
+    <result column="item_size_id" jdbcType="INTEGER" property="itemSizeId" />
+    <result column="item_color_id" jdbcType="INTEGER" property="itemColorId" />
     <result column="inventory" jdbcType="INTEGER" property="inventory" />
     <result column="image" jdbcType="VARCHAR" property="image" />
   </resultMap>
@@ -68,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, item_property_id, size_id, color_id, inventory, image
+    id, item_property_id, item_size_id, item_color_id, inventory, image
   </sql>
   <select id="selectByExample" parameterType="com.j1902.beststore.pojo.ItemItemExample" resultMap="BaseResultMap">
     select
@@ -101,11 +101,11 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.j1902.beststore.pojo.ItemItem">
-    insert into item_item (id, item_property_id, size_id, 
-      color_id, inventory, image
+    insert into item_item (id, item_property_id, item_size_id, 
+      item_color_id, inventory, image
       )
-    values (#{id,jdbcType=INTEGER}, #{itemPropertyId,jdbcType=INTEGER}, #{sizeId,jdbcType=INTEGER}, 
-      #{colorId,jdbcType=INTEGER}, #{inventory,jdbcType=INTEGER}, #{image,jdbcType=VARCHAR}
+    values (#{id,jdbcType=INTEGER}, #{itemPropertyId,jdbcType=INTEGER}, #{itemSizeId,jdbcType=INTEGER}, 
+      #{itemColorId,jdbcType=INTEGER}, #{inventory,jdbcType=INTEGER}, #{image,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.j1902.beststore.pojo.ItemItem">
@@ -117,11 +117,11 @@
       <if test="itemPropertyId != null">
         item_property_id,
       </if>
-      <if test="sizeId != null">
-        size_id,
+      <if test="itemSizeId != null">
+        item_size_id,
       </if>
-      <if test="colorId != null">
-        color_id,
+      <if test="itemColorId != null">
+        item_color_id,
       </if>
       <if test="inventory != null">
         inventory,
@@ -137,11 +137,11 @@
       <if test="itemPropertyId != null">
         #{itemPropertyId,jdbcType=INTEGER},
       </if>
-      <if test="sizeId != null">
-        #{sizeId,jdbcType=INTEGER},
+      <if test="itemSizeId != null">
+        #{itemSizeId,jdbcType=INTEGER},
       </if>
-      <if test="colorId != null">
-        #{colorId,jdbcType=INTEGER},
+      <if test="itemColorId != null">
+        #{itemColorId,jdbcType=INTEGER},
       </if>
       <if test="inventory != null">
         #{inventory,jdbcType=INTEGER},
@@ -166,11 +166,11 @@
       <if test="record.itemPropertyId != null">
         item_property_id = #{record.itemPropertyId,jdbcType=INTEGER},
       </if>
-      <if test="record.sizeId != null">
-        size_id = #{record.sizeId,jdbcType=INTEGER},
+      <if test="record.itemSizeId != null">
+        item_size_id = #{record.itemSizeId,jdbcType=INTEGER},
       </if>
-      <if test="record.colorId != null">
-        color_id = #{record.colorId,jdbcType=INTEGER},
+      <if test="record.itemColorId != null">
+        item_color_id = #{record.itemColorId,jdbcType=INTEGER},
       </if>
       <if test="record.inventory != null">
         inventory = #{record.inventory,jdbcType=INTEGER},
@@ -187,8 +187,8 @@
     update item_item
     set id = #{record.id,jdbcType=INTEGER},
       item_property_id = #{record.itemPropertyId,jdbcType=INTEGER},
-      size_id = #{record.sizeId,jdbcType=INTEGER},
-      color_id = #{record.colorId,jdbcType=INTEGER},
+      item_size_id = #{record.itemSizeId,jdbcType=INTEGER},
+      item_color_id = #{record.itemColorId,jdbcType=INTEGER},
       inventory = #{record.inventory,jdbcType=INTEGER},
       image = #{record.image,jdbcType=VARCHAR}
     <if test="_parameter != null">
@@ -201,11 +201,11 @@
       <if test="itemPropertyId != null">
         item_property_id = #{itemPropertyId,jdbcType=INTEGER},
       </if>
-      <if test="sizeId != null">
-        size_id = #{sizeId,jdbcType=INTEGER},
+      <if test="itemSizeId != null">
+        item_size_id = #{itemSizeId,jdbcType=INTEGER},
       </if>
-      <if test="colorId != null">
-        color_id = #{colorId,jdbcType=INTEGER},
+      <if test="itemColorId != null">
+        item_color_id = #{itemColorId,jdbcType=INTEGER},
       </if>
       <if test="inventory != null">
         inventory = #{inventory,jdbcType=INTEGER},
@@ -219,8 +219,8 @@
   <update id="updateByPrimaryKey" parameterType="com.j1902.beststore.pojo.ItemItem">
     update item_item
     set item_property_id = #{itemPropertyId,jdbcType=INTEGER},
-      size_id = #{sizeId,jdbcType=INTEGER},
-      color_id = #{colorId,jdbcType=INTEGER},
+      item_size_id = #{itemSizeId,jdbcType=INTEGER},
+      item_color_id = #{itemColorId,jdbcType=INTEGER},
       inventory = #{inventory,jdbcType=INTEGER},
       image = #{image,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}

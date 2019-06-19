@@ -345,63 +345,63 @@ public class ShoppingRecordExample {
             return (Criteria) this;
         }
 
-        public Criteria andShoppingTimeIsNull() {
-            addCriterion("shopping_time is null");
+        public Criteria andCreateTimeIsNull() {
+            addCriterion("create_time is null");
             return (Criteria) this;
         }
 
-        public Criteria andShoppingTimeIsNotNull() {
-            addCriterion("shopping_time is not null");
+        public Criteria andCreateTimeIsNotNull() {
+            addCriterion("create_time is not null");
             return (Criteria) this;
         }
 
-        public Criteria andShoppingTimeEqualTo(Date value) {
-            addCriterion("shopping_time =", value, "shoppingTime");
+        public Criteria andCreateTimeEqualTo(Date value) {
+            addCriterion("create_time =", value, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andShoppingTimeNotEqualTo(Date value) {
-            addCriterion("shopping_time <>", value, "shoppingTime");
+        public Criteria andCreateTimeNotEqualTo(Date value) {
+            addCriterion("create_time <>", value, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andShoppingTimeGreaterThan(Date value) {
-            addCriterion("shopping_time >", value, "shoppingTime");
+        public Criteria andCreateTimeGreaterThan(Date value) {
+            addCriterion("create_time >", value, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andShoppingTimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("shopping_time >=", value, "shoppingTime");
+        public Criteria andCreateTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("create_time >=", value, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andShoppingTimeLessThan(Date value) {
-            addCriterion("shopping_time <", value, "shoppingTime");
+        public Criteria andCreateTimeLessThan(Date value) {
+            addCriterion("create_time <", value, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andShoppingTimeLessThanOrEqualTo(Date value) {
-            addCriterion("shopping_time <=", value, "shoppingTime");
+        public Criteria andCreateTimeLessThanOrEqualTo(Date value) {
+            addCriterion("create_time <=", value, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andShoppingTimeIn(List<Date> values) {
-            addCriterion("shopping_time in", values, "shoppingTime");
+        public Criteria andCreateTimeIn(List<Date> values) {
+            addCriterion("create_time in", values, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andShoppingTimeNotIn(List<Date> values) {
-            addCriterion("shopping_time not in", values, "shoppingTime");
+        public Criteria andCreateTimeNotIn(List<Date> values) {
+            addCriterion("create_time not in", values, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andShoppingTimeBetween(Date value1, Date value2) {
-            addCriterion("shopping_time between", value1, value2, "shoppingTime");
+        public Criteria andCreateTimeBetween(Date value1, Date value2) {
+            addCriterion("create_time between", value1, value2, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andShoppingTimeNotBetween(Date value1, Date value2) {
-            addCriterion("shopping_time not between", value1, value2, "shoppingTime");
+        public Criteria andCreateTimeNotBetween(Date value1, Date value2) {
+            addCriterion("create_time not between", value1, value2, "createTime");
             return (Criteria) this;
         }
     }

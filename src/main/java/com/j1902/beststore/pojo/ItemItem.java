@@ -5,9 +5,9 @@ public class ItemItem {
 
     private Integer itemPropertyId;
 
-    private Integer sizeId;
+    private Integer itemSizeId;
 
-    private Integer colorId;
+    private Integer itemColorId;
 
     private Integer inventory;
 
@@ -29,20 +29,20 @@ public class ItemItem {
         this.itemPropertyId = itemPropertyId;
     }
 
-    public Integer getSizeId() {
-        return sizeId;
+    public Integer getItemSizeId() {
+        return itemSizeId;
     }
 
-    public void setSizeId(Integer sizeId) {
-        this.sizeId = sizeId;
+    public void setItemSizeId(Integer itemSizeId) {
+        this.itemSizeId = itemSizeId;
     }
 
-    public Integer getColorId() {
-        return colorId;
+    public Integer getItemColorId() {
+        return itemColorId;
     }
 
-    public void setColorId(Integer colorId) {
-        this.colorId = colorId;
+    public void setItemColorId(Integer itemColorId) {
+        this.itemColorId = itemColorId;
     }
 
     public Integer getInventory() {

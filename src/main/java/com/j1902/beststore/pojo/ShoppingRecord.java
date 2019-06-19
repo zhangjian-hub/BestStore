@@ -11,7 +11,7 @@ public class ShoppingRecord {
 
     private Integer itemPropertyId;
 
-    private Date shoppingTime;
+    private Date createTime;
 
     public Integer getId() {
         return id;
@@ -45,11 +45,11 @@ public class ShoppingRecord {
         this.itemPropertyId = itemPropertyId;
     }
 
-    public Date getShoppingTime() {
-        return shoppingTime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setShoppingTime(Date shoppingTime) {
-        this.shoppingTime = shoppingTime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

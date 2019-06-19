@@ -224,123 +224,123 @@ public class ItemItemExample {
             return (Criteria) this;
         }
 
-        public Criteria andSizeIdIsNull() {
-            addCriterion("size_id is null");
+        public Criteria andItemSizeIdIsNull() {
+            addCriterion("item_size_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andSizeIdIsNotNull() {
-            addCriterion("size_id is not null");
+        public Criteria andItemSizeIdIsNotNull() {
+            addCriterion("item_size_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSizeIdEqualTo(Integer value) {
-            addCriterion("size_id =", value, "sizeId");
+        public Criteria andItemSizeIdEqualTo(Integer value) {
+            addCriterion("item_size_id =", value, "itemSizeId");
             return (Criteria) this;
         }
 
-        public Criteria andSizeIdNotEqualTo(Integer value) {
-            addCriterion("size_id <>", value, "sizeId");
+        public Criteria andItemSizeIdNotEqualTo(Integer value) {
+            addCriterion("item_size_id <>", value, "itemSizeId");
             return (Criteria) this;
         }
 
-        public Criteria andSizeIdGreaterThan(Integer value) {
-            addCriterion("size_id >", value, "sizeId");
+        public Criteria andItemSizeIdGreaterThan(Integer value) {
+            addCriterion("item_size_id >", value, "itemSizeId");
             return (Criteria) this;
         }
 
-        public Criteria andSizeIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("size_id >=", value, "sizeId");
+        public Criteria andItemSizeIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("item_size_id >=", value, "itemSizeId");
             return (Criteria) this;
         }
 
-        public Criteria andSizeIdLessThan(Integer value) {
-            addCriterion("size_id <", value, "sizeId");
+        public Criteria andItemSizeIdLessThan(Integer value) {
+            addCriterion("item_size_id <", value, "itemSizeId");
             return (Criteria) this;
         }
 
-        public Criteria andSizeIdLessThanOrEqualTo(Integer value) {
-            addCriterion("size_id <=", value, "sizeId");
+        public Criteria andItemSizeIdLessThanOrEqualTo(Integer value) {
+            addCriterion("item_size_id <=", value, "itemSizeId");
             return (Criteria) this;
         }
 
-        public Criteria andSizeIdIn(List<Integer> values) {
-            addCriterion("size_id in", values, "sizeId");
+        public Criteria andItemSizeIdIn(List<Integer> values) {
+            addCriterion("item_size_id in", values, "itemSizeId");
             return (Criteria) this;
         }
 
-        public Criteria andSizeIdNotIn(List<Integer> values) {
-            addCriterion("size_id not in", values, "sizeId");
+        public Criteria andItemSizeIdNotIn(List<Integer> values) {
+            addCriterion("item_size_id not in", values, "itemSizeId");
             return (Criteria) this;
         }
 
-        public Criteria andSizeIdBetween(Integer value1, Integer value2) {
-            addCriterion("size_id between", value1, value2, "sizeId");
+        public Criteria andItemSizeIdBetween(Integer value1, Integer value2) {
+            addCriterion("item_size_id between", value1, value2, "itemSizeId");
             return (Criteria) this;
         }
 
-        public Criteria andSizeIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("size_id not between", value1, value2, "sizeId");
+        public Criteria andItemSizeIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("item_size_id not between", value1, value2, "itemSizeId");
             return (Criteria) this;
         }
 
-        public Criteria andColorIdIsNull() {
-            addCriterion("color_id is null");
+        public Criteria andItemColorIdIsNull() {
+            addCriterion("item_color_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andColorIdIsNotNull() {
-            addCriterion("color_id is not null");
+        public Criteria andItemColorIdIsNotNull() {
+            addCriterion("item_color_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andColorIdEqualTo(Integer value) {
-            addCriterion("color_id =", value, "colorId");
+        public Criteria andItemColorIdEqualTo(Integer value) {
+            addCriterion("item_color_id =", value, "itemColorId");
             return (Criteria) this;
         }
 
-        public Criteria andColorIdNotEqualTo(Integer value) {
-            addCriterion("color_id <>", value, "colorId");
+        public Criteria andItemColorIdNotEqualTo(Integer value) {
+            addCriterion("item_color_id <>", value, "itemColorId");
             return (Criteria) this;
         }
 
-        public Criteria andColorIdGreaterThan(Integer value) {
-            addCriterion("color_id >", value, "colorId");
+        public Criteria andItemColorIdGreaterThan(Integer value) {
+            addCriterion("item_color_id >", value, "itemColorId");
             return (Criteria) this;
         }
 
-        public Criteria andColorIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("color_id >=", value, "colorId");
+        public Criteria andItemColorIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("item_color_id >=", value, "itemColorId");
             return (Criteria) this;
         }
 
-        public Criteria andColorIdLessThan(Integer value) {
-            addCriterion("color_id <", value, "colorId");
+        public Criteria andItemColorIdLessThan(Integer value) {
+            addCriterion("item_color_id <", value, "itemColorId");
             return (Criteria) this;
         }
 
-        public Criteria andColorIdLessThanOrEqualTo(Integer value) {
-            addCriterion("color_id <=", value, "colorId");
+        public Criteria andItemColorIdLessThanOrEqualTo(Integer value) {
+            addCriterion("item_color_id <=", value, "itemColorId");
             return (Criteria) this;
         }
 
-        public Criteria andColorIdIn(List<Integer> values) {
-            addCriterion("color_id in", values, "colorId");
+        public Criteria andItemColorIdIn(List<Integer> values) {
+            addCriterion("item_color_id in", values, "itemColorId");
             return (Criteria) this;
         }
 
-        public Criteria andColorIdNotIn(List<Integer> values) {
-            addCriterion("color_id not in", values, "colorId");
+        public Criteria andItemColorIdNotIn(List<Integer> values) {
+            addCriterion("item_color_id not in", values, "itemColorId");
             return (Criteria) this;
         }
 
-        public Criteria andColorIdBetween(Integer value1, Integer value2) {
-            addCriterion("color_id between", value1, value2, "colorId");
+        public Criteria andItemColorIdBetween(Integer value1, Integer value2) {
+            addCriterion("item_color_id between", value1, value2, "itemColorId");
             return (Criteria) this;
         }
 
-        public Criteria andColorIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("color_id not between", value1, value2, "colorId");
+        public Criteria andItemColorIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("item_color_id not between", value1, value2, "itemColorId");
             return (Criteria) this;
         }
 

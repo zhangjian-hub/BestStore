@@ -11,7 +11,7 @@ public class OrderForm {
 
     private Integer itemPropertyId;
 
-    private Integer stateId;
+    private Integer orderStateId;
 
     public Integer getId() {
         return id;
@@ -53,11 +53,11 @@ public class OrderForm {
         this.itemPropertyId = itemPropertyId;
     }
 
-    public Integer getStateId() {
-        return stateId;
+    public Integer getOrderStateId() {
+        return orderStateId;
     }
 
-    public void setStateId(Integer stateId) {
-        this.stateId = stateId;
+    public void setOrderStateId(Integer orderStateId) {
+        this.orderStateId = orderStateId;
     }
 }
