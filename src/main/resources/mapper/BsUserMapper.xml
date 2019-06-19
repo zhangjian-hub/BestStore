@@ -3,7 +3,7 @@
 <mapper namespace="com.j1902.beststore.mapper.BsUserMapper">
   <resultMap id="BaseResultMap" type="com.j1902.beststore.pojo.BsUser">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="nikename" jdbcType="VARCHAR" property="nikename" />
+    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
@@ -72,7 +72,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, nikename, email, password, phone, address, last_login, now_login, last_ip, now_ip
+    id, nickname, email, password, phone, address, last_login, now_login, last_ip, now_ip
   </sql>
   <select id="selectByExample" parameterType="com.j1902.beststore.pojo.BsUserExample" resultMap="BaseResultMap">
     select
@@ -105,11 +105,11 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.j1902.beststore.pojo.BsUser">
-    insert into bs_user (id, nikename, email, 
+    insert into bs_user (id, nickname, email, 
       password, phone, address, 
       last_login, now_login, last_ip, 
       now_ip)
-    values (#{id,jdbcType=INTEGER}, #{nikename,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{nickname,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
       #{password,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
       #{lastLogin,jdbcType=TIMESTAMP}, #{nowLogin,jdbcType=TIMESTAMP}, #{lastIp,jdbcType=VARCHAR}, 
       #{nowIp,jdbcType=VARCHAR})
@@ -120,8 +120,8 @@
       <if test="id != null">
         id,
       </if>
-      <if test="nikename != null">
-        nikename,
+      <if test="nickname != null">
+        nickname,
       </if>
       <if test="email != null">
         email,
@@ -152,8 +152,8 @@
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="nikename != null">
-        #{nikename,jdbcType=VARCHAR},
+      <if test="nickname != null">
+        #{nickname,jdbcType=VARCHAR},
       </if>
       <if test="email != null">
         #{email,jdbcType=VARCHAR},
@@ -193,8 +193,8 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.nikename != null">
-        nikename = #{record.nikename,jdbcType=VARCHAR},
+      <if test="record.nickname != null">
+        nickname = #{record.nickname,jdbcType=VARCHAR},
       </if>
       <if test="record.email != null">
         email = #{record.email,jdbcType=VARCHAR},
@@ -228,7 +228,7 @@
   <update id="updateByExample" parameterType="map">
     update bs_user
     set id = #{record.id,jdbcType=INTEGER},
-      nikename = #{record.nikename,jdbcType=VARCHAR},
+      nickname = #{record.nickname,jdbcType=VARCHAR},
       email = #{record.email,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
       phone = #{record.phone,jdbcType=VARCHAR},
@@ -244,8 +244,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.j1902.beststore.pojo.BsUser">
     update bs_user
     <set>
-      <if test="nikename != null">
-        nikename = #{nikename,jdbcType=VARCHAR},
+      <if test="nickname != null">
+        nickname = #{nickname,jdbcType=VARCHAR},
       </if>
       <if test="email != null">
         email = #{email,jdbcType=VARCHAR},
@@ -276,7 +276,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.j1902.beststore.pojo.BsUser">
     update bs_user
-    set nikename = #{nikename,jdbcType=VARCHAR},
+    set nickname = #{nickname,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},

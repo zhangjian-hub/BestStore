@@ -1,8 +1,5 @@
 package com.j1902.beststore.service.impl;
 
-import com.j1902.beststore.mapper.BsUserMapper;
-import com.j1902.beststore.pojo.BsUser;
-import com.j1902.beststore.pojo.BsUserExample;
 import com.j1902.beststore.service.BsUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -5,7 +5,7 @@ import java.util.Date;
 public class BsUser {
     private Integer id;
 
-    private String nikename;
+    private String nickname;
 
     private String email;
 
@@ -31,12 +31,12 @@ public class BsUser {
         this.id = id;
     }
 
-    public String getNikename() {
-        return nikename;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setNikename(String nikename) {
-        this.nikename = nikename == null ? null : nikename.trim();
+    public void setNickname(String nickname) {
+        this.nickname = nickname == null ? null : nickname.trim();
     }
 
     public String getEmail() {
@@ -101,21 +101,5 @@ public class BsUser {
 
     public void setNowIp(String nowIp) {
         this.nowIp = nowIp == null ? null : nowIp.trim();
-    }
-
-    @Override
-    public String toString() {
-        return "BsUser{" +
-                "id=" + id +
-                ", nikename='" + nikename + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", phone='" + phone + '\'' +
-                ", address='" + address + '\'' +
-                ", lastLogin=" + lastLogin +
-                ", nowLogin=" + nowLogin +
-                ", lastIp='" + lastIp + '\'' +
-                ", nowIp='" + nowIp + '\'' +
-                '}';
     }
 }
