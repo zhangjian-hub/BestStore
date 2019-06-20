@@ -1,5 +1,6 @@
 package com.j1902.beststore.controller;
 
+import com.alibaba.druid.sql.dialect.mysql.visitor.MySqlShowColumnOutpuVisitor;
 import com.j1902.beststore.modle.ItemFull;
 import com.j1902.beststore.pojo.BsItem;
 import com.j1902.beststore.pojo.BsShoppingCart;
@@ -57,35 +58,43 @@ public class BsUserController {
             return "redirect:/toLogin";
         }
         List<BsShoppingCart> bsShoppingCart = bsItemService.getBsShoppingCart(id);
-        if(bsShoppingCart == null){
+        System.out.println("bsShoppingCart = " + bsShoppingCart);
+        if (bsShoppingCart == null) {
             return "checkout";
         }
         List<ItemFull> itemFulls = new ArrayList<>();
-        for (BsShoppingCart shoppingCart : bsShoppingCart) {
-            System.out.println("shoppingCart = " + shoppingCart);
-            Integer itemId = shoppingCart.getItemId();
-            System.out.println("itemId = " + itemId);
-            Integer number = shoppingCart.getNumber();
-            System.out.println("number = " + number);
-            BsItem item = bsItemService.getItem(1);
-            System.out.println("item = " + item);
-            ItemFull itemFull = new ItemFull();
-            itemFull.setId(item.getId());
-            itemFull.setName(item.getName());
-            itemFull.setSuitablePeople(item.getSuitablePeople());
-            itemFull.setType(item.getType());
-            itemFull.setSize(item.getSize());
-            itemFull.setColor(item.getColor());
-            itemFull.setPrice(item.getPrice());
-            itemFull.setInventory(item.getInventory());
-            itemFull.setImage(item.getImage());
-            itemFull.setSalesVolume(item.getSalesVolume());
-            itemFull.setDescribe(item.getDescribe());
-            itemFull.setSupplier(item.getSupplier());
-            itemFull.setNumber(number);
-            itemFulls.add(itemFull);
-        }
+       for (int i = 0; i<bsShoppingCart.size();i++){
+           BsItem item = bsItemService.getItem(bsShoppingCart.get(i).getItemId());
+           System.out.println("item = " + item);
+       }
+
+
+//        for (BsShoppingCart shoppingCart : bsShoppingCart) {
+//            System.out.println("shoppingCart = " + shoppingCart);
+//            Integer itemId = shoppingCart.getItemId();
+//            System.out.println("itemId = " + itemId);
+//            Integer number = shoppingCart.getNumber();
+//            System.out.println("number = " + number);
+//            BsItem item = bsItemService.getItem(1);
+//            System.out.println("item = " + item);
+//            ItemFull itemFull = new ItemFull();
+//            itemFull.setId(item.getId());
+//            itemFull.setName(item.getName());
+//            itemFull.setSuitablePeople(item.getSuitablePeople());
+//            itemFull.setType(item.getType());
+//            itemFull.setSize(item.getSize());
+//            itemFull.setColor(item.getColor());
+//            itemFull.setPrice(item.getPrice());
+//            itemFull.setInventory(item.getInventory());
+//            itemFull.setImage(item.getImage());
+//            itemFull.setSalesVolume(item.getSalesVolume());
+//            itemFull.setDescribe(item.getDescribe());
+//            itemFull.setSupplier(item.getSupplier());
+//            itemFull.setNumber(number);
+//            itemFulls.add(itemFull);
+//        }
         map.put("ITEM_LIST_SHOPPING", itemFulls);
+        System.out.println("itemFulls = " + itemFulls);
         return "checkout";
     }
 

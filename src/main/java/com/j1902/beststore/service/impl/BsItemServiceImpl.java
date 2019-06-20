@@ -29,7 +29,6 @@ public class BsItemServiceImpl implements BsItemService {
     @Override
     public BsItem getItem(Integer id) {
         BsItem bsItem = bsItemMapper.selectByPrimaryKey(1);
-        System.out.println("bsItem = " + bsItem);
         return bsItem;
     }
 }

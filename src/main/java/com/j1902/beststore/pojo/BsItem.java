@@ -120,4 +120,22 @@ public class BsItem {
     public void setSupplier(String supplier) {
         this.supplier = supplier == null ? null : supplier.trim();
     }
+
+    @Override
+    public String toString() {
+        return "BsItem{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", suitablePeople='" + suitablePeople + '\'' +
+                ", type='" + type + '\'' +
+                ", size='" + size + '\'' +
+                ", color='" + color + '\'' +
+                ", price=" + price +
+                ", inventory=" + inventory +
+                ", image='" + image + '\'' +
+                ", salesVolume=" + salesVolume +
+                ", describe='" + describe + '\'' +
+                ", supplier='" + supplier + '\'' +
+                '}';
+    }
 }
