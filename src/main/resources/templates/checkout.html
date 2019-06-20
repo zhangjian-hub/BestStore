@@ -201,7 +201,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <div class="total">
                                 <span>shopping cart</span>
                                 <!--<span class="simpleCart_total"></span> (<span id="simpleCart_quantity"-->
-                                                                              <!--class="simpleCart_quantity"></span> items)-->
+                                <!--class="simpleCart_quantity"></span> items)-->
                             </div>
 
                         </h3>
@@ -228,7 +228,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- checkout -->
 <div class="checkout">
     <div class="container">
-        <h3 class="animated wow slideInLeft" data-wow-delay=".5s" >Your shopping cart contains: <span><span th:each="item,items : ${ITEM_LIST_SHOPPING}" th:text="${items.size}"></span> Products</span>
+        <h3 class="animated wow slideInLeft" data-wow-delay=".5s">Your shopping cart contains: <span><span
+                th:text="${PAGEINFO.getTotal()}"></span> Products</span>
         </h3>
         <div class="checkout-right animated wow slideInUp" data-wow-delay=".5s">
             <table class="timetable_sub">
@@ -334,68 +335,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </script>
                     </td>
                 </tr>
-                <!--<tr class="rem2">-->
-                    <!--<td><input type="checkbox" value="true" class="mycheckbox"></td>-->
-                    <!--<td class="invert">2</td>-->
-                    <!--<td class="invert-image"><a href="single.html"><img src="../static/images/30.jpg" alt=" "-->
-                                                                        <!--class="img-responsive"/></a></td>-->
-                    <!--<td class="invert">-->
-                        <!--<div class="quantity">-->
-                            <!--<div class="quantity-select">-->
-                                <!--<div class="entry value-minus">&nbsp;</div>-->
-                                <!--<div class="entry value"><span>1</span></div>-->
-                                <!--<div class="entry value-plus active">&nbsp;</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</td>-->
-                    <!--<td class="invert">Centre Table</td>-->
-                    <!--<td class="invert">$5.00</td>-->
-                    <!--<td class="invert">$250.00</td>-->
-                    <!--<td class="invert">-->
-                        <!--<div class="rem">-->
-                            <!--<div class="close1"></div>-->
-                        <!--</div>-->
-                        <!--<script>$(document).ready(function (c) {-->
-                            <!--$('.close2').on('click', function (c) {-->
-                                <!--$('.rem2').fadeOut('slow', function (c) {-->
-                                    <!--$('.rem2').remove();-->
-                                <!--});-->
-                            <!--});-->
-                        <!--});-->
-                        <!--</script>-->
-                    <!--</td>-->
-                <!--</tr>-->
-                <!--<tr class="rem3">-->
-                    <!--<td><input type="checkbox" value="true" class="mycheckbox"></td>-->
-                    <!--<td class="invert">3</td>-->
-                    <!--<td class="invert-image"><a href="single.html"><img src="../static/images/11.jpg" alt=" "-->
-                                                                        <!--class="img-responsive"/></a></td>-->
-                    <!--<td class="invert">-->
-                        <!--<div class="quantity">-->
-                            <!--<div class="quantity-select">-->
-                                <!--<div class="entry value-minus">&nbsp;</div>-->
-                                <!--<div class="entry value"><span>1</span></div>-->
-                                <!--<div class="entry value-plus active">&nbsp;</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</td>-->
-                    <!--<td class="invert">Stone Bangles</td>-->
-                    <!--<td class="invert">$5.00</td>-->
-                    <!--<td class="invert">$299.00</td>-->
-                    <!--<td class="invert">-->
-                        <!--<div class="rem">-->
-                            <!--<div class="close1"></div>-->
-                        <!--</div>-->
-                        <!--<script>$(document).ready(function (c) {-->
-                            <!--$('.close3').on('click', function (c) {-->
-                                <!--$('.rem3').fadeOut('slow', function (c) {-->
-                                    <!--$('.rem3').remove();-->
-                                <!--});-->
-                            <!--});-->
-                        <!--});-->
-                        <!--</script>-->
-                    <!--</td>-->
-                <!--</tr>-->
                 <!--quantity-->
                 <script>
                     $('.value-plus').on('click', function () {
@@ -412,17 +351,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
             </table>
             <nav aria-label="Page navigation" style="position: absolute;float: right; right: 0px">
-                <ul class="pagination">
+                <ul class="pagination" >
                     <li>
                         <a href="#" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
+                    <li th:each="num,nums:${PAGEINFO.navigatepageNums}"><a th:href="" th:text="${num}"></a></li>
                     <li>
                         <a href="#" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>

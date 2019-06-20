@@ -21,7 +21,7 @@ public class ItemFull {
 
     private Integer salesVolume;
 
-    private String describe;
+    private String description;
 
     private String supplier;
 
@@ -110,12 +110,12 @@ public class ItemFull {
         this.salesVolume = salesVolume;
     }
 
-    public String getDescribe() {
-        return describe;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescribe(String describe) {
-        this.describe = describe;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getSupplier() {
@@ -147,7 +147,7 @@ public class ItemFull {
                 ", inventory=" + inventory +
                 ", image='" + image + '\'' +
                 ", salesVolume=" + salesVolume +
-                ", describe='" + describe + '\'' +
+                ", description='" + description + '\'' +
                 ", supplier='" + supplier + '\'' +
                 ", number=" + number +
                 '}';

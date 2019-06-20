@@ -1,6 +1,7 @@
 package com.j1902.beststore.controller;
 
 import com.alibaba.druid.sql.dialect.mysql.visitor.MySqlShowColumnOutpuVisitor;
+import com.github.pagehelper.PageInfo;
 import com.j1902.beststore.modle.ItemFull;
 import com.j1902.beststore.pojo.BsItem;
 import com.j1902.beststore.pojo.BsShoppingCart;
@@ -53,48 +54,44 @@ public class BsUserController {
     }
 
     @RequestMapping("/toCheckout")
-    public String toCheckout(Integer id, Map<String, Object> map) {
+    public String toCheckout(Integer id, Integer pageNum, Map<String, Object> map) {
         if (id == null) {
             return "redirect:/toLogin";
         }
-        List<BsShoppingCart> bsShoppingCart = bsItemService.getBsShoppingCart(id);
-        System.out.println("bsShoppingCart = " + bsShoppingCart);
-        if (bsShoppingCart == null) {
+        if (pageNum == null) {
+            pageNum = 1;
+        }
+//        List<BsShoppingCart> bsShoppingCart = bsItemService.getBsShoppingCart(id);
+//        System.out.println("bsShoppingCart = " + bsShoppingCart);
+        PageInfo<BsShoppingCart> pageInfo = bsItemService.pageBsShoppingCart(id, pageNum, 3);
+        System.out.println(pageInfo.getPageSize());
+        map.put("PAGEINFO", pageInfo);
+        if (pageInfo == null) {
             return "checkout";
         }
         List<ItemFull> itemFulls = new ArrayList<>();
-       for (int i = 0; i<bsShoppingCart.size();i++){
-           BsItem item = bsItemService.getItem(bsShoppingCart.get(i).getItemId());
-           System.out.println("item = " + item);
-       }
-
-
-//        for (BsShoppingCart shoppingCart : bsShoppingCart) {
-//            System.out.println("shoppingCart = " + shoppingCart);
-//            Integer itemId = shoppingCart.getItemId();
-//            System.out.println("itemId = " + itemId);
-//            Integer number = shoppingCart.getNumber();
-//            System.out.println("number = " + number);
-//            BsItem item = bsItemService.getItem(1);
-//            System.out.println("item = " + item);
-//            ItemFull itemFull = new ItemFull();
-//            itemFull.setId(item.getId());
-//            itemFull.setName(item.getName());
-//            itemFull.setSuitablePeople(item.getSuitablePeople());
-//            itemFull.setType(item.getType());
-//            itemFull.setSize(item.getSize());
-//            itemFull.setColor(item.getColor());
-//            itemFull.setPrice(item.getPrice());
-//            itemFull.setInventory(item.getInventory());
-//            itemFull.setImage(item.getImage());
-//            itemFull.setSalesVolume(item.getSalesVolume());
-//            itemFull.setDescribe(item.getDescribe());
-//            itemFull.setSupplier(item.getSupplier());
-//            itemFull.setNumber(number);
-//            itemFulls.add(itemFull);
-//        }
+        for (BsShoppingCart shoppingCart : pageInfo.getList()) {
+            Integer itemId = shoppingCart.getItemId();
+            Integer number = shoppingCart.getNumber();
+            BsItem item = bsItemService.getItem(itemId);
+            ItemFull itemFull = new ItemFull();
+            itemFull.setId(item.getId());
+            itemFull.setName(item.getName());
+            itemFull.setSuitablePeople(item.getSuitablePeople());
+            itemFull.setType(item.getType());
+            itemFull.setSize(item.getSize());
+            itemFull.setColor(item.getColor());
+            itemFull.setPrice(item.getPrice());
+            itemFull.setInventory(item.getInventory());
+            itemFull.setImage(item.getImage());
+            itemFull.setSalesVolume(item.getSalesVolume());
+            itemFull.setDescription(item.getDescription());
+            itemFull.setSupplier(item.getSupplier());
+            itemFull.setNumber(number);
+            itemFulls.add(itemFull);
+        }
         map.put("ITEM_LIST_SHOPPING", itemFulls);
-        System.out.println("itemFulls = " + itemFulls);
+        System.out.println("itemFulls = " + itemFulls.size());
         return "checkout";
     }
 

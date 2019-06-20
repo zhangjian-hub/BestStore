@@ -121,4 +121,21 @@ public class BsItem {
         this.supplier = supplier == null ? null : supplier.trim();
     }
 
+    @Override
+    public String toString() {
+        return "BsItem{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", suitablePeople='" + suitablePeople + '\'' +
+                ", type='" + type + '\'' +
+                ", size='" + size + '\'' +
+                ", color='" + color + '\'' +
+                ", price=" + price +
+                ", inventory=" + inventory +
+                ", image='" + image + '\'' +
+                ", salesVolume=" + salesVolume +
+                ", description='" + description + '\'' +
+                ", supplier='" + supplier + '\'' +
+                '}';
+    }
 }
