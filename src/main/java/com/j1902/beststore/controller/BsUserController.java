@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Map;
+
 @Controller
 @MapperScan("com.j1902.beststore.mapper")
 public class BsUserController {
@@ -25,9 +27,13 @@ public class BsUserController {
     }
 
     @RequestMapping("/register")
-    public String register(BsUser bsUser){
+    public String register(BsUser bsUser, Map<String,Object> map){
         System.out.println("bsUser = [" + bsUser + "]");
-
+        if (bsUserService.isExistBsUser(bsUser)) {
+            return "register";
+        }
+        map.put("REGISTER_STATE", "fail");
+        bsUserService.addBsUser(bsUser);
         return "login";
     }
 
@@ -35,8 +41,9 @@ public class BsUserController {
     public String toHome(){
         return "home";
     }
-    @RequestMapping("/toChekout")
-    public String toChekout(){
+
+    @RequestMapping("/toCheckout")
+    public String toCheckout(){
         return "checkout";
     }
 

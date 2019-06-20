@@ -3,7 +3,7 @@
 <mapper namespace="com.j1902.beststore.mapper.BsItemMapper">
   <resultMap id="BaseResultMap" type="com.j1902.beststore.pojo.BsItem">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="INTEGER" property="name" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="suitable_people" jdbcType="CHAR" property="suitablePeople" />
     <result column="type" jdbcType="VARCHAR" property="type" />
     <result column="size" jdbcType="VARCHAR" property="size" />
@@ -113,7 +113,7 @@
       price, inventory, image, 
       sales_volume, describe, supplier
       )
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=INTEGER}, #{suitablePeople,jdbcType=CHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{suitablePeople,jdbcType=CHAR}, 
       #{type,jdbcType=VARCHAR}, #{size,jdbcType=VARCHAR}, #{color,jdbcType=VARCHAR}, 
       #{price,jdbcType=REAL}, #{inventory,jdbcType=INTEGER}, #{image,jdbcType=VARCHAR}, 
       #{salesVolume,jdbcType=INTEGER}, #{describe,jdbcType=VARCHAR}, #{supplier,jdbcType=VARCHAR}
@@ -164,7 +164,7 @@
         #{id,jdbcType=INTEGER},
       </if>
       <if test="name != null">
-        #{name,jdbcType=INTEGER},
+        #{name,jdbcType=VARCHAR},
       </if>
       <if test="suitablePeople != null">
         #{suitablePeople,jdbcType=CHAR},
@@ -211,7 +211,7 @@
         id = #{record.id,jdbcType=INTEGER},
       </if>
       <if test="record.name != null">
-        name = #{record.name,jdbcType=INTEGER},
+        name = #{record.name,jdbcType=VARCHAR},
       </if>
       <if test="record.suitablePeople != null">
         suitable_people = #{record.suitablePeople,jdbcType=CHAR},
@@ -251,7 +251,7 @@
   <update id="updateByExample" parameterType="map">
     update bs_item
     set id = #{record.id,jdbcType=INTEGER},
-      name = #{record.name,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
       suitable_people = #{record.suitablePeople,jdbcType=CHAR},
       type = #{record.type,jdbcType=VARCHAR},
       size = #{record.size,jdbcType=VARCHAR},
@@ -270,7 +270,7 @@
     update bs_item
     <set>
       <if test="name != null">
-        name = #{name,jdbcType=INTEGER},
+        name = #{name,jdbcType=VARCHAR},
       </if>
       <if test="suitablePeople != null">
         suitable_people = #{suitablePeople,jdbcType=CHAR},
@@ -307,7 +307,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.j1902.beststore.pojo.BsItem">
     update bs_item
-    set name = #{name,jdbcType=INTEGER},
+    set name = #{name,jdbcType=VARCHAR},
       suitable_people = #{suitablePeople,jdbcType=CHAR},
       type = #{type,jdbcType=VARCHAR},
       size = #{size,jdbcType=VARCHAR},

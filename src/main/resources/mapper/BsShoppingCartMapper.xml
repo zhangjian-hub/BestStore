@@ -3,6 +3,7 @@
 <mapper namespace="com.j1902.beststore.mapper.BsShoppingCartMapper">
   <resultMap id="BaseResultMap" type="com.j1902.beststore.pojo.BsShoppingCart">
     <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="item_id" jdbcType="INTEGER" property="itemId" />
     <result column="number" jdbcType="INTEGER" property="number" />
   </resultMap>
@@ -65,7 +66,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, item_id, number
+    id, user_id, item_id, number
   </sql>
   <select id="selectByExample" parameterType="com.j1902.beststore.pojo.BsShoppingCartExample" resultMap="BaseResultMap">
     select
@@ -98,16 +99,19 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.j1902.beststore.pojo.BsShoppingCart">
-    insert into bs_shopping_cart (id, item_id, number
-      )
-    values (#{id,jdbcType=INTEGER}, #{itemId,jdbcType=INTEGER}, #{number,jdbcType=INTEGER}
-      )
+    insert into bs_shopping_cart (id, user_id, item_id, 
+      number)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{itemId,jdbcType=INTEGER}, 
+      #{number,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.j1902.beststore.pojo.BsShoppingCart">
     insert into bs_shopping_cart
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
+      </if>
+      <if test="userId != null">
+        user_id,
       </if>
       <if test="itemId != null">
         item_id,
@@ -119,6 +123,9 @@
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
       </if>
       <if test="itemId != null">
         #{itemId,jdbcType=INTEGER},
@@ -140,6 +147,9 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
       <if test="record.itemId != null">
         item_id = #{record.itemId,jdbcType=INTEGER},
       </if>
@@ -154,6 +164,7 @@
   <update id="updateByExample" parameterType="map">
     update bs_shopping_cart
     set id = #{record.id,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
       item_id = #{record.itemId,jdbcType=INTEGER},
       number = #{record.number,jdbcType=INTEGER}
     <if test="_parameter != null">
@@ -163,6 +174,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.j1902.beststore.pojo.BsShoppingCart">
     update bs_shopping_cart
     <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
       <if test="itemId != null">
         item_id = #{itemId,jdbcType=INTEGER},
       </if>
@@ -174,7 +188,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.j1902.beststore.pojo.BsShoppingCart">
     update bs_shopping_cart
-    set item_id = #{itemId,jdbcType=INTEGER},
+    set user_id = #{userId,jdbcType=INTEGER},
+      item_id = #{itemId,jdbcType=INTEGER},
       number = #{number,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>

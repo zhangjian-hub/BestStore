@@ -3,6 +3,8 @@ package com.j1902.beststore.pojo;
 public class BsShoppingCart {
     private Integer id;
 
+    private Integer userId;
+
     private Integer itemId;
 
     private Integer number;
@@ -13,6 +15,14 @@ public class BsShoppingCart {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public Integer getItemId() {

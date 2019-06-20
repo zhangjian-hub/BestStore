@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.j1902.beststore.pojo.BsShoppingRecord">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="item_id" jdbcType="INTEGER" property="itemId" />
+    <result column="item_info" jdbcType="VARCHAR" property="itemInfo" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -66,7 +66,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, user_id, item_id, create_time
+    id, user_id, item_info, create_time
   </sql>
   <select id="selectByExample" parameterType="com.j1902.beststore.pojo.BsShoppingRecordExample" resultMap="BaseResultMap">
     select
@@ -99,9 +99,9 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.j1902.beststore.pojo.BsShoppingRecord">
-    insert into bs_shopping_record (id, user_id, item_id, 
+    insert into bs_shopping_record (id, user_id, item_info, 
       create_time)
-    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{itemId,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{itemInfo,jdbcType=VARCHAR}, 
       #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.j1902.beststore.pojo.BsShoppingRecord">
@@ -113,8 +113,8 @@
       <if test="userId != null">
         user_id,
       </if>
-      <if test="itemId != null">
-        item_id,
+      <if test="itemInfo != null">
+        item_info,
       </if>
       <if test="createTime != null">
         create_time,
@@ -127,8 +127,8 @@
       <if test="userId != null">
         #{userId,jdbcType=INTEGER},
       </if>
-      <if test="itemId != null">
-        #{itemId,jdbcType=INTEGER},
+      <if test="itemInfo != null">
+        #{itemInfo,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -150,8 +150,8 @@
       <if test="record.userId != null">
         user_id = #{record.userId,jdbcType=INTEGER},
       </if>
-      <if test="record.itemId != null">
-        item_id = #{record.itemId,jdbcType=INTEGER},
+      <if test="record.itemInfo != null">
+        item_info = #{record.itemInfo,jdbcType=VARCHAR},
       </if>
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
@@ -165,7 +165,7 @@
     update bs_shopping_record
     set id = #{record.id,jdbcType=INTEGER},
       user_id = #{record.userId,jdbcType=INTEGER},
-      item_id = #{record.itemId,jdbcType=INTEGER},
+      item_info = #{record.itemInfo,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -177,8 +177,8 @@
       <if test="userId != null">
         user_id = #{userId,jdbcType=INTEGER},
       </if>
-      <if test="itemId != null">
-        item_id = #{itemId,jdbcType=INTEGER},
+      <if test="itemInfo != null">
+        item_info = #{itemInfo,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -189,7 +189,7 @@
   <update id="updateByPrimaryKey" parameterType="com.j1902.beststore.pojo.BsShoppingRecord">
     update bs_shopping_record
     set user_id = #{userId,jdbcType=INTEGER},
-      item_id = #{itemId,jdbcType=INTEGER},
+      item_info = #{itemInfo,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>

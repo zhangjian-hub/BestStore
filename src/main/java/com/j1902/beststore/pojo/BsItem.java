@@ -3,7 +3,7 @@ package com.j1902.beststore.pojo;
 public class BsItem {
     private Integer id;
 
-    private Integer name;
+    private String name;
 
     private String suitablePeople;
 
@@ -33,12 +33,12 @@ public class BsItem {
         this.id = id;
     }
 
-    public Integer getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(Integer name) {
-        this.name = name;
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 
     public String getSuitablePeople() {

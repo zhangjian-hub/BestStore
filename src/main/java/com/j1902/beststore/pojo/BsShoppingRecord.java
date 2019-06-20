@@ -7,7 +7,7 @@ public class BsShoppingRecord {
 
     private Integer userId;
 
-    private Integer itemId;
+    private String itemInfo;
 
     private Date createTime;
 
@@ -27,12 +27,12 @@ public class BsShoppingRecord {
         this.userId = userId;
     }
 
-    public Integer getItemId() {
-        return itemId;
+    public String getItemInfo() {
+        return itemInfo;
     }
 
-    public void setItemId(Integer itemId) {
-        this.itemId = itemId;
+    public void setItemInfo(String itemInfo) {
+        this.itemInfo = itemInfo == null ? null : itemInfo.trim();
     }
 
     public Date getCreateTime() {

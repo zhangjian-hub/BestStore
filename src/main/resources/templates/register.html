@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
 <title>Register</title>
 <!-- for-mobile-apps -->
@@ -324,6 +324,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
 <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
 <script>
+
 	function checkPwd(password) {
 		/*获取提示框*/
 		var form = document.getElementById("passwordMSG");
@@ -383,6 +384,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		var phoneRE = /^1[3,4,5,6,7,8,9][0-9]{9}$/;
 		return phoneRE.test(value);
 	});
+
+
 </script>
 </body>
 </html>
