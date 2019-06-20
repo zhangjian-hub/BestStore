@@ -12,7 +12,7 @@
     <result column="inventory" jdbcType="INTEGER" property="inventory" />
     <result column="image" jdbcType="VARCHAR" property="image" />
     <result column="sales_volume" jdbcType="INTEGER" property="salesVolume" />
-    <result column="describe" jdbcType="VARCHAR" property="describe" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="supplier" jdbcType="VARCHAR" property="supplier" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -75,7 +75,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, name, suitable_people, type, size, color, price, inventory, image, sales_volume, 
-    describe, supplier
+    description, supplier
   </sql>
   <select id="selectByExample" parameterType="com.j1902.beststore.pojo.BsItemExample" resultMap="BaseResultMap">
     select
@@ -111,12 +111,12 @@
     insert into bs_item (id, name, suitable_people, 
       type, size, color, 
       price, inventory, image, 
-      sales_volume, describe, supplier
+      sales_volume, description, supplier
       )
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{suitablePeople,jdbcType=CHAR}, 
       #{type,jdbcType=VARCHAR}, #{size,jdbcType=VARCHAR}, #{color,jdbcType=VARCHAR}, 
       #{price,jdbcType=REAL}, #{inventory,jdbcType=INTEGER}, #{image,jdbcType=VARCHAR}, 
-      #{salesVolume,jdbcType=INTEGER}, #{describe,jdbcType=VARCHAR}, #{supplier,jdbcType=VARCHAR}
+      #{salesVolume,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, #{supplier,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.j1902.beststore.pojo.BsItem">
@@ -152,8 +152,8 @@
       <if test="salesVolume != null">
         sales_volume,
       </if>
-      <if test="describe != null">
-        describe,
+      <if test="description != null">
+        description,
       </if>
       <if test="supplier != null">
         supplier,
@@ -190,8 +190,8 @@
       <if test="salesVolume != null">
         #{salesVolume,jdbcType=INTEGER},
       </if>
-      <if test="describe != null">
-        #{describe,jdbcType=VARCHAR},
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
       </if>
       <if test="supplier != null">
         #{supplier,jdbcType=VARCHAR},
@@ -237,8 +237,8 @@
       <if test="record.salesVolume != null">
         sales_volume = #{record.salesVolume,jdbcType=INTEGER},
       </if>
-      <if test="record.describe != null">
-        describe = #{record.describe,jdbcType=VARCHAR},
+      <if test="record.description != null">
+        description = #{record.description,jdbcType=VARCHAR},
       </if>
       <if test="record.supplier != null">
         supplier = #{record.supplier,jdbcType=VARCHAR},
@@ -260,7 +260,7 @@
       inventory = #{record.inventory,jdbcType=INTEGER},
       image = #{record.image,jdbcType=VARCHAR},
       sales_volume = #{record.salesVolume,jdbcType=INTEGER},
-      describe = #{record.describe,jdbcType=VARCHAR},
+      description = #{record.description,jdbcType=VARCHAR},
       supplier = #{record.supplier,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -296,8 +296,8 @@
       <if test="salesVolume != null">
         sales_volume = #{salesVolume,jdbcType=INTEGER},
       </if>
-      <if test="describe != null">
-        describe = #{describe,jdbcType=VARCHAR},
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
       </if>
       <if test="supplier != null">
         supplier = #{supplier,jdbcType=VARCHAR},
@@ -316,7 +316,7 @@
       inventory = #{inventory,jdbcType=INTEGER},
       image = #{image,jdbcType=VARCHAR},
       sales_volume = #{salesVolume,jdbcType=INTEGER},
-      describe = #{describe,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
       supplier = #{supplier,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
