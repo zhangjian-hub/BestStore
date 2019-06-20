@@ -21,7 +21,7 @@ public class BsItem {
 
     private Integer salesVolume;
 
-    private String describe;
+    private String description;
 
     private String supplier;
 
@@ -105,12 +105,12 @@ public class BsItem {
         this.salesVolume = salesVolume;
     }
 
-    public String getDescribe() {
-        return describe;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescribe(String describe) {
-        this.describe = describe == null ? null : describe.trim();
+    public void setDescription(String description) {
+        this.description = description == null ? null : description.trim();
     }
 
     public String getSupplier() {
@@ -121,21 +121,4 @@ public class BsItem {
         this.supplier = supplier == null ? null : supplier.trim();
     }
 
-    @Override
-    public String toString() {
-        return "BsItem{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", suitablePeople='" + suitablePeople + '\'' +
-                ", type='" + type + '\'' +
-                ", size='" + size + '\'' +
-                ", color='" + color + '\'' +
-                ", price=" + price +
-                ", inventory=" + inventory +
-                ", image='" + image + '\'' +
-                ", salesVolume=" + salesVolume +
-                ", describe='" + describe + '\'' +
-                ", supplier='" + supplier + '\'' +
-                '}';
-    }
 }

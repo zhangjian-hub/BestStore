@@ -3,9 +3,11 @@ package com.j1902.beststore.mapper;
 import com.j1902.beststore.pojo.BsUser;
 import com.j1902.beststore.pojo.BsUserExample;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface BsUserMapper {
     long countByExample(BsUserExample example);
 
