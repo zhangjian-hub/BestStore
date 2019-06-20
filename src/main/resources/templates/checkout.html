@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Checkout</title>
     <!-- for-mobile-apps -->
@@ -33,6 +33,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
           rel='stylesheet' type='text/css'>
     <!-- animation-effect -->
     <link href="../static/css/animate.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
     <script src="../static/js/wow.min.js"></script>
     <script>
         new WOW().init();
@@ -194,14 +197,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="cart box_1">
                     <a href="checkout.html">
                         <h3>
-                            <div class="total">
-                                <span class="simpleCart_total"></span> (<span id="simpleCart_quantity"
-                                                                              class="simpleCart_quantity"></span> items)
-                            </div>
                             <img src="../static/images/bag.png" alt=""/>
+                            <div class="total">
+                                <span>shopping cart</span>
+                                <!--<span class="simpleCart_total"></span> (<span id="simpleCart_quantity"-->
+                                                                              <!--class="simpleCart_quantity"></span> items)-->
+                            </div>
+
                         </h3>
                     </a>
-                    <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+                    <!--<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>-->
                     <div class="clearfix"></div>
                 </div>
             </div>
@@ -223,7 +228,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- checkout -->
 <div class="checkout">
     <div class="container">
-        <h3 class="animated wow slideInLeft" data-wow-delay=".5s">Your shopping cart contains: <span>3 Products</span>
+        <h3 class="animated wow slideInLeft" data-wow-delay=".5s" >Your shopping cart contains: <span><span th:each="item,items : ${ITEM_LIST_SHOPPING}" th:text="${items.size}"></span> Products</span>
         </h3>
         <div class="checkout-right animated wow slideInUp" data-wow-delay=".5s">
             <table class="timetable_sub">
@@ -239,23 +244,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <th>Remove</th>
                 </tr>
                 </thead>
-                <tr class="rem1">
+                <tr class="rem1" th:each="item,items : ${ITEM_LIST_SHOPPING}">
                     <td><input type="checkbox" value="true" class="mycheckbox"></td>
-                    <td class="invert">1</td>
-                    <td class="invert-image"><a href="single.html"><img src="../static/images/22.jpg" alt=" "
+                    <td class="invert" th:text="${items.count}">1</td>
+                    <td class="invert-image"><a href="single.html"><img th:src="@{item.image}" alt=" "
                                                                         class="img-responsive"/></a></td>
                     <td class="invert">
                         <div class="quantity">
                             <div class="quantity-select">
                                 <div class="entry value-minus">&nbsp;</div>
-                                <div class="entry value"><span>1</span></div>
+                                <div class="entry value"><span th:text="${item.number}">1</span></div>
                                 <div class="entry value-plus active">&nbsp;</div>
                             </div>
                         </div>
                     </td>
-                    <td class="invert">Black Shoe</td>
-                    <td class="invert">$5.00</td>
-                    <td class="invert">$290.00</td>
+                    <td class="invert"><span th:text="${item.name}"></span></td>
+                    <td class="invert">$<span>5.00</span></td>
+                    <td class="invert">$<span th:text="${item.price}"></span></td>
                     <td class="invert">
                         <div class="rem">
                             <div class="close1"></div>
@@ -263,18 +268,41 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <script>$(document).ready(function (c) {
                             $('.close1').each(function () {
                                 $(this).on('click', function (c) {
-                                    var a = confirm("You are about to lose your treasure，o(╥﹏╥)o！！");
-                                    if (a) {
-                                        // return true;
-                                        $('.rem1').fadeOut('slow', function (c) {
-                                            $('.rem1').remove();
+                                    var $tr = $(this).parent().parent().parent()
+                                    swal({
+                                        title: "Are you sure!",
+                                        text: "",
+                                        type: "warning",
+
+                                        showConfirmButton: true,
+                                        confirmButtonText: 'yes',
+                                        confirmButtonColor: "#dd6b55",
+
+                                        showCancelButton: true,//是否显示取消按钮
+                                        cancelButtonText: 'no',//按钮内容
+                                        cancelButtonColor: '#b9b9b9',
+
+                                        closeOnConfirm: true,//点击返回上一步操作
+                                        closeOnCancel: true
+                                    }, function () {
+                                        $tr.fadeOut('slow', function (c) {
+                                            $tr.remove();
                                         });
-                                    }
-                                    return false;
+                                        return;
+                                    });
+
+                                    // var a = confirm("You are about to lose your treasure，o(╥﹏╥)o！！");
+                                    // if (a) {
+                                    //     $(this).parent().parent().parent().fadeOut('slow', function (c) {
+                                    //         $(this).remove();
+                                    //     });
+                                    // }
+                                    // return false;
                                 });
                             })
 
-                        });
+                        })
+                        ;
                         $(function () {
                             $("#ckb").click(function () {
                                 if ($("#ckb").attr("checked") == "checked") {
@@ -306,68 +334,68 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </script>
                     </td>
                 </tr>
-                <tr class="rem2">
-                    <td><input type="checkbox" value="true" class="mycheckbox"></td>
-                    <td class="invert">2</td>
-                    <td class="invert-image"><a href="single.html"><img src="../static/images/30.jpg" alt=" "
-                                                                        class="img-responsive"/></a></td>
-                    <td class="invert">
-                        <div class="quantity">
-                            <div class="quantity-select">
-                                <div class="entry value-minus">&nbsp;</div>
-                                <div class="entry value"><span>1</span></div>
-                                <div class="entry value-plus active">&nbsp;</div>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="invert">Centre Table</td>
-                    <td class="invert">$5.00</td>
-                    <td class="invert">$250.00</td>
-                    <td class="invert">
-                        <div class="rem">
-                            <div class="close1"></div>
-                        </div>
-                        <script>$(document).ready(function (c) {
-                            $('.close2').on('click', function (c) {
-                                $('.rem2').fadeOut('slow', function (c) {
-                                    $('.rem2').remove();
-                                });
-                            });
-                        });
-                        </script>
-                    </td>
-                </tr>
-                <tr class="rem3">
-                    <td><input type="checkbox" value="true" class="mycheckbox"></td>
-                    <td class="invert">3</td>
-                    <td class="invert-image"><a href="single.html"><img src="../static/images/11.jpg" alt=" "
-                                                                        class="img-responsive"/></a></td>
-                    <td class="invert">
-                        <div class="quantity">
-                            <div class="quantity-select">
-                                <div class="entry value-minus">&nbsp;</div>
-                                <div class="entry value"><span>1</span></div>
-                                <div class="entry value-plus active">&nbsp;</div>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="invert">Stone Bangles</td>
-                    <td class="invert">$5.00</td>
-                    <td class="invert">$299.00</td>
-                    <td class="invert">
-                        <div class="rem">
-                            <div class="close1"></div>
-                        </div>
-                        <script>$(document).ready(function (c) {
-                            $('.close3').on('click', function (c) {
-                                $('.rem3').fadeOut('slow', function (c) {
-                                    $('.rem3').remove();
-                                });
-                            });
-                        });
-                        </script>
-                    </td>
-                </tr>
+                <!--<tr class="rem2">-->
+                    <!--<td><input type="checkbox" value="true" class="mycheckbox"></td>-->
+                    <!--<td class="invert">2</td>-->
+                    <!--<td class="invert-image"><a href="single.html"><img src="../static/images/30.jpg" alt=" "-->
+                                                                        <!--class="img-responsive"/></a></td>-->
+                    <!--<td class="invert">-->
+                        <!--<div class="quantity">-->
+                            <!--<div class="quantity-select">-->
+                                <!--<div class="entry value-minus">&nbsp;</div>-->
+                                <!--<div class="entry value"><span>1</span></div>-->
+                                <!--<div class="entry value-plus active">&nbsp;</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</td>-->
+                    <!--<td class="invert">Centre Table</td>-->
+                    <!--<td class="invert">$5.00</td>-->
+                    <!--<td class="invert">$250.00</td>-->
+                    <!--<td class="invert">-->
+                        <!--<div class="rem">-->
+                            <!--<div class="close1"></div>-->
+                        <!--</div>-->
+                        <!--<script>$(document).ready(function (c) {-->
+                            <!--$('.close2').on('click', function (c) {-->
+                                <!--$('.rem2').fadeOut('slow', function (c) {-->
+                                    <!--$('.rem2').remove();-->
+                                <!--});-->
+                            <!--});-->
+                        <!--});-->
+                        <!--</script>-->
+                    <!--</td>-->
+                <!--</tr>-->
+                <!--<tr class="rem3">-->
+                    <!--<td><input type="checkbox" value="true" class="mycheckbox"></td>-->
+                    <!--<td class="invert">3</td>-->
+                    <!--<td class="invert-image"><a href="single.html"><img src="../static/images/11.jpg" alt=" "-->
+                                                                        <!--class="img-responsive"/></a></td>-->
+                    <!--<td class="invert">-->
+                        <!--<div class="quantity">-->
+                            <!--<div class="quantity-select">-->
+                                <!--<div class="entry value-minus">&nbsp;</div>-->
+                                <!--<div class="entry value"><span>1</span></div>-->
+                                <!--<div class="entry value-plus active">&nbsp;</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</td>-->
+                    <!--<td class="invert">Stone Bangles</td>-->
+                    <!--<td class="invert">$5.00</td>-->
+                    <!--<td class="invert">$299.00</td>-->
+                    <!--<td class="invert">-->
+                        <!--<div class="rem">-->
+                            <!--<div class="close1"></div>-->
+                        <!--</div>-->
+                        <!--<script>$(document).ready(function (c) {-->
+                            <!--$('.close3').on('click', function (c) {-->
+                                <!--$('.rem3').fadeOut('slow', function (c) {-->
+                                    <!--$('.rem3').remove();-->
+                                <!--});-->
+                            <!--});-->
+                        <!--});-->
+                        <!--</script>-->
+                    <!--</td>-->
+                <!--</tr>-->
                 <!--quantity-->
                 <script>
                     $('.value-plus').on('click', function () {

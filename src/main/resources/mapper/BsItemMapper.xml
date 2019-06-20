@@ -75,7 +75,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, name, suitable_people, type, size, color, price, inventory, image, sales_volume, 
-    describe, supplier
+    `describe`, supplier
   </sql>
   <select id="selectByExample" parameterType="com.j1902.beststore.pojo.BsItemExample" resultMap="BaseResultMap">
     select
