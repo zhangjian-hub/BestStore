@@ -65,6 +65,10 @@ public class BsUserController {
 //        System.out.println("bsShoppingCart = " + bsShoppingCart);
         PageInfo<BsShoppingCart> pageInfo = bsItemService.pageBsShoppingCart(id, pageNum, 3);
         System.out.println(pageInfo.getPageSize());
+        int[] navigatepageNums = pageInfo.getNavigatepageNums();
+        for (int navigatepageNum : navigatepageNums) {
+            System.out.println("navigatepageNum = " + navigatepageNum);
+        }
         map.put("PAGEINFO", pageInfo);
         if (pageInfo == null) {
             return "checkout";

@@ -1,6 +1,7 @@
 package com.j1902.beststore.modle;
 
 public class ItemFull {
+
     private Integer id;
 
     private String name;
@@ -24,8 +25,10 @@ public class ItemFull {
     private String description;
 
     private String supplier;
-
+    //数量
     private Integer number;
+
+    private Integer shoopingCartId;
 
     public ItemFull() {
     }
@@ -134,6 +137,14 @@ public class ItemFull {
         this.number = number;
     }
 
+    public Integer getShoopingCartId() {
+        return shoopingCartId;
+    }
+
+    public void setShoopingCartId(Integer shoopingCartId) {
+        this.shoopingCartId = shoopingCartId;
+    }
+
     @Override
     public String toString() {
         return "ItemFull{" +
@@ -150,6 +161,7 @@ public class ItemFull {
                 ", description='" + description + '\'' +
                 ", supplier='" + supplier + '\'' +
                 ", number=" + number +
+                ", shoopingCartId=" + shoopingCartId +
                 '}';
     }
 }

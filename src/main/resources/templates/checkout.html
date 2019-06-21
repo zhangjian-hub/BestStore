@@ -247,9 +247,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </thead>
                 <tr class="rem1" th:each="item,items : ${ITEM_LIST_SHOPPING}">
                     <td><input type="checkbox" value="true" class="mycheckbox"></td>
-                    <td class="invert" th:text="${items.count}">1</td>
+                    <td class="invert" th:text="${(PAGEINFO.getPageNum()-1)*3+items.count}"></td>
                     <td class="invert-image"><a href="single.html"><img th:src="@{item.image}" alt=" "
                                                                         class="img-responsive"/></a></td>
+
                     <td class="invert">
                         <div class="quantity">
                             <div class="quantity-select">
@@ -260,7 +261,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                     </td>
                     <td class="invert"><span th:text="${item.name}"></span></td>
-                    <td class="invert">$<span>5.00</span></td>
+                    <td class="invert">$<span>5.0</span></td>
                     <td class="invert">$<span th:text="${item.price}"></span></td>
                     <td class="invert">
                         <div class="rem">
@@ -316,8 +317,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     });
                                 }
                             })
+                            var len = 0;
                             $('.mycheckbox').each(function () {
-                                var len = 0;
+
                                 $('.mycheckbox').each(function () {
                                     if ($(this).attr("checked") == "checked") {
                                         len = len + 1;
@@ -326,9 +328,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 $(this).click(function () {
                                     if ($(this).attr("checked") != "checked") {
                                         $("#ckb").attr("checked", false)
-                                    } else if ($(".mycheckbox").length() == len) {
-                                        $("#ckb").attr("checked", "checked")
                                     }
+                                    // else if ($(".mycheckbox").length() == len) {
+                                    //     $("#ckb").attr("checked", "checked")
+                                    // }
                                 })
                             });
                         })
@@ -351,31 +354,67 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
             </table>
             <nav aria-label="Page navigation" style="position: absolute;float: right; right: 0px">
-                <ul class="pagination" >
-                    <li>
-                        <a href="#" aria-label="Previous">
+                <ul class="pagination">
+                    <li id="up">
+                        <a th:href="@{/toCheckout(id=3,pageNum=${PAGEINFO.getPageNum()}-1)}" aria-label="Previous"
+                        >
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
-                    <li th:each="num,nums:${PAGEINFO.navigatepageNums}"><a th:href="" th:text="${num}"></a></li>
-                    <li>
-                        <a href="#" aria-label="Next">
+                    <li th:each="num,nums:${PAGEINFO.getNavigatepageNums()}">
+                        <a th:if="${num==PAGEINFO.getPageNum()}" href="#" th:text="${num}" class="index"></a>
+                        <a th:if="${num!=PAGEINFO.getPageNum()}" th:href="@{/toCheckout(id=3,pageNum=${num})}"
+                           th:text="${num}"></a>
+                    </li>
+                    <li id="down">
+                        <a th:href="@{/toCheckout(id=3,pageNum=${PAGEINFO.getPageNum()}+1)}" aria-label="Next"
+                        >
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     </li>
                 </ul>
+                <script th:inline="javascript">
+                    var pageNum = [[${PAGEINFO.getPageNum()}]]
+                    var firstPage = [[${PAGEINFO.isIsFirstPage()}]];
+                    var lastPage = [[${PAGEINFO.isIsLastPage()}]];
+                    if (firstPage) {
+                        $("#up").attr("class", "disabled")
+                    }
+                    if (lastPage) {
+                        $("#down").attr("class", "disabled")
+                    }
+                    $(".index").each(function () {
+                        if ($(this).text() == pageNum) {
+                            $(this).parent().attr("class", "active")
+                        }
+                    })
+                </script>
             </nav>
         </div>
         <div class="checkout-left">
             <div class="checkout-left-basket animated wow slideInLeft" data-wow-delay=".5s">
                 <h4>Continue to basket</h4>
-                <ul>
-                    <li>Product1 <i>-</i> <span>$250.00 </span></li>
-                    <li>Product2 <i>-</i> <span>$290.00 </span></li>
-                    <li>Product3 <i>-</i> <span>$299.00 </span></li>
-                    <li>Total Service Charges <i>-</i> <span>$15.00</span></li>
-                    <li>Total <i>-</i> <span>$854.00</span></li>
+                <ul th:each="item,items : ${ITEM_LIST_SHOPPING}">
+                    <li>Product <i th:text="${items.count}"></i> <i>-</i> <span class="price"
+                                                                                th:text="${'$'+item.getPrice()*item.getNumber()}"></span>
+                    </li>
                 </ul>
+                <ul>
+                    <li>Total Service Charges <i>-</i> <span id="service"
+                                                             th:text="${'$'+ITEM_LIST_SHOPPING.size()*5.0}"></span></li>
+                    <li>Total <i>-</i><span id="allPrices">$</span></li>
+                </ul>
+                <script>
+                    // var list = [[${ITEM_LIST_SHOPPING}]]
+                    var size = [[${ITEM_LIST_SHOPPING.size()}]]
+                    // var size = list.size;
+                    $("#service").val(size * 5);
+                    var prices = 0;
+                    $(".price").each(function () {
+                        console.log($(this).text())
+                    })
+                    $("#allPrices").val(prices)
+                </script>
                 <button id="" class="btn btn-warning">payment</button>
             </div>
             <div class="checkout-right-basket animated wow slideInRight" data-wow-delay=".5s">
