@@ -356,7 +356,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <nav aria-label="Page navigation" style="position: absolute;float: right; right: 0px">
                 <ul class="pagination">
                     <li id="up">
-                        <a th:href="@{/toCheckout(id=3,pageNum=${PAGEINFO.getPageNum()}-1)}" aria-label="Previous"
+                        <a id="up_a" th:href="@{/toCheckout(id=3,pageNum=${PAGEINFO.getPageNum()}-1)}" aria-label="Previous"
                         >
                             <span aria-hidden="true">&laquo;</span>
                         </a>
@@ -367,7 +367,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                            th:text="${num}"></a>
                     </li>
                     <li id="down">
-                        <a th:href="@{/toCheckout(id=3,pageNum=${PAGEINFO.getPageNum()}+1)}" aria-label="Next"
+                        <a id="down_a" th:href="@{/toCheckout(id=3,pageNum=${PAGEINFO.getPageNum()}+1)}" aria-label="Next"
                         >
                             <span aria-hidden="true">&raquo;</span>
                         </a>
@@ -379,9 +379,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     var lastPage = [[${PAGEINFO.isIsLastPage()}]];
                     if (firstPage) {
                         $("#up").attr("class", "disabled")
+                        $("#up_a").attr("href","javascript:;")
                     }
                     if (lastPage) {
                         $("#down").attr("class", "disabled")
+                        $("#down_a").attr("href","javascript:;")
                     }
                     $(".index").each(function () {
                         if ($(this).text() == pageNum) {
