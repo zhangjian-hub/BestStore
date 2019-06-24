@@ -246,6 +246,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </tr>
                 </thead>
                 <tr class="rem1" th:each="item,items : ${ITEM_LIST_SHOPPING}">
+                    <td th:text="${item.shoppingCartId}" hidden class="shoppingId"></td>
                     <td><input type="checkbox" value="true" class="mycheckbox"></td>
                     <td class="invert" th:text="${(PAGEINFO.getPageNum()-1)*3+items.count}"></td>
                     <td class="invert-image"><a href="single.html"><img th:src="@{item.image}" alt=" "
@@ -255,7 +256,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="quantity">
                             <div class="quantity-select">
                                 <div class="entry value-minus">&nbsp;</div>
-                                <div class="entry value"><span th:text="${item.number}">1</span></div>
+                                <div class="entry value"><span th:text="${item.number}"></span></div>
                                 <div class="entry value-plus active">&nbsp;</div>
                             </div>
                         </div>
@@ -270,6 +271,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <script>$(document).ready(function (c) {
                             $('.close1').each(function () {
                                 $(this).on('click', function (c) {
+                                    var $shoppingCartId = $(this).parent().parent().parent().find('.shoppingId').text()
                                     var $tr = $(this).parent().parent().parent()
                                     swal({
                                         title: "Are you sure!",
@@ -287,22 +289,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         closeOnConfirm: true,//点击返回上一步操作
                                         closeOnCancel: true
                                     }, function () {
-                                        $tr.fadeOut('slow', function (c) {
-                                            $tr.remove();
-                                        });
-                                        return;
+                                        var pageNumber = [[${PAGEINFO.getPageNum()}]]
+                                        $.post("/removeShoppingCart", {
+                                            shoppingCartId: $shoppingCartId,
+                                            id: 3,
+                                            pageNum: pageNumber
+                                        }, function (data) {
+                                            if (data.reslut) {
+                                                $tr.fadeOut('slow', function (c) {
+                                                    $tr.remove();
+                                                });
+                                                return;
+                                            }
+                                        })
                                     });
 
-                                    // var a = confirm("You are about to lose your treasure，o(╥﹏╥)o！！");
-                                    // if (a) {
-                                    //     $(this).parent().parent().parent().fadeOut('slow', function (c) {
-                                    //         $(this).remove();
-                                    //     });
-                                    // }
-                                    // return false;
                                 });
                             })
-
+                            // var pageNumber = [[${PAGEINFO.getPageNum()}]]
+                            // var pageSize = [[${PAGEINFO.getPageSize()}]]
+                            // if (pageSize == 0) {
+                            //     pageNumber = pageNumber - 1;
+                            //     $.post("/toCheckout",{id:3,pageNum:pageNumber})
+                            // }
                         })
                         ;
                         $(function () {
@@ -340,15 +349,39 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </tr>
                 <!--quantity-->
                 <script>
-                    $('.value-plus').on('click', function () {
-                        var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10) + 1;
-                        divUpd.text(newVal);
-                    });
+                    $(".value-plus").each(function () {
+                        $(this).on('click', function () {
+                            var $this = $(this)
+                            var $shoppingId = $(this).parent().parent().parent().parent().find('.shoppingId').text()
+                            var num = parseInt($(this).parent().find('.value').text())
+                            $.post("/setItemNumber", {shoppingId: $shoppingId, number: num, result: 1},
+                                function (data) {
+                                    if (data.reslut) {
+                                        var divUpd = $this.parent().find('.value'),
+                                            newVal = parseInt(divUpd.text(), 10) + 1;
+                                        divUpd.text(newVal);
+                                    }
+                                });
+                        });
+                    })
 
-                    $('.value-minus').on('click', function () {
-                        var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10) - 1;
-                        if (newVal >= 1) divUpd.text(newVal);
-                    });
+                    $(".value-minus").each(function () {
+                        $(this).on('click', function () {
+                            var $this = $(this)
+                            var $shoppingId = $(this).parent().parent().parent().parent().find('.shoppingId').text()
+                            var num = parseInt($(this).parent().find('.value').text())
+                            $.post("/setItemNumber", {shoppingId: $shoppingId, number: num, result: 2},
+                                function (data) {
+                                    if (data.reslut) {
+                                        var divUpd = $this.parent().find('.value'),
+                                            newVal = parseInt(divUpd.text(), 10) - 1;
+                                        if (newVal >= 1) divUpd.text(newVal);
+                                    } else {
+                                        swal("Operation failure! ", "Please click the delete key", 'error');
+                                    }
+                                })
+                        });
+                    })
                 </script>
                 <!--quantity-->
 
@@ -356,7 +389,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <nav aria-label="Page navigation" style="position: absolute;float: right; right: 0px">
                 <ul class="pagination">
                     <li id="up">
-                        <a id="up_a" th:href="@{/toCheckout(id=3,pageNum=${PAGEINFO.getPageNum()}-1)}" aria-label="Previous"
+                        <a id="up_a" th:href="@{/toCheckout(id=3,pageNum=${PAGEINFO.getPageNum()}-1)}"
+                           aria-label="Previous"
                         >
                             <span aria-hidden="true">&laquo;</span>
                         </a>
@@ -367,7 +401,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                            th:text="${num}"></a>
                     </li>
                     <li id="down">
-                        <a id="down_a" th:href="@{/toCheckout(id=3,pageNum=${PAGEINFO.getPageNum()}+1)}" aria-label="Next"
+                        <a id="down_a" th:href="@{/toCheckout(id=3,pageNum=${PAGEINFO.getPageNum()}+1)}"
+                           aria-label="Next"
                         >
                             <span aria-hidden="true">&raquo;</span>
                         </a>
@@ -379,11 +414,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     var lastPage = [[${PAGEINFO.isIsLastPage()}]];
                     if (firstPage) {
                         $("#up").attr("class", "disabled")
-                        $("#up_a").attr("href","javascript:;")
+                        $("#up_a").attr("href", "javascript:;")
                     }
                     if (lastPage) {
                         $("#down").attr("class", "disabled")
-                        $("#down_a").attr("href","javascript:;")
+                        $("#down_a").attr("href", "javascript:;")
                     }
                     $(".index").each(function () {
                         if ($(this).text() == pageNum) {
@@ -398,12 +433,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <h4>Continue to basket</h4>
                 <ul th:each="item,items : ${ITEM_LIST_SHOPPING}">
                     <li>Product <i th:text="${items.count}"></i> <i>-</i> <span class="price"
-                                                                                th:text="${'$'+item.getPrice()*item.getNumber()}"></span>
+                    >$<l th:text="${item.getPrice()*item.getNumber()}"></l></span>
                     </li>
                 </ul>
                 <ul>
                     <li>Total Service Charges <i>-</i> <span id="service"
-                                                             th:text="${'$'+ITEM_LIST_SHOPPING.size()*5.0}"></span></li>
+                    >$<l th:text="${ITEM_LIST_SHOPPING.size()*5.0}"></l></span></li>
                     <li>Total <i>-</i><span id="allPrices">$</span></li>
                 </ul>
                 <script>

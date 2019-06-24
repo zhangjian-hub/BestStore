@@ -13,4 +13,8 @@ public interface BsItemService {
     public BsItem getItem(Integer id);
 
     public PageInfo<BsShoppingCart> pageBsShoppingCart(Integer id,Integer pageNum, Integer pageSize);
+
+    public boolean updateItemNumber(BsShoppingCart bsShoppingCart);
+
+    public boolean removeShoppingCart(Integer id);
 }

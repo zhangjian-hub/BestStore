@@ -41,7 +41,7 @@ public class BsItemServiceImpl implements BsItemService {
     @Override
     public PageInfo<BsShoppingCart> pageBsShoppingCart(Integer id, Integer pageNum, Integer pageSize) {
         System.out.println("id = [" + id + "], pageNum = [" + pageNum + "], pageSize = [" + pageSize + "]");
-        PageHelper.startPage(pageNum,pageSize);
+        PageHelper.startPage(pageNum, pageSize);
         BsShoppingCartExample bsShoppingCartExample = new BsShoppingCartExample();
         BsShoppingCartExample.Criteria or = bsShoppingCartExample.or();
         or.andUserIdEqualTo(id);
@@ -52,5 +52,18 @@ public class BsItemServiceImpl implements BsItemService {
         int pageSize1 = pageInfo.getPageSize();
         System.out.println("pageSize1 = " + pageSize1);
         return pageInfo;
+    }
+
+//    修改购物车商品数量
+    @Override
+    public boolean updateItemNumber(BsShoppingCart bsShoppingCart) {
+        int i = bsShoppingCartMapper.updateByPrimaryKeySelective(bsShoppingCart);
+        return i > 0 ? true : false;
+    }
+
+    @Override
+    public boolean removeShoppingCart(Integer id) {
+        int i = bsShoppingCartMapper.deleteByPrimaryKey(id);
+        return i > 0 ? true : false;
     }
 }
