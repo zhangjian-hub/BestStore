@@ -1,16 +1,12 @@
 package com.j1902.beststore.modle;
 
+/**
+ * @author zj
+ * @version 1.0
+ * @create 2019-06-25 11:52
+ */
 public class State {
     private boolean state = false;
-    private String path;
-
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
-    }
 
     public boolean isState() {
         return state;
@@ -18,5 +14,12 @@ public class State {
 
     public void setState(boolean state) {
         this.state = state;
+    }
+
+    @Override
+    public String toString() {
+        return "State{" +
+                "state=" + state +
+                '}';
     }
 }

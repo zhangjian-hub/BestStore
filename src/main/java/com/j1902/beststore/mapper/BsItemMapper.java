@@ -3,9 +3,11 @@ package com.j1902.beststore.mapper;
 import com.j1902.beststore.pojo.BsItem;
 import com.j1902.beststore.pojo.BsItemExample;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface BsItemMapper {
     long countByExample(BsItemExample example);
 

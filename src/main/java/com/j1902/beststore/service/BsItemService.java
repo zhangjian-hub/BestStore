@@ -1,5 +1,6 @@
 package com.j1902.beststore.service;
 
+
 import com.github.pagehelper.PageInfo;
 import com.j1902.beststore.pojo.BsItem;
 import com.j1902.beststore.pojo.BsShoppingCart;
@@ -13,7 +14,7 @@ public interface BsItemService {
 
     public BsItem getItem(Integer id);
 
-    public PageInfo<BsShoppingCart> pageBsShoppingCart(Integer id,Integer pageNum, Integer pageSize);
+    public PageInfo<BsShoppingCart> pageBsShoppingCart(Integer id, Integer pageNum, Integer pageSize);
 
     public boolean updateItemNumber(BsShoppingCart bsShoppingCart);
 
@@ -22,4 +23,5 @@ public interface BsItemService {
     public BsShoppingCart getBsShoppingCartById(Integer id);
 
     public boolean addBsShoppingRecord(BsShoppingRecord bsShoppingRecord);
+
 }
