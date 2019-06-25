@@ -195,7 +195,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
             <div class="header-right">
                 <div class="cart box_1">
-                    <a th:href="@{/toCheckout(id=${session.USER_INFO.id})}">
+                    <a th:href="@{/toCheckout(id=3)}">
+                        <!--${session.USER_INFO.id}-->
                         <h3>
                             <img src="../static/images/bag.png" alt=""/>
                             <div class="total">
@@ -357,6 +358,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         var divUpd = $this.parent().find('.value'),
                                             newVal = parseInt(divUpd.text(), 10) + 1;
                                         divUpd.text(newVal);
+                                        window.location.reload()
                                     }
                                 });
                         });
@@ -373,6 +375,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         var divUpd = $this.parent().find('.value'),
                                             newVal = parseInt(divUpd.text(), 10) - 1;
                                         if (newVal >= 1) divUpd.text(newVal);
+                                        window.location.reload()
                                     } else {
                                         swal("Operation failure! ", "Please click the delete key", 'error');
                                     }
