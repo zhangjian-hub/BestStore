@@ -6,7 +6,7 @@ import com.j1902.beststore.modle.ShoppingCartResult;
 import com.j1902.beststore.pojo.BsItem;
 import com.j1902.beststore.pojo.BsShoppingCart;
 import com.j1902.beststore.pojo.BsShoppingRecord;
-import com.j1902.beststore.service.BsItemService;
+import com.j1902.beststore.service.BsShoppingCartItemService;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +22,7 @@ import java.util.Map;
 @MapperScan("com.j1902.beststore.mapper")
 public class BsShoppingCartController {
     @Autowired
-    private BsItemService bsItemService;
+    private BsShoppingCartItemService bsItemService;
 
     //    到购物车
     @RequestMapping("/toCheckout")

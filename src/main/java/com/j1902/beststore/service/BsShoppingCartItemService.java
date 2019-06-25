@@ -8,7 +8,7 @@ import com.j1902.beststore.pojo.BsShoppingRecord;
 
 import java.util.List;
 
-public interface BsItemService {
+public interface BsShoppingCartItemService {
 
     public List<BsShoppingCart> getBsShoppingCart(Integer id);
 

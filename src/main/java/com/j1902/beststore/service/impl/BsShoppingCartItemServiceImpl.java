@@ -12,7 +12,7 @@ import com.j1902.beststore.pojo.BsShoppingCartExample;
 import com.j1902.beststore.pojo.BsShoppingRecord;
 
 
-import com.j1902.beststore.service.BsItemService;
+import com.j1902.beststore.service.BsShoppingCartItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +20,7 @@ import java.util.List;
 
 
 @Service
-public class BsItemServiceImpl implements BsItemService {
+public class BsShoppingCartItemServiceImpl implements BsShoppingCartItemService {
     @Autowired
     private BsShoppingCartMapper bsShoppingCartMapper;
     @Autowired

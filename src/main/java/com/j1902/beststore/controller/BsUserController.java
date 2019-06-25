@@ -1,19 +1,13 @@
 package com.j1902.beststore.controller;
 
-import com.github.pagehelper.PageInfo;
-import com.j1902.beststore.modle.ItemFull;
-import com.j1902.beststore.pojo.BsItem;
-import com.j1902.beststore.pojo.BsShoppingCart;
 import com.j1902.beststore.pojo.BsUser;
-import com.j1902.beststore.service.BsItemService;
+import com.j1902.beststore.service.BsShoppingCartItemService;
 import com.j1902.beststore.service.BsUserService;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -24,7 +18,7 @@ public class BsUserController {
     private BsUserService bsUserService;
 
     @Autowired
-    private BsItemService bsItemService;
+    private BsShoppingCartItemService bsItemService;
 
     @RequestMapping("/toLogin")
     public String toLogin() {
