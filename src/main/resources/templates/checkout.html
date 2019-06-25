@@ -194,8 +194,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
             <div class="header-right">
                 <div class="cart box_1">
-                    <a th:href="@{/toCheckout(id=3)}">
-                        <!--${session.USER_INFO.id}-->
+                    <a th:href="@{/toCheckout(id=${session.USER_INFO.id})}">
+
                         <h3>
                             <img src="../static/images/bag.png" alt=""/>
                             <div class="total">
@@ -249,7 +249,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <td th:text="${item.shoppingCartId}" hidden class="shoppingId"></td>
                     <!--<td><input type="checkbox" value="true" class="mycheckbox"></td>-->
                     <td class="invert" th:text="${(PAGEINFO.getPageNum()-1)*3+items.count}"></td>
-                    <td class="invert-image"><a th:href="@{/toSingle(id=${item.getId()})}"><img th:src="@{item.image}" alt=" "
+                    <td class="invert-image"><a th:href="@{/toSingle(id=${item.getId()},size=${item.getSize()},color=${item.getColor()})}"><img th:src="@{item.image}" alt=" "
                                                                         class="img-responsive"/></a></td>
 
                     <td class="invert">
@@ -387,7 +387,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <nav id="page" th:hidden="${PAGEINFO.getPageSize()==0}" aria-label="Page navigation" style="position: absolute;float: right; right: 0px">
                 <ul class="pagination">
                     <li id="up">
-                        <a id="up_a" th:href="@{/toCheckout(id=3,pageNum=${PAGEINFO.getPageNum()}-1)}"
+                        <a id="up_a" th:href="@{/toCheckout(id=${session.USER_INFO.id},pageNum=${PAGEINFO.getPageNum()}-1)}"
                            aria-label="Previous"
                         >
                             <span aria-hidden="true">&laquo;</span>
@@ -395,11 +395,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </li>
                     <li th:each="num,nums:${PAGEINFO.getNavigatepageNums()}">
                         <a th:if="${num==PAGEINFO.getPageNum()}" href="#" th:text="${num}" class="index"></a>
-                        <a th:if="${num!=PAGEINFO.getPageNum()}" th:href="@{/toCheckout(id=3,pageNum=${num})}"
+                        <a th:if="${num!=PAGEINFO.getPageNum()}" th:href="@{/toCheckout(id=${session.USER_INFO.id},pageNum=${num})}"
                            th:text="${num}"></a>
                     </li>
                     <li id="down">
-                        <a id="down_a" th:href="@{/toCheckout(id=3,pageNum=${PAGEINFO.getPageNum()}+1)}"
+                        <a id="down_a" th:href="@{/toCheckout(id=${session.USER_INFO.id},pageNum=${PAGEINFO.getPageNum()}+1)}"
                            aria-label="Next"
                         >
                             <span aria-hidden="true">&raquo;</span>

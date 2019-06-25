@@ -3,7 +3,7 @@ package com.j1902.beststore.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.j1902.beststore.pojo.BsEmail;
-import com.j1902.beststore.service.BsEmailService;
+import com.j1902.beststore.service.AdminBsEmailService;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +22,7 @@ import java.util.Map;
 @MapperScan("com.j1902.beststore.mapper")
 public class AdminBsEmailController {
     @Autowired
-    private BsEmailService emailService;
+    private AdminBsEmailService emailService;
 
     @RequestMapping("/toAdminEmail.back")
     public String toAdminEmail(Map<String,Object> map, @RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "10") int pageSize) {

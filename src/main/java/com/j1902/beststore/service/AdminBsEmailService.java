@@ -9,7 +9,7 @@ import java.util.List;
  * @version 1.0
  * @create 2019-06-25 14:06
  */
-public interface BsEmailService {
+public interface AdminBsEmailService {
     public List<BsEmail> getAllEmails();
 
     public BsEmail selectById(Integer id);
