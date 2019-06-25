@@ -5,6 +5,7 @@ import com.j1902.beststore.modle.ItemFull;
 import com.j1902.beststore.modle.ShoppingCartResult;
 import com.j1902.beststore.pojo.BsItem;
 import com.j1902.beststore.pojo.BsShoppingCart;
+import com.j1902.beststore.pojo.BsShoppingRecord;
 import com.j1902.beststore.service.BsItemService;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -22,6 +24,7 @@ public class BsShoppingCartController {
     @Autowired
     private BsItemService bsItemService;
 
+    //    到购物车
     @RequestMapping("/toCheckout")
     public String toCheckout(Integer id, Integer pageNum, Map<String, Object> map) {
         if (id == null) {
@@ -33,10 +36,8 @@ public class BsShoppingCartController {
 //        List<BsShoppingCart> bsShoppingCart = bsItemService.getBsShoppingCart(id);
 //        System.out.println("bsShoppingCart = " + bsShoppingCart);
         PageInfo<com.j1902.beststore.pojo.BsShoppingCart> pageInfo = bsItemService.pageBsShoppingCart(id, pageNum, 3);
-        System.out.println(pageInfo.getPageSize());
         int[] navigatepageNums = pageInfo.getNavigatepageNums();
         for (int navigatepageNum : navigatepageNums) {
-            System.out.println("navigatepageNum = " + navigatepageNum);
         }
         map.put("PAGEINFO", pageInfo);
         if (pageInfo == null) {
@@ -45,7 +46,6 @@ public class BsShoppingCartController {
         List<ItemFull> itemFulls = new ArrayList<>();
         for (BsShoppingCart shoppingCart : pageInfo.getList()) {
             Integer shoppingCartId = shoppingCart.getId();
-            System.out.println("shoppingCartId = " + shoppingCartId);
             Integer itemId = shoppingCart.getItemId();
             Integer number = shoppingCart.getNumber();
             BsItem item = bsItemService.getItem(itemId);
@@ -67,7 +67,6 @@ public class BsShoppingCartController {
             itemFulls.add(itemFull);
         }
         map.put("ITEM_LIST_SHOPPING", itemFulls);
-        System.out.println("itemFulls = " + itemFulls.size());
         return "checkout";
     }
 
@@ -75,9 +74,7 @@ public class BsShoppingCartController {
     @RequestMapping("/setItemNumber")
     @ResponseBody
     public ShoppingCartResult setItemNumber(Integer shoppingId, Integer number, Integer result) {
-        System.out.println("shoppingId = [" + shoppingId + "], number = [" + number + "], result = [" + result + "]");
         if (result == 1) {
-            System.out.println("加一");
 //            为加一
             BsShoppingCart bsShoppingCart = new BsShoppingCart();
             bsShoppingCart.setId(shoppingId);
@@ -112,6 +109,36 @@ public class BsShoppingCartController {
         boolean b = bsItemService.removeShoppingCart(shoppingCartId);
         ShoppingCartResult shoppingCartResult = new ShoppingCartResult();
         shoppingCartResult.setReslut(b);
+        return shoppingCartResult;
+    }
+
+    //    付款
+    @RequestMapping("/payment")
+    @ResponseBody
+    public ShoppingCartResult payment(int[] shoppingCartIdList) {
+        boolean b = false;
+        boolean b1 = false;
+        for (Integer integer : shoppingCartIdList) {
+            BsShoppingCart bsShoppingCartById = bsItemService.getBsShoppingCartById(integer);
+            Integer userId = bsShoppingCartById.getUserId();
+            Integer itemId = bsShoppingCartById.getItemId();
+            Integer number = bsShoppingCartById.getNumber();
+            BsItem item = bsItemService.getItem(itemId);
+            BsShoppingRecord bsShoppingRecord = new BsShoppingRecord();
+            bsShoppingRecord.setUserId(userId);
+            bsShoppingRecord.setItemInfo(item.getName() + "," + item.getType() + "," + item.getColor() + "," + item.getSize() + "," + item.getPrice() + "," + number);
+            bsShoppingRecord.setCreateTime(new Date());
+            b = bsItemService.addBsShoppingRecord(bsShoppingRecord);
+            b1 = bsItemService.removeShoppingCart(integer);
+
+        }
+        if (b && b1) {
+            ShoppingCartResult shoppingCartResult = new ShoppingCartResult();
+            shoppingCartResult.setReslut(true);
+            return shoppingCartResult;
+        }
+        ShoppingCartResult shoppingCartResult = new ShoppingCartResult();
+        shoppingCartResult.setReslut(false);
         return shoppingCartResult;
     }
 }
