@@ -194,8 +194,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
             <div class="header-right">
                 <div class="cart box_1">
-                    <a th:href="@{/toCheckout(id=${session.USER_INFO.id})}">
-
+                    <a th:href="@{/toCheckout(id=3)}">
+                        <!--${session.USER_INFO.id})}-->
                         <h3>
                             <img src="../static/images/bag.png" alt=""/>
                             <div class="total">
@@ -232,7 +232,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 th:text="${PAGEINFO.getTotal()}"></span> Products</span>
         </h3>
         <div class="checkout-right animated wow slideInUp" data-wow-delay=".5s">
-            <table class="timetable_sub" id="table" th:hidden="${PAGEINFO.getPageSize()==0}">
+            <table class="timetable_sub" id="table" th:if="${PAGEINFO.getPageSize()!=0}">
                 <thead>
                 <tr>
                     <!--<th><input type="checkbox" value="true" id="ckb" class="mycheckbox"></th>-->
@@ -384,22 +384,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </script>
                 <!--quantity-->
             </table>
-            <nav id="page" th:hidden="${PAGEINFO.getPageSize()==0}" aria-label="Page navigation" style="position: absolute;float: right; right: 0px">
+            <nav id="page" th:if="${PAGEINFO.getPageSize()!=0}" aria-label="Page navigation" style="position: absolute;float: right; right: 0px">
                 <ul class="pagination">
                     <li id="up">
-                        <a id="up_a" th:href="@{/toCheckout(id=${session.USER_INFO.id},pageNum=${PAGEINFO.getPageNum()}-1)}"
+                        <a id="up_a" th:href="@{/toCheckout(id=3,pageNum=${PAGEINFO.getPageNum()}-1)}"
+
                            aria-label="Previous"
-                        >
+                        ><!--${session.USER_INFO.id}-->
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
                     <li th:each="num,nums:${PAGEINFO.getNavigatepageNums()}">
                         <a th:if="${num==PAGEINFO.getPageNum()}" href="#" th:text="${num}" class="index"></a>
-                        <a th:if="${num!=PAGEINFO.getPageNum()}" th:href="@{/toCheckout(id=${session.USER_INFO.id},pageNum=${num})}"
-                           th:text="${num}"></a>
+                        <a th:if="${num!=PAGEINFO.getPageNum()}" th:href="@{/toCheckout(id=3,pageNum=${num})}"
+
+                           th:text="${num}"></a><!--${session.USER_INFO.id}-->
                     </li>
+                    <!--${session.USER_INFO.id}-->
                     <li id="down">
-                        <a id="down_a" th:href="@{/toCheckout(id=${session.USER_INFO.id},pageNum=${PAGEINFO.getPageNum()}+1)}"
+                        <a id="down_a" th:href="@{/toCheckout(id=3,pageNum=${PAGEINFO.getPageNum()}+1)}"
                            aria-label="Next"
                         >
                             <span aria-hidden="true">&raquo;</span>
@@ -426,7 +429,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </script>
             </nav>
         </div>
-        <div id="h" th:hidden="${PAGEINFO.getPageSize()!=0}" class="checkout-right animated wow slideInUp text-center"
+        <div id="h" th:if="${PAGEINFO.getPageSize()==0}" class="checkout-right animated wow slideInUp text-center"
              data-wow-delay=".5s">
             <p style="font-size: 38px;color: #FFC22A">Absolutely empty!</p>
         </div>
