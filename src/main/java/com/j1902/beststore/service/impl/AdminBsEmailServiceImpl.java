@@ -2,7 +2,7 @@ package com.j1902.beststore.service.impl;
 
 import com.j1902.beststore.mapper.BsEmailMapper;
 import com.j1902.beststore.pojo.BsEmail;
-import com.j1902.beststore.service.BsEmailService;
+import com.j1902.beststore.service.AdminBsEmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ import java.util.List;
  */
 
 @Service
-public class BsEmailServiceImpl implements BsEmailService {
+public class AdminBsEmailServiceImpl implements AdminBsEmailService {
 
     @Autowired
     private BsEmailMapper emailMapper;

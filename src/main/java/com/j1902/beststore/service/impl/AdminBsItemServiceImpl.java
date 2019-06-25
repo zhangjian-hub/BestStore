@@ -2,7 +2,7 @@ package com.j1902.beststore.service.impl;
 
 import com.j1902.beststore.mapper.BsItemMapper;
 import com.j1902.beststore.pojo.BsItem;
-import com.j1902.beststore.service.BsItemService;
+import com.j1902.beststore.service.AdminBsItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ import java.util.List;
  */
 
 @Service
-public class BsItemServiceImpl implements BsItemService {
+public class AdminBsItemServiceImpl implements AdminBsItemService {
     @Autowired
     private BsItemMapper itemMapper;
 

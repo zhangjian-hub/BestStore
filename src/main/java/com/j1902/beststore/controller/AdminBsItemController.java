@@ -5,7 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.j1902.beststore.modle.State;
 import com.j1902.beststore.modle.UpdateItemsInfo;
 import com.j1902.beststore.pojo.BsItem;
-import com.j1902.beststore.service.BsItemService;
+import com.j1902.beststore.service.AdminBsItemService;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,7 +30,7 @@ import java.util.UUID;
 @MapperScan("com.j1902.beststore.mapper")
 public class AdminBsItemController {
     @Autowired
-    private BsItemService itemService;
+    private AdminBsItemService itemService;
 
     @RequestMapping("/toAdminItems.back")
     public String toAdminItems(Map<String, Object> map, @RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "10") int pageSize) {

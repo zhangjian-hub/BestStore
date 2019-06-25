@@ -1,7 +1,7 @@
 package com.j1902.beststore.controller;
 
 import com.j1902.beststore.pojo.BsUser;
-import com.j1902.beststore.service.BsUserService;
+import com.j1902.beststore.service.AdminBsUserService;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +14,7 @@ import java.util.Map;
 public class AdminBsUserController {
 
     @Autowired
-    private BsUserService bsUserService;
+    private AdminBsUserService adminBsUserService;
 
     @RequestMapping("/toLogin")
     public String toLogin(){
@@ -29,11 +29,11 @@ public class AdminBsUserController {
     @RequestMapping("/register")
     public String register(BsUser bsUser, Map<String,Object> map){
         System.out.println("bsUser = [" + bsUser + "]");
-        if (bsUserService.isExistBsUser(bsUser)) {
+        if (adminBsUserService.isExistBsUser(bsUser)) {
             return "register";
         }
         map.put("REGISTER_STATE", "fail");
-        bsUserService.addBsUser(bsUser);
+        adminBsUserService.addBsUser(bsUser);
         return "login";
     }
 

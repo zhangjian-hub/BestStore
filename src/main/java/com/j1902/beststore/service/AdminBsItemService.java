@@ -9,7 +9,7 @@ import java.util.List;
  * @version 1.0
  * @create 2019-06-22 10:04
  */
-public interface BsItemService {
+public interface AdminBsItemService {
     public List<BsItem> getAllItems();
 
     public void addItem(BsItem item);

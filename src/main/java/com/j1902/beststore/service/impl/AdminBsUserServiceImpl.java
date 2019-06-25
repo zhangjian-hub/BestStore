@@ -3,7 +3,7 @@ package com.j1902.beststore.service.impl;
 import com.j1902.beststore.mapper.BsUserMapper;
 import com.j1902.beststore.pojo.BsUser;
 import com.j1902.beststore.pojo.BsUserExample;
-import com.j1902.beststore.service.BsUserService;
+import com.j1902.beststore.service.AdminBsUserService;
 import com.j1902.beststore.utils.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class BsUserServiceImpl implements BsUserService {
+public class AdminBsUserServiceImpl implements AdminBsUserService {
 
     @Autowired
     private BsUserMapper bsUserMapper;
