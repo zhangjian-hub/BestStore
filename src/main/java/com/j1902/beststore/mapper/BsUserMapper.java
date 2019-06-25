@@ -25,7 +25,7 @@ public interface BsUserMapper {
 
     int updateByExample(@Param("record") BsUser record, @Param("example") BsUserExample example);
 
-    int updateByPrimaryKeySelective(BsUser record);
+    boolean updateByPrimaryKeySelective(BsUser record);
 
     int updateByPrimaryKey(BsUser record);
 }

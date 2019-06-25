@@ -1,7 +1,8 @@
 package com.j1902.beststore.utils;
 
-import java.security.MessageDigest;
+import org.springframework.stereotype.Service;
 
+import java.security.MessageDigest;
 public class MD5Util {
 	// 加盐
 	private static final String slat = "bb*32@$#%";
