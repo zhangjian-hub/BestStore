@@ -10,7 +10,7 @@ import java.util.List;
  * @create 2019-06-23 11:51
  */
 public class PageInfo {
-    private List<BsItem> items;
+//    private List<BsItem> items;
     /**
      * 页码，从1开始
      */
@@ -156,18 +156,18 @@ public class PageInfo {
         this.pageSizeZero = pageSizeZero;
     }
 
-    public List<BsItem> getItems() {
-        return items;
-    }
-
-    public void setItems(List<BsItem> items) {
-        this.items = items;
-    }
+//    public List<BsItem> getItems() {
+//        return items;
+//    }
+//
+//    public void setItems(List<BsItem> items) {
+//        this.items = items;
+//    }
 
     @Override
     public String toString() {
         return "PageInfo{" +
-                "items=" + items +
+//                "items=" + items +
                 ", pageNum=" + pageNum +
                 ", pageSize=" + pageSize +
                 ", startRow=" + startRow +

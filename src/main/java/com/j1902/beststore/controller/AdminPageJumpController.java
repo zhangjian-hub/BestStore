@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @MapperScan("com.j1902.beststore.mapper")
-public class PageJumpController {
+public class AdminPageJumpController {
 
     @RequestMapping("/toAdminIndex.back")
     public String toAdminIndex(){

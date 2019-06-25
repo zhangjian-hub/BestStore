@@ -11,7 +11,7 @@ import java.util.Map;
 
 @Controller
 @MapperScan("com.j1902.beststore.mapper")
-public class BsUserController {
+public class AdminBsUserController {
 
     @Autowired
     private BsUserService bsUserService;

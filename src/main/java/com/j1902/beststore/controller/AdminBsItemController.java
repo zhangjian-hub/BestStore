@@ -28,7 +28,7 @@ import java.util.UUID;
 
 @Controller
 @MapperScan("com.j1902.beststore.mapper")
-public class ItemController {
+public class AdminBsItemController {
     @Autowired
     private BsItemService itemService;
 
@@ -79,11 +79,7 @@ public class ItemController {
         return "admin/order-form";
     }
 
-    @RequestMapping("/toAdminEmail.back")
-    public String toAdminEmail() {
 
-        return "admin/admin-email";
-    }
 
     @RequestMapping("/updateItem.back")
     public String updateItem(UpdateItemsInfo updateItemsInfo) {

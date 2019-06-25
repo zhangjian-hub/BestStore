@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -108,16 +108,18 @@
                 <th class="table-check"><input type="checkbox" /></th>
 				<th class="table-id">ID</th>
 				<th class="table-title">用户email</th>
-				<th class="table-date">发送日期</th>
-				<th class="table-set">操作</th>
+				<th class="table-title">内容</th>
+                <th class="table-date">发送日期</th>
+                <th class="table-set">操作</th>
               </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr th:each="email:${ALL_EMAILS.getList()}">
               <td><input type="checkbox" /></td>
-              <td>1</td>
-              <td><a href="#">Business management</a></td>
-              <td>default</td>
+              <td th:text="${email.id}">1</td>
+              <td th:text="${email.userEmail}">1</td>
+              <td th:text="${email.content}">1</td>
+              <td th:text="${email.createTime}">1</td>
               <td>
                 <div class="am-btn-toolbar">
                   <div class="am-btn-group am-btn-group-xs">
@@ -134,13 +136,15 @@
   共 15 条记录
   <div class="am-fr">
     <ul class="am-pagination">
-      <li class="am-disabled"><a href="#">«</a></li>
-      <li class="am-active"><a href="#">1</a></li>
-      <li><a href="#">2</a></li>
-      <li><a href="#">3</a></li>
-      <li><a href="#">4</a></li>
-      <li><a href="#">5</a></li>
-      <li><a href="#">»</a></li>
+        <li th:class="${ALL_EMAILS.getPageNum()==1}?'disabled' : ''"><a th:href="@{'toAdminItems.back?pageNum=' + ${ALL_EMAILS.getPageNum() - 1}}">上一页</a></li>
+        <li th:if="${ALL_EMAILS.getPageNum()-3 >=1}" ><a th:href="@{'toAdminItems.back?pageNum=' + ${ALL_EMAILS.getPageNum()-3}}" th:text="${ALL_EMAILS.getPageNum() -3}" >1</a></li>
+        <li th:if="${ALL_EMAILS.getPageNum()-2 >=1}" ><a th:href="@{'toAdminItems.back?pageNum=' + ${ALL_EMAILS.getPageNum()-2}}" th:text="${ALL_EMAILS.getPageNum() -2}" >1</a></li>
+        <li th:if="${ALL_EMAILS.getPageNum()-1 >=1}" ><a th:href="@{'toAdminItems.back?pageNum=' + ${ALL_EMAILS.getPageNum()-1}}" th:text="${ALL_EMAILS.getPageNum() -1}" >1</a></li>
+        <li class="active"><a href="#" th:text="${ALL_EMAILS.getPageNum()}" >1</a></li>
+        <li th:if="${ALL_EMAILS.getPageNum()+1 <=ALL_EMAILS.getPages()}" ><a th:href="@{'toAdminItems.back?pageNum=' + ${ALL_EMAILS.getPageNum()+1}}" th:text="${ALL_EMAILS.getPageNum() +1}" >1</a></li>
+        <li th:if="${ALL_EMAILS.getPageNum()+2 <=ALL_EMAILS.getPages()}" ><a th:href="@{'toAdminItems.back?pageNum=' + ${ALL_EMAILS.getPageNum()+2}}" th:text="${ALL_EMAILS.getPageNum() +2}" >1</a></li>
+        <li th:if="${ALL_EMAILS.getPageNum()+3 <=ALL_EMAILS.getPages()}" ><a th:href="@{'toAdminItems.back?pageNum=' + ${ALL_EMAILS.getPageNum()+3}}" th:text="${ALL_EMAILS.getPageNum() +3}" >1</a></li>
+        <li th:class="${ALL_EMAILS.getPageNum()==ALL_EMAILS.getPages()}?'disabled' : ''" ><a th:href="@{'toAdminItems.back?pageNum=' + ${ALL_EMAILS.getPageNum() + 1}}">下一页</a></li>
     </ul>
   </div>
 </div>
