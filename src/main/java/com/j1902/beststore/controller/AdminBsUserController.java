@@ -1,6 +1,7 @@
 package com.j1902.beststore.controller;
 
 import com.j1902.beststore.pojo.BsUser;
+import com.j1902.beststore.service.BsShoppingCartItemService;
 import com.j1902.beststore.service.BsUserService;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,18 +17,21 @@ public class AdminBsUserController {
     @Autowired
     private BsUserService bsUserService;
 
+    @Autowired
+    private BsShoppingCartItemService bsItemService;
+
     @RequestMapping("/toLogin")
-    public String toLogin(){
+    public String toLogin() {
         return "login";
     }
 
     @RequestMapping("/toRegister")
-    public String toRegister(){
+    public String toRegister() {
         return "register";
     }
 
     @RequestMapping("/register")
-    public String register(BsUser bsUser, Map<String,Object> map){
+    public String register(BsUser bsUser, Map<String, Object> map) {
         System.out.println("bsUser = [" + bsUser + "]");
         if (bsUserService.isExistBsUser(bsUser)) {
             return "register";
@@ -38,13 +42,10 @@ public class AdminBsUserController {
     }
 
     @RequestMapping("/toHome")
-    public String toHome(){
+    public String toHome() {
         return "home";
     }
 
-    @RequestMapping("/toCheckout")
-    public String toCheckout(){
-        return "checkout";
-    }
+
 
 }
