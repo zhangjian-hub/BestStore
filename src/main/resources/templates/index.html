@@ -130,37 +130,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</ul>
 							</li>
 							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Furniture <b class="caret"></b></a>
 								<ul class="dropdown-menu multi-column columns-3">
 									<div class="row">
 										<div class="col-sm-4">
 											<ul class="multi-column-dropdown">
 												<h6>Home Collection</h6>
-												<li><a href="/toFurniture">Cookware</a></li>
-												<li><a href="/toFurniture">Sofas</a></li>
-												<li><a href="/toFurniture">Dining Tables</a></li>
-												<li><a href="/toFurniture">Shoe Racks</a></li>
-												<li><a href="/toFurniture">Home Decor</a></li>
+												
 											</ul>
 										</div>
 										<div class="col-sm-4">
 											<ul class="multi-column-dropdown">
 												<h6>Office Collection</h6>
-												<li><a href="/toFurniture">Carpets</a></li>
-												<li><a href="/toFurniture">Tables</a></li>
-												<li><a href="/toFurniture">Sofas</a></li>
-												<li><a href="/toFurniture">Shoe Racks</a></li>
-												<li><a href="/toFurniture">Sockets</a></li>
-												<li><a href="/toFurniture">Electrical Machines</a></li>
 											</ul>
 										</div>
 										<div class="col-sm-4">
 											<ul class="multi-column-dropdown">
 												<h6>Decorations</h6>
-												<li><a href="/toFurniture">Toys</a></li>
-												<li><a href="/toFurniture">Wall Clock</a></li>
-												<li><a href="/toFurniture">Lighting</a></li>
-												<li><a href="/toFurniture">Top Brands</a></li>
 											</ul>
 										</div>
 										<div class="clearfix"></div>
@@ -189,17 +174,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<script>
 								new UISearch( document.getElementById( 'sb-search' ) );
 							</script>
-						<!-- //search-scripts -->
 				</div>
 				<div class="header-right">
 					<div class="cart box_1">
-						<a href="/toCheckout">
-							<h3> <div class="total">
-								<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
-								<img src="../static/images/bag.png" alt="" />
+						<a th:href="@{/toCheckout}">
+							<h3>
+								<img src="../static/images/bag.png" alt=""/>
+								<div class="total">
+									<span>shopping cart</span>
+								</div>
+
 							</h3>
 						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
 						<div class="clearfix"> </div>
 					</div>	
 				</div>
@@ -565,7 +551,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="timer-grids">
 				<div class="col-md-8 timer-grid-left animated wow slideInLeft" data-wow-delay=".5s">
-					<h3>sunt in culpa qui officia deserunt mollit</h3>
+					<h3><a href="/toProducts">sunt in culpa qui officia deserunt mollit</a></h3>
 					<div class="rating">
 						<div class="rating-left">
 							<img src="../static/images/2.png" alt=" " class="img-responsive" />
@@ -585,12 +571,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="clearfix"> </div>
 					</div>
 					<div class="new-collections-grid1-left simpleCart_shelfItem timer-grid-left-price">
-						<p><i></i> <span class="item_price"></span></p>
+						<p><i>$580</i> <span class="item_price">$550</span></p>
 						<h4>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
 							nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit 
 							qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui 
 							dolorem eum fugiat quo voluptas nulla pariatur.</h4>
-
+						<p><a class="item_add timer_add" href="#">add to cart </a></p>
 					</div>
 					<div id="counter"> </div>
 					<script src="../static/js/jquery.countdown.js"></script>
@@ -637,114 +623,91 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<h3>About Us</h3>
 				<p>Duis aute irure dolor in reprehenderit in voluptate velit esse.<span>Excepteur sint occaecat cupidatat
 						non proident, sunt in culpa qui officia deserunt mollit.</span></p>
-			</div>
-			<div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".6s">
-				<h3>Contact Info</h3>
-				<ul>
-					<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>1234k Avenue, 4th block, <span>New York City.</span>
-					</li>
-					<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a
-							href="mailto:info@example.com">info@example.com</a></li>
-					<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 567 567</li>
-				</ul>
-			</div>
-			<div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".7s">
-				<h3>Flickr Posts</h3>
-				<div class="footer-grid-left">
-					<a href="javascript:;"><img src="../static/images/13.jpg" alt=" " class="img-responsive"/></a>
-				</div>
-				<div class="footer-grid-left">
-					<a href="javascript:;"><img src="../static/images/14.jpg" alt=" " class="img-responsive"/></a>
-				</div>
-				<div class="footer-grid-left">
-					<a href="javascript:;"><img src="../static/images/15.jpg" alt=" " class="img-responsive"/></a>
-				</div>
-				<div class="footer-grid-left">
-					<a href="javascript:;"><img src="../static/images/16.jpg" alt=" " class="img-responsive"/></a>
-				</div>
-				<div class="footer-grid-left">
-					<a href="javascript:;"><img src="../static/images/13.jpg" alt=" " class="img-responsive"/></a>
-				</div>
-				<div class="footer-grid-left">
-					<a href="javascript:;"><img src="../static/images/14.jpg" alt=" " class="img-responsive"/></a>
-				</div>
-				<div class="footer-grid-left">
-					<a href="javascript:;"><img src="../static/images/15.jpg" alt=" " class="img-responsive"/></a>
-				</div>
-				<div class="footer-grid-left">
-					<a href="javascript:;"><img src="../static/images/16.jpg" alt=" " class="img-responsive"/></a>
-				</div>
-				<div class="footer-grid-left">
-					<a href="javascript:;"><img src="../static/images/13.jpg" alt=" " class="img-responsive"/></a>
-				</div>
-				<div class="footer-grid-left">
-					<a href="javascript:;"><img src="../static/images/14.jpg" alt=" " class="img-responsive"/></a>
-				</div>
-				<div class="footer-grid-left">
-					<a href="javascript:;"><img src="../static/images/15.jpg" alt=" " class="img-responsive"/></a>
-				</div>
-				<div class="footer-grid-left">
-					<a href="javascript:;"><img src="../static/images/16.jpg" alt=" " class="img-responsive"/></a>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-			<div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".8s">
-				<h3>Blog Posts</h3>
-				<div class="footer-grid-sub-grids">
-					<div class="footer-grid-sub-grid-left">
-						<a href="javascript:;"><img src="../static/images/9.jpg" alt=" " class="img-responsive"/></a>
-					</div>
-					<div class="footer-grid-sub-grid-right">
-						<h4><a href="javascript:;">culpa qui officia deserunt</a></h4>
-						<p>Posted On 25/3/2016</p>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-				<div class="footer-grid-sub-grids">
-					<div class="footer-grid-sub-grid-left">
-						<a href="javascript:;"><img src="../static/images/10.jpg" alt=" " class="img-responsive"/></a>
-					</div>
-					<div class="footer-grid-sub-grid-right">
-						<h4><a href="javascript:;">Quis autem vel eum iure</a></h4>
-						<p>Posted On 25/3/2016</p>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-			</div>
-			<div class="clearfix"></div>
-		</div>
-		<div class="footer-logo animated wow slideInUp" data-wow-delay=".5s">
-			<h2><a href="/toIndex">Best Store <span>shop anywhere</span></a></h2>
-		</div>
-		<div class="copy-right animated wow slideInUp" data-wow-delay=".5s">
-		</div>
-	</div>
-<!-- //footer -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
-    <script th:inline="javascript">
-        // 退出后才可以登录
-        var s=[[${respinfo}]];
-        if (s== "true") {
-            swal({
-                title: "You are logged in, please log out first ！",
-                type: "error",
-                confirmButtonText: "ok",
-                closeOnConfirm: false
-            });
-        }
-        // ${#request.removeAttribute("respinfo")};
-        // 注册成功弹窗
-        var register = [[${REGISTER}]];
-        if (register == "true") {
-            swal({
-                title: "registered successfully！",
-                type: "success",
-                confirmButtonText: "ok",
-                closeOnConfirm: false
-            });
-            register="disabled"
-        }
-    </script>
+            </div>
+            <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".6s">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>1234k Avenue, 4th block, <span>New York City.</span>
+                    </li>
+                    <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a
+                            href="mailto:info@example.com">info@example.com</a></li>
+                    <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 567 567</li>
+                </ul>
+            </div>
+            <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".7s">
+                <h3>Flickr Posts</h3>
+                <div class="footer-grid-left">
+                    <a href="javascript:;"><img src="../static/images/13.jpg" alt=" " class="img-responsive"/></a>
+                </div>
+                <div class="footer-grid-left">
+                    <a href="javascript:;"><img src="../static/images/14.jpg" alt=" " class="img-responsive"/></a>
+                </div>
+                <div class="footer-grid-left">
+                    <a href="javascript:;"><img src="../static/images/15.jpg" alt=" " class="img-responsive"/></a>
+                </div>
+                <div class="footer-grid-left">
+                    <a href="javascript:;"><img src="../static/images/16.jpg" alt=" " class="img-responsive"/></a>
+                </div>
+                <div class="footer-grid-left">
+                    <a href="javascript:;"><img src="../static/images/13.jpg" alt=" " class="img-responsive"/></a>
+                </div>
+                <div class="footer-grid-left">
+                    <a href="javascript:;"><img src="../static/images/14.jpg" alt=" " class="img-responsive"/></a>
+                </div>
+                <div class="footer-grid-left">
+                    <a href="javascript:;"><img src="../static/images/15.jpg" alt=" " class="img-responsive"/></a>
+                </div>
+                <div class="footer-grid-left">
+                    <a href="javascript:;"><img src="../static/images/16.jpg" alt=" " class="img-responsive"/></a>
+                </div>
+                <div class="footer-grid-left">
+                    <a href="javascript:;"><img src="../static/images/13.jpg" alt=" " class="img-responsive"/></a>
+                </div>
+                <div class="footer-grid-left">
+                    <a href="javascript:;"><img src="../static/images/14.jpg" alt=" " class="img-responsive"/></a>
+                </div>
+                <div class="footer-grid-left">
+                    <a href="javascript:;"><img src="../static/images/15.jpg" alt=" " class="img-responsive"/></a>
+                </div>
+                <div class="footer-grid-left">
+                    <a href="javascript:;"><img src="../static/images/16.jpg" alt=" " class="img-responsive"/></a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".8s">
+                <h3>Blog Posts</h3>
+                <div class="footer-grid-sub-grids">
+                    <div class="footer-grid-sub-grid-left">
+                        <a href="javascript:;"><img src="../static/images/9.jpg" alt=" " class="img-responsive"/></a>
+                    </div>
+                    <div class="footer-grid-sub-grid-right">
+                        <h4><a href="javascript:;">culpa qui officia deserunt</a></h4>
+                        <p>Posted On 25/3/2016</p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="footer-grid-sub-grids">
+                    <div class="footer-grid-sub-grid-left">
+                        <a href="javascript:;"><img src="../static/images/10.jpg" alt=" " class="img-responsive"/></a>
+                    </div>
+                    <div class="footer-grid-sub-grid-right">
+                        <h4><a href="javascript:;">Quis autem vel eum iure</a></h4>
+                        <p>Posted On 25/3/2016</p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="footer-logo animated wow slideInUp" data-wow-delay=".5s">
+            <h2><a href="/toIndex">Best Store <span>shop anywhere</span></a></h2>
+        </div>
+        <div class="copy-right animated wow slideInUp" data-wow-delay=".5s">
+            <p>Copyright &copy; 2016.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/"
+                                                                                        target="_blank" title="模板之家">模板之家</a>
+                - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+        </div>
+    </div>
+    <!-- //footer -->
 </body>
 </html>

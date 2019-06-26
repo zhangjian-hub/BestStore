@@ -48,7 +48,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="header-grid-left animated wow slideInLeft" data-wow-delay=".5s">
                 <ul>
                     <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a
-                            href="mailto:info@example.com">1071902755@qq.com</a></li>
+                            href="mailto:info@example.com">15927147398@qq.com</a></li>
                     <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+8615927147398</li>
                     <li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a href="/toLogin">Login</a></li>
                     <li><i class="glyphicon glyphicon-book" aria-hidden="true"></i><a href="/toRegister">Register</a>
@@ -200,16 +200,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
             <div class="header-right">
                 <div class="cart box_1">
-                    <a href="/toCheckout">
+                    <a th:href="@{/toCheckout}">
                         <h3>
-                            <div class="total">
-                                <span class="simpleCart_total"></span> (<span id="simpleCart_quantity"
-                                                                              class="simpleCart_quantity"></span> items)
-                            </div>
                             <img src="../static/images/bag.png" alt=""/>
+                            <div class="total">
+                                <span>shopping cart</span>
+                            </div>
+
                         </h3>
                     </a>
-                    <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
                     <div class="clearfix"></div>
                 </div>
             </div>
@@ -392,21 +391,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         maxlength: 16,
                         chrnum: true
                     },
-                    // email: {
-                    //     required: true,
-                    //     email: true,
-                    //     remote: {
-                    //         url: "/verity",//后台查询验证的方法
-                    //         data: {
-                    //             "email": $("#email").val()
-                    //         },//携带的参数
-                    //         type: "post",
-                    //         dataType: "json"
-                    //     }
-                    // },
+                    email: {
+                        required: true,
+                        email: true,
+                        remote: {
+                            url: "/verityEmail",//后台查询验证的方法
+                            data: {
+                                email: function() {
+                                    return $("input[name='email']").val();
+                                }
+                            },//携带的参数
+                            type: "post",
+                            dataType: "json"
+                        }
+                    },
                     phone: {
                         required: true,
-                        isMobile: true
+                        isMobile: true,
+                        remote: {
+                            url: "/verityPhone",//后台查询验证的方法
+                            data: {
+                                phone: function() {
+                                    return $("input[name='phone']").val();
+                                }
+                            },//携带的参数
+                            type: "post",
+                            dataType: "json"
+                        }
                     }
                 },
                 messages: {
@@ -426,12 +437,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         equalTo: "the passwords must be the same twice",
                         chrnum: "Enter only Numbers and letters (characters a-z, a-z, 0-9)"
                     },
-                    // email: {
-                    //     email: "please enter the correct email address",
-                    //     remote: "email has been registered"
-                    // },
+                    email: {
+                        email: "please enter the correct email address",
+                        remote: "email has been registered"
+                    },
                     phone: {
-                        isMobile: "please enter the correct phone number"
+                        isMobile: "please enter the correct phone number",
+                        remote:"phone number has been registered"
                     }
                 }
             });
@@ -449,16 +461,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 closeOnConfirm: false
             });
             user = "disabled"
-        }
-
-        var respinfo = [[${respinfo}]];
-        if (respinfo == "true") {
-            swal({
-                title: "You are logged in, please log out first ！",
-                type: "error",
-                confirmButtonText: "ok",
-                closeOnConfirm: false
-            });
         }
 
     </script>

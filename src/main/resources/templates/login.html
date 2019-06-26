@@ -184,13 +184,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="header-right">
 					<div class="cart box_1">
-						<a href="/toCheckout">
-							<h3> <div class="total">
-								<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
-								<img src="../static/images/bag.png" alt="" />
+						<a th:href="@{/toCheckout}">
+							<h3>
+								<img src="../static/images/bag.png" alt=""/>
+								<div class="total">
+									<span>shopping cart</span>
+								</div>
+
 							</h3>
 						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
 						<div class="clearfix"> </div>
 					</div>	
 				</div>
@@ -223,9 +225,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<a href="#">Forgot Password?</a>
 					&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 					&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-					&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 					<label>
-						<input type="checkbox"  value="true" name="remember"/>记住密码
+						<input type="checkbox"  value="true" name="remember"/>auto login
 					</label>
 				</div>
 				<input type="submit" value="Login">
@@ -342,6 +343,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				confirmButtonText: "ok",
 				closeOnConfirm: false
 			});
+		}
+		// 注册成功弹窗
+		var register = [[${REGISTER}]];
+		if (register == "true") {
+			swal({
+				title: "registered successfully！",
+				type: "success",
+				confirmButtonText: "ok",
+				closeOnConfirm: false
+			});
+			register = "disabled"
 		}
 	</script>
 </body>

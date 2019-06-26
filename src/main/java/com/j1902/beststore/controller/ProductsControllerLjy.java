@@ -72,7 +72,6 @@ public class ProductsControllerLjy {
         map.put("suitablePeople",suitablePeople);
         map.put("type",type);
         map.put("LIST",list);
-//        session.setAttribute("BSITEMS",bsItems);
         return "products";
     }
 
