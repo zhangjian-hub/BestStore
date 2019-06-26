@@ -36,7 +36,7 @@ public class BsShoppingCartController {
         }
         Integer id = user_info.getId();
         if (id == null) {
-
+            return "redirect:/toLogin";
         }
         if (pageNum == null) {
             pageNum = 1;
