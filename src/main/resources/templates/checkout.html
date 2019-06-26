@@ -194,8 +194,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="header-right">
 				<div class="cart box_1">
-					<a th:href="@{/toCheckout(id=3)}">
-						<!--${session.USER_INFO.id})}-->
+					<a th:href="@{/toCheckout(id=${session.USER_INFO.id})}">
+
 						<h3>
 							<img src="../static/images/bag.png" alt=""/>
 							<div class="total">
@@ -290,11 +290,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											closeOnConfirm: true,//点击返回上一步操作
 											closeOnCancel: true
 										}, function () {
+											var id = [[${session.USER_INFO.id}]]
 											var pageNumber = [[${PAGEINFO.getPageNum()}]]
 											var pageSize = [[${PAGEINFO.getPageSize()}]]
 											$.post("/removeShoppingCart", {
 												shoppingCartId: $shoppingCartId,
-												id: 3,
+												id: id,
 												pageNum: pageNumber
 											}, function (data) {
 												if (data.reslut) {
@@ -387,22 +388,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<nav id="page" th:if="${PAGEINFO.getSize()!=0}" aria-label="Page navigation" style="position: absolute;float: right; right: 0px">
 				<ul class="pagination">
 					<li id="up">
-						<a id="up_a" th:href="@{/toCheckout(id=3,pageNum=${PAGEINFO.getPageNum()}-1)}"
+						<a id="up_a" th:href="@{/toCheckout(id=${session.USER_INFO.id},pageNum=${PAGEINFO.getPageNum()}-1)}"
 
 						   aria-label="Previous"
-						><!--${session.USER_INFO.id}-->
+						>
 							<span aria-hidden="true">&laquo;</span>
 						</a>
 					</li>
 					<li th:each="num,nums:${PAGEINFO.getNavigatepageNums()}">
 						<a th:if="${num==PAGEINFO.getPageNum()}" href="#" th:text="${num}" class="index"></a>
-						<a th:if="${num!=PAGEINFO.getPageNum()}" th:href="@{/toCheckout(id=3,pageNum=${num})}"
+						<a th:if="${num!=PAGEINFO.getPageNum()}" th:href="@{/toCheckout(id=${session.USER_INFO.id},pageNum=${num})}"
 
-						   th:text="${num}"></a><!--${session.USER_INFO.id}-->
+						   th:text="${num}"></a>
 					</li>
-					<!--${session.USER_INFO.id}-->
+
 					<li id="down">
-						<a id="down_a" th:href="@{/toCheckout(id=3,pageNum=${PAGEINFO.getPageNum()}+1)}"
+						<a id="down_a" th:href="@{/toCheckout(id=${session.USER_INFO.id},pageNum=${PAGEINFO.getPageNum()}+1)}"
 						   aria-label="Next"
 						>
 							<span aria-hidden="true">&raquo;</span>
