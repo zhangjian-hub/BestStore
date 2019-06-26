@@ -78,7 +78,7 @@ public class BsUserController {
                 bsUser.setPassword(null);
                 return "admin/admin";
             }
-            session.setAttribute("userinfo",bsUser);
+            session.setAttribute("USER_INFO",bsUser);
             bsUser.setPassword(null);
             return "index";
         } else {
@@ -96,7 +96,7 @@ public class BsUserController {
 
     @RequestMapping("/logout")
     public String logout(HttpSession session){
-        session.removeAttribute("USERINFO");
+        session.removeAttribute("USER_INFO");
         return  "login";
     }
 }

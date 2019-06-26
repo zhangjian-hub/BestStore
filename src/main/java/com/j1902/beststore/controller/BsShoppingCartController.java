@@ -6,6 +6,7 @@ import com.j1902.beststore.modle.ShoppingCartResult;
 import com.j1902.beststore.pojo.BsItem;
 import com.j1902.beststore.pojo.BsShoppingCart;
 import com.j1902.beststore.pojo.BsShoppingRecord;
+import com.j1902.beststore.pojo.BsUser;
 import com.j1902.beststore.service.BsShoppingCartItemService;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,9 +29,14 @@ public class BsShoppingCartController {
 
     //    到购物车
     @RequestMapping("/toCheckout")
-    public String toCheckout(Integer id, Integer pageNum, Map<String, Object> map) {
-        if (id == null) {
+    public String toCheckout(HttpServletRequest request, Integer pageNum, Map<String, Object> map) {
+        BsUser user_info = (BsUser) request.getSession().getAttribute("USER_INFO");
+        if(user_info ==null){
             return "redirect:/toLogin";
+        }
+        Integer id = user_info.getId();
+        if (id == null) {
+
         }
         if (pageNum == null) {
             pageNum = 1;
