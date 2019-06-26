@@ -1,8 +1,7 @@
 package com.j1902.beststore.service;
 
+import com.github.pagehelper.PageInfo;
 import com.j1902.beststore.pojo.BsEmail;
-
-import java.util.List;
 
 /**
  * @author zj
@@ -10,7 +9,7 @@ import java.util.List;
  * @create 2019-06-25 14:06
  */
 public interface AdminBsEmailService {
-    public List<BsEmail> getAllEmails();
+    public PageInfo<BsEmail> getAllEmails(int pageNum);
 
     public BsEmail selectById(Integer id);
 }
