@@ -57,11 +57,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
             <div class="header-grid-right animated wow slideInRight" data-wow-delay=".5s">
                 <ul class="social-icons">
-                    <li><a href="#" class="facebook"></a></li>
-                    <li><a href="#" class="twitter"></a></li>
-                    <li><a href="#" class="g"></a></li>
-                    <li><a href="#" class="instagram"></a></li>
+                    <li><a href="#" ><img src="../static/images/jm.jpg" style="width:33px; height:33px; border-radius:50%;"></a></li>
+                    <li><a th:href="@{/toLogin.html}" th:if="${session== null?'你还没有登录，请先登录':'/toLogin.html'}"></a></li>
                 </ul>
+
             </div>
             <div class="clearfix"></div>
         </div>
@@ -215,7 +214,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="new-products animated wow slideInUp" data-wow-delay=".5s">
                 <h3>New Products</h3>
                 <div class="new-products-grids">
-                    <div class="new-products-grid">
+<!--                    th:each="bs,status :${BSITEMS}" th:item-index="${status.count==3}"-->
+                    <div class="new-products-grid" >
                         <div class="new-products-grid-left">
                             <a href="single.html"><img src="../static/images/6.jpg" alt=" " class="img-responsive"/></a>
                         </div>
@@ -245,68 +245,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                         <div class="clearfix"></div>
                     </div>
-                    <div class="new-products-grid">
-                        <div class="new-products-grid-left">
-                            <a href="single.html"><img src="../static/images/26.jpg" alt=" "
-                                                       class="img-responsive"/></a>
-                        </div>
-                        <div class="new-products-grid-right">
-                            <h4><a href="single.html">eum fugiat quo</a></h4>
-                            <div class="rating">
-                                <div class="rating-left">
-                                    <img src="../static/images/2.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="../static/images/2.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="../static/images/2.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="../static/images/1.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="../static/images/1.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="simpleCart_shelfItem new-products-grid-right-add-cart">
-                                <p><span class="item_price">$250</span><a class="item_add" href="#">add to cart </a></p>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="new-products-grid">
-                        <div class="new-products-grid-left">
-                            <a href="single.html"><img src="../static/images/11.jpg" alt=" "
-                                                       class="img-responsive"/></a>
-                        </div>
-                        <div class="new-products-grid-right">
-                            <h4><a href="single.html">officia deserunt</a></h4>
-                            <div class="rating">
-                                <div class="rating-left">
-                                    <img src="../static/images/2.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="../static/images/2.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="../static/images/2.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="../static/images/1.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="../static/images/1.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="simpleCart_shelfItem new-products-grid-right-add-cart">
-                                <p><span class="item_price">$259</span><a class="item_add" href="#">add to cart </a></p>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
+
+
                 </div>
             </div>
             <div class="new-products animated wow slideInUp" data-wow-delay=".5s">

@@ -28,7 +28,7 @@ public class ForgotPasswordControllerLjy {
         return "forgotPassword";
     }
 
-    @RequestMapping("/toIndex.html")
+    @RequestMapping("/toIndex")
     public String toIndex() {
         return "index";
     }
