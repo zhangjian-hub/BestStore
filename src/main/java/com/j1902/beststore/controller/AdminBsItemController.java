@@ -37,15 +37,12 @@ public class AdminBsItemController {
         PageHelper.startPage(pageNum, pageSize);
         List<BsItem> allItems = itemService.getAllItems();
         PageInfo<BsItem> pageInfo = new PageInfo<>(allItems);
-        System.out.println("pageInfo = " + pageInfo);
         map.put("PAGE_INFO", pageInfo);
         return "admin/admin-items";
     }
 
     @RequestMapping("/addItem.back")
     public String addItem(Map<String,Object> map, BsItem item, @RequestParam(value = "file") MultipartFile file, HttpServletRequest request) {
-        System.out.println("item = " + item);
-
         if (file.isEmpty()) {
             System.out.println("文件为空空");
             return "admin/admin-add-item";
@@ -64,7 +61,6 @@ public class AdminBsItemController {
             e.printStackTrace();
         }
         String filename = "/temp-rainy/" + fileName;
-        System.out.println("filename = " + filename);
 
         item.setImage(filename);
         item.setSalesVolume(0);
