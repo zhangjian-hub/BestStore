@@ -120,7 +120,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</ul>
 							</li>
 							<li class="dropdown active">
-								<a href="#" class="dropdown-toggle act" data-toggle="dropdown">Furniture <b class="caret"></b></a>
+
 								<ul class="dropdown-menu multi-column columns-3">
 									<div class="row">
 										<div class="col-sm-4">
@@ -183,13 +183,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="header-right">
 					<div class="cart box_1">
-						<a href="/toCheckout">
-							<h3> <div class="total">
-								<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
-								<img src="../static/images/bag.png" alt="" />
+						<a th:href="@{/toCheckout}">
+							<h3>
+								<img src="../static/images/bag.png" alt=""/>
+								<div class="total">
+									<span>shopping cart</span>
+								</div>
+
 							</h3>
 						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
 						<div class="clearfix"> </div>
 					</div>	
 				</div>
