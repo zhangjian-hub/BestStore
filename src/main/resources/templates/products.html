@@ -221,12 +221,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="new-products-grids">
                     <div class="new-products-grid" th:each="a:${A}" >
                         <div class="new-products-grid-left">
-                            <a href="/toSingle"><img th:src="${a.getImage()}" alt=" "
+                            <p class="p1" th:text="${a.getId()}" hidden></p>
+                            <a th:href="@{/toSingle(id=${a.getId()},name=${a.getName()},size=${a.getSize()},color=${a.getColor()})}"><img th:src="${a.getImage()}" alt=" "
                                                      class="img-responsive"
                                                      style="height:220px;width: 150px;"></a>
                         </div>
                         <div class="new-products-grid-right">
-                            <h4><a href="/toSingle" th:text="${a.getName()}"></a></h4>
+                            <h4><a th:href="@{/toSingle(id=${a.getId()},name=${a.getName()},size=${a.getSize()},color=${a.getColor()})}" th:text="${a.getName()}"></a></h4>
                             <div class="rating">
                                 <div class="rating-left">
                                     <img src="../static/images/2.png" alt=" " class="img-responsive">
@@ -253,6 +254,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </div>
                         </div>
                         <div class="clearfix"></div>
+
+
                     </div>
 
                 </div>
@@ -289,7 +292,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                              data-wow-delay=".5s">
 
                             <div class="new-collections-grid1-image">
-                                <a href="/toSingle" class="product-image"><img th:src="${bs.getImage()}" alt=" "
+                                <p class="p1" th:text="${bs.getId()}" hidden></p>
+                                <a th:href="@{/toSingle(id=${bs.getId()},name=${bs.getName()},size=${bs.getSize()},color=${bs.getColor()})}" class="product-image"><img th:src="${bs.getImage()}" alt=" "
                                                                                class="img-responsive"
                                                                                style="height:220px;width: 150px;"></a>
                                 <div class="new-collections-grid1-image-pos products-right-grids-pos">
@@ -318,7 +322,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     </div>
                                 </div>
                             </div>
-                            <h4><a href="/toSingle"><span th:text="${bs.getName()}"></span></a></h4>
+                            <h4><a th:href="@{/toSingle(id=${bs.getId()},name=${bs.getName()},size=${bs.getSize()},color=${bs.getColor()})}"><span th:text="${bs.getName()}"></span></a></h4>
                             <p>Vel illum qui dolorem.</p>
                             <div class="simpleCart_shelfItem products-right-grid1-add-cart">
                                 <p><i th:text="${bs.getPrice()*1.5}+'$'"></i> <span class="item_price"
@@ -326,6 +330,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </div>
                         </div>
                     </div>
+
+
                     <!--                    </option>-->
                 </div>
                 <div class="clearfix"></div>
@@ -461,8 +467,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
 </div>
 <script>
+    var p = $(".p1").val();
     $(".add").click(function () {
-        $.post("/toAddCart", {id: 2}, function (data) {
+        $.post("/toAddCart", {id:p}, function (data) {
             if (data.result) {
                 swal({
                     title: "Addition Succeed",

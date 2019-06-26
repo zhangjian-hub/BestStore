@@ -34,6 +34,7 @@ public class ProductsControllerLjy {
         a.add(b.get(2));
         a.add(b.get(3));
         a.add(b.get(4));
+        System.out.println("a = " + a);
         System.out.println("bsItems = " + bsItems);
         System.out.println("info = " + info);
 
