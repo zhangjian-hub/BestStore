@@ -401,7 +401,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         required: true,
                         email: true,
                         remote: {
-                            url: "/verity",//后台查询验证的方法
+                            url: "/verityEmail",//后台查询验证的方法
                             data: {
                                 email: function() {
                                     return $("input[name='email']").val();
@@ -413,7 +413,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     },
                     phone: {
                         required: true,
-                        isMobile: true
+                        isMobile: true,
+                        remote: {
+                            url: "/verityPhone",//后台查询验证的方法
+                            data: {
+                                phone: function() {
+                                    return $("input[name='phone']").val();
+                                }
+                            },//携带的参数
+                            type: "post",
+                            dataType: "json"
+                        }
                     }
                 },
                 messages: {
@@ -438,7 +448,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         remote: "email has been registered"
                     },
                     phone: {
-                        isMobile: "please enter the correct phone number"
+                        isMobile: "please enter the correct phone number",
+                        remote:"phone number has been registered"
                     }
                 }
             });

@@ -3,6 +3,7 @@ package com.j1902.beststore.controller;
 import com.j1902.beststore.pojo.BsUser;
 import com.j1902.beststore.service.BsUserService;
 import com.j1902.beststore.utils.JsonUtils;
+import com.j1902.beststore.utils.UseUtil;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.Date;
 
 @Controller
 @MapperScan("com.j1902.beststore.mapper")
@@ -62,10 +64,9 @@ public class BsUserController {
 //                }
 //            }
 //        }
-
-        if (bsUserService.login(bsUser)) {
+        if (bsUserService.login(bsUser,req)!=null ) {
             if ("true".equals(remember)) {
-                String s = JsonUtils.objectToJson(bsUser);
+                String s = JsonUtils.objectToJson(bsUserService.login(bsUser,req));
                 String userEncode = URLEncoder.encode(s, "UTF-8");
                 Cookie cookie = new Cookie("loginInfo", userEncode);
                 cookie.setMaxAge(3600 * 24 * 30);
@@ -73,9 +74,9 @@ public class BsUserController {
             }
             if (bsUser.getEmail().equals("15927147398@qq.com")) {
                 bsUser.setPassword(null);
-                return "admin/admin";
+                return "admin/admin-index";
             }
-            session.setAttribute("USER_INFO",bsUser);
+            session.setAttribute("USER_INFO",bsUserService.login(bsUser,req));
             bsUser.setPassword(null);
             return "index";
         } else {
@@ -84,14 +85,23 @@ public class BsUserController {
         }
     }
 
-    @RequestMapping("/verity")
+    @RequestMapping("/verityEmail")
     @ResponseBody
-    public boolean verity(String email) {
-       if(bsUserService.verity(email)){
+    public boolean verityEmail(String email) {
+       if(bsUserService.verityEmail(email)){
            return false;
        }else{
            return true;
        }
+    };
+    @RequestMapping("/verityPhone")
+    @ResponseBody
+    public boolean verityPhone(String phone) {
+        if(bsUserService.verityPhone(phone)){
+            return false;
+        }else{
+            return true;
+        }
     };
 
 
