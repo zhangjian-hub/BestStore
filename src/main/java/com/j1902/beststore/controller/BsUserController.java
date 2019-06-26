@@ -3,6 +3,7 @@ package com.j1902.beststore.controller;
 import com.j1902.beststore.pojo.BsUser;
 import com.j1902.beststore.service.BsUserService;
 import com.j1902.beststore.utils.JsonUtils;
+import com.j1902.beststore.utils.UseUtil;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.Date;
 
 @Controller
 @MapperScan("com.j1902.beststore.mapper")
@@ -26,10 +28,6 @@ public class BsUserController {
 
     @RequestMapping("/toLogin")
     public String toLogin(HttpSession session,HttpServletRequest req) {
-        if(session.getAttribute("USER_INFO")!=null){
-         req.setAttribute("respinfo","true");
-            return "index";
-        }
         return "login";
     }
 
@@ -42,7 +40,7 @@ public class BsUserController {
     public String register(BsUser bsUser, HttpServletRequest request) {
         if (bsUserService.register(bsUser)) {
             request.setAttribute("REGISTER", "true");
-            return "index";
+            return "login";
         } else {
             request.setAttribute("REGISTER", "fail");
             return "register";
@@ -57,28 +55,19 @@ public class BsUserController {
     @RequestMapping("/login")
     public String login(BsUser bsUser, HttpServletRequest req, HttpServletResponse resp, HttpSession session) throws UnsupportedEncodingException {
         String remember = req.getParameter("remember");
-        Cookie[] cookies = req.getCookies();
-        if (cookies != null && cookies.length > 0) {
-            for (Cookie cookie : cookies) {
-                if ("loginInfo".equals(cookie.getName())) {
-                    String decode = URLDecoder.decode(cookie.getValue(), "UTF-8");
-                    bsUser = JsonUtils.jsonToPojo(decode, BsUser.class);
-                }
-            }
-        }
-        if (bsUserService.login(bsUser)) {
+        if (bsUserService.login(bsUser,req)!=null ) {
             if ("true".equals(remember)) {
-                String s = JsonUtils.objectToJson(bsUser);
+                String s = JsonUtils.objectToJson(bsUserService.login(bsUser,req));
                 String userEncode = URLEncoder.encode(s, "UTF-8");
                 Cookie cookie = new Cookie("loginInfo", userEncode);
                 cookie.setMaxAge(3600 * 24 * 30);
                 resp.addCookie(cookie);
             }
-            if (bsUser.getEmail().equals("1071902755@qq.com")) {
+            if (bsUser.getEmail().equals("15927147398@qq.com")) {
                 bsUser.setPassword(null);
                 return "admin/admin-index";
             }
-            session.setAttribute("USER_INFO",bsUser);
+            session.setAttribute("USER_INFO",bsUserService.login(bsUser,req));
             bsUser.setPassword(null);
             return "index";
         } else {
@@ -87,11 +76,24 @@ public class BsUserController {
         }
     }
 
-    @RequestMapping("/verity")
+    @RequestMapping("/verityEmail")
     @ResponseBody
-    public boolean verity(String email) {
-        return bsUserService.verity(email);
-    }
+    public boolean verityEmail(String email) {
+       if(bsUserService.verityEmail(email)){
+           return false;
+       }else{
+           return true;
+       }
+    };
+    @RequestMapping("/verityPhone")
+    @ResponseBody
+    public boolean verityPhone(String phone) {
+        if(bsUserService.verityPhone(phone)){
+            return false;
+        }else{
+            return true;
+        }
+    };
 
 
     @RequestMapping("/logout")
