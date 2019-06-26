@@ -1,8 +1,12 @@
 package com.j1902.beststore.controller;
 
+import com.j1902.beststore.service.AdminBsItemService;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.Map;
 
 /**
  * @author zj
@@ -13,8 +17,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @MapperScan("com.j1902.beststore.mapper")
 public class AdminPageJumpController {
 
+    @Autowired
+    private AdminBsItemService itemService;
+
     @RequestMapping("/toAdminIndex.back")
-    public String toAdminIndex(){
+    public String toAdminIndex(Map<String,Object> map){
+        int itemsCount = itemService.getAllItems().size();
+        map.put("ITEMS_COUNT", itemsCount);
+
         return "admin/admin-index";
     }
 
@@ -26,5 +36,15 @@ public class AdminPageJumpController {
     @RequestMapping("/toAdminUser.back")
     public String toAdminUser(){
         return "admin/admin-user";
+    }
+
+    @RequestMapping("/toEmail")
+    public String toEmail(){
+        return "email";
+    }
+
+    @RequestMapping("/toShortCodes")
+    public String toShortCodes(){
+        return "short-codes";
     }
 }

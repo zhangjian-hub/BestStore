@@ -45,7 +45,7 @@
   <div class="admin-sidebar">
     <ul class="am-list admin-sidebar-list">
       <li><a href="/toAdminIndex.back"><span class="am-icon-home"></span> 首页</a></li>
-      <li><a href="toAdminItems.back"><span class="am-icon-table"></span> 商品管理</a></li>
+      <li><a href="/toAdminItems.back"><span class="am-icon-table"></span> 商品管理</a></li>
       <li><a href="toOrderForm.back"><span class="am-icon-pencil-square-o"></span> 订单管理</a></li>
       <li><a href="toAdminEmail.back"><span class="am-icon-envelope-o"></span> 邮件管理</a></li>
       <li><a href="#"><span class="am-icon-sign-out"></span> 注销</a></li>
@@ -79,11 +79,7 @@
         <div class="am-fl am-cf">
           <div class="am-btn-toolbar am-fl">
             <div class="am-btn-group am-btn-group-xs">
-              <button type="button" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增</button>
-              <button type="button" class="am-btn am-btn-default"><span class="am-icon-save"></span> 保存</button>
-              <button type="button" class="am-btn am-btn-default"><span class="am-icon-archive"></span> 审核</button>
-              <button type="button" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span> 删除</button>
-            </div>      
+            </div>
           </div>
         </div>
       </div>
@@ -123,28 +119,20 @@
               <td>
                 <div class="am-btn-toolbar">
                   <div class="am-btn-group am-btn-group-xs">
-                    <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-                    <button class="am-btn am-btn-default am-btn-xs"><span class="am-icon-copy"></span> 复制</button>
                     <button class="am-btn am-btn-default am-btn-xs am-text-danger"><span class="am-icon-trash-o"></span> 删除</button>
                   </div>
                 </div>
               </td>
-            </tr>                     
+            </tr>
           </tbody>
         </table>
           <div class="am-cf">
   共 15 条记录
   <div class="am-fr">
     <ul class="am-pagination">
-        <li th:class="${ALL_EMAILS.getPageNum()==1}?'disabled' : ''"><a th:href="@{'toAdminItems.back?pageNum=' + ${ALL_EMAILS.getPageNum() - 1}}">上一页</a></li>
-        <li th:if="${ALL_EMAILS.getPageNum()-3 >=1}" ><a th:href="@{'toAdminItems.back?pageNum=' + ${ALL_EMAILS.getPageNum()-3}}" th:text="${ALL_EMAILS.getPageNum() -3}" >1</a></li>
-        <li th:if="${ALL_EMAILS.getPageNum()-2 >=1}" ><a th:href="@{'toAdminItems.back?pageNum=' + ${ALL_EMAILS.getPageNum()-2}}" th:text="${ALL_EMAILS.getPageNum() -2}" >1</a></li>
-        <li th:if="${ALL_EMAILS.getPageNum()-1 >=1}" ><a th:href="@{'toAdminItems.back?pageNum=' + ${ALL_EMAILS.getPageNum()-1}}" th:text="${ALL_EMAILS.getPageNum() -1}" >1</a></li>
-        <li class="active"><a href="#" th:text="${ALL_EMAILS.getPageNum()}" >1</a></li>
-        <li th:if="${ALL_EMAILS.getPageNum()+1 <=ALL_EMAILS.getPages()}" ><a th:href="@{'toAdminItems.back?pageNum=' + ${ALL_EMAILS.getPageNum()+1}}" th:text="${ALL_EMAILS.getPageNum() +1}" >1</a></li>
-        <li th:if="${ALL_EMAILS.getPageNum()+2 <=ALL_EMAILS.getPages()}" ><a th:href="@{'toAdminItems.back?pageNum=' + ${ALL_EMAILS.getPageNum()+2}}" th:text="${ALL_EMAILS.getPageNum() +2}" >1</a></li>
-        <li th:if="${ALL_EMAILS.getPageNum()+3 <=ALL_EMAILS.getPages()}" ><a th:href="@{'toAdminItems.back?pageNum=' + ${ALL_EMAILS.getPageNum()+3}}" th:text="${ALL_EMAILS.getPageNum() +3}" >1</a></li>
-        <li th:class="${ALL_EMAILS.getPageNum()==ALL_EMAILS.getPages()}?'disabled' : ''" ><a th:href="@{'toAdminItems.back?pageNum=' + ${ALL_EMAILS.getPageNum() + 1}}">下一页</a></li>
+      <li><a th:href="@{'toAdminEmail.back?pageNum=' + ${ALL_EMAILS.getPageNum() - 1}}">上一页</a></li>
+      <li th:each="index : ${ALL_EMAILS.getNavigatepageNums()}" th:class="${ALL_EMAILS.getPageNum()== index}?'active' : ''" ><a th:href="@{'toAdminEmail.back?pageNum=' + ${index}}" th:text="${index}" >1</a></li>
+      <li ><a th:href="@{'toAdminEmail.back?pageNum=' + ${ALL_EMAILS.getPageNum() + 1}}">下一页</a></li>
     </ul>
   </div>
 </div>

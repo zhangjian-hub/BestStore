@@ -1,5 +1,7 @@
 package com.j1902.beststore.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.j1902.beststore.mapper.BsEmailMapper;
 import com.j1902.beststore.pojo.BsEmail;
 import com.j1902.beststore.service.AdminBsEmailService;
@@ -21,16 +23,16 @@ public class AdminBsEmailServiceImpl implements AdminBsEmailService {
     private BsEmailMapper emailMapper;
 
     @Override
-    public List<BsEmail> getAllEmails() {
+    public PageInfo<BsEmail> getAllEmails(int pageNum) {
+        PageHelper.startPage(pageNum, 5);
         List<BsEmail> bsEmails = emailMapper.selectByExample(null);
-        System.out.println("bsEmails = " + bsEmails);
-        return bsEmails;
+        PageInfo<BsEmail> pageInfo = new PageInfo<>(bsEmails);
+        return pageInfo;
     }
 
     @Override
     public BsEmail selectById(Integer id) {
-        BsEmail bsEmail = emailMapper.selectByPrimaryKey(id);
-        System.out.println("bsEmail = " + bsEmail);
-        return bsEmail;
+
+        return emailMapper.selectByPrimaryKey(id);
     }
 }

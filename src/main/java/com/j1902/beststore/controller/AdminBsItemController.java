@@ -43,10 +43,9 @@ public class AdminBsItemController {
 
     @RequestMapping("/addItem.back")
     public String addItem(Map<String,Object> map, BsItem item, @RequestParam(value = "file") MultipartFile file, HttpServletRequest request) {
-        System.out.println("item = " + item);
-
         if (file.isEmpty()) {
             System.out.println("文件为空空");
+            return "admin/admin-add-item";
         }
         String fileName = file.getOriginalFilename();  // 文件名
         String suffixName = fileName.substring(fileName.lastIndexOf("."));  // 后缀名
@@ -62,7 +61,6 @@ public class AdminBsItemController {
             e.printStackTrace();
         }
         String filename = "/temp-rainy/" + fileName;
-        System.out.println("filename = " + filename);
 
         item.setImage(filename);
         item.setSalesVolume(0);

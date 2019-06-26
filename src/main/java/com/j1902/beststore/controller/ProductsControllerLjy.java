@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.j1902.beststore.pojo.BsItem;
 import com.j1902.beststore.service.ItemServiceLjy;
+import net.sf.jsqlparser.statement.select.Fetch;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +27,13 @@ public class ProductsControllerLjy {
         List<BsItem> bsItems = itemService.selectAll();
         PageInfo info = new PageInfo(bsItems,9);
         List<BsItem> b = info.getList();
+
+        List<BsItem> a = new ArrayList();
+
+        a.add(b.get(0));
+        a.add(b.get(2));
+        a.add(b.get(3));
+        a.add(b.get(4));
         System.out.println("bsItems = " + bsItems);
         System.out.println("info = " + info);
 
@@ -37,6 +45,7 @@ public class ProductsControllerLjy {
         map.put("INFO",info);
         map.put("BSITEMS", b);
         map.put("LIST",list);
+        map.put("A",a);
         return "products";
     }
 
@@ -59,6 +68,14 @@ public class ProductsControllerLjy {
 
         PageInfo info = new PageInfo(bsItems,9);
         List<BsItem> b = info.getList();
+
+        List<BsItem> a = new ArrayList();
+
+        a.add(b.get(0));
+        a.add(b.get(2));
+        a.add(b.get(3));
+        a.add(b.get(4));
+
         System.out.println("bsItems = " + bsItems);
         System.out.println("info = " + info);
 
@@ -72,6 +89,7 @@ public class ProductsControllerLjy {
         map.put("suitablePeople",suitablePeople);
         map.put("type",type);
         map.put("LIST",list);
+        map.put("A",a);
 //        session.setAttribute("BSITEMS",bsItems);
         return "products";
     }
