@@ -22,9 +22,9 @@ public class ProductsControllerLjy {
 
     @RequestMapping("/toProducts.html")
     public String toForgotPassword( Map<String, Object> map) {
-        PageHelper.startPage(1,6);
+        PageHelper.startPage(1,9);
         List<BsItem> bsItems = itemService.selectAll();
-        PageInfo info = new PageInfo(bsItems,6);
+        PageInfo info = new PageInfo(bsItems,9);
         List<BsItem> b = info.getList();
         System.out.println("bsItems = " + bsItems);
         System.out.println("info = " + info);

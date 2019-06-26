@@ -42,4 +42,14 @@ public class BsEmail {
     public void setContent(String content) {
         this.content = content == null ? null : content.trim();
     }
+
+    @Override
+    public String toString() {
+        return "BsEmail{" +
+                "id=" + id +
+                ", userEmail='" + userEmail + '\'' +
+                ", createTime=" + createTime +
+                ", content='" + content + '\'' +
+                '}';
+    }
 }

@@ -23,6 +23,8 @@ spring:
     testOnReturn: false
     filters: stat,wall,log4j
     logSlowSql: true
+
+
 #  redis:
 #    database: 0
 #    host: 47.101.209.27
@@ -36,8 +38,12 @@ spring:
 #        min-idle: 1 #\u6700\u5C0F\u7A7A\u95F2\u8FDE\u63A5
 mybatis:
   mapper-locations: "classpath:mapper/*Mapper.xml"
+
 pagehelper:
-  helper-dialect: mysql
+  helperDialect: mysql
   reasonable: true
-  support-methods-arguments: true
+  supportMethodsArguments: true
   params: count=countSql
+
+
+
