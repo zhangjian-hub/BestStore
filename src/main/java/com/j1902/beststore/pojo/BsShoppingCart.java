@@ -40,4 +40,14 @@ public class BsShoppingCart {
     public void setNumber(Integer number) {
         this.number = number;
     }
+
+    @Override
+    public String toString() {
+        return "BsShoppingCart{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", itemId=" + itemId +
+                ", number=" + number +
+                '}';
+    }
 }
