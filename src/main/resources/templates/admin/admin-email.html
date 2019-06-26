@@ -79,10 +79,6 @@
         <div class="am-fl am-cf">
           <div class="am-btn-toolbar am-fl">
             <div class="am-btn-group am-btn-group-xs">
-              <button type="button" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增</button>
-              <button type="button" class="am-btn am-btn-default"><span class="am-icon-save"></span> 保存</button>
-              <button type="button" class="am-btn am-btn-default"><span class="am-icon-archive"></span> 审核</button>
-              <button type="button" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span> 删除</button>
             </div>
           </div>
         </div>
@@ -123,8 +119,6 @@
               <td>
                 <div class="am-btn-toolbar">
                   <div class="am-btn-group am-btn-group-xs">
-                    <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-                    <button class="am-btn am-btn-default am-btn-xs"><span class="am-icon-copy"></span> 复制</button>
                     <button class="am-btn am-btn-default am-btn-xs am-text-danger"><span class="am-icon-trash-o"></span> 删除</button>
                   </div>
                 </div>
@@ -139,16 +133,6 @@
       <li><a th:href="@{'toAdminEmail.back?pageNum=' + ${ALL_EMAILS.getPageNum() - 1}}">上一页</a></li>
       <li th:each="index : ${ALL_EMAILS.getNavigatepageNums()}" th:class="${ALL_EMAILS.getPageNum()== index}?'active' : ''" ><a th:href="@{'toAdminEmail.back?pageNum=' + ${index}}" th:text="${index}" >1</a></li>
       <li ><a th:href="@{'toAdminEmail.back?pageNum=' + ${ALL_EMAILS.getPageNum() + 1}}">下一页</a></li>
-
-      <!--<li th:each="index : ${ALL_EMAILS.getNavigatepageNums()}"><a th:href="@{'toAdminEmail.back?pageNum=' + ${index+1}}" th:text="${index}" >1</a></li>-->
-        <!--<li th:if="${ALL_EMAILS.getPageNum()-3 >=1}" ><a th:href="@{'toAdminEmail.back?pageNum=' + ${ALL_EMAILS.getPageNum()-3}}" th:text="${ALL_EMAILS.getPageNum() -3}" >1</a></li>-->
-        <!--<li th:if="${ALL_EMAILS.getPageNum()-2 >=1}" ><a th:href="@{'toAdminEmail.back?pageNum=' + ${ALL_EMAILS.getPageNum()-2}}" th:text="${ALL_EMAILS.getPageNum() -2}" >1</a></li>-->
-        <!--<li th:if="${ALL_EMAILS.getPageNum()-1 >=1}" ><a th:href="@{'toAdminEmail.back?pageNum=' + ${ALL_EMAILS.getPageNum()-1}}" th:text="${ALL_EMAILS.getPageNum() -1}" >1</a></li>-->
-        <!--<li class="active"><a href="#" th:text="${ALL_EMAILS.getPageNum()}" >1</a></li>-->
-        <!--<li th:if="${ALL_EMAILS.getPageNum()+1 <=ALL_EMAILS.getPages()}" ><a th:href="@{'toAdminEmail.back?pageNum=' + ${ALL_EMAILS.getPageNum()+1}}" th:text="${ALL_EMAILS.getPageNum() +1}" >1</a></li>-->
-        <!--<li th:if="${ALL_EMAILS.getPageNum()+2 <=ALL_EMAILS.getPages()}" ><a th:href="@{'toAdminEmail.back?pageNum=' + ${ALL_EMAILS.getPageNum()+2}}" th:text="${ALL_EMAILS.getPageNum() +2}" >1</a></li>-->
-        <!--<li th:if="${ALL_EMAILS.getPageNum()+3 <=ALL_EMAILS.getPages()}" ><a th:href="@{'toAdminEmail.back?pageNum=' + ${ALL_EMAILS.getPageNum()+3}}" th:text="${ALL_EMAILS.getPageNum() +3}" >1</a></li>-->
-        <!--<li th:class="${ALL_EMAILS.getPageNum()==ALL_EMAILS.getPages()}?'disabled' : ''" ><a th:href="@{'toAdminEmail.back?pageNum=' + ${ALL_EMAILS.getPageNum() + 1}}">下一页</a></li>-->
     </ul>
   </div>
 </div>
