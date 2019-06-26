@@ -24,7 +24,6 @@ public class AddServiceImpl implements AddService {
 
     @Override
     public BsShoppingCart selectShopping( BsShoppingCart bsShoppingCart) {
-        System.out.println("bsShoppingCart = " + bsShoppingCart);
         BsShoppingCartExample bsShoppingCartExample =new BsShoppingCartExample();
         BsShoppingCartExample.Criteria or = bsShoppingCartExample.or();
         or.andItemIdEqualTo(bsShoppingCart.getItemId());

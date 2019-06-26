@@ -75,7 +75,9 @@
   </sql>
   <sql id="Base_Column_List">
     id, name, suitable_people, type, size, color, price, inventory, image, sales_volume, 
+
     description, supplier
+
   </sql>
   <select id="selectByExample" parameterType="com.j1902.beststore.pojo.BsItemExample" resultMap="BaseResultMap">
     select
@@ -320,4 +322,14 @@
       supplier = #{supplier,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectAllGroupByName" parameterType="com.j1902.beststore.pojo.BsItem" resultMap="BaseResultMap">
+select * from bs_item group by `name` HAVING suitable_people= #{suitablePeople,jdbcType=VARCHAR} and `type`= #{type,jdbcType=VARCHAR}
+</select>
+
+  <select id="selectAll" parameterType="com.j1902.beststore.pojo.BsItem" resultMap="BaseResultMap">
+    select
+    *
+    from bs_item
+</select>
 </mapper>

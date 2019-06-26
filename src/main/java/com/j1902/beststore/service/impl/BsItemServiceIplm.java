@@ -19,7 +19,6 @@ public class BsItemServiceIplm implements BsItemService {
         BsItemExample.Criteria or = bsItemExample.or();
         or.andNameEqualTo(bsItem.getName());
         List<BsItem> bsItems = bsItemMapper.selectByExample(bsItemExample);
-        System.out.println("bsItems = " + bsItems);
         if (bsItems==null||bsItems.size()==0){
             return null;
         }

@@ -25,23 +25,29 @@ public class BsUserServiceImpl implements BsUserService {
         if (users == null || users.size() == 0) {
             return false;
         }
-        return users.get(0).getPassword().equals(bsUser.getPassword());
+        return users.get(0).getPassword().equals(MD5Util.encrypt(MD5Util.encrypt(bsUser.getPassword())));
     }
 
     @Override
-    public boolean isExistBsUser(BsUser bsUser) {
+    public boolean register(BsUser bsUser) {
+        try {
+            bsUser.setPassword(MD5Util.encrypt(MD5Util.encrypt(bsUser.getPassword())));
+            bsUserMapper.insert(bsUser);
+            return true ;
+        }catch (Exception e){
+            return false;
+        }
+
+    }
+
+    @Override
+    public boolean verity(String email) {
         BsUserExample userExample = new BsUserExample();
         BsUserExample.Criteria criteria1 = userExample.or();
-        criteria1.andEmailEqualTo(bsUser.getEmail());
-        BsUserExample.Criteria criteria2 = userExample.or();
-        criteria2.andPhoneEqualTo(bsUser.getPhone());
+        criteria1.andEmailEqualTo(email);
         List<BsUser> bsUsers = bsUserMapper.selectByExample(userExample);
         return bsUsers != null && bsUsers.size() > 0;
     }
 
-    @Override
-    public void addBsUser(BsUser bsUser) {
-        bsUser.setPassword(MD5Util.encrypt(MD5Util.encrypt(bsUser.getPassword())));
-        bsUserMapper.insert(bsUser);
-    }
+
 }

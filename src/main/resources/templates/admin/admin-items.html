@@ -1,0 +1,227 @@
+<!doctype html>
+<html class="no-js" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Amaze后台管理系统模板HTML 表格页面 - cssmoban</title>
+    <meta name="description" content="这是一个 table 页面">
+    <meta name="keywords" content="table">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="icon" type="image/png" href="../../static/assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="../../static/assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="stylesheet" href="../../static/assets/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="../../static/assets/css/admin.css">
+    <style>
+        td {
+            align-content: center;
+        }
+    </style>
+</head>
+<body>
+
+<header class="am-topbar admin-header">
+    <div class="am-topbar-brand">
+        <strong>Best Store</strong>
+        <small>后台管理</small>
+    </div>
+
+    <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only"
+            data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span
+            class="am-icon-bars"></span></button>
+
+    <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+
+        <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
+            <li class="am-dropdown" data-am-dropdown>
+                <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
+                    <span class="am-icon-users"></span> 管理员 <span class="am-icon-caret-down"></span>
+                </a>
+                <ul class="am-dropdown-content">
+                    <li><a href="toAdminUser.back"><span class="am-icon-user"></span> 资料</a></li>
+                    <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</header>
+
+<div class="am-cf admin-main">
+    <!-- sidebar start -->
+    <div class="admin-sidebar">
+        <ul class="am-list admin-sidebar-list">
+            <li><a href="/toAdminIndex.back"><span class="am-icon-home"></span> 首页</a></li>
+            <li><a href="toAdminItems.back"><span class="am-icon-table"></span> 商品管理</a></li>
+            <li><a href="toOrderForm.back"><span class="am-icon-pencil-square-o"></span> 订单管理</a></li>
+            <li><a href="toAdminEmail.back"><span class="am-icon-envelope-o"></span> 邮件管理</a></li>
+            <li><a href="#"><span class="am-icon-sign-out"></span> 注销</a></li>
+        </ul>
+
+        <div class="am-panel am-panel-default admin-sidebar-panel">
+            <div class="am-panel-bd">
+                <p><span class="am-icon-bookmark"></span> 公告</p>
+                <p>时光静好，与君语；细水流年，与君同。—— Amaze</p>
+            </div>
+        </div>
+
+        <div class="am-panel am-panel-default admin-sidebar-panel">
+            <div class="am-panel-bd">
+                <p><span class="am-icon-tag"></span> wiki</p>
+                <p>Welcome to the Amaze</p>
+            </div>
+        </div>
+    </div>
+    <!-- sidebar end -->
+
+    <!-- content start -->
+    <div class="admin-content">
+
+        <div class="am-cf am-padding">
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">商品管理</strong> /
+                <small>Table</small>
+            </div>
+        </div>
+
+        <div class="am-g">
+            <div class="am-u-md-6 am-cf">
+                <div class="am-fl am-cf">
+                    <div class="am-btn-toolbar am-fl">
+                        <div class="am-btn-group am-btn-group-xs">
+                            <button type="button" class="am-btn am-btn-default" id="toAdminAddItem"><span class="am-icon-plus"></span> 新增
+                            </button>
+                        </div>
+
+                        <div class="am-form-group am-margin-left am-fl">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="am-u-md-3 am-cf">
+                <div class="am-fr">
+                    <div class="am-input-group am-input-group-sm">
+                        <input type="text" class="am-form-field">
+                        <span class="am-input-group-btn">
+                  <button class="am-btn am-btn-default" type="button">搜索</button>
+                </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="am-g">
+            <div class="am-u-sm-12">
+                <form id="form" action="/updateItem.back" class="am-form" method="get">
+                    <table class="am-table am-table-striped am-table-hover table-main">
+                        <thead>
+                        <tr>
+                            <th class="table-check"><input type="checkbox"/></th>
+                            <th class="table-id">ID</th>
+                            <th class="table-title">name</th>
+                            <th class="table-title">suitable_eople</th>
+                            <th class="table-title">type</th>
+                            <th class="table-title">price</th>
+                            <th class="table-title">sezi</th>
+                            <th class="table-title">color</th>
+                            <th class="table-title">description</th>
+                            <th class="table-title">inventory</th>
+                            <th class="table-title">supplier</th>
+                            <th class="table-type">sales_volume</th>
+                            <th class="table-type">image</th>
+                            <th class="table-type">operation</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="item : ${PAGE_INFO.getList()}">
+                            <td><input type="checkbox" th:value="${item.id}" name="ids"></td>
+                            <td th:text="${itemStat.index+1}"></td>
+                            <td hidden="hidden"><input type="text" th:value="${item.id}" th:name="'items['+${itemStat.index}+'].id'"></td>
+                            <td><input type="text" th:value="${item.name}" th:name="'items['+${itemStat.index}+'].name'" autocomplete="off"></td>
+                            <td><input type="text" th:value="${item.suitablePeople}" th:name="'items['+${itemStat.index}+'].suitablePeople'" autocomplete="off"></td>
+                            <td><input type="text" th:value="${item.type}" th:name="'items['+${itemStat.index}+'].type'" autocomplete="off"></td>
+                            <td><input type="text" th:value="${item.price}" th:name="'items['+${itemStat.index}+'].price'" autocomplete="off"></td>
+                            <td><input type="text" th:value="${item.size}" th:name="'items['+${itemStat.index}+'].size'" autocomplete="off"></td>
+                            <td><input type="text" th:value="${item.color}" th:name="'items['+${itemStat.index}+'].color'" autocomplete="off"></td>
+                            <td><input type="text" th:value="${item.description}" th:name="'items['+${itemStat.index}+'].description'" autocomplete="off"></td>
+                            <td><input type="text" th:value="${item.inventory}" th:name="'items['+${itemStat.index}+'].inventory'" autocomplete="off"></td>
+                            <td><input type="text" th:value="${item.supplier}" th:name="'items['+${itemStat.index}+'].supplier'" autocomplete="off"></td>
+                            <td><input type="text" th:value="${item.salesVolume}" th:name="'items['+${itemStat.index}+'].salesVolume'" autocomplete="off"></td>
+                            <td><img th:src="${item.image}" width="40px" height="50px"></img></td>
+                            <td>
+                                <div class="am-btn-toolbar">
+                                    <div class="am-btn-group am-btn-group-xs">
+                                        <a th:name="${item.id}" th:href="'deleteItem.back?id='+${item.id}" class="am-btn am-btn-default am-btn-xs am-text-danger"><span
+                                                class="am-icon-trash-o"></span> 删除
+                                        </a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="am-btn-group am-btn-group-xs">
+                        <button type="submit" class="am-btn am-btn-default am-btn-xs am-text-secondary">
+                            <span class="am-icon-pencil-square-o"></span> 修改
+                        </button>
+                    </div>
+                    <div class="am-cf">
+                        <span>There are [[${PAGE_INFO.getSize()}]] pieces of data </span>
+                        <div class="am-fr">
+                            <ul class="am-pagination" >
+                                <li><a th:href="@{'toAdminItems.back?pageNum=' + ${PAGE_INFO.getPageNum() - 1}}">上一页</a></li>
+                                <li th:each="index : ${PAGE_INFO.getNavigatepageNums()}" th:class="${PAGE_INFO.getPageNum() == 1}? 'active' : ''" ><a th:href="@{'toAdminItems.back?pageNum=' + ${index}}" th:text="${index}" >1</a></li>
+                                <li ><a th:href="@{'toAdminItems.back?pageNum=' + ${PAGE_INFO.getPageNum() + 1}}">下一页</a></li>
+                                <!--<li th:class="${PAGE_INFO.getPageNum()==1}?'disabled' : ''"><a th:href="@{'toAdminItems.back?pageNum=' + ${PAGE_INFO.getPageNum() - 1}}">上一页</a></li>-->
+                                <!--<li th:if="${PAGE_INFO.getPageNum()-3 >=1}" ><a th:href="@{'toAdminItems.back?pageNum=' + ${PAGE_INFO.getPageNum()-3}}" th:text="${PAGE_INFO.getPageNum() -3}" >1</a></li>-->
+                                <!--<li th:if="${PAGE_INFO.getPageNum()-2 >=1}" ><a th:href="@{'toAdminItems.back?pageNum=' + ${PAGE_INFO.getPageNum()-2}}" th:text="${PAGE_INFO.getPageNum() -2}" >1</a></li>-->
+                                <!--<li th:if="${PAGE_INFO.getPageNum()-1 >=1}" ><a th:href="@{'toAdminItems.back?pageNum=' + ${PAGE_INFO.getPageNum()-1}}" th:text="${PAGE_INFO.getPageNum() -1}" >1</a></li>-->
+                                <!--<li class="active"><a href="#" th:text="${PAGE_INFO.getPageNum()}" >1</a></li>-->
+                                <!--<li th:if="${PAGE_INFO.getPageNum()+1 <=PAGE_INFO.getPages()}" ><a th:href="@{'toAdminItems.back?pageNum=' + ${PAGE_INFO.getPageNum()+1}}" th:text="${PAGE_INFO.getPageNum() +1}" >1</a></li>-->
+                                <!--<li th:if="${PAGE_INFO.getPageNum()+2 <=PAGE_INFO.getPages()}" ><a th:href="@{'toAdminItems.back?pageNum=' + ${PAGE_INFO.getPageNum()+2}}" th:text="${PAGE_INFO.getPageNum() +2}" >1</a></li>-->
+                                <!--<li th:if="${PAGE_INFO.getPageNum()+3 <=PAGE_INFO.getPages()}" ><a th:href="@{'toAdminItems.back?pageNum=' + ${PAGE_INFO.getPageNum()+3}}" th:text="${PAGE_INFO.getPageNum() +3}" >1</a></li>-->
+                                <!--<li th:class="${PAGE_INFO.getPageNum()==PAGE_INFO.getPages()}?'disabled' : ''" ><a th:href="@{'toAdminItems.back?pageNum=' + ${PAGE_INFO.getPageNum() + 1}}">下一页</a></li>-->
+                            </ul>
+                        </div>
+                    </div>
+                    <hr/>
+                    <p>注：.....</p>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <!-- content end -->
+</div>
+
+<footer>
+    <hr>
+    <p class="am-padding-left">© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
+</footer>
+
+<script src="../../static/js/jquery.min.js"></script>
+<script>
+    $("#toAdminAddItem").click(function () {
+        window.location="toAdminAddItem.back"
+    })
+</script>
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="../../static/assets/js/polyfill/rem.min.js"></script>
+<script src="../../static/assets/js/polyfill/respond.min.js"></script>
+<script src="../../static/assets/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="../../static/assets/js/jquery.min.js"></script>
+<script src="../../static/assets/js/amazeui.min.js"></script>
+<!--<![endif]-->
+<script src="../../static/assets/js/app.js"></script>
+<script src="../../static/assets/js/jquery.serializejson.min.js"></script>
+<script>
+
+</script>
+</body>
+</html>
