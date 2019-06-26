@@ -465,7 +465,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <h4><a href="/toSingle"><span th:text="${bs.getName()}"></span></a></h4>
                         <p>Vel illum qui dolorem.</p>
                         <div class="simpleCart_shelfItem products-right-grid1-add-cart">
-                            <p><i th:text="${bs.getPrice()*1.5}+'$'"></i> <span class="item_price" th:text="${bs.getPrice()}"></span><a class="item_add" href="#">add to cart </a></p>
+                            <p><i th:text="${bs.getPrice()*1.5}+'$'"></i> <span class="item_price" th:text="${bs.getPrice()}">
+                                <a id="add" class="item_add" href="javascript:;">add to cart</a>
+                                    <script>
+                                        $("#add").click(function () {
+                                            $.post("/toAddCart", {id: 2}, function (data) {
+                                                if (data.result) {
+                                                    swal({
+                                                        title: "Addition Succeed",
+                                                        type: "success",
+                                                        confirmButtonText: "ok",
+                                                        closeOnConfirm: false
+                                                    },function () {
+                                                        window.location.reload()
+                                                    });
+                                                } else {
+                                                    swal("Addition Failed", "Please Login in", 'error');
+                                                }
+                                            })
+                                        })
+                                    </script>
                         </div>
                     </div>
                     </div>
