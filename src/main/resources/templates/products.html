@@ -56,10 +56,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </ul>
             </div>
             <div class="header-grid-right animated wow slideInRight" data-wow-delay=".5s">
-                <ul class="social-icons">
-                    <li><a href="#" ><img src="../static/images/jm.jpg" style="width:33px; height:33px; border-radius:50%;"></a></li>
-                    <li><a th:href="@{/toLogin.html}" th:if="${session== null?'你还没有登录，请先登录':'/toLogin.html'}"></a></li>
-                </ul>
+
+                    <a href="#" ><img src="../static/images/jm.jpg" alt=" " class="img-responsive" style="width:33px; height:33px; border-radius:50%;"></a>
+<!--                    <li><a th:href="@{/toLogin.html}" th:if="${session== null?'你还没有登录，请先登录':'/toLogin.html'}"></a></li>-->
+
 
             </div>
             <div class="clearfix"></div>
@@ -405,7 +405,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <h4><a href="single.html"><span th:text="${bs.getName()}"></span></a></h4>
                         <p>Vel illum qui dolorem.</p>
                         <div class="simpleCart_shelfItem products-right-grid1-add-cart">
-                            <p><i th:text="${bs.getPrice()*1.5}+'$'"></i> <span class="item_price" th:text="${bs.getPrice()}"></span><a class="item_add" href="#">add to cart </a></p>
+                            <p><i th:text="${bs.getPrice()*1.5}+'$'"></i> <span class="item_price" th:text="${bs.getPrice()}+'$'"></span><a class="item_add" href="#">add to cart </a></p>
                         </div>
                     </div>
                     </div>
