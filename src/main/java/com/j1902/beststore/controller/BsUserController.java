@@ -26,12 +26,17 @@ public class BsUserController {
 
     @RequestMapping("/toLogin")
     public String toLogin(HttpSession session,HttpServletRequest req) {
+        return "login";
+    }
+    @RequestMapping("/tologin")
+    public String tologin(HttpSession session,HttpServletRequest req) {
         if(session.getAttribute("USER_INFO")!=null){
-         req.setAttribute("respinfo","true");
-            return "index";
+            req.setAttribute("respinfo","true");
+            return "redirect:toIndex";
         }
         return "login";
     }
+
 
     @RequestMapping("/toRegister")
     public String toRegister() {
