@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -31,6 +30,7 @@ public class BsShoppingCartController {
     @RequestMapping("/toCheckout")
     public String toCheckout(HttpServletRequest request, Integer pageNum, Map<String, Object> map) {
         BsUser user_info = (BsUser) request.getSession().getAttribute("USER_INFO");
+        System.out.println("user_info = " + user_info);
         if(user_info ==null){
             return "redirect:/toLogin";
         }
