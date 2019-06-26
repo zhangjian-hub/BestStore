@@ -54,11 +54,6 @@ public class BsUserController {
         return "index";
     }
 
-    @RequestMapping("/toCheckout")
-    public String toCheckout() {
-        return "checkout";
-    }
-
     @RequestMapping("/login")
     public String login(BsUser bsUser, HttpServletRequest req, HttpServletResponse resp, HttpSession session) throws UnsupportedEncodingException {
         String remember = req.getParameter("remember");
