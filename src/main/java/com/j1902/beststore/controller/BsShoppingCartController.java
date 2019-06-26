@@ -36,7 +36,7 @@ public class BsShoppingCartController {
         }
 //        List<BsShoppingCart> bsShoppingCart = bsItemService.getBsShoppingCart(id);
 //        System.out.println("bsShoppingCart = " + bsShoppingCart);
-        PageInfo<com.j1902.beststore.pojo.BsShoppingCart> pageInfo = bsItemService.pageBsShoppingCart(id, pageNum, 3);
+        PageInfo<BsShoppingCart> pageInfo = bsItemService.pageBsShoppingCart(id, pageNum, 3);
         int[] navigatepageNums = pageInfo.getNavigatepageNums();
         for (int navigatepageNum : navigatepageNums) {
         }
