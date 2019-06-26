@@ -55,15 +55,6 @@ public class BsUserController {
     @RequestMapping("/login")
     public String login(BsUser bsUser, HttpServletRequest req, HttpServletResponse resp, HttpSession session) throws UnsupportedEncodingException {
         String remember = req.getParameter("remember");
-//        Cookie[] cookies = req.getCookies();
-//        if (cookies != null && cookies.length > 0) {
-//            for (Cookie cookie : cookies) {
-//                if ("loginInfo".equals(cookie.getName())) {
-//                    String decode = URLDecoder.decode(cookie.getValue(), "UTF-8");
-//                    bsUser = JsonUtils.jsonToPojo(decode, BsUser.class);
-//                }
-//            }
-//        }
         if (bsUserService.login(bsUser,req)!=null ) {
             if ("true".equals(remember)) {
                 String s = JsonUtils.objectToJson(bsUserService.login(bsUser,req));

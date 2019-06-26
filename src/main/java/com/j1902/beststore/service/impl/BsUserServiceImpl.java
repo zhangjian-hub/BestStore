@@ -67,7 +67,7 @@ public class BsUserServiceImpl implements BsUserService {
     public boolean verityPhone(String phone) {
         BsUserExample userExample = new BsUserExample();
         BsUserExample.Criteria criteria1 = userExample.or();
-        criteria1.andEmailEqualTo(phone);
+        criteria1.andPhoneEqualTo(phone);
         List<BsUser> bsUsers = bsUserMapper.selectByExample(userExample);
         System.out.println(bsUsers != null && bsUsers.size() > 0);
         return bsUsers != null && bsUsers.size() > 0;
