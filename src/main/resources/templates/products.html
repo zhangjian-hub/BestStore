@@ -106,10 +106,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                 <h6>Women's Wear</h6>
                                                 <li><a href="/toProducts?suitablePeople=women&type=jacket&pageNum=1">jacket</a>
                                                 </li>
-                                                <li><a href="/toProducts?suitablePeople=women&type=jacket&pageNum=1">trousers</a>
+                                                <li><a href="/toProducts?suitablePeople=women&type=trousers&pageNum=1">trousers</a>
                                                 </li>
-                                                <li><a href="/toProducts?suitablePeople=women&type=jacket&pageNum=1">shoe</a></li>
-                                                <li><a href="/toProducts?suitablePeople=women&type=jacket&pageNum=1">ornament</a>
+                                                <li><a href="/toProducts?suitablePeople=women&type=shoe&pageNum=1">shoe</a></li>
+                                                <li><a href="/toProducts?suitablePeople=women&type=ornament&pageNum=1">ornament</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -117,10 +117,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <ul class="multi-column-dropdown">
                                                 <h6>Kid's Wear</h6>
                                                 <li><a href="/toProducts?suitablePeople=kid&type=jacket&pageNum=1">jacket</a></li>
-                                                <li><a href="/toProducts?suitablePeople=kid&type=jacket&pageNum=1">trousers</a>
+                                                <li><a href="/toProducts?suitablePeople=kid&type=trousers&pageNum=1">trousers</a>
                                                 </li>
-                                                <li><a href="/toProducts?suitablePeople=kid&type=jacket&pageNum=1">shoe</a></li>
-                                                <li><a href="/toProducts?suitablePeople=kid&type=jacket&pageNum=1">ornament</a>
+                                                <li><a href="/toProducts?suitablePeople=kid&type=shoe&pageNum=1">shoe</a></li>
+                                                <li><a href="/toProducts?suitablePeople=kid&type=ornament&pageNum=1">ornament</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -185,33 +185,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="products">
     <div class="container">
         <div class="col-md-4 products-left">
-            <div class="filter-price animated wow slideInUp" data-wow-delay=".5s">
-                <h3>Filter By Price</h3>
-                <ul class="dropdown-menu1">
-                    <li><a href="">
-                        <div id="slider-range"></div>
-                        <input type="text" id="amount" style="border: 0"/>
-                    </a></li>
-                </ul>
-                <script type='text/javascript'>//<![CDATA[
-                $(window).load(function () {
-                    $("#slider-range").slider({
-                        range: true,
-                        min: 0,
-                        max: 100000,
-                        values: [20000, 80000],
-                        slide: function (event, ui) {
-                            $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
-                        }
-                    });
-                    $("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
+<!--            <div class="filter-price animated wow slideInUp" data-wow-delay=".5s">-->
+<!--                <h3>Filter By Price</h3>-->
+<!--                <ul class="dropdown-menu1">-->
+<!--                    <li><a href="">-->
+<!--                        <div id="slider-range"></div>-->
+<!--                        <input type="text" id="amount" style="border: 0"/>-->
+<!--                    </a></li>-->
+<!--                </ul>-->
+<!--                <script type='text/javascript'>//<![CDATA[-->
+<!--                $(window).load(function () {-->
+<!--                    $("#slider-range").slider({-->
+<!--                        range: true,-->
+<!--                        min: 0,-->
+<!--                        max: 100000,-->
+<!--                        values: [20000, 80000],-->
+<!--                        slide: function (event, ui) {-->
+<!--                            $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);-->
+<!--                        }-->
+<!--                    });-->
+<!--                    $("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));-->
 
 
-                });//]]>
-                </script>
-                <script type="text/javascript" src="../static/js/jquery-ui.min.js"></script>
-                <!---->
-            </div>
+<!--                });//]]>-->
+<!--                </script>-->
+<!--                <script type="text/javascript" src="../static/js/jquery-ui.min.js"></script>-->
+<!--                &lt;!&ndash;&ndash;&gt;-->
+<!--            </div>-->
             <div class="new-products animated wow slideInUp" data-wow-delay=".5s">
                 <h3>New Products</h3>
                 <div class="new-products-grids">
@@ -416,25 +416,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
         <div class="col-md-8 products-right">
             <div class="products-right-grid">
-                <div class="products-right-grids animated wow slideInRight" data-wow-delay=".5s">
-                    <div class="sorting">
-                        <select id="country" onchange="change_country(this.value)" class="frm-field required sect">
-                            <option value="null">Default sorting</option>
-                            <option value="null">Sort by popularity</option>
-                            <option value="null">Sort by average rating</option>
-                            <option value="null">Sort by price</option>
-                        </select>
-                    </div>
-                    <div class="sorting-left">
-                        <select id="country1" onchange="change_country(this.value)" class="frm-field required sect">
-                            <option value="null">Item on page 9</option>
-                            <option value="null">Item on page 18</option>
-                            <option value="null">Item on page 32</option>
-                            <option value="null">All</option>
-                        </select>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
+
                 <div class="products-right-grids-position animated wow slideInRight" data-wow-delay=".5s">
                     <img src="../static/images/18.jpg" alt=" " class="img-responsive"/>
                     <div class="products-right-grids-position1">
@@ -454,9 +436,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="new-collections-grid1 products-right-grid1 animated wow slideInUp" data-wow-delay=".5s">
 
                         <div class="new-collections-grid1-image">
-                            <a href="single.html" class="product-image"><img src="images/19.jpg" alt=" " class="img-responsive"></a>
+                            <a href="single.html" class="product-image"><img th:src="${bs.getImage()}" alt=" " class="img-responsive"></a>
                             <div class="new-collections-grid1-image-pos products-right-grids-pos">
-                                <a href="single.html">Quick View</a>
+                                <a th:href="@{/toSingle(id=${bs.getId()},name=${bs.getName()},size=${bs.getSize()},color=${bs.getColor()})}">Quick View</a>
+
                             </div>
                             <div class="new-collections-grid1-right products-right-grids-pos-right">
                                 <div class="rating">
@@ -548,40 +531,40 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".7s">
                 <h3>Flickr Posts</h3>
                 <div class="footer-grid-left">
-                    <a href="single.html"><img src="../static/images/13.jpg" alt=" " class="img-responsive"/></a>
+                    <a href="javascript:;"><img src="../static/images/13.jpg" alt=" " class="img-responsive"/></a>
                 </div>
                 <div class="footer-grid-left">
-                    <a href="single.html"><img src="../static/images/14.jpg" alt=" " class="img-responsive"/></a>
+                    <a href="javascript:;"><img src="../static/images/14.jpg" alt=" " class="img-responsive"/></a>
                 </div>
                 <div class="footer-grid-left">
-                    <a href="single.html"><img src="../static/images/15.jpg" alt=" " class="img-responsive"/></a>
+                    <a href="javascript:;"><img src="../static/images/15.jpg" alt=" " class="img-responsive"/></a>
                 </div>
                 <div class="footer-grid-left">
-                    <a href="single.html"><img src="../static/images/16.jpg" alt=" " class="img-responsive"/></a>
+                    <a href="javascript:;"><img src="../static/images/16.jpg" alt=" " class="img-responsive"/></a>
                 </div>
                 <div class="footer-grid-left">
-                    <a href="single.html"><img src="../static/images/13.jpg" alt=" " class="img-responsive"/></a>
+                    <a href="javascript:;"><img src="../static/images/13.jpg" alt=" " class="img-responsive"/></a>
                 </div>
                 <div class="footer-grid-left">
-                    <a href="single.html"><img src="../static/images/14.jpg" alt=" " class="img-responsive"/></a>
+                    <a href="javascript:;"><img src="../static/images/14.jpg" alt=" " class="img-responsive"/></a>
                 </div>
                 <div class="footer-grid-left">
-                    <a href="single.html"><img src="../static/images/15.jpg" alt=" " class="img-responsive"/></a>
+                    <a href="javascript:;"><img src="../static/images/15.jpg" alt=" " class="img-responsive"/></a>
                 </div>
                 <div class="footer-grid-left">
-                    <a href="single.html"><img src="../static/images/16.jpg" alt=" " class="img-responsive"/></a>
+                    <a href="javascript:;"><img src="../static/images/16.jpg" alt=" " class="img-responsive"/></a>
                 </div>
                 <div class="footer-grid-left">
-                    <a href="single.html"><img src="../static/images/13.jpg" alt=" " class="img-responsive"/></a>
+                    <a href="javascript:;"><img src="../static/images/13.jpg" alt=" " class="img-responsive"/></a>
                 </div>
                 <div class="footer-grid-left">
-                    <a href="single.html"><img src="../static/images/14.jpg" alt=" " class="img-responsive"/></a>
+                    <a href="javascript:;"><img src="../static/images/14.jpg" alt=" " class="img-responsive"/></a>
                 </div>
                 <div class="footer-grid-left">
-                    <a href="single.html"><img src="../static/images/15.jpg" alt=" " class="img-responsive"/></a>
+                    <a href="javascript:;"><img src="../static/images/15.jpg" alt=" " class="img-responsive"/></a>
                 </div>
                 <div class="footer-grid-left">
-                    <a href="single.html"><img src="../static/images/16.jpg" alt=" " class="img-responsive"/></a>
+                    <a href="javascript:;"><img src="../static/images/16.jpg" alt=" " class="img-responsive"/></a>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -589,20 +572,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <h3>Blog Posts</h3>
                 <div class="footer-grid-sub-grids">
                     <div class="footer-grid-sub-grid-left">
-                        <a href="single.html"><img src="../static/images/9.jpg" alt=" " class="img-responsive"/></a>
+                        <a href="javascript:;"><img src="../static/images/9.jpg" alt=" " class="img-responsive"/></a>
                     </div>
                     <div class="footer-grid-sub-grid-right">
-                        <h4><a href="single.html">culpa qui officia deserunt</a></h4>
+                        <h4><a href="javascript:;">culpa qui officia deserunt</a></h4>
                         <p>Posted On 25/3/2016</p>
                     </div>
                     <div class="clearfix"></div>
                 </div>
                 <div class="footer-grid-sub-grids">
                     <div class="footer-grid-sub-grid-left">
-                        <a href="single.html"><img src="../static/images/10.jpg" alt=" " class="img-responsive"/></a>
+                        <a href="javascript:;"><img src="../static/images/10.jpg" alt=" " class="img-responsive"/></a>
                     </div>
                     <div class="footer-grid-sub-grid-right">
-                        <h4><a href="single.html">Quis autem vel eum iure</a></h4>
+                        <h4><a href="javascript:;">Quis autem vel eum iure</a></h4>
                         <p>Posted On 25/3/2016</p>
                     </div>
                     <div class="clearfix"></div>

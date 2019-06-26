@@ -1,0 +1,142 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Amaze后台管理系统模板HTML 表格页面 - cssmoban</title>
+  <meta name="description" content="这是一个 table 页面">
+  <meta name="keywords" content="table">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <link rel="icon" type="image/png" href="../../static/assets/i/favicon.png">
+  <link rel="apple-touch-icon-precomposed" href="../../static/assets/i/app-icon72x72@2x.png">
+  <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+  <link rel="stylesheet" href="../../static/assets/css/amazeui.min.css"/>
+  <link rel="stylesheet" href="../../static/assets/css/admin.css">
+</head>
+<body>
+
+<header class="am-topbar admin-header">
+  <div class="am-topbar-brand">
+    <strong>Best Store</strong> <small>后台管理</small>
+  </div>
+
+  <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+
+  <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+
+    <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
+      <li class="am-dropdown" data-am-dropdown>
+        <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
+          <span class="am-icon-users"></span> 管理员 <span class="am-icon-caret-down"></span>
+        </a>
+        <ul class="am-dropdown-content">
+          <li><a href="toAdminUser.back"><span class="am-icon-user"></span> 资料</a></li>
+          <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<div class="am-cf admin-main">
+  <!-- sidebar start -->
+  <div class="admin-sidebar">
+    <ul class="am-list admin-sidebar-list">
+      <li><a href="toAdminIndex.back"><span class="am-icon-home"></span> 首页</a></li>
+      <li><a href="toAdminItems.back"><span class="am-icon-table"></span> 商品管理</a></li>
+      <li><a href="toOrderForm.back"><span class="am-icon-pencil-square-o"></span> 订单管理</a></li>
+      <li><a href="toAdminEmail.back"><span class="am-icon-envelope-o"></span> 邮件管理</a></li>
+      <li><a href="#"><span class="am-icon-sign-out"></span> 注销</a></li>
+    </ul>
+
+    <div class="am-panel am-panel-default admin-sidebar-panel">
+      <div class="am-panel-bd">
+        <p><span class="am-icon-bookmark"></span> 公告</p>
+        <p>时光静好，与君语；细水流年，与君同。—— Amaze</p>
+      </div>
+    </div>
+
+    <div class="am-panel am-panel-default admin-sidebar-panel">
+      <div class="am-panel-bd">
+        <p><span class="am-icon-tag"></span> wiki</p>
+        <p>Welcome to the Amaze</p>
+      </div>
+    </div>
+  </div>
+  <!-- sidebar end -->
+
+  <!-- content start -->
+  <div class="admin-content">
+
+    <div class="am-cf am-padding">
+      <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">商品添加 / <small>Table</small></div>
+    </div>
+
+    <div class="am-g">
+      <div class="am-u-md-6 am-cf">
+        <div class="am-fl am-cf">
+          <div class="am-btn-toolbar am-fl">
+
+          </div>
+        </div>
+      </div>
+      <div class="am-u-md-3 am-cf">
+        <div class="am-fr">
+          <div class="am-input-group am-input-group-sm">
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="am-g">
+      <div class="am-u-sm-12">
+        <form id="addItemForm" method="post" action="addItem.back" class="am-form" enctype="multipart/form-data">
+          商品名：<input type="text" name="name">
+          类型：<input type="text" name="type">
+          适合人群：<input type="text" name="suitablePeople" required=" ">
+          颜色：<input type="text" name="color">
+          尺寸：<input type="text" name="size">
+          描述：<input type="text" name="description">
+          价格：<input type="text" name="price">
+          数量：<input type="text" name="inventory">
+          供货商：<input type="text" name="supplier">
+          图片：<input type="file" name="file">
+          <br>
+           <input type="submit" value="添加 " onclick="f()">
+           <button type="button">  取消</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+  <!-- content end -->
+</div>
+
+<footer>
+  <hr>
+</footer>
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="../../static/assets/js/polyfill/rem.min.js"></script>
+<script src="../../static/assets/js/polyfill/respond.min.js"></script>
+<script src="../../static/assets/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="../../static/assets/js/jquery.min.js"></script>
+<script src="../../static/assets/js/amazeui.min.js"></script>
+<!--<![endif]-->
+<script src="../../static/assets/js/app.js"></script>
+<script>
+  $("#addItemForm").submit(function f() {
+      alert("Add Successful")
+  })
+
+</script>
+</body>
+</html>

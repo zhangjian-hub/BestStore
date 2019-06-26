@@ -3,9 +3,11 @@ package com.j1902.beststore.mapper;
 import com.j1902.beststore.pojo.BsEmail;
 import com.j1902.beststore.pojo.BsEmailExample;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface BsEmailMapper {
     long countByExample(BsEmailExample example);
 
