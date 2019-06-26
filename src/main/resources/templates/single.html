@@ -131,47 +131,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     </div>
                                 </ul>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Furniture <b
-                                        class="caret"></b></a>
-                                <ul class="dropdown-menu multi-column columns-3">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <ul class="multi-column-dropdown">
-                                                <h6>Home Collection</h6>
-                                                <li><a href="/toFurniture">Cookware</a></li>
-                                                <li><a href="/toFurniture">Sofas</a></li>
-                                                <li><a href="/toFurniture">Dining Tables</a></li>
-                                                <li><a href="/toFurniture">Shoe Racks</a></li>
-                                                <li><a href="/toFurniture">Home Decor</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <ul class="multi-column-dropdown">
-                                                <h6>Office Collection</h6>
-                                                <li><a href="/toFurniture">Carpets</a></li>
-                                                <li><a href="/toFurniture">Tables</a></li>
-                                                <li><a href="/toFurniture">Sofas</a></li>
-                                                <li><a href="/toFurniture">Shoe Racks</a></li>
-                                                <li><a href="/toFurniture">Sockets</a></li>
-                                                <li><a href="/toFurniture">Electrical Machines</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <ul class="multi-column-dropdown">
-                                                <h6>Decorations</h6>
-                                                <li><a href="/toFurniture">Toys</a></li>
-                                                <li><a href="/toFurniture">Wall Clock</a></li>
-                                                <li><a href="/toFurniture">Lighting</a></li>
-                                                <li><a href="/toFurniture">Top Brands</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </ul>
-                            </li>
-                            <li><a href="short-codes.html">Short Codes</a></li>
-                            <li><a href="mail.html">Mail Us</a></li>
+                            <li><a href="/toMail">Mail Us</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -359,7 +319,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <a id="add" class="item_add" href="javascript:;">add to cart</a>
                     <script>
                         $("#add").click(function () {
-                            $.post("/toAddCart", {id: 2}, function (data) {
+                            $.post("/toAddCart", {id:BSITEM_INFO1.id }, function (data) {
                                 if (data.result) {
                                     swal({
                                         title: "Addition Succeed",
@@ -387,10 +347,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab"
                                                                   data-toggle="tab" aria-controls="home"
                                                                   aria-expanded="true">Description</a></li>
-                        <li role="presentation" class="dropdown">
-                        <li role="presentation" class="active"><a href="#home" id="myTabDrop1" role="tab"
-                                                                  data-toggle="tab" aria-controls="home"
-                                                                  aria-expanded="true">Information</a></li>
                     </ul>
                     <div id="myTabContent" class="tab-content">
                         <div role="tabpanel" class="tab-pane fade in active bootstrap-tab-text" id="home"
