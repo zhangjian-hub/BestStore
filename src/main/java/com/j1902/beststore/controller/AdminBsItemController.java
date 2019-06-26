@@ -44,8 +44,6 @@ public class AdminBsItemController {
 
     @RequestMapping("/addItem.back")
     public String addItem(Map<String,Object> map, BsItem item, @RequestParam(value = "file") MultipartFile file, HttpServletRequest request) {
-        System.out.println("item = " + item);
-
         if (file.isEmpty()) {
             System.out.println("文件为空空");
             return "admin/admin-add-item";
