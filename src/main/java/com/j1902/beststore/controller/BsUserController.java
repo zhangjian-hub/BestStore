@@ -28,15 +28,6 @@ public class BsUserController {
     public String toLogin(HttpSession session,HttpServletRequest req) {
         return "login";
     }
-    @RequestMapping("/tologin")
-    public String tologin(HttpSession session,HttpServletRequest req) {
-        if(session.getAttribute("USER_INFO")!=null){
-            req.setAttribute("respinfo","true");
-            return "redirect:toIndex";
-        }
-        return "login";
-    }
-
 
     @RequestMapping("/toRegister")
     public String toRegister() {
@@ -47,7 +38,7 @@ public class BsUserController {
     public String register(BsUser bsUser, HttpServletRequest request) {
         if (bsUserService.register(bsUser)) {
             request.setAttribute("REGISTER", "true");
-            return "index";
+            return "login";
         } else {
             request.setAttribute("REGISTER", "fail");
             return "register";
@@ -62,15 +53,16 @@ public class BsUserController {
     @RequestMapping("/login")
     public String login(BsUser bsUser, HttpServletRequest req, HttpServletResponse resp, HttpSession session) throws UnsupportedEncodingException {
         String remember = req.getParameter("remember");
-        Cookie[] cookies = req.getCookies();
-        if (cookies != null && cookies.length > 0) {
-            for (Cookie cookie : cookies) {
-                if ("loginInfo".equals(cookie.getName())) {
-                    String decode = URLDecoder.decode(cookie.getValue(), "UTF-8");
-                    bsUser = JsonUtils.jsonToPojo(decode, BsUser.class);
-                }
-            }
-        }
+//        Cookie[] cookies = req.getCookies();
+//        if (cookies != null && cookies.length > 0) {
+//            for (Cookie cookie : cookies) {
+//                if ("loginInfo".equals(cookie.getName())) {
+//                    String decode = URLDecoder.decode(cookie.getValue(), "UTF-8");
+//                    bsUser = JsonUtils.jsonToPojo(decode, BsUser.class);
+//                }
+//            }
+//        }
+
         if (bsUserService.login(bsUser)) {
             if ("true".equals(remember)) {
                 String s = JsonUtils.objectToJson(bsUser);

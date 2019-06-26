@@ -347,6 +347,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				closeOnConfirm: false
 			});
 		}
+		// 注册成功弹窗
+		var register = [[${REGISTER}]];
+		if (register == "true") {
+			swal({
+				title: "registered successfully！",
+				type: "success",
+				confirmButtonText: "ok",
+				closeOnConfirm: false
+			});
+			register = "disabled"
+		}
 	</script>
 </body>
 </html>
