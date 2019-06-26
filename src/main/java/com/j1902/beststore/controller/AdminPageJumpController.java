@@ -1,6 +1,8 @@
 package com.j1902.beststore.controller;
 
 import com.j1902.beststore.service.AdminBsItemService;
+import com.j1902.beststore.service.AdminBsShoppingRecordService;
+import com.j1902.beststore.service.AdminBsUserService;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,11 +22,20 @@ public class AdminPageJumpController {
     @Autowired
     private AdminBsItemService itemService;
 
+    @Autowired
+    private AdminBsUserService userService;
+
+    @Autowired
+    private AdminBsShoppingRecordService shoppingRecordService;
+
     @RequestMapping("/toAdminIndex.back")
     public String toAdminIndex(Map<String,Object> map){
         int itemsCount = itemService.getAllItems().size();
         map.put("ITEMS_COUNT", itemsCount);
-
+        int usersCount = userService.getCountOfBsUsers();
+        map.put("USERS_COUNT", itemsCount);
+        int recordsCount = shoppingRecordService.getCountOfAll();
+        map.put("RECORDS_COUNT", itemsCount);
         return "admin/admin-index";
     }
 
