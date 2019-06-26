@@ -74,9 +74,9 @@ public class BsUserController {
                 cookie.setMaxAge(3600 * 24 * 30);
                 resp.addCookie(cookie);
             }
-            if (bsUser.getEmail().equals("15927147398@qq.com")) {
+            if (bsUser.getEmail().equals("1071902755@qq.com")) {
                 bsUser.setPassword(null);
-                return "admin/admin";
+                return "admin/admin-index";
             }
             session.setAttribute("userinfo",bsUser);
             bsUser.setPassword(null);

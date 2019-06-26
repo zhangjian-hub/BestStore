@@ -37,4 +37,14 @@ public class AdminPageJumpController {
     public String toAdminUser(){
         return "admin/admin-user";
     }
+
+    @RequestMapping("/toEmail")
+    public String toEmail(){
+        return "email";
+    }
+
+    @RequestMapping("/toShortCodes")
+    public String toShortCodes(){
+        return "short-codes";
+    }
 }

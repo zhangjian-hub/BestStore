@@ -37,7 +37,6 @@ public class AdminBsItemController {
         PageHelper.startPage(pageNum, pageSize);
         List<BsItem> allItems = itemService.getAllItems();
         PageInfo<BsItem> pageInfo = new PageInfo<>(allItems);
-        System.out.println("pageInfo = " + pageInfo);
         map.put("PAGE_INFO", pageInfo);
         return "admin/admin-items";
     }
@@ -62,7 +61,6 @@ public class AdminBsItemController {
             e.printStackTrace();
         }
         String filename = "/temp-rainy/" + fileName;
-        System.out.println("filename = " + filename);
 
         item.setImage(filename);
         item.setSalesVolume(0);
