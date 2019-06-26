@@ -30,4 +30,8 @@ public interface BsItemMapper {
     int updateByPrimaryKeySelective(BsItem record);
 
     int updateByPrimaryKey(BsItem record);
+
+    List<BsItem> selectAllGroupByName(BsItem bsItem);
+
+    List<BsItem> selectAll();
 }

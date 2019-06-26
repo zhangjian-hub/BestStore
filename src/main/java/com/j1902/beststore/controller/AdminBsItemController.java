@@ -37,6 +37,7 @@ public class AdminBsItemController {
         PageHelper.startPage(pageNum, pageSize);
         List<BsItem> allItems = itemService.getAllItems();
         PageInfo<BsItem> pageInfo = new PageInfo<>(allItems);
+        System.out.println("pageInfo = " + pageInfo);
         map.put("PAGE_INFO", pageInfo);
         return "admin/admin-items";
     }
@@ -47,6 +48,7 @@ public class AdminBsItemController {
 
         if (file.isEmpty()) {
             System.out.println("文件为空空");
+            return "admin/admin-add-item";
         }
         String fileName = file.getOriginalFilename();  // 文件名
         String suffixName = fileName.substring(fileName.lastIndexOf("."));  // 后缀名
