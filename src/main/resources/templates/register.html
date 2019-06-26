@@ -1,396 +1,476 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-<title>Register</title>
-<!-- for-mobile-apps -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Best Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
-		function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- //for-mobile-apps -->
-<link href="../static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="../static/css/style.css" rel="stylesheet" type="text/css" media="all" />
-<!-- js -->
-<script src="../static/js/jquery.min.js"></script>
-<!-- //js -->
-<!-- cart -->
-	<script src="../static/js/simpleCart.min.js"> </script>
-<!-- cart -->
-<link rel="stylesheet" type="text/css" href="../static/css/jquery-ui.css">
-<!-- for bootstrap working -->
-	<script type="text/javascript" src="../static/js/bootstrap-3.1.1.min.js"></script>
-<!-- //for bootstrap working -->
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-<!-- animation-effect -->
-<link href="../static/css/animate.min.css" rel="stylesheet">
-<script src="../static/js/wow.min.js"></script>
-<script>
- new WOW().init();
-</script>
-<!-- //animation-effect -->
+    <title>Register</title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="Best Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+    <!-- //for-mobile-apps -->
+    <link href="../static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="../static/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <!-- js -->
+    <script src="../static/js/jquery.min.js"></script>
+    <!-- //js -->
+    <!-- cart -->
+    <script src="../static/js/simpleCart.min.js"></script>
+    <!-- cart -->
+    <link rel="stylesheet" type="text/css" href="../static/css/jquery-ui.css">
+    <!-- for bootstrap working -->
+    <script type="text/javascript" src="../static/js/bootstrap-3.1.1.min.js"></script>
+    <!-- //for bootstrap working -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
+          rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic'
+          rel='stylesheet' type='text/css'>
+    <!-- animation-effect -->
+    <link href="../static/css/animate.min.css" rel="stylesheet">
+    <script src="../static/js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <!-- //animation-effect -->
 </head>
-	
+
 <body>
 <!-- header -->
-	<div class="header">
-		<div class="container">
-			<div class="header-grid">
-				<div class="header-grid-left animated wow slideInLeft" data-wow-delay=".5s">
-					<ul>
-						<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">@example.com</a></li>
-						<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 <span>567</span> 892</li>
-						<li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a href="login.html">Login</a></li>
-						<li class="active"><i class="glyphicon glyphicon-book" aria-hidden="true"></i><a href="register.html">Register</a></li>
-					</ul>
-				</div>
-				<div class="header-grid-right animated wow slideInRight" data-wow-delay=".5s">
-					<ul class="social-icons">
-						<li><a href="#" class="facebook"></a></li>
-						<li><a href="#" class="twitter"></a></li>
-						<li><a href="#" class="g"></a></li>
-						<li><a href="#" class="instagram"></a></li>
-					</ul>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-			<div class="logo-nav">
-				<div class="logo-nav-left animated wow zoomIn" data-wow-delay=".5s">
-					<h1><a href="index.html">Best Store <span>Shop anywhere</span></a></h1>
-				</div>
-				<div class="logo-nav-left1">
-					<nav class="navbar navbar-default">
-					<!-- Brand and toggle get grouped for better mobile display -->
-					<div class="navbar-header nav_2">
-						<button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-					</div>
-					<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
-						<ul class="nav navbar-nav">
-							<li><a href="index.html">Home</a></li>	
-							<!-- Mega Menu -->
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <b class="caret"></b></a>
-								<ul class="dropdown-menu multi-column columns-3">
-									<div class="row">
-										<div class="col-sm-4">
-											<ul class="multi-column-dropdown">
-												<h6>Men's Wear</h6>
-												<li><a href="/toProducts?suitablePeople=men&type=jacket&pageNum=1">jacket</a></li>
-												<li><a href="/toProducts?suitablePeople=men&type=trousers&pageNum=1">trousers</a>
-												</li>
-												<li><a href="/toProducts?suitablePeople=men&type=shoe&pageNum=1">shoe</a></li>
-												<li><a href="/toProducts?suitablePeople=men&type=ornament&pageNum=1">ornament</a>
-												</li>
-											</ul>
-										</div>
-										<div class="col-sm-4">
-											<ul class="multi-column-dropdown">
-												<h6>Women's Wear</h6>
-												<li><a href="/toProducts?suitablePeople=women&type=jacket&pageNum=1">jacket</a>
-												</li>
-												<li><a href="/toProducts?suitablePeople=women&type=trousers&pageNum=1">trousers</a>
-												</li>
-												<li><a href="/toProducts?suitablePeople=women&type=shoe&pageNum=1">shoe</a></li>
-												<li><a href="/toProducts?suitablePeople=women&type=ornament&pageNum=1">ornament</a>
-												</li>
-											</ul>
-										</div>
-										<div class="col-sm-4">
-											<ul class="multi-column-dropdown">
-												<h6>Kid's Wear</h6>
-												<li><a href="/toProducts?suitablePeople=kid&type=jacket&pageNum=1">jacket</a></li>
-												<li><a href="/toProducts?suitablePeople=kid&type=trousers&pageNum=1">trousers</a>
-												</li>
-												<li><a href="/toProducts?suitablePeople=kid&type=shoe&pageNum=1">shoe</a></li>
-												<li><a href="/toProducts?suitablePeople=kid&type=ornament&pageNum=1">ornament</a>
-												</li>
-											</ul>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-								</ul>
-							</li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Furniture <b class="caret"></b></a>
-								<ul class="dropdown-menu multi-column columns-3">
-									<div class="row">
-										<div class="col-sm-4">
-											<ul class="multi-column-dropdown">
-												<h6>Home Collection</h6>
-												<li><a href="furniture.html">Cookware</a></li>
-												<li><a href="furniture.html">Sofas</a></li>
-												<li><a href="furniture.html">Dining Tables</a></li>
-												<li><a href="furniture.html">Shoe Racks</a></li>
-												<li><a href="furniture.html">Home Decor</a></li>
-											</ul>
-										</div>
-										<div class="col-sm-4">
-											<ul class="multi-column-dropdown">
-												<h6>Office Collection</h6>
-												<li><a href="furniture.html">Carpets</a></li>
-												<li><a href="furniture.html">Tables</a></li>
-												<li><a href="furniture.html">Sofas</a></li>
-												<li><a href="furniture.html">Shoe Racks</a></li>
-												<li><a href="furniture.html">Sockets</a></li>
-												<li><a href="furniture.html">Electrical Machines</a></li>
-											</ul>
-										</div>
-										<div class="col-sm-4">
-											<ul class="multi-column-dropdown">
-												<h6>Decorations</h6>
-												<li><a href="furniture.html">Toys</a></li>
-												<li><a href="furniture.html">Wall Clock</a></li>
-												<li><a href="furniture.html">Lighting</a></li>
-												<li><a href="furniture.html">Top Brands</a></li>
-											</ul>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-								</ul>
-							</li>
-							<li><a href="short-codes.html">Short Codes</a></li>
-							<li><a href="mail.html">Mail Us</a></li>
-						</ul>
-					</div>
-					</nav>
-				</div>
-				<div class="logo-nav-right">
-					<div class="search-box">
-						<div id="sb-search" class="sb-search">
-							<form>
-								<input class="sb-search-input" placeholder="Enter your search term..." type="search" id="search">
-								<input class="sb-search-submit" type="submit" value="">
-								<span class="sb-icon-search"> </span>
-							</form>
-						</div>
-					</div>
-						<!-- search-scripts -->
-						<script src="../static/js/classie.js"></script>
-						<script src="../static/js/uisearch.js"></script>
-							<script>
-								new UISearch( document.getElementById( 'sb-search' ) );
-							</script>
-						<!-- //search-scripts -->
-				</div>
-				<div class="header-right">
-					<div class="cart box_1">
-						<a href="checkout.html">
-							<h3> <div class="total">
-								<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
-								<img src="../static/images/bag.png" alt="" />
-							</h3>
-						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
-						<div class="clearfix"> </div>
-					</div>	
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-	</div>
+<div class="header">
+    <div class="container">
+        <div class="header-grid">
+            <div class="header-grid-left animated wow slideInLeft" data-wow-delay=".5s">
+                <ul>
+                    <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a
+                            href="mailto:info@example.com">15927147398@qq.com</a></li>
+                    <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+8615927147398</li>
+                    <li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a href="/toLogin">Login</a></li>
+                    <li><i class="glyphicon glyphicon-book" aria-hidden="true"></i><a href="/toRegister">Register</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="header-grid-right animated wow slideInRight" data-wow-delay=".5s">
+                <ul class="social-icons">
+                    <li><a href="#" class="facebook"></a></li>
+                    <li><a href="#" class="twitter"></a></li>
+                    <li><a href="#" class="g"></a></li>
+                    <li><a href="#" class="instagram"></a></li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="logo-nav">
+            <div class="logo-nav-left animated wow zoomIn" data-wow-delay=".5s">
+                <h1><a href="index.html">Best Store <span>Shop anywhere</span></a></h1>
+            </div>
+            <div class="logo-nav-left1">
+                <nav class="navbar navbar-default">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header nav_2">
+                        <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse"
+                                data-target="#bs-megadropdown-tabs">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+                        <ul class="nav navbar-nav">
+                            <li><a href="index.html">Home</a></li>
+                            <!-- Mega Menu -->
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <b
+                                        class="caret"></b></a>
+                                <ul class="dropdown-menu multi-column columns-3">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <ul class="multi-column-dropdown">
+                                                <h6>Men's Wear</h6>
+                                                <li><a href="/toProducts?suitablePeople=men&type=jacket&pageNum=1">jacket</a>
+                                                </li>
+                                                <li><a href="/toProducts?suitablePeople=men&type=trousers&pageNum=1">trousers</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/toProducts?suitablePeople=men&type=shoe&pageNum=1">shoe</a>
+                                                </li>
+                                                <li><a href="/toProducts?suitablePeople=men&type=ornament&pageNum=1">ornament</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <ul class="multi-column-dropdown">
+                                                <h6>Women's Wear</h6>
+                                                <li><a href="/toProducts?suitablePeople=women&type=jacket&pageNum=1">jacket</a>
+                                                </li>
+                                                <li><a href="/toProducts?suitablePeople=women&type=trousers&pageNum=1">trousers</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/toProducts?suitablePeople=women&type=shoe&pageNum=1">shoe</a>
+                                                </li>
+                                                <li><a href="/toProducts?suitablePeople=women&type=ornament&pageNum=1">ornament</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <ul class="multi-column-dropdown">
+                                                <h6>Kid's Wear</h6>
+                                                <li><a href="/toProducts?suitablePeople=kid&type=jacket&pageNum=1">jacket</a>
+                                                </li>
+                                                <li><a href="/toProducts?suitablePeople=kid&type=trousers&pageNum=1">trousers</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/toProducts?suitablePeople=kid&type=shoe&pageNum=1">shoe</a>
+                                                </li>
+                                                <li><a href="/toProducts?suitablePeople=kid&type=ornament&pageNum=1">ornament</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Furniture <b
+                                        class="caret"></b></a>
+                                <ul class="dropdown-menu multi-column columns-3">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <ul class="multi-column-dropdown">
+                                                <h6>Home Collection</h6>
+                                                <li><a href="furniture.html">Cookware</a></li>
+                                                <li><a href="furniture.html">Sofas</a></li>
+                                                <li><a href="furniture.html">Dining Tables</a></li>
+                                                <li><a href="furniture.html">Shoe Racks</a></li>
+                                                <li><a href="furniture.html">Home Decor</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <ul class="multi-column-dropdown">
+                                                <h6>Office Collection</h6>
+                                                <li><a href="furniture.html">Carpets</a></li>
+                                                <li><a href="furniture.html">Tables</a></li>
+                                                <li><a href="furniture.html">Sofas</a></li>
+                                                <li><a href="furniture.html">Shoe Racks</a></li>
+                                                <li><a href="furniture.html">Sockets</a></li>
+                                                <li><a href="furniture.html">Electrical Machines</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <ul class="multi-column-dropdown">
+                                                <h6>Decorations</h6>
+                                                <li><a href="furniture.html">Toys</a></li>
+                                                <li><a href="furniture.html">Wall Clock</a></li>
+                                                <li><a href="furniture.html">Lighting</a></li>
+                                                <li><a href="furniture.html">Top Brands</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </ul>
+                            </li>
+                            <li><a href="short-codes.html">Short Codes</a></li>
+                            <li><a href="mail.html">Mail Us</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="logo-nav-right">
+                <div class="search-box">
+                    <div id="sb-search" class="sb-search">
+                        <form>
+                            <input class="sb-search-input" placeholder="Enter your search term..." type="search"
+                                   id="search">
+                            <input class="sb-search-submit" type="submit" value="">
+                            <span class="sb-icon-search"> </span>
+                        </form>
+                    </div>
+                </div>
+                <!-- search-scripts -->
+                <script src="../static/js/classie.js"></script>
+                <script src="../static/js/uisearch.js"></script>
+                <script>
+                    new UISearch(document.getElementById('sb-search'));
+                </script>
+                <!-- //search-scripts -->
+            </div>
+            <div class="header-right">
+                <div class="cart box_1">
+                    <a href="checkout.html">
+                        <h3>
+                            <div class="total">
+                                <span class="simpleCart_total"></span> (<span id="simpleCart_quantity"
+                                                                              class="simpleCart_quantity"></span> items)
+                            </div>
+                            <img src="../static/images/bag.png" alt=""/>
+                        </h3>
+                    </a>
+                    <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
 <!-- //header -->
 <!-- breadcrumbs -->
-	<div class="breadcrumbs">
-		<div class="container">
-			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-				<li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-				<li class="active">Register Page</li>
-			</ol>
-		</div>
-	</div>
+<div class="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+            <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+            <li class="active">Register Page</li>
+        </ol>
+    </div>
+</div>
 <!-- //breadcrumbs -->
 <!-- register -->
-	<div class="register">
-		<div class="container">
-			<h3 class="animated wow zoomIn" data-wow-delay=".5s">Register Here</h3>
-			<p class="est animated wow zoomIn" data-wow-delay=".5s">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-				deserunt mollit anim id est laborum.</p>
-			<div class="login-form-grids">
-				<h6 class="animated wow slideInUp" data-wow-delay=".5s">Login information</h6>
-				<form action="/register" method="post" class="animated wow slideInUp" data-wow-delay=".5s" id="register-form">
-					Nickname: <br>
-					<input type="text" name="nickname" required=" " maxlength="20"><br>
-					Phone: <br>
-					<input type="text" name="phone" required=" "><br>
-					Email Address: <br>
-					<input type="email" required=" " minlength="6" name="email"><br>
-					<span>Password(6-20 starting only letters, Numbers, underscores): <label style="color:red;"></label> <font id="passwordMSG"></font></span><input type="password" name="password" id="password" maxlength="20" required onblur="checkPwd(this.value)">
-					<span>Repeat Password: <label style="color:red;"></label> <font id="mm2MSG"></font></span><input type="password" id="mm2" maxlength="20" required oninput="checkPwd2(this.value)">
-					<input type="submit" value="Register">
-				</form>
-			</div>
-			<div class="register-home animated wow slideInUp" data-wow-delay=".5s">
-				<a href="index.html">Home</a>
-			</div>
-		</div>
-	</div>
+<div class="register">
+    <div class="container">
+        <h3 class="animated wow zoomIn" data-wow-delay=".5s">Register Here</h3>
+        <p class="est animated wow zoomIn" data-wow-delay=".5s">Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia
+            deserunt mollit anim id est laborum.</p>
+        <div class="login-form-grids">
+            <h6 class="animated wow slideInUp" data-wow-delay=".5s">Login information</h6>
+            <form action="/register" method="post" class="animated wow slideInUp" data-wow-delay=".5s"
+                  id="register-form">
+
+                <input type="text" name="nickname" placeholder="Nickname"><br>
+
+                <input type="text" name="phone" placeholder="phone"><br>
+
+                <input type="email" placeholder="email" name="email" id="email"><br>
+                <!--<span id="accountText"></span>-->
+                <!--<span>Password(6-20 starting only letters, Numbers, underscores): <label-->
+                <!--style="color:red;"></label> <font id="passwordMSG"></font></span>-->
+                <input type="password" name="password" id="password" placeholder="password">
+
+                <input type="password" placeholder="repet password" name="confirm_password">
+
+                <input type="submit" value="Register">
+            </form>
+        </div>
+        <div class="register-home animated wow slideInUp" data-wow-delay=".5s">
+            <a href="/toIndex">Home</a>
+        </div>
+    </div>
+</div>
 <!-- //register -->
 <!-- footer -->
 <div class="footer">
-	<div class="container">
-		<div class="footer-grids">
-			<div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".5s">
-				<h3>About Us</h3>
-				<p>Duis aute irure dolor in reprehenderit in voluptate velit esse.<span>Excepteur sint occaecat cupidatat
+    <div class="container">
+        <div class="footer-grids">
+            <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".5s">
+                <h3>About Us</h3>
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse.<span>Excepteur sint occaecat cupidatat
 						non proident, sunt in culpa qui officia deserunt mollit.</span></p>
-			</div>
-			<div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".6s">
-				<h3>Contact Info</h3>
-				<ul>
-					<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>1234k Avenue, 4th block, <span>New York City.</span>
-					</li>
-					<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a
-							href="mailto:info@example.com">info@example.com</a></li>
-					<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 567 567</li>
-				</ul>
-			</div>
-			<div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".7s">
-				<h3>Flickr Posts</h3>
-				<div class="footer-grid-left">
-					<a href="javascript:;"><img src="../static/images/13.jpg" alt=" " class="img-responsive"/></a>
-				</div>
-				<div class="footer-grid-left">
-					<a href="javascript:;"><img src="../static/images/14.jpg" alt=" " class="img-responsive"/></a>
-				</div>
-				<div class="footer-grid-left">
-					<a href="javascript:;"><img src="../static/images/15.jpg" alt=" " class="img-responsive"/></a>
-				</div>
-				<div class="footer-grid-left">
-					<a href="javascript:;"><img src="../static/images/16.jpg" alt=" " class="img-responsive"/></a>
-				</div>
-				<div class="footer-grid-left">
-					<a href="javascript:;"><img src="../static/images/13.jpg" alt=" " class="img-responsive"/></a>
-				</div>
-				<div class="footer-grid-left">
-					<a href="javascript:;"><img src="../static/images/14.jpg" alt=" " class="img-responsive"/></a>
-				</div>
-				<div class="footer-grid-left">
-					<a href="javascript:;"><img src="../static/images/15.jpg" alt=" " class="img-responsive"/></a>
-				</div>
-				<div class="footer-grid-left">
-					<a href="javascript:;"><img src="../static/images/16.jpg" alt=" " class="img-responsive"/></a>
-				</div>
-				<div class="footer-grid-left">
-					<a href="javascript:;"><img src="../static/images/13.jpg" alt=" " class="img-responsive"/></a>
-				</div>
-				<div class="footer-grid-left">
-					<a href="javascript:;"><img src="../static/images/14.jpg" alt=" " class="img-responsive"/></a>
-				</div>
-				<div class="footer-grid-left">
-					<a href="javascript:;"><img src="../static/images/15.jpg" alt=" " class="img-responsive"/></a>
-				</div>
-				<div class="footer-grid-left">
-					<a href="javascript:;"><img src="../static/images/16.jpg" alt=" " class="img-responsive"/></a>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-			<div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".8s">
-				<h3>Blog Posts</h3>
-				<div class="footer-grid-sub-grids">
-					<div class="footer-grid-sub-grid-left">
-						<a href="javascript:;"><img src="../static/images/9.jpg" alt=" " class="img-responsive"/></a>
-					</div>
-					<div class="footer-grid-sub-grid-right">
-						<h4><a href="javascript:;">culpa qui officia deserunt</a></h4>
-						<p>Posted On 25/3/2016</p>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-				<div class="footer-grid-sub-grids">
-					<div class="footer-grid-sub-grid-left">
-						<a href="javascript:;"><img src="../static/images/10.jpg" alt=" " class="img-responsive"/></a>
-					</div>
-					<div class="footer-grid-sub-grid-right">
-						<h4><a href="javascript:;">Quis autem vel eum iure</a></h4>
-						<p>Posted On 25/3/2016</p>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-			</div>
-			<div class="clearfix"></div>
-		</div>
-		<div class="footer-logo animated wow slideInUp" data-wow-delay=".5s">
-			<h2><a href="index.html">Best Store <span>shop anywhere</span></a></h2>
-		</div>
-		<div class="copy-right animated wow slideInUp" data-wow-delay=".5s">
-			<p>Copyright &copy; 2016.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/"
-																						target="_blank" title="模板之家">模板之家</a>
-				- Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
-		</div>
-	</div>
-<!-- //footer -->
-<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
-<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
-<script>
+            </div>
+            <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".6s">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>1234k Avenue, 4th block, <span>New York City.</span>
+                    </li>
+                    <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a
+                            href="mailto:info@example.com">info@example.com</a></li>
+                    <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 567 567</li>
+                </ul>
+            </div>
+            <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".7s">
+                <h3>Flickr Posts</h3>
+                <div class="footer-grid-left">
+                    <a href="javascript:;"><img src="../static/images/13.jpg" alt=" " class="img-responsive"/></a>
+                </div>
+                <div class="footer-grid-left">
+                    <a href="javascript:;"><img src="../static/images/14.jpg" alt=" " class="img-responsive"/></a>
+                </div>
+                <div class="footer-grid-left">
+                    <a href="javascript:;"><img src="../static/images/15.jpg" alt=" " class="img-responsive"/></a>
+                </div>
+                <div class="footer-grid-left">
+                    <a href="javascript:;"><img src="../static/images/16.jpg" alt=" " class="img-responsive"/></a>
+                </div>
+                <div class="footer-grid-left">
+                    <a href="javascript:;"><img src="../static/images/13.jpg" alt=" " class="img-responsive"/></a>
+                </div>
+                <div class="footer-grid-left">
+                    <a href="javascript:;"><img src="../static/images/14.jpg" alt=" " class="img-responsive"/></a>
+                </div>
+                <div class="footer-grid-left">
+                    <a href="javascript:;"><img src="../static/images/15.jpg" alt=" " class="img-responsive"/></a>
+                </div>
+                <div class="footer-grid-left">
+                    <a href="javascript:;"><img src="../static/images/16.jpg" alt=" " class="img-responsive"/></a>
+                </div>
+                <div class="footer-grid-left">
+                    <a href="javascript:;"><img src="../static/images/13.jpg" alt=" " class="img-responsive"/></a>
+                </div>
+                <div class="footer-grid-left">
+                    <a href="javascript:;"><img src="../static/images/14.jpg" alt=" " class="img-responsive"/></a>
+                </div>
+                <div class="footer-grid-left">
+                    <a href="javascript:;"><img src="../static/images/15.jpg" alt=" " class="img-responsive"/></a>
+                </div>
+                <div class="footer-grid-left">
+                    <a href="javascript:;"><img src="../static/images/16.jpg" alt=" " class="img-responsive"/></a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".8s">
+                <h3>Blog Posts</h3>
+                <div class="footer-grid-sub-grids">
+                    <div class="footer-grid-sub-grid-left">
+                        <a href="javascript:;"><img src="../static/images/9.jpg" alt=" " class="img-responsive"/></a>
+                    </div>
+                    <div class="footer-grid-sub-grid-right">
+                        <h4><a href="javascript:;">culpa qui officia deserunt</a></h4>
+                        <p>Posted On 25/3/2016</p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="footer-grid-sub-grids">
+                    <div class="footer-grid-sub-grid-left">
+                        <a href="javascript:;"><img src="../static/images/10.jpg" alt=" " class="img-responsive"/></a>
+                    </div>
+                    <div class="footer-grid-sub-grid-right">
+                        <h4><a href="javascript:;">Quis autem vel eum iure</a></h4>
+                        <p>Posted On 25/3/2016</p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="footer-logo animated wow slideInUp" data-wow-delay=".5s">
+            <h2><a href="index.html">Best Store <span>shop anywhere</span></a></h2>
+        </div>
+        <div class="copy-right animated wow slideInUp" data-wow-delay=".5s">
+            <p>Copyright &copy; 2016.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/"
+                                                                                        target="_blank" title="模板之家">模板之家</a>
+                - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+        </div>
+    </div>
+    <!-- //footer -->
+    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
+    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+    <!--引入弹窗-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <script>
+        // 字母和数字的验证
+        jQuery.validator.addMethod("chrnum", function (value, element) {
+            var chrnum = /^[a-zA-Z]\w{5,16}$/;
+            return this.optional(element) || (chrnum.test(value));
+        }, "Enter only Numbers and letters (characters a-z, a-z, 0-9)");
+        //手机号验证
+        jQuery.validator.addMethod("isMobile", function (value, element) {
+            var mobile = /^(((13[0-9]{1})|(14[0-9]{1})|(17[0]{1})|(15[0-3]{1})|(15[5-9]{1})|(18[0-9]{1}))+\d{8})$/;
+            return this.optional(element) || (mobile.test(value));
+        }, "please enter the correct phone number");
 
-	function checkPwd(password) {
-		/*获取提示框*/
-		var form = document.getElementById("passwordMSG");
-		/*定义正则表达式*/
-		var reg = /^[a-zA-Z]\w{5,19}$/;
-		var flag = reg.test(password);
-		if ( !flag ) {
-			passwordMSG.innerHTML = "<font color='red'>Incorrect password format!</font>";
-			Flag4 = false;
-		} else {
-			passwordMSG.innerHTML = "<font color='green'><span>√</span></font>";
-			Flag4 = true;
-		}
-	}
+        $().ready(function () {
+// 在键盘按下并释放及提交后验证提交表单
+            $("#register-form").validate({
+                rules: {
+                    nickname: {
+                        required: true,
+                        minlength: 5,
+                        maxlength: 16,
+                        chrnum: true
+                    },
+                    password: {
+                        required: true,
+                        minlength: 5,
+                        maxlength: 16,
+                        chrnum: true
+                    },
+                    confirm_password: {
+                        required: true,
+                        minlength: 5,
+                        equalTo: "#password",
+                        maxlength: 16,
+                        chrnum: true
+                    },
+                    email: {
+                        required: true,
+                        email: true,
+                        remote: {
+                            url: "/verity",//后台查询验证的方法
+                            data: {
+                                "email": $("#email").val()
+                            },//携带的参数
+                            type: "post",
+                            dataType: "json"
+                        }
+                    },
+                    phone: {
+                        required: true,
+                        isMobile: true
+                    }
+                },
+                messages: {
+                    nickname: {
+                        minlength: "nickname length cannot be less than 5 letters",
+                        maxlength: "nickname should not be longer than 10 letters",
+                        chrnum: "Enter only Numbers and letters (characters a-z, a-z, 0-9)"
+                    },
+                    password: {
+                        minlength: "password length cannot be less than 5 letters",
+                        maxlength: "passwords should not be longer than 16 letters",
+                        chrnum: "Enter only Numbers and letters (characters a-z, a-z, 0-9)"
+                    },
+                    confirm_password: {
+                        minlength: "password length cannot be less than 5 letters",
+                        maxlength: "passwords should not be longer than 16 letters",
+                        equalTo: "the passwords must be the same twice",
+                        chrnum: "Enter only Numbers and letters (characters a-z, a-z, 0-9)"
+                    },
+                    email: {
+                        email: "please enter the correct email address",
+                        remote: "email has been registered"
+                    },
+                    phone: {
+                        isMobile: "please enter the correct phone number"
+                    }
+                }
+            });
+        });
 
-	/*验证重复密码*/
-	var timeoutID;
-	function checkPwd2(pwd2) {
-		/*获取提示框*/
-		var mm2MSG = document.getElementById("mm2MSG");
-		/*获取第一个框输入的密码*/
-		var pwd1 = document.getElementById("password").value;
-		//对上次未完成的延时操作进行取消
-		clearTimeout(timeoutID);
-		//对于密码比对延迟500ms，避免频繁比对
-		timeoutID = setTimeout(function () {
-			/*进行比对*/
-			if (pwd1 != pwd2) {
-				Flag5 = false;
-				mm2MSG.innerHTML = "<font color='red'>Different passwords!</font>";
-			} else {
-				Flag5 = true;
-				mm2MSG.innerHTML = "<font color='green'><span>√</span></font>";
-			}
-		}, 500);
-	}
-	$("#register-form").validate({
-		errorElement: "div",
-		rules: {
-			phone: {
-				required: true,
-				phone: true
-			}
-		},
-		messages: {
-			phone: {
-				required: "This field is required.！",
-				phone: "Phone is not true！"
-			}
-		}
-	});
+    </script>
+    <script th:inline="javascript">
+        // 注册失败弹窗
+        var user = [[${REGISTER}]];
+        if (user == "fail") {
+            swal({
+                title: "registered failed ！",
+                type: "error",
+                confirmButtonText: "ok",
+                closeOnConfirm: false
+            });
+            user = "disabled"
+        }
 
-	$.validator.addMethod("phone", function (value, element, param) {
-		if (!param) {
-			return true;
-		}
-		var phoneRE = /^1[3,4,5,6,7,8,9][0-9]{9}$/;
-		return phoneRE.test(value);
-	});
+        var respinfo = [[${respinfo}]];
+        if (respinfo == "true") {
+            swal({
+                title: "You are logged in, please log out first ！",
+                type: "error",
+                confirmButtonText: "ok",
+                closeOnConfirm: false
+            });
+        }
 
-
-</script>
+    </script>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
 </body>
 </html>
