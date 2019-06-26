@@ -1,6 +1,5 @@
 package com.j1902.beststore.controller;
 
-import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.j1902.beststore.pojo.BsEmail;
 import com.j1902.beststore.service.AdminBsEmailService;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -25,16 +23,10 @@ public class AdminBsEmailController {
     private AdminBsEmailService emailService;
 
     @RequestMapping("/toAdminEmail.back")
-    public String toAdminEmail(Map<String,Object> map, @RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "10") int pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
-        List<BsEmail> emails = emailService.getAllEmails();
-        System.out.println(emails.get(0));
-        System.out.println("emails1 = " + emails);
-        PageInfo<BsEmail> pageInfo = new PageInfo<>(emails);
+    public String toAdminEmail(Map<String,Object> map, @RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "5") int pageSize) {
+        PageInfo<BsEmail> pageInfo = emailService.getAllEmails(pageNum);
         System.out.println("pageInfo = " + pageInfo);
         map.put("ALL_EMAILS", pageInfo);
-        BsEmail bsEmail = emailService.selectById(4);
-        System.out.println("bsEmail1 = " + bsEmail);
         return "admin/admin-email";
     }
 }
