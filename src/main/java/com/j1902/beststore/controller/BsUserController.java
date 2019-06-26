@@ -78,7 +78,7 @@ public class BsUserController {
                 bsUser.setPassword(null);
                 return "admin/admin";
             }
-            session.setAttribute("userinfo",bsUser);
+            session.setAttribute("USER_INFO",bsUser);
             bsUser.setPassword(null);
             return "index";
         } else {
@@ -90,13 +90,17 @@ public class BsUserController {
     @RequestMapping("/verity")
     @ResponseBody
     public boolean verity(String email) {
-        return bsUserService.verity(email);
-    }
+       if(bsUserService.verity(email)){
+           return false;
+       }else{
+           return true;
+       }
+    };
 
 
     @RequestMapping("/logout")
     public String logout(HttpSession session){
-        session.removeAttribute("USERINFO");
+        session.removeAttribute("USER_INFO");
         return  "login";
     }
 }

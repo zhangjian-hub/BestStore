@@ -403,7 +403,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         remote: {
                             url: "/verity",//后台查询验证的方法
                             data: {
-                                "email": $("#email").val()
+                                email: function() {
+                                    return $("input[name='email']").val();
+                                }
                             },//携带的参数
                             type: "post",
                             dataType: "json"
