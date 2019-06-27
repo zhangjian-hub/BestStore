@@ -20,6 +20,7 @@ public class AddCartController {
     @RequestMapping("/toAddCart")
     @ResponseBody
     private AddCartResult addCart(Integer id, HttpServletRequest request) {
+        System.out.println("dsfsadfa" + id);
         HttpSession session = request.getSession();
         BsUser user_info = (BsUser) session.getAttribute("USER_INFO");
         AddCartResult addCartResult = new AddCartResult();

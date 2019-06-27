@@ -35,4 +35,9 @@ public class AdminBsEmailServiceImpl implements AdminBsEmailService {
 
         return emailMapper.selectByPrimaryKey(id);
     }
+
+    @Override
+    public int getCountOfAllEmails() {
+        return emailMapper.selectByExample(null).size();
+    }
 }
