@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 	<head>
 		<title>Mail Us</title>
 		<!-- for-mobile-apps -->
@@ -36,10 +36,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<!-- animation-effect -->
 		<link href="css/animate.min.css" rel="stylesheet">
 		<script src="js/wow.min.js"></script>
-		<script>
-			new WOW().init();
-</script>
+		<script>new WOW().init();</script>
 		<!-- //animation-effect -->
+
 	</head>
 
 	<body>
@@ -163,7 +162,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										</ul>
 									</li>
 									<li><a href="short-codes.html">Short Codes</a></li>
-									<li class=""><a href="mail.html" class="act">Mail Us</a></li>
+									<li class="active"><a href="mail.html" class="act">Mail Us</a></li>
 								</ul>
 							</div>
 						</nav>
@@ -209,8 +208,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="breadcrumbs">
 			<div class="container">
 				<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-					<li><a href="/toIndex"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-					<li class="">Mail Us</li>
+					<li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+					<li class="active">Mail Us</li>
 				</ol>
 			</div>
 		</div>
@@ -218,15 +217,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<!-- mail -->
 		<div class="mail animated wow zoomIn" data-wow-delay=".5s">
 			<div class="container">
+
 				<div class="mail-grids">
 
-					<div class="col-md-3 mail-grid-left animated wow slideInLeft text-center" data-wow-delay=".5s">
+					<div class="col-md-3 mail-grid-right animated wow slideInRight" data-wow-delay=".5s">
 						<div class="mail-grid-right1">
 							<img src="images/3.png" alt=" " class="img-responsive" />
 							<h4>Rita Williumson <span>Manager</span></h4>
 							<ul class="phone-mail">
-								<li><i aria-hidden="true"></i><a href="">order</a></li>
-								<li><i aria-hidden="true"></i>><a href="">paid</a></li>
+								<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>Phone: +1234 567 893</li>
+								<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>Email: <a href="mailto:info@example.com">info@example.com</a></li>
 							</ul>
 							<ul class="social-icons">
 								<li><a href="#" class="facebook"></a></li>
@@ -236,33 +236,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</ul>
 						</div>
 					</div>
-					<div class="col-md-9 mail-grid-right animated wow slideInRight" data-wow-delay=".5s">
-						<div class="checkout">
-							<div class="container">
-								<h3 class="animated wow slideInLeft" data-wow-delay=".5s">Your shopping contains: <span>1 order</span></h3>
-								<div class="checkout-right animated wow slideInUp" data-wow-delay=".5s">
-									<table class="timetable_sub">
-										<thead>
-											<tr>
-												<th>order</th>
-												<th>order number</th>
-												<th>Product</th>
-												<th>amount</th>
-												<th>check</th>
-											</tr>
-										</thead>
-										<tr class="rem1">
-											<td class="invert">1</td>
-											<td class="invert">145254</td>
-											<td class="invert-image"><a href="single.html"><img src="images/22.jpg" alt=" " class="img-responsive" /></a></td>
-											<td class="invert">1500</td>
-											<td class="invert">
-												<button><a />check</button>
-											</td>
-										</tr>
-									</table>
-								</div>
-							</div>
+
+					<div class="col-md-9 mail-grid-left animated wow slideInLeft" data-wow-delay=".5s">
+						<div data-wow-delay=".5s">
+							<table class="timetable_sub">
+								<thead>
+									<tr>
+										<th>order</th>
+										<th>order number</th>
+										<!--<th>Product</th>-->
+										<th>amount</th>
+									</tr>
+								</thead>
+								<tr class="rem1">
+									<td class="invert">1</td>
+									<td class="invert">145254</td>
+									<!--<td class="invert-image"><a href="single.html"><img src="images/22.jpg" alt=" " class="img-responsive" /></a></td>-->
+									<td class="invert">1500</td>
+								</tr>
+							</table>
 						</div>
 					</div>
 				</div>
@@ -354,10 +346,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="footer-logo animated wow slideInUp" data-wow-delay=".5s">
 					<h2><a href="index.html">Best Store <span>shop anywhere</span></a></h2>
-				</div>
-				<div class="copy-right animated wow slideInUp" data-wow-delay=".5s">
-					<p>Copyright &copy; 2016.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank"
-						 title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
 				</div>
 			</div>
 		</div>
