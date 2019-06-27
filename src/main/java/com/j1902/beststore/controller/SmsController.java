@@ -10,9 +10,11 @@ import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
 import com.aliyuncs.profile.IClientProfile;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class SmsController {
+
     private static String code;
 
 //    public static void main(String[] args) {
@@ -32,13 +34,8 @@ public class SmsController {
 //            <artifactId>aliyun-java-sdk-dysmsapi</artifactId>
 //            <version>1.1.0</version>
 //        </dependency>
-    /**
-     * 阿里云短信服务配置
-     *
-     * @param mobile
-     * @return
-     */
 
+    @RequestMapping("/button")
     public static String getPhonemsg(String mobile) {
 
         /**
