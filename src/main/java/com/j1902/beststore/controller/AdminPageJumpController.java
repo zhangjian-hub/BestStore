@@ -1,5 +1,6 @@
 package com.j1902.beststore.controller;
 
+import com.j1902.beststore.service.AdminBsEmailService;
 import com.j1902.beststore.service.AdminBsItemService;
 import com.j1902.beststore.service.AdminBsShoppingRecordService;
 import com.j1902.beststore.service.AdminBsUserService;
@@ -28,14 +29,23 @@ public class AdminPageJumpController {
     @Autowired
     private AdminBsShoppingRecordService shoppingRecordService;
 
+    @Autowired
+    private AdminBsEmailService emailService;
+
     @RequestMapping("/toAdminIndex.back")
     public String toAdminIndex(Map<String,Object> map){
         int itemsCount = itemService.getAllItems().size();
+        System.out.println("itemsCount = " + itemsCount);
         map.put("ITEMS_COUNT", itemsCount);
         int usersCount = userService.getCountOfBsUsers();
-        map.put("USERS_COUNT", itemsCount);
+        System.out.println("usersCount = " + usersCount);
+        map.put("USERS_COUNT", usersCount);
         int recordsCount = shoppingRecordService.getCountOfAll();
-        map.put("RECORDS_COUNT", itemsCount);
+        System.out.println("recordsCount = " + recordsCount);
+        map.put("RECORDS_COUNT", recordsCount);
+        int emailsCount = emailService.getCountOfAllEmails();
+        System.out.println("emailsCount = " + emailsCount);
+        map.put("EMAILS_COUNT", emailsCount);
         return "admin/admin-index";
     }
 
