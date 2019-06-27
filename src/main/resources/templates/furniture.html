@@ -49,7 +49,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</ul>
 				</div>
 				<div class="header-grid-right animated wow slideInRight" data-wow-delay=".5s">
-					<img src="../static/images/jm.jpg" style="width:44px; height:44px; border-radius:50%;"><span> </span><span th:text="${session.USER_INFO==null? '请登录':(session.USER_INFO.getNickname()+'已登录')}"></span>
+					<div class="header-grid-right animated wow slideInRight" data-wow-delay=".5s">
+						<div class="dropdown">
+						<span class="btn dropdown-toggle" type="button" id="dropdownMenu1"
+							  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                <a href="/toMyProfile"><img src="../static/images/jm.jpg"
+											style="width:44px; height:44px; border-radius:50%;">
+                <span> </span>
+                <span th:text="${session.USER_INFO==null? 'Please Login':(session.USER_INFO.getNickname())}">Please Login</span>
+                </a>
+
+							<span class="caret"></span>
+						</span>
+							<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+
+								<li><a href="/toMyProfile">Personal Center</a></li>
+								<li><a href="/logout">Log Out</a></li>
+							</ul>
+						</div>
+					</div>
 				</div>
 				<div class="clearfix"> </div>
 			</div>
