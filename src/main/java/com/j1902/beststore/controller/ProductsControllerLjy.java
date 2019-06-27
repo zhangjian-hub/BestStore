@@ -23,9 +23,9 @@ public class ProductsControllerLjy {
 
     @RequestMapping("/toProducts.html")
     public String toForgotPassword( Map<String, Object> map) {
-        PageHelper.startPage(1,9);
+        PageHelper.startPage(1,6);
         List<BsItem> bsItems = itemService.selectAll();
-        PageInfo info = new PageInfo(bsItems,9);
+        PageInfo info = new PageInfo(bsItems,6);
         List<BsItem> b = info.getList();
 
         List<BsItem> a = new ArrayList();
@@ -33,7 +33,7 @@ public class ProductsControllerLjy {
         a.add(b.get(0));
         a.add(b.get(2));
         a.add(b.get(3));
-        a.add(b.get(4));
+
         System.out.println("a = " + a);
         System.out.println("bsItems = " + bsItems);
         System.out.println("info = " + info);
@@ -63,11 +63,11 @@ public class ProductsControllerLjy {
         Integer pageNum = Integer.valueOf(req.getParameter("pageNum"));
         System.out.println("pageNum = " + pageNum);
 
-       PageHelper.startPage(pageNum,9);
+       PageHelper.startPage(pageNum,6);
 
         List<BsItem> bsItems = itemService.selectAllGroupByName(bsItem);
 
-        PageInfo info = new PageInfo(bsItems,9);
+        PageInfo info = new PageInfo(bsItems,6);
         List<BsItem> b = info.getList();
         List<BsItem> c = itemService.selectAll();
         List<BsItem> a = new ArrayList();
@@ -75,7 +75,6 @@ public class ProductsControllerLjy {
         a.add(c.get(0));
         a.add(c.get(2));
         a.add(c.get(3));
-        a.add(c.get(4));
 
         System.out.println("bsItems = " + bsItems);
         System.out.println("info = " + info);

@@ -10,4 +10,5 @@ public class AddCartResult {
     public void setResult(boolean result) {
         this.result = result;
     }
+
 }

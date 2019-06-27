@@ -35,6 +35,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <link href="../static/css/animate.min.css" rel="stylesheet">
     <script src="../static/js/wow.min.js"></script>
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
     <script>
         new WOW().init();
     </script>
@@ -159,16 +162,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
             <div class="header-right">
                 <div class="cart box_1">
-                    <a href="/toCheckout">
+                    <a th:href="@{/toCheckout}">
                         <h3>
-                            <div class="total">
-                                <span class="simpleCart_total"></span> (<span id="simpleCart_quantity"
-                                                                              class="simpleCart_quantity"></span> items)
-                            </div>
                             <img src="../static/images/bag.png" alt=""/>
+                            <div class="total">
+                                <span>shopping cart</span>
+                            </div>
+
                         </h3>
                     </a>
-                    <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
                     <div class="clearfix"></div>
                 </div>
             </div>
@@ -228,30 +230,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                         <div class="new-products-grid-right">
                             <h4><a th:href="@{/toSingle(id=${a.getId()},name=${a.getName()},size=${a.getSize()},color=${a.getColor()})}" th:text="${a.getName()}"></a></h4>
-                            <div class="rating">
-                                <div class="rating-left">
-                                    <img src="../static/images/2.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="../static/images/2.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="../static/images/2.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="../static/images/1.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="../static/images/1.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
                             <div class="simpleCart_shelfItem new-products-grid-right-add-cart">
                                 <p class="p1" th:text="${a.getId()}" hidden></p>
                                 <p>
                                     <i th:text="${a.getPrice()*1.2}+'$'"></i>
                                     <span class="item_price" th:text="${a.getPrice()}+'$'"></span>
-                                    <p>size:<span th:text="${a.getSize()}"></span></p>
+                                    <span th:text="'size:'+${a.getSize()}"></span>
                                     <a class="item_add add1" href="javascript:;">add to cart</a>
 
                                 </p>
