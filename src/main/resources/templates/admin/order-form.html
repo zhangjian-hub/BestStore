@@ -83,28 +83,6 @@
             <div class="am-u-md-6 am-cf">
                 <div class="am-fl am-cf">
                     <div class="am-btn-toolbar am-fl">
-                        <div class="am-btn-group am-btn-group-xs">
-                            <button type="button" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增
-                            </button>
-                            <button type="button" class="am-btn am-btn-default"><span class="am-icon-save"></span> 保存
-                            </button>
-                            <button type="button" class="am-btn am-btn-default"><span class="am-icon-archive"></span> 审核
-                            </button>
-                            <button type="button" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span> 删除
-                            </button>
-                        </div>
-
-                        <div class="am-form-group am-margin-left am-fl">
-                            <select>
-                                <option value="option1">所有类别</option>
-                                <option value="option2">IT业界</option>
-                                <option value="option3">数码产品</option>
-                                <option value="option3">笔记本电脑</option>
-                                <option value="option3">平板电脑</option>
-                                <option value="option3">只能手机</option>
-                                <option value="option3">超极本</option>
-                            </select>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -128,12 +106,12 @@
                         <tr>
                             <th class="table-check"><input type="checkbox"/></th>
                             <th class="table-id">ID</th>
-                            <th class="table-title">订单号</th>
-                            <th class="table-type">用户id</th>
-                            <th class="table-author">商品信息</th>
-                            <th class="table-date">下单日期</th>
-                            <th class="table-date">状态</th>
-                            <th class="table-set">操作</th>
+                            <th class="table-title">OrderNumber </th>
+                            <th class="table-type">UserID</th>
+                            <th class="table-author">ItemInfo</th>
+                            <th class="table-date">Time</th>
+                            <th class="table-date">State</th>
+                            <th class="table-set">Operation</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -144,18 +122,18 @@
                             <td>[[${orderForm.userId}]]</td>
                             <td>[[${orderForm.itemId}]]</td>
                             <td>[[${orderForm.createTime}]]</td>
-                            <td>[[${orderForm.state == "1" ? "未发货" : "已发货"}]]</td>
+                            <td>[[${orderForm.state == "1" ? "unshipped" : "shipped,not received"}]]</td>
                             <td>
                                 <div class="am-btn-toolbar">
                                     <div class="am-btn-group am-btn-group-xs">
                                         <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span
-                                                class="am-icon-pencil-square-o"></span> 已发货
+                                                class="am-icon-pencil-square-o"></span> SHIPPED
                                         </button>
                                         <button class="am-btn am-btn-default am-btn-xs"><span
-                                                class="am-icon-copy"></span> 已退款
+                                                class="am-icon-copy"></span> REFUNDED
                                         </button>
                                         <button class="am-btn am-btn-default am-btn-xs am-text-danger"><span
-                                                class="am-icon-trash-o"></span> 删除
+                                                class="am-icon-trash-o"></span> DELETE
                                         </button>
                                     </div>
                                 </div>
@@ -167,14 +145,14 @@
                         There are <span>[[${ALL_ORDER_FORMS.getTotal()}]]</span> pieces of data
                         <div class="am-fr">
                             <ul class="am-pagination">
-                                <li><a th:href="@{'/toOrderForm.back?pageNum=' + ${ALL_ORDER_FORMS.getPageNum() - 1}}">上一页</a></li>
+                                <li><a th:href="@{'/toOrderForm.back?pageNum=' + ${ALL_ORDER_FORMS.getPageNum() - 1}}">LAST</a></li>
                                 <li th:each="index : ${ALL_ORDER_FORMS.getNavigatepageNums()}" th:class="${ALL_ORDER_FORMS.getPageNum() == 1}? 'active' : ''" ><a th:href="@{'toOrderForm.back?pageNum=' + ${index}}" th:text="${index}" >1</a></li>
-                                <li ><a th:href="@{'/toOrderForm.back?pageNum=' + ${ALL_ORDER_FORMS.getPageNum() + 1}}">下一页</a></li>
+                                <li ><a th:href="@{'/toOrderForm.back?pageNum=' + ${ALL_ORDER_FORMS.getPageNum() + 1}}">NEXT</a></li>
                             </ul>
                         </div>
                     </div>
                     <hr/>
-                    <p>注：.....</p>
+                    <p>record：.....</p>
                 </form>
             </div>
         </div>
@@ -184,7 +162,6 @@
 
 <footer>
     <hr>
-    <p class="am-padding-left">© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
 </footer>
 
 <!--[if lt IE 9]>
@@ -202,7 +179,7 @@
 <script src="../../static/assets/js/app.js"></script>
 <script src="../../static/assets/js/jquery.serializejson.min.js"></script>
 <script>
-    $("")
+
 </script>
 </body>
 </html>

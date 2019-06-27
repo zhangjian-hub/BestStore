@@ -103,10 +103,10 @@
               <tr>
                 <th class="table-check"><input type="checkbox" /></th>
 				<th class="table-id">ID</th>
-				<th class="table-title">用户email</th>
-				<th class="table-title">内容</th>
-                <th class="table-date">发送日期</th>
-                <th class="table-set">操作</th>
+				<th class="table-title">UserEmail</th>
+				<th class="table-title">Content</th>
+                <th class="table-date">Time</th>
+                <th class="table-set">Operation</th>
               </tr>
           </thead>
           <tbody>
@@ -127,17 +127,17 @@
           </tbody>
         </table>
           <div class="am-cf">
-  共 15 条记录
+            <span>There are [[${ALL_EMAILS.getTotal()}]] pieces of data </span>
   <div class="am-fr">
     <ul class="am-pagination">
-      <li><a th:href="@{'toAdminEmail.back?pageNum=' + ${ALL_EMAILS.getPageNum() - 1}}">上一页</a></li>
+      <li><a th:href="@{'toAdminEmail.back?pageNum=' + ${ALL_EMAILS.getPageNum() - 1}}">last</a></li>
       <li th:each="index : ${ALL_EMAILS.getNavigatepageNums()}" th:class="${ALL_EMAILS.getPageNum()== index}?'active' : ''" ><a th:href="@{'toAdminEmail.back?pageNum=' + ${index}}" th:text="${index}" >1</a></li>
-      <li ><a th:href="@{'toAdminEmail.back?pageNum=' + ${ALL_EMAILS.getPageNum() + 1}}">下一页</a></li>
+      <li ><a th:href="@{'toAdminEmail.back?pageNum=' + ${ALL_EMAILS.getPageNum() + 1}}">next</a></li>
     </ul>
   </div>
 </div>
           <hr />
-          <p>注：.....</p>
+          <p>record：.....</p>
         </form>
       </div>
 
@@ -148,7 +148,6 @@
 
 <footer>
   <hr>
-  <p class="am-padding-left">© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
 </footer>
 
 <!--[if lt IE 9]>
