@@ -51,12 +51,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</ul>
 				</div>
 				<div class="header-grid-right animated wow slideInRight" data-wow-delay=".5s">
-					<ul class="social-icons">
-						<li><a href="#" class="facebook"></a></li>
-						<li><a href="#" class="twitter"></a></li>
-						<li><a href="#" class="g"></a></li>
-						<li><a href="#" class="instagram"></a></li>
-					</ul>
+					<img src="../static/images/jm.jpg" style="width:44px; height:44px; border-radius:50%;"><span> </span><span th:text="${session.USER_INFO==null? '请登录':(session.USER_INFO.getNickname()+'已登录')}"></span>
 				</div>
 				<div class="clearfix"> </div>
 			</div>

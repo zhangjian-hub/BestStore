@@ -59,12 +59,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </ul>
             </div>
             <div class="header-grid-right animated wow slideInRight" data-wow-delay=".5s">
-                <ul class="social-icons">
-                    <li><a href="#" class="facebook"></a></li>
-                    <li><a href="#" class="twitter"></a></li>
-                    <li><a href="#" class="g"></a></li>
-                    <li><a href="#" class="instagram"></a></li>
-                </ul>
+                <img src="../static/images/jm.jpg" style="width:44px; height:44px; border-radius:50%;"><span> </span><span th:text="${session.USER_INFO==null? '请登录':(session.USER_INFO.getNickname()+'已登录')}"></span>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -136,32 +131,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <div class="row">
                                         <div class="col-sm-4">
                                             <ul class="multi-column-dropdown">
-                                                <h6>Home Collection</h6>
-                                                <li><a href="/toFurniture">Cookware</a></li>
-                                                <li><a href="/toFurniture">Sofas</a></li>
-                                                <li><a href="/toFurniture">Dining Tables</a></li>
-                                                <li><a href="/toFurniture">Shoe Racks</a></li>
-                                                <li><a href="/toFurniture">Home Decor</a></li>
+
                                             </ul>
                                         </div>
                                         <div class="col-sm-4">
                                             <ul class="multi-column-dropdown">
                                                 <h6>Office Collection</h6>
-                                                <li><a href="/toFurniture">Carpets</a></li>
-                                                <li><a href="/toFurniture">Tables</a></li>
-                                                <li><a href="/toFurniture">Sofas</a></li>
-                                                <li><a href="/toFurniture">Shoe Racks</a></li>
-                                                <li><a href="/toFurniture">Sockets</a></li>
-                                                <li><a href="/toFurniture">Electrical Machines</a></li>
                                             </ul>
                                         </div>
                                         <div class="col-sm-4">
                                             <ul class="multi-column-dropdown">
-                                                <h6>Decorations</h6>
-                                                <li><a href="/toFurniture">Toys</a></li>
-                                                <li><a href="/toFurniture">Wall Clock</a></li>
-                                                <li><a href="/toFurniture">Lighting</a></li>
-                                                <li><a href="/toFurniture">Top Brands</a></li>
+
                                             </ul>
                                         </div>
                                         <div class="clearfix"></div>
@@ -356,7 +336,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <a id="add" class="item_add" href="javascript:;">add to cart</a>
                     <script>
                         $("#add").click(function () {
-                            $.post("/toAddCart", {id: 2}, function (data) {
+                            console.log()
+                            $.post("/toAddCart", {id: [[${BSITEM_INFO1.id}]]}, function (data) {
                                 if (data.result) {
                                     swal({
                                         title: "Addition Succeed",

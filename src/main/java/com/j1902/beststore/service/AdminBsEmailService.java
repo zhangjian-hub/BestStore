@@ -12,4 +12,6 @@ public interface AdminBsEmailService {
     public PageInfo<BsEmail> getAllEmails(int pageNum);
 
     public BsEmail selectById(Integer id);
+
+    public int getCountOfAllEmails();
 }
