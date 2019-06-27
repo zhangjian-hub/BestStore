@@ -27,15 +27,17 @@ public class BsItemServiceIplm implements BsItemService {
 
     @Override
     public BsItem toCommodityDetail(BsItem bsItem) {
+        System.out.println("bsItemsdfsdg = " + bsItem);
         BsItemExample bsItemExample =new BsItemExample();
         BsItemExample.Criteria or = bsItemExample.or();
         or.andNameEqualTo(bsItem.getName());
         or.andSizeEqualTo(bsItem.getSize());
         or.andColorEqualTo(bsItem.getColor());
         List<BsItem> bsItems = bsItemMapper.selectByExample(bsItemExample);
-        if (bsItems==null||bsItems.size()==0){
+        if (bsItems==null || bsItems.size()==0){
             return null;
         }
+        System.out.println(bsItems.get(0));
         return bsItems.get(0);
     }
 }
