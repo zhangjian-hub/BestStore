@@ -27,6 +27,7 @@ public class BsItemServiceIplm implements BsItemService {
 
     @Override
     public BsItem toCommodityDetail(BsItem bsItem) {
+        System.out.println("bsItemsdfsdg = " + bsItem);
         BsItemExample bsItemExample =new BsItemExample();
         BsItemExample.Criteria or = bsItemExample.or();
         or.andNameEqualTo(bsItem.getName());
@@ -36,6 +37,7 @@ public class BsItemServiceIplm implements BsItemService {
         if (bsItems==null || bsItems.size()==0){
             return null;
         }
+        System.out.println(bsItems.get(0));
         return bsItems.get(0);
     }
 }

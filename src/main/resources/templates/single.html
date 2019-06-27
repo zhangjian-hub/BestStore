@@ -304,7 +304,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
             <div class="col-md-7 single-right-left simpleCart_shelfItem animated wow slideInRight" data-wow-delay=".5s">
                 <h3 th:text="${BSITEM_INFO1.name}"></h3>
-                <h4><span class="item_price" th:text="${'$'+BSITEM_INFO1.name}"></span></h4>
+                <h4><span class="item_price" th:text="${'$'+BSITEM_INFO1.price}"></span></h4>
                 <div class="rating1">
 						<span class="starRating">
 							<input id="rating5" type="radio" name="rating" value="5">
@@ -371,7 +371,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                         function getID() {
                             $.post("/toGteId", {
-                                name: [[${BSITEM_INFO1.name}]],
+                                name: "[[${BSITEM_INFO1.name}]]",
                                 size: mySelectText,
                                 color: color_li
                             }, function (data) {
