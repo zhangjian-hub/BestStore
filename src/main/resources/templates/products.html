@@ -57,7 +57,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </ul>
             </div>
             <div class="header-grid-right animated wow slideInRight" data-wow-delay=".5s">
-                <img src="../static/images/jm.jpg" style="width:44px; height:44px; border-radius:50%;">
+                <a th:if=""><img src="../static/images/jm.jpg" style="width:44px; height:44px; border-radius:50%;"></a>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -221,7 +221,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="new-products-grids">
                     <div class="new-products-grid" th:each="a:${A}" >
                         <div class="new-products-grid-left">
-                            <p class="p1" th:text="${a.getId()}" hidden></p>
+
                             <a th:href="@{/toSingle(id=${a.getId()},name=${a.getName()},size=${a.getSize()},color=${a.getColor()})}"><img th:src="${a.getImage()}" alt=" "
                                                      class="img-responsive"
                                                      style="height:220px;width: 150px;"></a>
@@ -247,8 +247,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div class="clearfix"></div>
                             </div>
                             <div class="simpleCart_shelfItem new-products-grid-right-add-cart">
-                                <p><i th:text="${a.getPrice()*1.5}+'$'"></i> <span class="item_price" th:text="${a.getPrice()}"></span>
-                                    <a class="item_add add" href="javascript:;">add to cart</a>
+                                <p class="p1" th:text="${a.getId()}" hidden></p>
+                                <p>
+                                    <i th:text="${a.getPrice()*1.2}+'$'"></i>
+                                    <span class="item_price" th:text="${a.getPrice()}+'$'"></span>
+                                    <p>size:<span th:text="${a.getSize()}"></span></p>
+                                    <a class="item_add add1" href="javascript:;">add to cart</a>
 
                                 </p>
                             </div>
@@ -292,7 +296,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                              data-wow-delay=".5s">
 
                             <div class="new-collections-grid1-image">
-                                <p class="p1" th:text="${bs.getId()}" hidden></p>
+
                                 <a th:href="@{/toSingle(id=${bs.getId()},name=${bs.getName()},size=${bs.getSize()},color=${bs.getColor()})}" class="product-image"><img th:src="${bs.getImage()}" alt=" "
                                                                                class="img-responsive"
                                                                                style="height:220px;width: 150px;"></a>
@@ -323,14 +327,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </div>
                             </div>
                             <h4><a th:href="@{/toSingle(id=${bs.getId()},name=${bs.getName()},size=${bs.getSize()},color=${bs.getColor()})}"><span th:text="${bs.getName()}"></span></a></h4>
-                            <p>Vel illum qui dolorem.</p>
+                            <p>size:<span th:text="${bs.getSize()}"></span></p>
+
                             <div class="simpleCart_shelfItem products-right-grid1-add-cart">
-                                <p><i th:text="${bs.getPrice()*1.5}+'$'"></i> <span class="item_price"
-                                                                                    th:text="${bs.getPrice()}"></span><a  class="item_add add" href="javascript:;">add to cart </a></p>
+                                <p class="p2" th:text="${bs.getId()}" hidden></p>
+                                <p><i th:text="${bs.getPrice()*1.2}+'$'"></i>
+                                    <span class="item_price" th:text="${bs.getPrice()}+'$'"></span>
+                                    <a  class="item_add add2" href="javascript:;">add to cart </a>
+
+                                </p>
                             </div>
                         </div>
                     </div>
-
 
                     <!--                    </option>-->
                 </div>
@@ -467,23 +475,48 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
 </div>
 <script>
-    var p = $(".p1").val();
-    $(".add").click(function () {
-        $.post("/toAddCart", {id:p}, function (data) {
-            if (data.result) {
-                swal({
-                    title: "Addition Succeed",
-                    type: "success",
-                    confirmButtonText: "ok",
-                    closeOnConfirm: false
-                }, function () {
-                    window.location.reload()
-                });
-            } else {
-                swal("Addition Failed", "Please Login in", 'error');
-            }
-        })
-    })
+    $(".add1").each(function () {
+        $(this).click(function () {
+            console.log($(this).parent().prev().text())
+                var data = $(this).parent().prev().text();
+
+            $.post("/toAddCart", {id:data}, function (data) {
+                if (data.result) {
+                    swal({
+                        title: "Addition Succeed",
+                        type: "success",
+                        confirmButtonText: "ok",
+                        closeOnConfirm: false
+                    }, function () {
+                        window.location.reload()
+                    });
+                } else {
+                    swal("Addition Failed", "Please Login in", 'error');
+                }
+            });
+        });
+    });
+    $(".add2").each(function () {
+        $(this).click(function () {
+            console.log($(this).parent().prev().text())
+            var data = $(this).parent().prev().text();
+
+            $.post("/toAddCart", {id:data}, function (data) {
+                if (data.result) {
+                    swal({
+                        title: "Addition Succeed",
+                        type: "success",
+                        confirmButtonText: "ok",
+                        closeOnConfirm: false
+                    }, function () {
+                        window.location.reload()
+                    });
+                } else {
+                    swal("Addition Failed", "Please Login in", 'error');
+                }
+            });
+        });
+    });
 </script>
 
 <!-- //footer -->

@@ -28,7 +28,9 @@ public class AddServiceImpl implements AddService {
         BsShoppingCartExample.Criteria or = bsShoppingCartExample.or();
         or.andItemIdEqualTo(bsShoppingCart.getItemId());
         List<BsShoppingCart> bsShoppingCarts = bsShoppingCartMapper.selectByExample(bsShoppingCartExample);
-        if (bsShoppingCarts.size()<0){
+        System.out.println("bsShoppingCarts = " + bsShoppingCarts);
+        System.out.println("bsShoppingCarts.size() = " + bsShoppingCarts.size());
+        if (bsShoppingCarts.size()==0){
             return null;
         }
         return bsShoppingCarts.get(0) ;

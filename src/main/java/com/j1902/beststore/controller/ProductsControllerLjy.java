@@ -69,13 +69,13 @@ public class ProductsControllerLjy {
 
         PageInfo info = new PageInfo(bsItems,9);
         List<BsItem> b = info.getList();
-
+        List<BsItem> c = itemService.selectAll();
         List<BsItem> a = new ArrayList();
 
-        a.add(b.get(0));
-        a.add(b.get(2));
-        a.add(b.get(3));
-        a.add(b.get(4));
+        a.add(c.get(0));
+        a.add(c.get(2));
+        a.add(c.get(3));
+        a.add(c.get(4));
 
         System.out.println("bsItems = " + bsItems);
         System.out.println("info = " + info);
