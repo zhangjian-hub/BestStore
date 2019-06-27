@@ -73,5 +73,10 @@ public class BsUserServiceImpl implements BsUserService {
         return bsUsers != null && bsUsers.size() > 0;
     }
 
+    @Override
+    public boolean button() {
+        return false;
+    }
+
 
 }

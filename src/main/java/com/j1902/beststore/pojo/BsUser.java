@@ -102,4 +102,20 @@ public class BsUser {
     public void setNowIp(String nowIp) {
         this.nowIp = nowIp == null ? null : nowIp.trim();
     }
+
+    @Override
+    public String toString() {
+        return "BsUser{" +
+                "id=" + id +
+                ", nickname='" + nickname + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", lastLogin=" + lastLogin +
+                ", nowLogin=" + nowLogin +
+                ", lastIp='" + lastIp + '\'' +
+                ", nowIp='" + nowIp + '\'' +
+                '}';
+    }
 }

@@ -1,13 +1,16 @@
 package com.j1902.beststore.controller;
 
+import com.j1902.beststore.modle.ShoppingCartResult;
 import com.j1902.beststore.pojo.BsUser;
 import com.j1902.beststore.service.BsUserService;
 import com.j1902.beststore.utils.JsonUtils;
 import com.j1902.beststore.utils.UseUtil;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.CacheManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.Cookie;
@@ -37,23 +40,32 @@ public class BsUserController {
     }
 
     @RequestMapping("/register")
-    public String register(BsUser bsUser, HttpServletRequest request) {
-        if (bsUserService.register(bsUser)) {
-            request.setAttribute("REGISTER", "true");
-            return "login";
-        } else {
-            request.setAttribute("REGISTER", "fail");
-            return "register";
+    @ResponseBody
+    public boolean register(BsUser bsUser, HttpServletRequest request) {
+        String confirm_password = request.getParameter("confirm_password");
+        if(bsUser.getEmail()==null ||bsUser.getPassword()==null ||bsUser.getNickname()==null ||bsUser.getPhone()==null||confirm_password==null||
+            ""==bsUser.getEmail()|| ""==bsUser.getPassword()||""==bsUser.getNickname()||""==bsUser.getPhone()||""==confirm_password
+        ){
+            return false;
         }
+        return bsUserService.register(bsUser);
     }
 
     @RequestMapping("/toIndex")
     public String toHome() {
         return "index";
     }
+    @RequestMapping("/toAdmin")
+    public String toAdmin() {
+        return "admin/admin-index";
+    }
 
     @RequestMapping("/login")
-    public String login(BsUser bsUser, HttpServletRequest req, HttpServletResponse resp, HttpSession session) throws UnsupportedEncodingException {
+    @ResponseBody
+    public boolean login(BsUser bsUser, HttpServletRequest req, HttpServletResponse resp, HttpSession session) throws UnsupportedEncodingException {
+        if(bsUser.getEmail()==null||bsUser.getPassword()==null||""==bsUser.getEmail()||""==bsUser.getPassword()){
+            return false;
+        }
         String remember = req.getParameter("remember");
         if (bsUserService.login(bsUser,req)!=null ) {
             if ("true".equals(remember)) {
@@ -63,18 +75,15 @@ public class BsUserController {
                 cookie.setMaxAge(3600 * 24 * 30);
                 resp.addCookie(cookie);
             }
-            if (bsUser.getEmail().equals("15927147398@qq.com")) {
-                bsUser.setPassword(null);
-                return "admin/admin-index";
-            }
             session.setAttribute("USER_INFO",bsUserService.login(bsUser,req));
             bsUser.setPassword(null);
-            return "index";
+            return true;
         } else {
-            req.setAttribute("LOGIN", "fail");
-            return "login";
+            return false;
         }
     }
+
+
 
     @RequestMapping("/verityEmail")
     @ResponseBody
@@ -101,4 +110,11 @@ public class BsUserController {
         session.removeAttribute("USER_INFO");
         return  "login";
     }
+
+    @RequestMapping("/button")
+    public String button(HttpServletRequest request){
+
+        return  "login";
+    }
+
 }
