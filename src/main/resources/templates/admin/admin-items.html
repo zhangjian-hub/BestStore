@@ -166,21 +166,12 @@
                         </button>
                     </div>
                     <div class="am-cf">
-                        <span>There are [[${PAGE_INFO.getSize()}]] pieces of data </span>
+                        <span>There are [[${PAGE_INFO.getTotal()}]] pieces of data </span>
                         <div class="am-fr">
                             <ul class="am-pagination" >
                                 <li><a th:href="@{'toAdminItems.back?pageNum=' + ${PAGE_INFO.getPageNum() - 1}}">上一页</a></li>
                                 <li th:each="index : ${PAGE_INFO.getNavigatepageNums()}" th:class="${PAGE_INFO.getPageNum() == 1}? 'active' : ''" ><a th:href="@{'toAdminItems.back?pageNum=' + ${index}}" th:text="${index}" >1</a></li>
                                 <li ><a th:href="@{'toAdminItems.back?pageNum=' + ${PAGE_INFO.getPageNum() + 1}}">下一页</a></li>
-                                <!--<li th:class="${PAGE_INFO.getPageNum()==1}?'disabled' : ''"><a th:href="@{'toAdminItems.back?pageNum=' + ${PAGE_INFO.getPageNum() - 1}}">上一页</a></li>-->
-                                <!--<li th:if="${PAGE_INFO.getPageNum()-3 >=1}" ><a th:href="@{'toAdminItems.back?pageNum=' + ${PAGE_INFO.getPageNum()-3}}" th:text="${PAGE_INFO.getPageNum() -3}" >1</a></li>-->
-                                <!--<li th:if="${PAGE_INFO.getPageNum()-2 >=1}" ><a th:href="@{'toAdminItems.back?pageNum=' + ${PAGE_INFO.getPageNum()-2}}" th:text="${PAGE_INFO.getPageNum() -2}" >1</a></li>-->
-                                <!--<li th:if="${PAGE_INFO.getPageNum()-1 >=1}" ><a th:href="@{'toAdminItems.back?pageNum=' + ${PAGE_INFO.getPageNum()-1}}" th:text="${PAGE_INFO.getPageNum() -1}" >1</a></li>-->
-                                <!--<li class="active"><a href="#" th:text="${PAGE_INFO.getPageNum()}" >1</a></li>-->
-                                <!--<li th:if="${PAGE_INFO.getPageNum()+1 <=PAGE_INFO.getPages()}" ><a th:href="@{'toAdminItems.back?pageNum=' + ${PAGE_INFO.getPageNum()+1}}" th:text="${PAGE_INFO.getPageNum() +1}" >1</a></li>-->
-                                <!--<li th:if="${PAGE_INFO.getPageNum()+2 <=PAGE_INFO.getPages()}" ><a th:href="@{'toAdminItems.back?pageNum=' + ${PAGE_INFO.getPageNum()+2}}" th:text="${PAGE_INFO.getPageNum() +2}" >1</a></li>-->
-                                <!--<li th:if="${PAGE_INFO.getPageNum()+3 <=PAGE_INFO.getPages()}" ><a th:href="@{'toAdminItems.back?pageNum=' + ${PAGE_INFO.getPageNum()+3}}" th:text="${PAGE_INFO.getPageNum() +3}" >1</a></li>-->
-                                <!--<li th:class="${PAGE_INFO.getPageNum()==PAGE_INFO.getPages()}?'disabled' : ''" ><a th:href="@{'toAdminItems.back?pageNum=' + ${PAGE_INFO.getPageNum() + 1}}">下一页</a></li>-->
                             </ul>
                         </div>
                     </div>
