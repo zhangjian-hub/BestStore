@@ -10,6 +10,4 @@ public interface BsUserService {
     public boolean register(BsUser bsUser);
     public boolean  verityEmail(String email);
     public boolean  verityPhone(String phone);
-    public boolean button();
-
 }
