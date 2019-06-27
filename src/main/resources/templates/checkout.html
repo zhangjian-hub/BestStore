@@ -247,7 +247,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<td th:text="${item.shoppingCartId}" hidden class="shoppingId"></td>
 					<!--<td><input type="checkbox" value="true" class="mycheckbox"></td>-->
 					<td class="invert" th:text="${(PAGEINFO.getPageNum()-1)*3+items.count}"></td>
-					<td class="invert-image"><a th:href="@{/toSingle(id=${item.getId()},size=${item.getSize()},color=${item.getColor()})}"><img th:src="@{item.image}" alt=" "
+					<td class="invert-image"><a th:href="@{/toSingle(id=${item.getId()},size=${item.getSize()},color=${item.getColor()})}"><img th:src="${item.image}" alt=" "
 																																				class="img-responsive"/></a></td>
 
 					<td class="invert">

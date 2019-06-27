@@ -71,12 +71,6 @@ public class AdminBsItemController {
         return "admin/admin-add-item";
     }
 
-    @RequestMapping("/toOrderForm.back")
-    public String toOrderForm() {
-
-        return "admin/order-form";
-    }
-
 
 
     @RequestMapping("/updateItem.back")
