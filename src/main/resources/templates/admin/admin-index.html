@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -82,10 +82,10 @@
     </div>
 
     <ul class="am-avg-sm-1 am-avg-md-4 am-margin am-padding am-text-center admin-content-list ">
-      <li><a href="javascript:;" class="am-text-success"><span class="am-icon-btn am-icon-file-text"></span><br/>商品总数<br/>2300</a></li>
-      <li><a href="javascript:;" class="am-text-warning"><span class="am-icon-btn am-icon-briefcase"></span><br/>成交订单<br/>308</a></li>
-      <li><a href="javascript:;" class="am-text-danger"><span class="am-icon-btn am-icon-recycle"></span><br/>昨日访问<br/>80082</a></li>
-      <li><a href="javascript:;" class="am-text-secondary"><span class="am-icon-btn am-icon-user-md"></span><br/>注册用户<br/>3000</a></li>
+      <li><a href="javascript:;" class="am-text-success"><span class="am-icon-btn am-icon-file-text"></span><br/>商品总数<br/>[[${ITEMS_COUNT}]]</a></li>
+      <li><a href="javascript:;" class="am-text-warning"><span class="am-icon-btn am-icon-briefcase"></span><br/>成交订单<br/>[[${RECORDS_COUNT}]]</a></li>
+      <li><a href="javascript:;" class="am-text-danger"><span class="am-icon-btn am-icon-recycle"></span><br/>邮件数量<br/>[[${EMAILS_COUNT}]]</a></li>
+      <li><a href="javascript:;" class="am-text-secondary"><span class="am-icon-btn am-icon-user-md"></span><br/>注册用户<br/>[[${USERS_COUNT}]]</a></li>
     </ul>
   </div>
   <!-- content end -->
@@ -130,7 +130,7 @@
   </div>
 </div>
           <hr />
-          <p>注：.....</p>
+          <p>record：.....</p>
         </form>
       </div>
 

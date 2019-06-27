@@ -3,10 +3,8 @@ package com.j1902.beststore.controller;
 import com.github.pagehelper.PageInfo;
 import com.j1902.beststore.modle.ItemFull;
 import com.j1902.beststore.modle.ShoppingCartResult;
-import com.j1902.beststore.pojo.BsItem;
-import com.j1902.beststore.pojo.BsShoppingCart;
-import com.j1902.beststore.pojo.BsShoppingRecord;
-import com.j1902.beststore.pojo.BsUser;
+import com.j1902.beststore.pojo.*;
+import com.j1902.beststore.service.AdminBsOrderFormService;
 import com.j1902.beststore.service.BsShoppingCartItemService;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,16 +13,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import javax.servlet.http.HttpSession;
+import java.util.*;
 
 @Controller
 @MapperScan("com.j1902.beststore.mapper")
 public class BsShoppingCartController {
     @Autowired
     private BsShoppingCartItemService bsItemService;
+
+    @Autowired
+    private AdminBsOrderFormService orderFormService;
 
     //    到购物车
     @RequestMapping("/toCheckout")
@@ -122,7 +121,7 @@ public class BsShoppingCartController {
     //    付款
     @RequestMapping("/payment")
     @ResponseBody
-    public ShoppingCartResult payment(int[] shoppingCartIdList) {
+    public ShoppingCartResult payment(int[] shoppingCartIdList, HttpSession session) {
         boolean b = false;
         boolean b1 = false;
         for (Integer integer : shoppingCartIdList) {
@@ -131,11 +130,21 @@ public class BsShoppingCartController {
             Integer itemId = bsShoppingCartById.getItemId();
             Integer number = bsShoppingCartById.getNumber();
             BsItem item = bsItemService.getItem(itemId);
-            BsShoppingRecord bsShoppingRecord = new BsShoppingRecord();
-            bsShoppingRecord.setUserId(userId);
-            bsShoppingRecord.setItemInfo(item.getName() + "," + item.getType() + "," + item.getColor() + "," + item.getSize() + "," + item.getPrice() + "," + number);
-            bsShoppingRecord.setCreateTime(new Date());
-            b = bsItemService.addBsShoppingRecord(bsShoppingRecord);
+            BsUser user = (BsUser) session.getAttribute("USER_INFO");
+            for (int i = 1; i <= number; i++) {
+                BsOrderForm orderForm = new BsOrderForm();
+                orderForm.setUserId(user.getId());
+                orderForm.setItemId(itemId);
+                orderForm.setCreateTime(new Date());
+                orderForm.setOrderId(UUID.randomUUID().toString());
+                orderForm.setState("1");
+                b = orderFormService.addOrderForms(orderForm);
+            }
+//            BsShoppingRecord bsShoppingRecord = new BsShoppingRecord();
+//            bsShoppingRecord.setUserId(userId);
+//            bsShoppingRecord.setItemInfo(item.getName() + "," + item.getType() + "," + item.getColor() + "," + item.getSize() + "," + item.getPrice() + "," + number);
+//            bsShoppingRecord.setCreateTime(new Date());
+//            b = bsItemService.addBsShoppingRecord(bsShoppingRecord);
             b1 = bsItemService.removeShoppingCart(integer);
 
         }

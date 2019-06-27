@@ -28,12 +28,11 @@ public class AddServiceImpl implements AddService {
         BsShoppingCartExample.Criteria or = bsShoppingCartExample.or();
         or.andItemIdEqualTo(bsShoppingCart.getItemId());
         List<BsShoppingCart> bsShoppingCarts = bsShoppingCartMapper.selectByExample(bsShoppingCartExample);
-        if (bsShoppingCarts.size()<0){
+        if (bsShoppingCarts.size()==0){
             return null;
         }
         return bsShoppingCarts.get(0) ;
     }
-
     @Override
     public boolean updateShopping(BsShoppingCart bsShoppingCart1) {
         int i = bsShoppingCartMapper.updateByPrimaryKeySelective(bsShoppingCart1);

@@ -1,6 +1,5 @@
 package com.j1902.beststore.controller;
 
-import com.j1902.beststore.modle.Modle;
 import com.j1902.beststore.pojo.BsItem;
 import com.j1902.beststore.service.BsItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,6 @@ public class BsItemController {
     public String toSingle( Map<String, Object> map ,BsItem bsItem ){
         List<BsItem> bsItems = bsItemService.toCommodityDetails(bsItem);
         BsItem bsItem1 = bsItemService.toCommodityDetail(bsItem);
-        Modle modle=new Modle();
         List<String> color=new ArrayList<>();
         List<String> size=new ArrayList<>();
         List<String> image=new ArrayList<>();

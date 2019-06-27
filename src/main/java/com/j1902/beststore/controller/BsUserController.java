@@ -65,7 +65,9 @@ public class BsUserController {
             }
             if (bsUser.getEmail().equals("15927147398@qq.com")) {
                 bsUser.setPassword(null);
+                session.setAttribute("ADMIN_USER_INFO",bsUserService.login(bsUser,req));
                 return "admin/admin-index";
+
             }
             session.setAttribute("USER_INFO",bsUserService.login(bsUser,req));
             bsUser.setPassword(null);
