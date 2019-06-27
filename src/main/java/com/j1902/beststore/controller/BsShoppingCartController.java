@@ -29,8 +29,7 @@ public class BsShoppingCartController {
     @RequestMapping("/toCheckout")
     public String toCheckout(HttpServletRequest request, Integer pageNum, Map<String, Object> map) {
         BsUser user_info = (BsUser) request.getSession().getAttribute("USER_INFO");
-        System.out.println("user_info = " + user_info);
-        if (user_info == null) {
+        if(user_info ==null){
             return "redirect:/toLogin";
         }
         Integer id = user_info.getId();

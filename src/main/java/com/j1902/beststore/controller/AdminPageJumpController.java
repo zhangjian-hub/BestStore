@@ -1,5 +1,6 @@
 package com.j1902.beststore.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.j1902.beststore.service.*;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +49,9 @@ public class AdminPageJumpController {
 
     @RequestMapping("/toOrderForm.back")
     public String toOrderForm(Map<String,Object> map, @RequestParam(defaultValue = "1")int pageSum, @RequestParam(defaultValue = "10")int pageSize){
-        map.put("ALL_ORDER_FORMS",orderFormService.getAllOrderForms(pageSum,pageSize));
+        PageInfo allOrderForms = orderFormService.getAllOrderForms(pageSum, pageSize);
+        System.out.println("allOrderForms = " + allOrderForms);
+        map.put("ALL_ORDER_FORMS",allOrderForms);
         return "admin/order-form";
     }
 

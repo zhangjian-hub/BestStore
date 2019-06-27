@@ -62,4 +62,16 @@ public class BsOrderForm {
     public void setState(String state) {
         this.state = state == null ? null : state.trim();
     }
+
+    @Override
+    public String toString() {
+        return "BsOrderForm{" +
+                "id=" + id +
+                ", orderId='" + orderId + '\'' +
+                ", itemId=" + itemId +
+                ", userId=" + userId +
+                ", createTime=" + createTime +
+                ", state='" + state + '\'' +
+                '}';
+    }
 }
