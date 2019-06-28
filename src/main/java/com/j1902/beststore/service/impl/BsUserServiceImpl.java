@@ -69,7 +69,6 @@ public class BsUserServiceImpl implements BsUserService {
         BsUserExample.Criteria criteria1 = userExample.or();
         criteria1.andPhoneEqualTo(phone);
         List<BsUser> bsUsers = bsUserMapper.selectByExample(userExample);
-        System.out.println(bsUsers != null && bsUsers.size() > 0);
         return bsUsers != null && bsUsers.size() > 0;
     }
 

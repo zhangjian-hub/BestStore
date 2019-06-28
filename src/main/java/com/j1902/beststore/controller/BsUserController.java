@@ -42,12 +42,6 @@ public class BsUserController {
     @RequestMapping("/register")
     @ResponseBody
     public boolean register(BsUser bsUser, HttpServletRequest request) {
-        String confirm_password = request.getParameter("confirm_password");
-        if(bsUser.getEmail()==null ||bsUser.getPassword()==null ||bsUser.getNickname()==null ||bsUser.getPhone()==null||confirm_password==null||
-            ""==bsUser.getEmail()|| ""==bsUser.getPassword()||""==bsUser.getNickname()||""==bsUser.getPhone()||""==confirm_password
-        ){
-            return false;
-        }
         return bsUserService.register(bsUser);
     }
 
@@ -83,8 +77,6 @@ public class BsUserController {
         }
     }
 
-
-
     @RequestMapping("/verityEmail")
     @ResponseBody
     public boolean verityEmail(String email) {
@@ -111,10 +103,5 @@ public class BsUserController {
         return  "login";
     }
 
-    @RequestMapping("/button")
-    public String button(HttpServletRequest request){
-
-        return  "login";
-    }
 
 }

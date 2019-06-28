@@ -9,10 +9,15 @@ import com.aliyuncs.exceptions.ServerException;
 import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
 import com.aliyuncs.profile.IClientProfile;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
+@MapperScan("com.j1902.beststore.mapper")
 public class SmsController {
 
     private static String code;
@@ -36,22 +41,13 @@ public class SmsController {
 //        </dependency>
 
     @RequestMapping("/button")
-    public static String getPhonemsg(String mobile) {
-
-        /**
-         * 进行正则关系校验
-         */
-        System.out.println(mobile);
-        if (mobile == null || mobile == "") {
-            System.out.println("手机号为空");
-            return "";
-        }
+    @ResponseBody
+    public static boolean getPhonemsg(String phone) {
         /**
          * 短信验证---阿里大于工具
          */
-
         // 设置超时时间-可自行调整
-        System.setProperty("sun.net.client.defaultConnectTimeout","10000");
+        System.setProperty("sun.net.client.defaultConnectTimeout", "10000");
         System.setProperty("sun.net.client.defaultReadTimeout", "10000");
         // 初始化ascClient需要的几个参数
         final String product = "Dysmsapi";// 短信API产品名称（短信产品名固定，无需修改）
@@ -78,7 +74,7 @@ public class SmsController {
         // 使用post提交
         request.setMethod(MethodType.POST);
         // 必填:待发送手机号。支持以逗号分隔的形式进行批量调用，批量上限为1000个手机号码,批量调用相对于单条调用及时性稍有延迟,验证码类型的短信推荐使用单条调用的方式
-        request.setPhoneNumbers(mobile);
+        request.setPhoneNumbers(phone);
         // 必填:短信签名-可在短信控制台中找到
         request.setSignName("BestStore");
         // 必填:短信模板-可在短信控制台中找到
@@ -97,22 +93,25 @@ public class SmsController {
             if (sendSmsResponse.getCode() != null
                     && sendSmsResponse.getCode().equals("OK")) {
                 // 请求成功
-                System.out.println("获取验证码成功！！！");
+//                System.out.println("获取验证码成功！！！");
+                return true;
             } else {
                 //如果验证码出错，会输出错误码告诉你具体原因
                 System.out.println(sendSmsResponse.getCode());
                 System.out.println("获取验证码失败...");
+                return false;
             }
         } catch (ServerException e) {
             e.printStackTrace();
-            return "由于系统维护，暂时无法注册！！！";
+            System.out.println("由于系统维护，暂时无法注册！！！");
+            return false;
         } catch (ClientException e) {
             e.printStackTrace();
-            return "由于系统维护，暂时无法注册！！！";
+            System.out.println("由于系统维护，暂时无法注册！！！");
+            return false;
         }
-        return "true";
-    }
 
+    }
     /**
      * 生成6位随机数验证码
      *
@@ -124,6 +123,16 @@ public class SmsController {
             vcode = vcode + (int) (Math.random() * 9);
         }
         return vcode;
+    }
+
+    @RequestMapping("/isRight")
+    @ResponseBody
+    public boolean isRight(HttpServletRequest request) {
+        String number = request.getParameter("number");
+        if(number==null||"".equals(number)){
+            return false;
+        }
+        return number.equals(code);
     }
 
 }
