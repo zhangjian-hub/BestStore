@@ -1,6 +1,8 @@
 package com.j1902.beststore.controller;
 
 import com.github.pagehelper.PageInfo;
+import com.j1902.beststore.modle.UpdateOrderFormInfo;
+import com.j1902.beststore.pojo.BsOrderForm;
 import com.j1902.beststore.service.*;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -57,6 +60,40 @@ public class AdminPageJumpController {
             PageInfo allOrderForms = orderFormService.getAllOrderForms(pageSum, pageSize);
             map.put("ALL_ORDER_FORMS", allOrderForms);
             return "admin/order-form";
+        } catch (Exception e) {
+            return "error/index";
+        }
+    }
+
+    @RequestMapping("/updateOrderFormState.back")
+    public String updateOrderFormState(UpdateOrderFormInfo updateOrderFormInfo) {
+        try {
+            if (updateOrderFormInfo != null) {
+                List<Integer> ids = updateOrderFormInfo.getIds();
+                List<BsOrderForm> bsOrderForms = updateOrderFormInfo.getBsOrderForms();
+                if (ids.size() > 0 && bsOrderForms.size() > 0) {
+                    for (Integer integer : ids) {
+                        for (BsOrderForm bsOrderForm : bsOrderForms) {
+                            if (integer == bsOrderForm.getId()) {
+                                bsOrderForm.setState("2");
+                                orderFormService.setOrderFormState(bsOrderForm);
+                            }
+                        }
+                    }
+                }
+                return "redirect:/toOrderForm.back";
+            }
+            return "redirect:/toOrderForm.back";
+        } catch (Exception e) {
+            return "error/index.back";
+        }
+    }
+
+    @RequestMapping("/deleteOrderForm.back")
+    public String deleteOrderForm(Integer id) {
+        try {
+            orderFormService.removeItem(id);
+            return "redirect:/toOrderForm.back";
         } catch (Exception e) {
             return "error/index";
         }
