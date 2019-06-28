@@ -40,25 +40,25 @@ public class ForgotPasswordControllerLjy {
     @ResponseBody
     public State forgotPassword(HttpServletRequest req, HttpSession session) {
         String email = req.getParameter("email");
-        System.out.println("email = " + email);
         String phone1 = req.getParameter("phone");
-        String password = req.getParameter("password");
-        System.out.println("password = " + password);
+        String password1 = req.getParameter("password1");
+        String password2 = req.getParameter("password2");
         BsUser bsUser = new BsUser();
-        bsUser.setPassword(password);
-        List<String> list = forgotPasswordService.selectBsUserid(email);
-        Integer id = Integer.valueOf(list.get(0));
-        System.out.println("id = " + id);
-        String phone = list.get(1);
-        bsUser.setId(id);
         State state = new State();
-        System.out.println("xx = " );
-        if(phone.equals(phone1)){
-            if(forgotPasswordService.ForgotPassword(bsUser)){
-                System.out.println("111");
-                state.setState(true);
-                System.out.println("state = " + state);
-                return state;
+        if(password1==password2){
+            bsUser.setPassword(password1);
+            List<String> list = forgotPasswordService.selectBsUserid(email);
+            Integer id = Integer.valueOf(list.get(0));
+            String phone = list.get(1);
+            bsUser.setId(id);
+            if(phone.equals(phone1)){
+                if(forgotPasswordService.ForgotPassword(bsUser)){
+                    state.setState(true);
+                    return state;
+                }else {
+                    state.setState(false);
+                    return state;
+                }
             }else {
                 state.setState(false);
                 return state;
@@ -67,6 +67,8 @@ public class ForgotPasswordControllerLjy {
             state.setState(false);
             return state;
         }
+
+
 
 
 

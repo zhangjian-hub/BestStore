@@ -26,6 +26,9 @@ public class AdminBsEmailServiceImpl implements AdminBsEmailService {
     public PageInfo<BsEmail> getAllEmails(int pageNum) {
         PageHelper.startPage(pageNum, 5);
         List<BsEmail> bsEmails = emailMapper.selectByExample(null);
+        for (BsEmail bsEmail : bsEmails) {
+            bsEmail.setContent(emailMapper.selectByPrimaryKey(bsEmail.getId()).getContent());
+        }
         PageInfo<BsEmail> pageInfo = new PageInfo<>(bsEmails);
         return pageInfo;
     }

@@ -63,14 +63,14 @@ public class BsShoppingCartItemServiceImpl implements BsShoppingCartItemService 
     @Override
     public boolean updateItemNumber(BsShoppingCart bsShoppingCart) {
         int i = bsShoppingCartMapper.updateByPrimaryKeySelective(bsShoppingCart);
-        return i > 0 ? true : false;
+        return i > 0;
     }
 
     //    删除购物车
     @Override
     public boolean removeShoppingCart(Integer id) {
         int i = bsShoppingCartMapper.deleteByPrimaryKey(id);
-        return i > 0 ? true : false;
+        return i > 0 ;
     }
 
     //    根据ID查询购物车
@@ -83,7 +83,7 @@ public class BsShoppingCartItemServiceImpl implements BsShoppingCartItemService 
     @Override
     public boolean addBsShoppingRecord(BsShoppingRecord bsShoppingRecord) {
         int i = bsShoppingRecordMapper.insertSelective(bsShoppingRecord);
-        return i > 0 ? true : false;
+        return i > 0;
     }
 }
 

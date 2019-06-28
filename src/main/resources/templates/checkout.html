@@ -59,12 +59,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</ul>
 				</div>
 				<div class="header-grid-right animated wow slideInRight" data-wow-delay=".5s">
-					<ul class="social-icons">
-						<li><a href="#" class="facebook"></a></li>
-						<li><a href="#" class="twitter"></a></li>
-						<li><a href="#" class="g"></a></li>
-						<li><a href="#" class="instagram"></a></li>
-					</ul>
+					<div class="header-grid-right animated wow slideInRight" data-wow-delay=".5s">
+						<div class="dropdown">
+						<span class="btn dropdown-toggle" type="button" id="dropdownMenu1"
+							  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                <a href="/toMyProfile"><img src="../static/images/jm.jpg"
+											style="width:44px; height:44px; border-radius:50%;">
+                <span> </span>
+                <span th:text="${session.USER_INFO==null? 'Please Login':(session.USER_INFO.getNickname())}">Please Login</span>
+                </a>
+
+							<span class="caret"></span>
+						</span>
+							<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+
+								<li><a href="/toMyProfile">Personal Center</a></li>
+								<li><a href="/logout">Log Out</a></li>
+							</ul>
+						</div>
+					</div>
 				</div>
 				<div class="clearfix"> </div>
 			</div>
@@ -202,310 +216,343 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<span>shopping cart</span>
 							</div>
 
-						</h3>
-					</a>
-					<!--<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>-->
-					<div class="clearfix"></div>
-				</div>
-			</div>
-			<div class="clearfix"></div>
-		</div>
-	</div>
+                        </h3>
+                    </a>
+                    <!--<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>-->
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
 </div>
 <!-- //header -->
 <!-- breadcrumbs -->
 <div class="breadcrumbs">
-	<div class="container">
-		<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-			<li><a th:href="@{toIndex}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-			<li class="active">Checkout Page</li>
-		</ol>
-	</div>
+    <div class="container">
+        <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+            <li><a th:href="@{toIndex}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+            <li class="active">Checkout Page</li>
+        </ol>
+    </div>
 </div>
 <!-- //breadcrumbs -->
 <!-- checkout -->
 <div class="checkout">
-	<div class="container">
-		<h3 class="animated wow slideInLeft" data-wow-delay=".5s">Your shopping cart contains: <span><span
-				th:text="${PAGEINFO.getTotal()}"></span> Products</span>
-		</h3>
-		<div class="checkout-right animated wow slideInUp" data-wow-delay=".5s">
-			<table class="timetable_sub" id="table" th:if="${PAGEINFO.getSize()!=0}">
-				<thead>
-				<tr>
-					<!--<th><input type="checkbox" value="true" id="ckb" class="mycheckbox"></th>-->
-					<th>SL No.</th>
-					<th>Product</th>
-					<th>Quality</th>
-					<th>Product Name</th>
-					<th>Service Charges</th>
-					<th>Price</th>
-					<th>Remove</th>
-				</tr>
-				</thead>
-				<tr class="rem1" th:each="item,items : ${ITEM_LIST_SHOPPING}">
-					<td th:text="${item.shoppingCartId}" hidden class="shoppingId"></td>
-					<!--<td><input type="checkbox" value="true" class="mycheckbox"></td>-->
-					<td class="invert" th:text="${(PAGEINFO.getPageNum()-1)*3+items.count}"></td>
-					<td class="invert-image"><a th:href="@{/toSingle(id=${item.getId()},size=${item.getSize()},color=${item.getColor()})}"><img th:src="${item.image}" alt=" "
-																																				class="img-responsive"/></a></td>
+    <div class="container">
+        <h3 class="animated wow slideInLeft" data-wow-delay=".5s">Your shopping cart contains: <span><span
+                th:text="${PAGEINFO.getTotal()}"></span> Products</span>
+        </h3>
+        <div class="checkout-right animated wow slideInUp" data-wow-delay=".5s">
+            <table class="timetable_sub" id="table" th:if="${PAGEINFO.getSize()!=0}">
+                <thead>
+                <tr>
+                    <!--<th><input type="checkbox" value="true" id="ckb" class="mycheckbox"></th>-->
+                    <th>SL No.</th>
+                    <th>Product</th>
+                    <th>Quality</th>
+                    <th>Product Name</th>
+                    <th>Service Charges</th>
+                    <th>Price</th>
+                    <th>payment</th>
+                    <th>Remove</th>
+                </tr>
+                </thead>
+                <tr class="rem1" th:each="item,items : ${ITEM_LIST_SHOPPING}">
+                    <td th:text="${item.shoppingCartId}" hidden class="shoppingId"></td>
+                    <!--<td><input type="checkbox" value="true" class="mycheckbox"></td>-->
+                    <td class="invert" th:text="${(PAGEINFO.getPageNum()-1)*3+items.count}"></td>
+                    <td class="invert"><a
+                            th:href="@{/toSingle(id=${item.getId()},size=${item.getSize()},color=${item.getColor()})}"
+                            class="text-center"><img style="height: 60px" th:src="${item.getImage()}" alt=" "
+                                                     class="img-responsive"/></a></td>
 
-					<td class="invert">
-						<div class="quantity">
-							<div class="quantity-select">
-								<div class="entry value-minus">&nbsp;</div>
-								<div class="entry value"><span th:text="${item.number}"></span></div>
-								<div class="entry value-plus active">&nbsp;</div>
-							</div>
-						</div>
-					</td>
-					<td class="invert"><span th:text="${item.name}"></span></td>
-					<td class="invert">$<span>5.0</span></td>
-					<td class="invert">$<span th:text="${item.price}"></span></td>
-					<td class="invert">
-						<div class="rem">
-							<div class="close1"></div>
-						</div>
-						<script>
-							$(document).ready(function (c) {
-								$('.close1').each(function () {
-									$(this).on('click', function (c) {
-										var $shoppingCartId = $(this).parent().parent().parent().find('.shoppingId').text()
-										var $tr = $(this).parent().parent().parent()
-										swal({
-											title: "Are you sure!",
-											text: "",
-											type: "warning",
+                    <td class="invert">
+                        <div class="quantity">
+                            <div class="quantity-select">
+                                <div class="entry value-minus">&nbsp;</div>
+                                <div class="entry value"><span th:text="${item.number}"></span></div>
+                                <div class="entry value-plus active">&nbsp;</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="invert"><span th:text="${item.name}"></span></td>
+                    <td class="invert">$<span>5.0</span></td>
+                    <td class="invert">$<span th:text="${item.price}"></span></td>
+                    <td class="invert">
+                        <button class="btn btn-info my_payment">payment</button>
+                    </td>
+                    <script>
+                        $(".my_payment").each(function () {
+                            $(this).click(function () {
+                                var shoppingId = $(this).parent().parent().find(".shoppingId").text()
+                                $.ajax({
+                                    url: '/paymentOne',
+                                    data: {id: shoppingId},
+                                    type: 'post',
+                                    traditional: true,
+                                    dataType: "json",
+                                    success: function (r) {
+                                        if (r.reslut) {
+                                            swal({
+                                                title: "Payment success",
+                                                type: "success",
+                                                confirmButtonText: "OK",
+                                                closeOnConfirm: false
+                                            }, function () {
+                                                window.location.reload()
+                                            });
+                                        }
+                                    }
+                                });
+                            })
+                        })
+                    </script>
+                    <td class="invert">
+                        <div class="rem">
+                            <div class="close1"></div>
+                        </div>
+                        <script>
+                            $(document).ready(function (c) {
+                                $('.close1').each(function () {
+                                    $(this).on('click', function (c) {
+                                        var $shoppingCartId = $(this).parent().parent().parent().find('.shoppingId').text()
+                                        var $tr = $(this).parent().parent().parent()
+                                        swal({
+                                            title: "Are you sure!",
+                                            text: "",
+                                            type: "warning",
 
-											showConfirmButton: true,
-											confirmButtonText: 'yes',
-											confirmButtonColor: "#dd6b55",
+                                            showConfirmButton: true,
+                                            confirmButtonText: 'yes',
+                                            confirmButtonColor: "#dd6b55",
 
-											showCancelButton: true,//是否显示取消按钮
-											cancelButtonText: 'no',//按钮内容
-											cancelButtonColor: '#b9b9b9',
+                                            showCancelButton: true,//是否显示取消按钮
+                                            cancelButtonText: 'no',//按钮内容
+                                            cancelButtonColor: '#b9b9b9',
 
-											closeOnConfirm: true,//点击返回上一步操作
-											closeOnCancel: true
-										}, function () {
-											var pageNumber = [[${PAGEINFO.getPageNum()}]]
-											var pageSize = [[${PAGEINFO.getPageSize()}]]
-											$.post("/removeShoppingCart", {
-												shoppingCartId: $shoppingCartId,
-												pageNum: pageNumber
-											}, function (data) {
-												if (data.reslut) {
-													$tr.fadeOut('slow', function (c) {
-														$tr.remove();
-														window.location.reload()
-													});
-													return;
-												}
-											})
-										});
+                                            closeOnConfirm: true,//点击返回上一步操作
+                                            closeOnCancel: true
+                                        }, function () {
+                                            var pageNumber = [[${PAGEINFO.getPageNum()}]]
+                                            var pageSize = [[${PAGEINFO.getPageSize()}]]
+                                            $.post("/removeShoppingCart", {
+                                                shoppingCartId: $shoppingCartId,
+                                                pageNum: pageNumber
+                                            }, function (data) {
+                                                if (data.reslut) {
+                                                    $tr.fadeOut('slow', function (c) {
+                                                        $tr.remove();
+                                                        window.location.reload()
+                                                    });
+                                                    return;
+                                                }
+                                            })
+                                        });
 
-									});
-								})
-								;
-								$(function () {
-									$("#ckb").click(function () {
-										if ($("#ckb").attr("checked") == "checked") {
-											$('.mycheckbox').each(function () {
-												$(this).attr('checked', "checked");
-											});
-										} else {
-											$('.mycheckbox').each(function () {
-												$(this).attr('checked', false);
-											});
-										}
-									})
-									// var len = 0;
-									// $('.mycheckbox').each(function () {
-									//
-									//     $('.mycheckbox').each(function () {
-									//         if ($(this).attr("checked") == "checked") {
-									//             len = len + 1;
-									//         }
-									//     })
-									//     $(this).click(function () {
-									//         if ($(this).attr("checked") != "checked") {
-									//             $("#ckb").attr("checked", false)
-									//         }
-									//         else if ($(".mycheckbox").length() == len) {
-									//             $("#ckb").attr("checked", "checked")
-									//         }
-									//     })
-									// });
-								})
-							});
-						</script>
-					</td>
-				</tr>
-				<!--quantity-->
-				<script>
-					$(".value-plus").each(function () {
-						$(this).on('click', function () {
-							var $this = $(this)
-							var $shoppingId = $(this).parent().parent().parent().parent().find('.shoppingId').text()
-							var num = parseInt($(this).parent().find('.value').text())
-							$.post("/setItemNumber", {shoppingId: $shoppingId, number: num, result: 1},
-									function (data) {
-										if (data.reslut) {
-											var divUpd = $this.parent().find('.value'),
-													newVal = parseInt(divUpd.text(), 10) + 1;
-											divUpd.text(newVal);
-											window.location.reload()
-										}
-									});
-						});
-					})
+                                    });
+                                })
+                                ;
+                                $(function () {
+                                    $("#ckb").click(function () {
+                                        if ($("#ckb").attr("checked") == "checked") {
+                                            $('.mycheckbox').each(function () {
+                                                $(this).attr('checked', "checked");
+                                            });
+                                        } else {
+                                            $('.mycheckbox').each(function () {
+                                                $(this).attr('checked', false);
+                                            });
+                                        }
+                                    })
+                                    // var len = 0;
+                                    // $('.mycheckbox').each(function () {
+                                    //
+                                    //     $('.mycheckbox').each(function () {
+                                    //         if ($(this).attr("checked") == "checked") {
+                                    //             len = len + 1;
+                                    //         }
+                                    //     })
+                                    //     $(this).click(function () {
+                                    //         if ($(this).attr("checked") != "checked") {
+                                    //             $("#ckb").attr("checked", false)
+                                    //         }
+                                    //         else if ($(".mycheckbox").length() == len) {
+                                    //             $("#ckb").attr("checked", "checked")
+                                    //         }
+                                    //     })
+                                    // });
+                                })
+                            });
+                        </script>
+                    </td>
+                </tr>
+                <!--quantity-->
+                <script>
+                    $(".value-plus").each(function () {
+                        $(this).on('click', function () {
+                            var $this = $(this)
+                            var $shoppingId = $(this).parent().parent().parent().parent().find('.shoppingId').text()
+                            var num = parseInt($(this).parent().find('.value').text())
+                            $.post("/setItemNumber", {shoppingId: $shoppingId, number: num, result: 1},
+                                function (data) {
+                                    if (data.reslut) {
+                                        var divUpd = $this.parent().find('.value'),
+                                            newVal = parseInt(divUpd.text(), 10) + 1;
+                                        divUpd.text(newVal);
+                                        window.location.reload()
+                                    }
+                                });
+                        });
+                    })
 
-					$(".value-minus").each(function () {
-						$(this).on('click', function () {
-							var $this = $(this)
-							var $shoppingId = $(this).parent().parent().parent().parent().find('.shoppingId').text()
-							var num = parseInt($(this).parent().find('.value').text())
-							$.post("/setItemNumber", {shoppingId: $shoppingId, number: num, result: 2},
-									function (data) {
-										if (data.reslut) {
-											var divUpd = $this.parent().find('.value'),
-													newVal = parseInt(divUpd.text(), 10) - 1;
-											if (newVal >= 1) divUpd.text(newVal);
-											window.location.reload()
-										} else {
-											swal("Operation failure! ", "Please click the delete key", 'error');
-										}
-									})
-						});
-					})
-				</script>
-				<!--quantity-->
-			</table>
-			<nav id="page" th:if="${PAGEINFO.getSize()!=0}" aria-label="Page navigation" style="position: absolute;float: right; right: 0px">
-				<ul class="pagination">
-					<li id="up">
-						<a id="up_a" th:href="@{/toCheckout(pageNum=${PAGEINFO.getPageNum()}-1)}"
+                    $(".value-minus").each(function () {
+                        $(this).on('click', function () {
+                            var $this = $(this)
+                            var $shoppingId = $(this).parent().parent().parent().parent().find('.shoppingId').text()
+                            var num = parseInt($(this).parent().find('.value').text())
+                            $.post("/setItemNumber", {shoppingId: $shoppingId, number: num, result: 2},
+                                function (data) {
+                                    if (data.reslut) {
+                                        var divUpd = $this.parent().find('.value'),
+                                            newVal = parseInt(divUpd.text(), 10) - 1;
+                                        if (newVal >= 1) divUpd.text(newVal);
+                                        window.location.reload()
+                                    } else {
+                                        swal("Operation failure! ", "Please click the delete key", 'error');
+                                    }
+                                })
+                        });
+                    })
+                </script>
+                <!--quantity-->
+            </table>
+            <nav id="page" th:if="${PAGEINFO.getSize()!=0}" aria-label="Page navigation"
+                 style="position: absolute;float: right; right: 0px">
+                <ul class="pagination">
+                    <li id="up">
+                        <a id="up_a" th:href="@{/toCheckout(pageNum=${PAGEINFO.getPageNum()}-1)}"
 
-						   aria-label="Previous"
-						>
-							<span aria-hidden="true">&laquo;</span>
-						</a>
-					</li>
-					<li th:each="num,nums:${PAGEINFO.getNavigatepageNums()}">
-						<a th:if="${num==PAGEINFO.getPageNum()}" href="#" th:text="${num}" class="index"></a>
-						<a th:if="${num!=PAGEINFO.getPageNum()}" th:href="@{/toCheckout(pageNum=${num})}"
+                           aria-label="Previous"
+                        >
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li th:each="num,nums:${PAGEINFO.getNavigatepageNums()}">
+                        <a th:if="${num==PAGEINFO.getPageNum()}" href="#" th:text="${num}" class="index"></a>
+                        <a th:if="${num!=PAGEINFO.getPageNum()}" th:href="@{/toCheckout(pageNum=${num})}"
 
-						   th:text="${num}"></a>
-					</li>
+                           th:text="${num}"></a>
+                    </li>
 
-					<li id="down">
-						<a id="down_a" th:href="@{/toCheckout(pageNum=${PAGEINFO.getPageNum()}+1)}"
-						   aria-label="Next"
-						>
-							<span aria-hidden="true">&raquo;</span>
-						</a>
-					</li>
-				</ul>
-				<script th:inline="javascript">
-					var pageNum = [[${PAGEINFO.getPageNum()}]]
-					var firstPage = [[${PAGEINFO.isIsFirstPage()}]];
-					var lastPage = [[${PAGEINFO.isIsLastPage()}]];
-					if (firstPage) {
-						$("#up").attr("class", "disabled")
-						$("#up_a").attr("href", "javascript:;")
-					}
-					if (lastPage) {
-						$("#down").attr("class", "disabled")
-						$("#down_a").attr("href", "javascript:;")
-					}
-					$(".index").each(function () {
-						if ($(this).text() == pageNum) {
-							$(this).parent().attr("class", "active")
-						}
-					})
-				</script>
-			</nav>
-		</div>
-		<div id="h" th:if="${PAGEINFO.getSize()==0}" class="checkout-right animated wow slideInUp text-center"
-			 data-wow-delay=".5s">
-			<p style="font-size: 38px;color: #FFC22A">Absolutely empty!</p>
-		</div>
-		<!--<script>-->
-		<!--var pageSize = [[${PAGEINFO.getPageSize()}]]-->
-		<!--$(function () {-->
-		<!--if (pageSize == 0) {-->
-		<!--$("#table").css("display", "none")-->
-		<!--$("#page").css("display", "none")-->
-		<!--$("#h").removeAttr("hidden")-->
-		<!--}-->
-		<!--})-->
-		<!--</script>-->
-		<div class="checkout-left">
-			<div class="checkout-left-basket animated wow slideInLeft" data-wow-delay=".5s">
-				<h4>Continue to basket</h4>
-				<ul th:each="item,items : ${ITEM_LIST_SHOPPING}">
-					<li>Product <i th:text="${items.count}"></i> <i>-</i> <span class="price"
-					><l class="prices" th:text="${item.getPrice()*item.getNumber()}"></l></span>
-					</li>
-				</ul>
-				<ul>
-					<li>Total Service Charges <i>-</i> <span
-					><l id="service" th:text="${ITEM_LIST_SHOPPING.size()*5.0}"></l></span></li>
-					<li>Total <i>-</i><span id="allPrices"></span></li>
-				</ul>
-				<script>
-					var prices = 0;
-					$(".price").each(function () {
-						prices += parseFloat($(this).text())
-					})
-					prices += parseFloat($("#service").text())
-					$("#allPrices").text(parseFloat(prices))
-				</script>
-				<button id="payment" class="btn btn-warning">Payment</button>
-				<script>
-					var shoppingIds = new Array();
-					$(".shoppingId").each(function () {
-						shoppingIds.push(parseInt($(this).text()))
-					})
-					$("#payment").click(function () {
-						$.ajax({
-							url: '/payment',
-							data: {shoppingCartIdList: shoppingIds},
-							type: 'post',
-							traditional: true,
-							dataType: "json",
-							success: function (r) {
-								if (r.reslut) {
-									swal({
-										title: "Payment success",
-										type: "success",
-										confirmButtonText: "OK",
-										closeOnConfirm: false
-									}, function () {
-										window.location.reload()
-									});
-								}
-							}
-						});
-					})
-				</script>
-			</div>
-			<div class="checkout-right-basket animated wow slideInRight" data-wow-delay=".5s">
-				<a href="/toSingle"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Continue
-					Shopping</a>
-			</div>
-			<div class="clearfix"></div>
-		</div>
-	</div>
+                    <li id="down">
+                        <a id="down_a" th:href="@{/toCheckout(pageNum=${PAGEINFO.getPageNum()}+1)}"
+                           aria-label="Next"
+                        >
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+                <script th:inline="javascript">
+                    var pageNum = [[${PAGEINFO.getPageNum()}]]
+                    var firstPage = [[${PAGEINFO.isIsFirstPage()}]];
+                    var lastPage = [[${PAGEINFO.isIsLastPage()}]];
+                    if (firstPage) {
+                        $("#up").attr("class", "disabled")
+                        $("#up_a").attr("href", "javascript:;")
+                    }
+                    if (lastPage) {
+                        $("#down").attr("class", "disabled")
+                        $("#down_a").attr("href", "javascript:;")
+                    }
+                    $(".index").each(function () {
+                        if ($(this).text() == pageNum) {
+                            $(this).parent().attr("class", "active")
+                        }
+                    })
+                </script>
+            </nav>
+        </div>
+        <div id="h" th:if="${PAGEINFO.getSize()==0}" class="checkout-right animated wow slideInUp text-center"
+             data-wow-delay=".5s">
+            <p style="font-size: 38px;color: #FFC22A">Absolutely empty!</p>
+        </div>
+        <!--<script>-->
+        <!--var pageSize = [[${PAGEINFO.getPageSize()}]]-->
+        <!--$(function () {-->
+        <!--if (pageSize == 0) {-->
+        <!--$("#table").css("display", "none")-->
+        <!--$("#page").css("display", "none")-->
+        <!--$("#h").removeAttr("hidden")-->
+        <!--}-->
+        <!--})-->
+        <!--</script>-->
+        <div class="checkout-left">
+            <div class="checkout-left-basket animated wow slideInLeft" data-wow-delay=".5s">
+                <h4>Continue to basket</h4>
+                <ul th:each="item,items : ${ITEM_LIST_SHOPPING}">
+                    <li>Product <i th:text="${items.count}"></i> <i>-</i> <span class="price"
+                    ><l class="prices" th:text="${item.getPrice()*item.getNumber()}"></l></span>
+                    </li>
+                </ul>
+                <ul>
+                    <li>Total Service Charges <i>-</i> <span
+                    ><l id="service" th:text="${ITEM_LIST_SHOPPING.size()*5.0}"></l></span></li>
+                    <li>Total <i>-</i><span id="allPrices"></span></li>
+                </ul>
+                <script>
+                    var prices = 0;
+                    $(".price").each(function () {
+                        prices += parseFloat($(this).text())
+                    })
+                    prices += parseFloat($("#service").text())
+                    $("#allPrices").text(parseFloat(prices))
+                </script>
+                <button id="payment" class="btn btn-warning">Payment</button>
+                <script>
+                    var shoppingIds = new Array();
+                    $(".shoppingId").each(function () {
+                        shoppingIds.push(parseInt($(this).text()))
+                    })
+                    $("#payment").click(function () {
+                        $.ajax({
+                            url: '/payment',
+                            data: {shoppingCartIdList: shoppingIds},
+                            type: 'post',
+                            traditional: true,
+                            dataType: "json",
+                            success: function (r) {
+                                if (r.reslut) {
+                                    swal({
+                                        title: "Payment success",
+                                        type: "success",
+                                        confirmButtonText: "OK",
+                                        closeOnConfirm: false
+                                    }, function () {
+                                        window.location.reload()
+                                    });
+                                }
+                            }
+                        });
+                    })
+                </script>
+            </div>
+            <div class="checkout-right-basket animated wow slideInRight" data-wow-delay=".5s">
+                <a href="/toIndex"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Continue
+                    Shopping</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
 </div>
 <!-- //checkout -->
 <!-- footer -->
 <div class="footer">
-	<div class="container">
-		<div class="footer-grids">
-			<div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".5s">
-				<h3>About Us</h3>
-				<p>Duis aute irure dolor in reprehenderit in voluptate velit esse.<span>Excepteur sint occaecat cupidatat
+    <div class="container">
+        <div class="footer-grids">
+            <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".5s">
+                <h3>About Us</h3>
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse.<span>Excepteur sint occaecat cupidatat
 						non proident, sunt in culpa qui officia deserunt mollit.</span></p>
 			</div>
 			<div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".6s">
@@ -521,40 +568,40 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".7s">
 				<h3>Flickr Posts</h3>
 				<div class="footer-grid-left">
-					<a href="/toSingle"><img src="../static/images/13.jpg" alt=" " class="img-responsive"/></a>
+					<img src="../static/images/13.jpg" alt=" " class="img-responsive"/>
 				</div>
 				<div class="footer-grid-left">
-					<a href="/toSingle"><img src="../static/images/14.jpg" alt=" " class="img-responsive"/></a>
+					<img src="../static/images/14.jpg" alt=" " class="img-responsive"/>
 				</div>
 				<div class="footer-grid-left">
-					<a href="/toSingle"><img src="../static/images/15.jpg" alt=" " class="img-responsive"/></a>
+					<img src="../static/images/15.jpg" alt=" " class="img-responsive"/>
 				</div>
 				<div class="footer-grid-left">
-					<a href="/toSingle"><img src="../static/images/16.jpg" alt=" " class="img-responsive"/></a>
+					<img src="../static/images/16.jpg" alt=" " class="img-responsive"/>
 				</div>
 				<div class="footer-grid-left">
-					<a href="/toSingle"><img src="../static/images/13.jpg" alt=" " class="img-responsive"/></a>
+					<img src="../static/images/13.jpg" alt=" " class="img-responsive"/>
 				</div>
 				<div class="footer-grid-left">
-					<a href="/toSingle"><img src="../static/images/14.jpg" alt=" " class="img-responsive"/></a>
+					<img src="../static/images/14.jpg" alt=" " class="img-responsive"/>
 				</div>
 				<div class="footer-grid-left">
-					<a href="/toSingle"><img src="../static/images/15.jpg" alt=" " class="img-responsive"/></a>
+					<img src="../static/images/15.jpg" alt=" " class="img-responsive"/>
 				</div>
 				<div class="footer-grid-left">
-					<a href="/toSingle"><img src="../static/images/16.jpg" alt=" " class="img-responsive"/></a>
+					<img src="../static/images/16.jpg" alt=" " class="img-responsive"/>
 				</div>
 				<div class="footer-grid-left">
-					<a href="/toSingle"><img src="../static/images/13.jpg" alt=" " class="img-responsive"/></a>
+					<img src="../static/images/13.jpg" alt=" " class="img-responsive"/>
 				</div>
 				<div class="footer-grid-left">
-					<a href="/toSingle"><img src="../static/images/14.jpg" alt=" " class="img-responsive"/></a>
+					<img src="../static/images/14.jpg" alt=" " class="img-responsive"/>
 				</div>
 				<div class="footer-grid-left">
-					<a href="/toSingle"><img src="../static/images/15.jpg" alt=" " class="img-responsive"/></a>
+					<img src="../static/images/15.jpg" alt=" " class="img-responsive"/>
 				</div>
 				<div class="footer-grid-left">
-					<a href="/toSingle"><img src="../static/images/16.jpg" alt=" " class="img-responsive"/></a>
+					<img src="../static/images/16.jpg" alt=" " class="img-responsive"/>
 				</div>
 				<div class="clearfix"></div>
 			</div>
@@ -562,20 +609,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<h3>Blog Posts</h3>
 				<div class="footer-grid-sub-grids">
 					<div class="footer-grid-sub-grid-left">
-						<a href="/toSingle"><img src="../static/images/9.jpg" alt=" " class="img-responsive"/></a>
+						<img src="../static/images/9.jpg" alt=" " class="img-responsive"/>
 					</div>
 					<div class="footer-grid-sub-grid-right">
-						<h4><a href="/toSingle">culpa qui officia deserunt</a></h4>
+						<h4>culpa qui officia deserunt</h4>
 						<p>Posted On 25/3/2016</p>
 					</div>
 					<div class="clearfix"></div>
 				</div>
 				<div class="footer-grid-sub-grids">
 					<div class="footer-grid-sub-grid-left">
-						<a href="/toSingle"><img src="../static/images/10.jpg" alt=" " class="img-responsive"/></a>
+						<img src="../static/images/10.jpg" alt=" " class="img-responsive"/>
 					</div>
 					<div class="footer-grid-sub-grid-right">
-						<h4><a href="/toSingle">Quis autem vel eum iure</a></h4>
+						<h4>Quis autem vel eum iure</h4>
 						<p>Posted On 25/3/2016</p>
 					</div>
 					<div class="clearfix"></div>
@@ -586,14 +633,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="footer-logo animated wow slideInUp" data-wow-delay=".5s">
 			<h2><a href="/toIndex">Best Store <span>shop anywhere</span></a></h2>
 		</div>
-		<!--<div class="copy-right animated wow slideInUp" data-wow-delay=".5s">-->
-			<!--<p>Copyright &copy; 2016.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/"-->
-																						<!--target="_blank" title="模板之家">模板之家</a>-->
-				<!-- - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>-->
-		<!--</div>-->
 	</div>
 </div>
-<!-- //footer -->
 
 </body>
 </html>

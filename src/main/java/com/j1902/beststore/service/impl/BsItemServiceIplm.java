@@ -33,7 +33,7 @@ public class BsItemServiceIplm implements BsItemService {
         or.andSizeEqualTo(bsItem.getSize());
         or.andColorEqualTo(bsItem.getColor());
         List<BsItem> bsItems = bsItemMapper.selectByExample(bsItemExample);
-        if (bsItems==null||bsItems.size()==0){
+        if (bsItems==null || bsItems.size()==0){
             return null;
         }
         return bsItems.get(0);

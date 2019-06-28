@@ -24,8 +24,14 @@ public class AdminBsEmailController {
 
     @RequestMapping("/toAdminEmail.back")
     public String toAdminEmail(Map<String,Object> map, @RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "5") int pageSize) {
-        PageInfo<BsEmail> pageInfo = emailService.getAllEmails(pageNum);
-        map.put("ALL_EMAILS", pageInfo);
-        return "admin/admin-email";
+        try {
+            PageInfo<BsEmail> pageInfo = emailService.getAllEmails(pageNum);
+            map.put("ALL_EMAILS", pageInfo);
+            return "admin/admin-email";
+
+        } catch (Exception e) {
+            return "error/index";
+        }
+
     }
 }

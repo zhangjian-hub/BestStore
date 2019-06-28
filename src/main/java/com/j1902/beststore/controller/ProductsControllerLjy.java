@@ -21,57 +21,68 @@ public class ProductsControllerLjy {
     private ItemServiceLjy itemService;
 
     @RequestMapping("/toProducts.html")
-    public String toForgotPassword( Map<String, Object> map) {
-        PageHelper.startPage(1,9);
-        List<BsItem> bsItems = itemService.selectAll();
-        PageInfo info = new PageInfo(bsItems,9);
-        List<BsItem> b = info.getList();
-        System.out.println("bsItems = " + bsItems);
-        System.out.println("info = " + info);
+    public String toForgotPassword(Map<String, Object> map) {
+        try {
+            PageHelper.startPage(1, 6);
+            List<BsItem> bsItems = itemService.selectAll();
+            PageInfo info = new PageInfo(bsItems, 6);
+            List<BsItem> b = info.getList();
 
-        List<Integer> list = new ArrayList();
-        for (int i = 1;i <info.getPages()+1;i++){
-            list.add(i);
+            List<BsItem> a = new ArrayList();
+
+            a.add(b.get(0));
+            a.add(b.get(2));
+            a.add(b.get(3));
+
+            List<Integer> list = new ArrayList();
+            for (int i = 1; i < info.getPages() + 1; i++) {
+                list.add(i);
+            }
+            map.put("INFO", info);
+            map.put("BSITEMS", b);
+            map.put("LIST", list);
+            map.put("A", a);
+            return "products";
+        } catch (Exception e) {
+            return "error/index";
         }
-        System.out.println("list = " + list);
-        map.put("INFO",info);
-        map.put("BSITEMS", b);
-        map.put("LIST",list);
-        return "products";
     }
 
     @RequestMapping("/toProducts")
     public String products(HttpServletRequest req, Map<String, Object> map) {
         String suitablePeople = req.getParameter("suitablePeople");
-        System.out.println("suitablePeople = " + suitablePeople);
         String type = req.getParameter("type");
-        System.out.println("type = " + type);
 
         BsItem bsItem = new BsItem();
         bsItem.setSuitablePeople(suitablePeople);
         bsItem.setType(type);
         Integer pageNum = Integer.valueOf(req.getParameter("pageNum"));
-        System.out.println("pageNum = " + pageNum);
 
-       PageHelper.startPage(pageNum,9);
+        PageHelper.startPage(pageNum, 6);
 
         List<BsItem> bsItems = itemService.selectAllGroupByName(bsItem);
 
-        PageInfo info = new PageInfo(bsItems,9);
+        PageInfo info = new PageInfo(bsItems, 6);
         List<BsItem> b = info.getList();
-        System.out.println("bsItems = " + bsItems);
-        System.out.println("info = " + info);
+        List<BsItem> c = itemService.selectAll();
+        List<BsItem> a = new ArrayList();
+
+        a.add(c.get(0));
+        a.add(c.get(2));
+        a.add(c.get(3));
+
 
         List<Integer> list = new ArrayList();
-        for (int i = 1;i <info.getPages()+1;i++){
+        for (int i = 1; i < info.getPages() + 1; i++) {
             list.add(i);
         }
-        System.out.println("list = " + list);
-        map.put("INFO",info);
+        map.put("INFO", info);
         map.put("BSITEMS", b);
-        map.put("suitablePeople",suitablePeople);
-        map.put("type",type);
-        map.put("LIST",list);
+        map.put("suitablePeople", suitablePeople);
+        map.put("type", type);
+        map.put("LIST", list);
+        map.put("A", a);
+//        session.setAttribute("BSITEMS",bsItems);
         return "products";
     }
 

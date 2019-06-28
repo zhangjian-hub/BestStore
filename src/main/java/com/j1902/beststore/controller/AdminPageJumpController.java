@@ -1,5 +1,6 @@
 package com.j1902.beststore.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.j1902.beststore.service.*;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,41 +35,50 @@ public class AdminPageJumpController {
     private AdminBsOrderFormService orderFormService;
 
     @RequestMapping("/toAdminIndex.back")
-    public String toAdminIndex(Map<String,Object> map){
-        int itemsCount = itemService.getAllItems().size();
-        map.put("ITEMS_COUNT", itemsCount);
-        int usersCount = userService.getCountOfBsUsers();
-        map.put("USERS_COUNT", usersCount);
-        int recordsCount = shoppingRecordService.getCountOfAll();
-        map.put("RECORDS_COUNT", recordsCount);
-        int emailsCount = emailService.getCountOfAllEmails();
-        map.put("EMAILS_COUNT", emailsCount);
-        return "admin/admin-index";
+    public String toAdminIndex(Map<String, Object> map) {
+        try {
+            int itemsCount = itemService.getAllItems().size();
+            map.put("ITEMS_COUNT", itemsCount);
+            int usersCount = userService.getCountOfBsUsers();
+            map.put("USERS_COUNT", usersCount);
+            int recordsCount = shoppingRecordService.getCountOfAll();
+            map.put("RECORDS_COUNT", recordsCount);
+            int emailsCount = emailService.getCountOfAllEmails();
+            map.put("EMAILS_COUNT", emailsCount);
+            return "admin/admin-index";
+        } catch (Exception e) {
+            return "error/index";
+        }
     }
 
     @RequestMapping("/toOrderForm.back")
-    public String toOrderForm(Map<String,Object> map, @RequestParam(defaultValue = "1")int pageSum, @RequestParam(defaultValue = "10")int pageSize){
-        map.put("ALL_ORDER_FORMS",orderFormService.getAllOrderForms(pageSum,pageSize));
-        return "admin/order-form";
+    public String toOrderForm(Map<String, Object> map, @RequestParam(defaultValue = "1") int pageSum, @RequestParam(defaultValue = "10") int pageSize) {
+        try {
+            PageInfo allOrderForms = orderFormService.getAllOrderForms(pageSum, pageSize);
+            map.put("ALL_ORDER_FORMS", allOrderForms);
+            return "admin/order-form";
+        } catch (Exception e) {
+            return "error/index";
+        }
     }
 
     @RequestMapping("/toAdminAddItem.back")
-    public String toAdminAddItem(){
+    public String toAdminAddItem() {
         return "admin/admin-add-item";
     }
 
     @RequestMapping("/toAdminUser.back")
-    public String toAdminUser(){
+    public String toAdminUser() {
         return "admin/admin-user";
     }
 
     @RequestMapping("/toEmail")
-    public String toEmail(){
+    public String toEmail() {
         return "email";
     }
 
     @RequestMapping("/toShortCodes")
-    public String toShortCodes(){
+    public String toShortCodes() {
         return "short-codes";
     }
 }

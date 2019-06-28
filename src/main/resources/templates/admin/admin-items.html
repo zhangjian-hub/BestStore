@@ -89,7 +89,7 @@
                 <div class="am-fl am-cf">
                     <div class="am-btn-toolbar am-fl">
                         <div class="am-btn-group am-btn-group-xs">
-                            <button type="button" class="am-btn am-btn-default" id="toAdminAddItem"><span class="am-icon-plus"></span> 新增
+                            <button type="button" class="am-btn am-btn-default" id="toAdminAddItem"><span class="am-icon-plus"></span> ADD-ITEM
                             </button>
                         </div>
 
@@ -109,7 +109,6 @@
                 </div>
             </div>
         </div>
-
         <div class="am-g">
             <div class="am-u-sm-12">
                 <form id="form" action="/updateItem.back" class="am-form" method="get">
@@ -118,18 +117,18 @@
                         <tr>
                             <th class="table-check"><input type="checkbox"/></th>
                             <th class="table-id">ID</th>
-                            <th class="table-title">name</th>
-                            <th class="table-title">suitable_eople</th>
-                            <th class="table-title">type</th>
-                            <th class="table-title">price</th>
-                            <th class="table-title">sezi</th>
-                            <th class="table-title">color</th>
-                            <th class="table-title">description</th>
-                            <th class="table-title">inventory</th>
-                            <th class="table-title">supplier</th>
-                            <th class="table-type">sales_volume</th>
-                            <th class="table-type">image</th>
-                            <th class="table-type">operation</th>
+                            <th class="table-title">Name</th>
+                            <th class="table-title">Suitable_People</th>
+                            <th class="table-title">Type</th>
+                            <th class="table-title">Price</th>
+                            <th class="table-title">Size</th>
+                            <th class="table-title">Color</th>
+                            <th class="table-title">Description</th>
+                            <th class="table-title">Inventory</th>
+                            <th class="table-title">Supplier</th>
+                            <th class="table-type">Sales_volume</th>
+                            <th class="table-type">Image</th>
+                            <th class="table-type">Operation</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -152,7 +151,7 @@
                                 <div class="am-btn-toolbar">
                                     <div class="am-btn-group am-btn-group-xs">
                                         <a th:name="${item.id}" th:href="'deleteItem.back?id='+${item.id}" class="am-btn am-btn-default am-btn-xs am-text-danger"><span
-                                                class="am-icon-trash-o"></span> 删除
+                                                class="am-icon-trash-o"></span> DELETE
                                         </a>
                                     </div>
                                 </div>
@@ -162,25 +161,16 @@
                     </table>
                     <div class="am-btn-group am-btn-group-xs">
                         <button type="submit" class="am-btn am-btn-default am-btn-xs am-text-secondary">
-                            <span class="am-icon-pencil-square-o"></span> 修改
+                            <span class="am-icon-pencil-square-o"></span> UPDATE
                         </button>
                     </div>
                     <div class="am-cf">
-                        <span>There are [[${PAGE_INFO.getSize()}]] pieces of data </span>
+                        <span>There are [[${PAGE_INFO.getTotal()}]] pieces of data </span>
                         <div class="am-fr">
                             <ul class="am-pagination" >
-                                <li><a th:href="@{'toAdminItems.back?pageNum=' + ${PAGE_INFO.getPageNum() - 1}}">上一页</a></li>
+                                <li><a th:href="@{'toAdminItems.back?pageNum=' + ${PAGE_INFO.getPageNum() - 1}}">LAST</a></li>
                                 <li th:each="index : ${PAGE_INFO.getNavigatepageNums()}" th:class="${PAGE_INFO.getPageNum() == 1}? 'active' : ''" ><a th:href="@{'toAdminItems.back?pageNum=' + ${index}}" th:text="${index}" >1</a></li>
-                                <li ><a th:href="@{'toAdminItems.back?pageNum=' + ${PAGE_INFO.getPageNum() + 1}}">下一页</a></li>
-                                <!--<li th:class="${PAGE_INFO.getPageNum()==1}?'disabled' : ''"><a th:href="@{'toAdminItems.back?pageNum=' + ${PAGE_INFO.getPageNum() - 1}}">上一页</a></li>-->
-                                <!--<li th:if="${PAGE_INFO.getPageNum()-3 >=1}" ><a th:href="@{'toAdminItems.back?pageNum=' + ${PAGE_INFO.getPageNum()-3}}" th:text="${PAGE_INFO.getPageNum() -3}" >1</a></li>-->
-                                <!--<li th:if="${PAGE_INFO.getPageNum()-2 >=1}" ><a th:href="@{'toAdminItems.back?pageNum=' + ${PAGE_INFO.getPageNum()-2}}" th:text="${PAGE_INFO.getPageNum() -2}" >1</a></li>-->
-                                <!--<li th:if="${PAGE_INFO.getPageNum()-1 >=1}" ><a th:href="@{'toAdminItems.back?pageNum=' + ${PAGE_INFO.getPageNum()-1}}" th:text="${PAGE_INFO.getPageNum() -1}" >1</a></li>-->
-                                <!--<li class="active"><a href="#" th:text="${PAGE_INFO.getPageNum()}" >1</a></li>-->
-                                <!--<li th:if="${PAGE_INFO.getPageNum()+1 <=PAGE_INFO.getPages()}" ><a th:href="@{'toAdminItems.back?pageNum=' + ${PAGE_INFO.getPageNum()+1}}" th:text="${PAGE_INFO.getPageNum() +1}" >1</a></li>-->
-                                <!--<li th:if="${PAGE_INFO.getPageNum()+2 <=PAGE_INFO.getPages()}" ><a th:href="@{'toAdminItems.back?pageNum=' + ${PAGE_INFO.getPageNum()+2}}" th:text="${PAGE_INFO.getPageNum() +2}" >1</a></li>-->
-                                <!--<li th:if="${PAGE_INFO.getPageNum()+3 <=PAGE_INFO.getPages()}" ><a th:href="@{'toAdminItems.back?pageNum=' + ${PAGE_INFO.getPageNum()+3}}" th:text="${PAGE_INFO.getPageNum() +3}" >1</a></li>-->
-                                <!--<li th:class="${PAGE_INFO.getPageNum()==PAGE_INFO.getPages()}?'disabled' : ''" ><a th:href="@{'toAdminItems.back?pageNum=' + ${PAGE_INFO.getPageNum() + 1}}">下一页</a></li>-->
+                                <li ><a th:href="@{'toAdminItems.back?pageNum=' + ${PAGE_INFO.getPageNum() + 1}}">NEXT</a></li>
                             </ul>
                         </div>
                     </div>
@@ -196,7 +186,6 @@
 
 <footer>
     <hr>
-    <p class="am-padding-left">© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
 </footer>
 
 <script src="../../static/js/jquery.min.js"></script>
