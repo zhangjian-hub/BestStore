@@ -256,7 +256,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
             <div class="col-md-9 mail-grid-left animated wow slideInLeft" data-wow-delay=".5s">
                 <div data-wow-delay=".5s">
-                    <table class="timetable_sub">
+                    <table class="timetable_sub" th:if="${PAGEINFO.getSize()!=0}">
                         <thead>
                         <tr>
                             <th>OrderID</th>
@@ -358,7 +358,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
             <div class="col-md-9 mail-grid-left animated wow slideInLeft" data-wow-delay=".5s">
                 <div data-wow-delay=".5s">
-                    <table class="timetable_sub">
+                    <table class="timetable_sub" th:if="${PAGEINFO1.getSize()!=0}">
                         <thead>
                         <tr>
                             <th>Product Name</th>
