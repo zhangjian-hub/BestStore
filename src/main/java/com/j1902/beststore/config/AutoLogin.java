@@ -2,6 +2,7 @@ package com.j1902.beststore.config;
 
 import com.j1902.beststore.pojo.BsUser;
 import com.j1902.beststore.utils.JsonUtils;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.Cookie;

@@ -17,4 +17,5 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/temp-rainy/**").addResourceLocations("file:E:/temp-rainy/");
     }
+
 }

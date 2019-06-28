@@ -57,12 +57,10 @@ public class BsUserController {
     @RequestMapping("/login")
     @ResponseBody
     public boolean login(BsUser bsUser, HttpServletRequest req, HttpServletResponse resp, HttpSession session) throws UnsupportedEncodingException {
-        if(bsUser.getEmail()==null||bsUser.getPassword()==null||""==bsUser.getEmail()||""==bsUser.getPassword()){
-            return false;
-        }
-        String remember = req.getParameter("remember");
+        String checkbox = req.getParameter("checkbox");
+        System.out.println("remember = " + checkbox);
         if (bsUserService.login(bsUser,req)!=null ) {
-            if ("true".equals(remember)) {
+            if ("true".equals(checkbox)) {
                 String s = JsonUtils.objectToJson(bsUserService.login(bsUser,req));
                 String userEncode = URLEncoder.encode(s, "UTF-8");
                 Cookie cookie = new Cookie("loginInfo", userEncode);
