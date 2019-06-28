@@ -31,4 +31,14 @@ public class AdminBsOrderFormServiceImpl implements AdminBsOrderFormService {
         int insert = orderFormMapper.insert(orderForm);
         return insert > 0;
     }
+
+    @Override
+    public void setOrderFormState(BsOrderForm orderForm) {
+        orderFormMapper.updateByPrimaryKeySelective(orderForm);
+    }
+
+    @Override
+    public void removeItem(Integer id) {
+        orderFormMapper.deleteByPrimaryKey(id);
+    }
 }

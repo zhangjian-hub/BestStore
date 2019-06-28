@@ -100,7 +100,7 @@
 
         <div class="am-g">
             <div class="am-u-sm-12">
-                <form class="am-form">
+                <form id="form" action="/updateOrderFormState.back" class="am-form" method="get">
                     <table class="am-table am-table-striped am-table-hover table-main">
                         <thead>
                         <tr>
@@ -117,6 +117,7 @@
                         <tbody>
                         <tr th:each="orderForm : ${ALL_ORDER_FORMS.getList()}">
                             <td><input type="checkbox" th:value="${orderForm.id}" name="ids"></td>
+                            <td hidden="hidden"><input type="text" th:value="${orderForm.id}" th:name="'bsOrderForms['+${orderFormStat.index}+'].id'"></td>
                             <td>[[${orderFormStat.index+1}]]</td>
                             <td>[[${orderForm.orderId}]]</td>
                             <td>[[${orderForm.userId}]]</td>
@@ -126,22 +127,26 @@
                             <td>
                                 <div class="am-btn-toolbar">
                                     <div class="am-btn-group am-btn-group-xs">
-                                        <span hidden="hidden">[[${orderForm.id}]]</span>
-                                        <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span
-                                                class="am-icon-pencil-square-o"></span> SHIPPED
-                                        </button>
-                                        <button class="am-btn am-btn-default am-btn-xs"><span
+                                        <!--<button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span-->
+                                                <!--class="am-icon-pencil-square-o"></span> SHIPPED-->
+                                        <!--</button>-->
+                                        <a class="am-btn am-btn-default am-btn-xs" th:name="${orderForm.id}" th:href="'/deleteOrderForm.back?id='+${orderForm.id}"><span
                                                 class="am-icon-copy"></span> REFUNDED
-                                        </button>
-                                        <button class="am-btn am-btn-default am-btn-xs am-text-danger delete"><span
-                                                class="am-icon-trash-o"></span> DELETE
-                                        </button>
+                                        </a>
+                                        <!--<button class="am-btn am-btn-default am-btn-xs am-text-danger delete"><span-->
+                                                <!--class="am-icon-trash-o"></span> DELETE-->
+                                        <!--</button>-->
                                     </div>
                                 </div>
                             </td>
                         </tr>
                         </tbody>
                     </table>
+                    <div class="am-btn-group am-btn-group-xs">
+                        <button type="submit" class="am-btn am-btn-default am-btn-xs am-text-secondary">
+                            <span class="am-icon-pencil-square-o"></span> UPDATE
+                        </button>
+                    </div>
                     <div class="am-cf">
                         There are <span>[[${ALL_ORDER_FORMS.getTotal()}]]</span> pieces of data
                         <div class="am-fr">
