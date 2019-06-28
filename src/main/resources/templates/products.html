@@ -243,9 +243,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="new-products-grid" th:each="a:${A}" >
                         <div class="new-products-grid-left">
 
-                            <a th:href="@{/toSingle(id=${a.getId()},name=${a.getName()},size=${a.getSize()},color=${a.getColor()})}"><img th:src="${a.getImage()}" alt=" "
-                                                     class="img-responsive"
-                                                     style="height:220px;width: 150px;"></a>
+                            <a th:href="@{/toSingle(id=${a.getId()},name=${a.getName()},size=${a.getSize()},color=${a.getColor()})}"><img th:src="${a.getImage()}" alt=" " class="img-responsive"  width="135px"></a>
                         </div>
                         <div class="new-products-grid-right">
                             <h4><a th:href="@{/toSingle(id=${a.getId()},name=${a.getName()},size=${a.getSize()},color=${a.getColor()})}" th:text="${a.getName()}"></a></h4>
