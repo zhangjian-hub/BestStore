@@ -29,7 +29,7 @@ public class BsShoppingCartController {
     @RequestMapping("/toCheckout")
     public String toCheckout(HttpServletRequest request, Integer pageNum, Map<String, Object> map) {
         BsUser user_info = (BsUser) request.getSession().getAttribute("USER_INFO");
-        if(user_info ==null){
+        if (user_info == null) {
             return "redirect:/toLogin";
         }
         Integer id = user_info.getId();
@@ -148,6 +148,37 @@ public class BsShoppingCartController {
             b1 = bsItemService.removeShoppingCart(integer);
 
         }
+        if (b && b1) {
+            ShoppingCartResult shoppingCartResult = new ShoppingCartResult();
+            shoppingCartResult.setReslut(true);
+            return shoppingCartResult;
+        }
+        ShoppingCartResult shoppingCartResult = new ShoppingCartResult();
+        shoppingCartResult.setReslut(false);
+        return shoppingCartResult;
+    }
+
+    //    单件商品的付款
+    @RequestMapping("/paymentOne")
+    @ResponseBody
+    public ShoppingCartResult paymentOne(Integer id) {
+        boolean b = false;
+        boolean b1 = false;
+        BsShoppingCart bsShoppingCartById = bsItemService.getBsShoppingCartById(id);
+        Integer userId = bsShoppingCartById.getUserId();
+        Integer itemId = bsShoppingCartById.getItemId();
+        Integer number = bsShoppingCartById.getNumber();
+
+        for (int i = 1; i <= number; i++) {
+            BsOrderForm orderForm = new BsOrderForm();
+            orderForm.setUserId(userId);
+            orderForm.setItemId(itemId);
+            orderForm.setCreateTime(new Date());
+            orderForm.setOrderId(UUID.randomUUID().toString());
+            orderForm.setState("1");
+            b = orderFormService.addOrderForms(orderForm);
+        }
+        b1 = bsItemService.removeShoppingCart(id);
         if (b && b1) {
             ShoppingCartResult shoppingCartResult = new ShoppingCartResult();
             shoppingCartResult.setReslut(true);

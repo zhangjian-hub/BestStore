@@ -61,7 +61,7 @@ public class MyProfileController {
             myProfileItemFulls.add(myProfileItemFull);
         }
 //        记录表的分页
-        PageInfo<BsShoppingRecord> pageInfo1 = bsMyProfileService.pageShoppingRecord(id, pageNum1, 5);
+        PageInfo<BsShoppingRecord> pageInfo1 = bsMyProfileService.pageShoppingRecord(id, pageNum1, 3);
         map.put("PAGEINFO1", pageInfo1);
         List<ShoppingRecordResult> shoppingRecordResults = new ArrayList<>();
         for (BsShoppingRecord bsShoppingRecord : pageInfo1.getList()) {
