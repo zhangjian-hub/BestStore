@@ -34,6 +34,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- animation-effect -->
     <link href="../static/css/animate.min.css" rel="stylesheet">
     <script src="../static/js/wow.min.js"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
     <script>
         new WOW().init();
     </script>
@@ -56,12 +60,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </ul>
             </div>
             <div class="header-grid-right animated wow slideInRight" data-wow-delay=".5s">
-                <ul class="social-icons">
-                    <li><a href="#" class="facebook"></a></li>
-                    <li><a href="#" class="twitter"></a></li>
-                    <li><a href="#" class="g"></a></li>
-                    <li><a href="#" class="instagram"></a></li>
-                </ul>
+                <div class="header-grid-right animated wow slideInRight" data-wow-delay=".5s">
+                    <div class="dropdown">
+						<span class="btn dropdown-toggle" type="button" id="dropdownMenu1"
+                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                <a href="/toMyProfile"><img src="../static/images/jm.jpg"
+                                            style="width:44px; height:44px; border-radius:50%;">
+                <span> </span>
+                <span th:text="${session.USER_INFO==null? 'Please Login':(session.USER_INFO.getNickname())}">Please Login</span>
+                </a>
+
+							<span class="caret"></span>
+						</span>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+
+                            <li><a href="/toMyProfile">Personal Center</a></li>
+                            <li><a href="/logout">Log Out</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -93,10 +111,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="col-sm-4">
                                             <ul class="multi-column-dropdown">
                                                 <h6>Men's Wear</h6>
-                                                <li><a href="/toProducts?suitablePeople=men&type=jacket&pageNum=1">jacket</a></li>
+                                                <li><a href="/toProducts?suitablePeople=men&type=jacket&pageNum=1">jacket</a>
+                                                </li>
                                                 <li><a href="/toProducts?suitablePeople=men&type=trousers&pageNum=1">trousers</a>
                                                 </li>
-                                                <li><a href="/toProducts?suitablePeople=men&type=shoe&pageNum=1">shoe</a></li>
+                                                <li>
+                                                    <a href="/toProducts?suitablePeople=men&type=shoe&pageNum=1">shoe</a>
+                                                </li>
                                                 <li><a href="/toProducts?suitablePeople=men&type=ornament&pageNum=1">ornament</a>
                                                 </li>
                                             </ul>
@@ -108,7 +129,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                 </li>
                                                 <li><a href="/toProducts?suitablePeople=women&type=trousers&pageNum=1">trousers</a>
                                                 </li>
-                                                <li><a href="/toProducts?suitablePeople=women&type=shoe&pageNum=1">shoe</a></li>
+                                                <li>
+                                                    <a href="/toProducts?suitablePeople=women&type=shoe&pageNum=1">shoe</a>
+                                                </li>
                                                 <li><a href="/toProducts?suitablePeople=women&type=ornament&pageNum=1">ornament</a>
                                                 </li>
                                             </ul>
@@ -116,10 +139,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="col-sm-4">
                                             <ul class="multi-column-dropdown">
                                                 <h6>Kid's Wear</h6>
-                                                <li><a href="/toProducts?suitablePeople=kid&type=jacket&pageNum=1">jacket</a></li>
+                                                <li><a href="/toProducts?suitablePeople=kid&type=jacket&pageNum=1">jacket</a>
+                                                </li>
                                                 <li><a href="/toProducts?suitablePeople=kid&type=trousers&pageNum=1">trousers</a>
                                                 </li>
-                                                <li><a href="/toProducts?suitablePeople=kid&type=shoe&pageNum=1">shoe</a></li>
+                                                <li>
+                                                    <a href="/toProducts?suitablePeople=kid&type=shoe&pageNum=1">shoe</a>
+                                                </li>
                                                 <li><a href="/toProducts?suitablePeople=kid&type=ornament&pageNum=1">ornament</a>
                                                 </li>
                                             </ul>
@@ -164,7 +190,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                         </h3>
                     </a>
-                    </a>
                     <div class="clearfix"></div>
                 </div>
             </div>
@@ -185,227 +210,64 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="products">
     <div class="container">
         <div class="col-md-4 products-left">
-<!--            <div class="filter-price animated wow slideInUp" data-wow-delay=".5s">-->
-<!--                <h3>Filter By Price</h3>-->
-<!--                <ul class="dropdown-menu1">-->
-<!--                    <li><a href="">-->
-<!--                        <div id="slider-range"></div>-->
-<!--                        <input type="text" id="amount" style="border: 0"/>-->
-<!--                    </a></li>-->
-<!--                </ul>-->
-<!--                <script type='text/javascript'>//<![CDATA[-->
-<!--                $(window).load(function () {-->
-<!--                    $("#slider-range").slider({-->
-<!--                        range: true,-->
-<!--                        min: 0,-->
-<!--                        max: 100000,-->
-<!--                        values: [20000, 80000],-->
-<!--                        slide: function (event, ui) {-->
-<!--                            $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);-->
-<!--                        }-->
-<!--                    });-->
-<!--                    $("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));-->
+            <!--            <div class="filter-price animated wow slideInUp" data-wow-delay=".5s">-->
+            <!--                <h3>Filter By Price</h3>-->
+            <!--                <ul class="dropdown-menu1">-->
+            <!--                    <li><a href="">-->
+            <!--                        <div id="slider-range"></div>-->
+            <!--                        <input type="text" id="amount" style="border: 0"/>-->
+            <!--                    </a></li>-->
+            <!--                </ul>-->
+            <!--                <script type='text/javascript'>//<![CDATA[-->
+            <!--                $(window).load(function () {-->
+            <!--                    $("#slider-range").slider({-->
+            <!--                        range: true,-->
+            <!--                        min: 0,-->
+            <!--                        max: 100000,-->
+            <!--                        values: [20000, 80000],-->
+            <!--                        slide: function (event, ui) {-->
+            <!--                            $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);-->
+            <!--                        }-->
+            <!--                    });-->
+            <!--                    $("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));-->
 
 
-<!--                });//]]>-->
-<!--                </script>-->
-<!--                <script type="text/javascript" src="../static/js/jquery-ui.min.js"></script>-->
-<!--                &lt;!&ndash;&ndash;&gt;-->
-<!--            </div>-->
+            <!--                });//]]>-->
+            <!--                </script>-->
+            <!--                <script type="text/javascript" src="../static/js/jquery-ui.min.js"></script>-->
+            <!--                &lt;!&ndash;&ndash;&gt;-->
+            <!--            </div>-->
             <div class="new-products animated wow slideInUp" data-wow-delay=".5s">
                 <h3>New Products</h3>
                 <div class="new-products-grids">
-                    <div class="new-products-grid">
+                    <div class="new-products-grid" th:each="a:${A}" >
                         <div class="new-products-grid-left">
-                            <a href="/toSingle"><img src="../static/images/6.jpg" alt=" " class="img-responsive"/></a>
+
+                            <a th:href="@{/toSingle(id=${a.getId()},name=${a.getName()},size=${a.getSize()},color=${a.getColor()})}"><img th:src="${a.getImage()}" alt=" "
+                                                     class="img-responsive"
+                                                     style="height:220px;width: 150px;"></a>
                         </div>
                         <div class="new-products-grid-right">
-                            <h4><a href="/toSingle">occaecat cupidatat</a></h4>
-                            <div class="rating">
-                                <div class="rating-left">
-                                    <img src="../static/images/2.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="../static/images/2.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="../static/images/2.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="../static/images/1.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="../static/images/1.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
+                            <h4><a th:href="@{/toSingle(id=${a.getId()},name=${a.getName()},size=${a.getSize()},color=${a.getColor()})}" th:text="${a.getName()}"></a></h4>
                             <div class="simpleCart_shelfItem new-products-grid-right-add-cart">
-                                <p><span class="item_price">$180</span><a class="item_add" href="#">add to cart </a></p>
+                                <p class="p1" th:text="${a.getId()}" hidden></p>
+                                <p>
+                                    <i th:text="${a.getPrice()*1.2}+'$'"></i>
+                                    <span class="item_price" th:text="${a.getPrice()}+'$'"></span>
+                                    <span th:text="'size:'+${a.getSize()}"></span>
+                                    <a class="item_add add1" href="javascript:;">add to cart</a>
+
+                                </p>
                             </div>
                         </div>
                         <div class="clearfix"></div>
+
+
                     </div>
-                    <div class="new-products-grid">
-                        <div class="new-products-grid-left">
-                            <a href="/toSingle"><img src="../static/images/26.jpg" alt=" "
-                                                       class="img-responsive"/></a>
-                        </div>
-                        <div class="new-products-grid-right">
-                            <h4><a href="/toSingle">eum fugiat quo</a></h4>
-                            <div class="rating">
-                                <div class="rating-left">
-                                    <img src="../static/images/2.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="../static/images/2.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="../static/images/2.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="../static/images/1.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="../static/images/1.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="simpleCart_shelfItem new-products-grid-right-add-cart">
-                                <p><span class="item_price">$250</span><a class="item_add" href="#">add to cart </a></p>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="new-products-grid">
-                        <div class="new-products-grid-left">
-                            <a href="/toSingle"><img src="../static/images/11.jpg" alt=" "
-                                                       class="img-responsive"/></a>
-                        </div>
-                        <div class="new-products-grid-right">
-                            <h4><a href="/toSingle">officia deserunt</a></h4>
-                            <div class="rating">
-                                <div class="rating-left">
-                                    <img src="../static/images/2.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="../static/images/2.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="../static/images/2.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="../static/images/1.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="../static/images/1.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="simpleCart_shelfItem new-products-grid-right-add-cart">
-                                <p><span class="item_price">$259</span><a class="item_add" href="#">add to cart </a></p>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
+
                 </div>
             </div>
-            <div class="new-products animated wow slideInUp" data-wow-delay=".5s">
-                <h3>New Products</h3>
-                <div class="new-products-grids">
-                    <div class="new-products-grid">
-                        <div class="new-products-grid-left">
-                            <a href="/toSingle"><img src="../static/images/6.jpg" alt=" " class="img-responsive"/></a>
-                        </div>
-                        <div class="new-products-grid-right">
-                            <h4><a href="/toSingle">occaecat cupidatat</a></h4>
-                            <div class="rating">
-                                <div class="rating-left">
-                                    <img src="../static/images/2.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="../static/images/2.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="../static/images/2.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="../static/images/1.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="../static/images/1.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="simpleCart_shelfItem new-products-grid-right-add-cart">
-                                <p><span class="item_price">$180</span><a class="item_add" href="#">add to cart </a></p>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="new-products-grid">
-                        <div class="new-products-grid-left">
-                            <a href="/toSingle"><img src="../static/images/26.jpg" alt=" "
-                                                       class="img-responsive"/></a>
-                        </div>
-                        <div class="new-products-grid-right">
-                            <h4><a href="/toSingle">eum fugiat quo</a></h4>
-                            <div class="rating">
-                                <div class="rating-left">
-                                    <img src="../static/images/2.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="../static/images/2.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="../static/images/2.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="../static/images/1.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="../static/images/1.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="simpleCart_shelfItem new-products-grid-right-add-cart">
-                                <p><span class="item_price">$250</span><a class="item_add" href="#">add to cart </a></p>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="new-products-grid">
-                        <div class="new-products-grid-left">
-                            <a href="/toSingle"><img src="../static/images/11.jpg" alt=" "
-                                                       class="img-responsive"/></a>
-                        </div>
-                        <div class="new-products-grid-right">
-                            <h4><a href="/toSingle">officia deserunt</a></h4>
-                            <div class="rating">
-                                <div class="rating-left">
-                                    <img src="../static/images/2.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="../static/images/2.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="../static/images/2.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="../static/images/1.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="../static/images/1.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="simpleCart_shelfItem new-products-grid-right-add-cart">
-                                <p><span class="item_price">$259</span><a class="item_add" href="#">add to cart </a></p>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-            </div>
+
             <div class="men-position animated wow slideInUp" data-wow-delay=".5s">
                 <a href="/toSingle"><img src="../static/images/27.jpg" alt=" " class="img-responsive"/></a>
                 <div class="men-position-pos">
@@ -430,67 +292,60 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
             <div class="products-right-grids-bottom">
                 <div th:each="bs:${BSITEMS}">
-                <div class="col-md-4 products-right-grids-bottom-grid">
-<!--                    <option th:each="bs:${BSITEMS}">-->
+                    <div class="col-md-4 products-right-grids-bottom-grid">
+                        <!--                    <option th:each="bs:${BSITEMS}">-->
 
-                    <div class="new-collections-grid1 products-right-grid1 animated wow slideInUp" data-wow-delay=".5s">
+                        <div class="new-collections-grid1 products-right-grid1 animated wow slideInUp"
+                             data-wow-delay=".5s">
 
-                        <div class="new-collections-grid1-image">
-                            <a href="/toSingle" class="product-image"><img th:src="${bs.getImage()}" alt=" " class="img-responsive"></a>
-                            <div class="new-collections-grid1-image-pos products-right-grids-pos">
-                                <a th:href="@{/toSingle(id=${bs.getId()},name=${bs.getName()},size=${bs.getSize()},color=${bs.getColor()})}">Quick View</a>
+                            <div class="new-collections-grid1-image">
 
-                            </div>
-                            <div class="new-collections-grid1-right products-right-grids-pos-right">
-                                <div class="rating">
-                                    <div class="rating-left">
-                                        <img src="images/2.png" alt=" " class="img-responsive">
+                                <a th:href="@{/toSingle(id=${bs.getId()},name=${bs.getName()},size=${bs.getSize()},color=${bs.getColor()})}" class="product-image"><img th:src="${bs.getImage()}" alt=" "
+                                                                               class="img-responsive"
+                                                                               style="height:220px;width: 150px;"></a>
+                                <div class="new-collections-grid1-image-pos products-right-grids-pos">
+                                    <a th:href="@{/toSingle(id=${bs.getId()},name=${bs.getName()},size=${bs.getSize()},color=${bs.getColor()})}">Quick
+                                        View</a>
+
+                                </div>
+                                <div class="new-collections-grid1-right products-right-grids-pos-right">
+                                    <div class="rating">
+                                        <div class="rating-left">
+                                            <img src="images/2.png" alt=" " class="img-responsive">
+                                        </div>
+                                        <div class="rating-left">
+                                            <img src="images/2.png" alt=" " class="img-responsive">
+                                        </div>
+                                        <div class="rating-left">
+                                            <img src="images/2.png" alt=" " class="img-responsive">
+                                        </div>
+                                        <div class="rating-left">
+                                            <img src="images/1.png" alt=" " class="img-responsive">
+                                        </div>
+                                        <div class="rating-left">
+                                            <img src="images/1.png" alt=" " class="img-responsive">
+                                        </div>
+                                        <div class="clearfix"></div>
                                     </div>
-                                    <div class="rating-left">
-                                        <img src="images/2.png" alt=" " class="img-responsive">
-                                    </div>
-                                    <div class="rating-left">
-                                        <img src="images/2.png" alt=" " class="img-responsive">
-                                    </div>
-                                    <div class="rating-left">
-                                        <img src="images/1.png" alt=" " class="img-responsive">
-                                    </div>
-                                    <div class="rating-left">
-                                        <img src="images/1.png" alt=" " class="img-responsive">
-                                    </div>
-                                    <div class="clearfix"> </div>
                                 </div>
                             </div>
-                        </div>
-                        <h4><a href="/toSingle"><span th:text="${bs.getName()}"></span></a></h4>
-                        <p>Vel illum qui dolorem.</p>
-                        <div class="simpleCart_shelfItem products-right-grid1-add-cart">
-                            <p><i th:text="${bs.getPrice()*1.5}+'$'"></i> <span class="item_price" th:text="${bs.getPrice()}">
-                                <a id="add" class="item_add" href="javascript:;">add to cart</a>
-                                    <script>
-                                        $("#add").click(function () {
-                                            $.post("/toAddCart", {id: 2}, function (data) {
-                                                if (data.result) {
-                                                    swal({
-                                                        title: "Addition Succeed",
-                                                        type: "success",
-                                                        confirmButtonText: "ok",
-                                                        closeOnConfirm: false
-                                                    },function () {
-                                                        window.location.reload()
-                                                    });
-                                                } else {
-                                                    swal("Addition Failed", "Please Login in", 'error');
-                                                }
-                                            })
-                                        })
-                                    </script>
+                            <h4><a th:href="@{/toSingle(id=${bs.getId()},name=${bs.getName()},size=${bs.getSize()},color=${bs.getColor()})}"><span th:text="${bs.getName()}"></span></a></h4>
+                            <p>size:<span th:text="${bs.getSize()}"></span></p>
+
+                            <div class="simpleCart_shelfItem products-right-grid1-add-cart">
+                                <p class="p2" th:text="${bs.getId()}" hidden></p>
+                                <p><i th:text="${bs.getPrice()*1.2}+'$'"></i>
+                                    <span class="item_price" th:text="${bs.getPrice()}+'$'"></span>
+                                    <a  class="item_add add2" href="javascript:;">add to cart </a>
+
+                                </p>
+                            </div>
                         </div>
                     </div>
-                    </div>
-<!--                    </option>-->
+
+                    <!--                    </option>-->
                 </div>
-                <div class="clearfix"> </div>
+                <div class="clearfix"></div>
             </div>
 
             <nav class="numbering animated wow slideInRight" data-wow-delay=".5s">
@@ -501,13 +356,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </a>
                     </li>
                     <li>
-                        <a th:href="@{/toProducts(suitablePeople=${suitablePeople},type=${type},pageNum=${INFO.getPageNum()-1})}" aria-label="Previous" th:if="${INFO.getPageNum()!=1}">
+                        <a th:href="@{/toProducts(suitablePeople=${suitablePeople},type=${type},pageNum=${INFO.getPageNum()-1})}"
+                           aria-label="Previous" th:if="${INFO.getPageNum()!=1}">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
-<!--                    class="active"-->
-                    <li  th:each="list:${LIST}">
-                        <a th:href="@{/toProducts(suitablePeople=${suitablePeople},type=${type},pageNum=${list})}" th:text="${list}"><span class="sr-only" >(current)</span></a>
+                    <!--                    class="active"-->
+                    <li th:each="list:${LIST}">
+                        <a th:href="@{/toProducts(suitablePeople=${suitablePeople},type=${type},pageNum=${list})}"
+                           th:text="${list}"><span class="sr-only">(current)</span></a>
                     </li>
 
                     <li>
@@ -517,7 +374,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </li>
 
                     <li>
-                        <a th:href="@{/toProducts(suitablePeople=${suitablePeople},type=${type},pageNum=${INFO.getPageNum()+1})}" aria-label="Next" th:if="${INFO.getPageNum()!=LIST.size()}">
+                        <a th:href="@{/toProducts(suitablePeople=${suitablePeople},type=${type},pageNum=${INFO.getPageNum()+1})}"
+                           aria-label="Next" th:if="${INFO.getPageNum()!=LIST.size()}">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     </li>
@@ -550,40 +408,40 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".7s">
                 <h3>Flickr Posts</h3>
                 <div class="footer-grid-left">
-                    <a href="javascript:;"><img src="../static/images/13.jpg" alt=" " class="img-responsive"/></a>
+                    <img src="../static/images/13.jpg" alt=" " class="img-responsive"/>
                 </div>
                 <div class="footer-grid-left">
-                    <a href="javascript:;"><img src="../static/images/14.jpg" alt=" " class="img-responsive"/></a>
+                    <img src="../static/images/14.jpg" alt=" " class="img-responsive"/>
                 </div>
                 <div class="footer-grid-left">
-                    <a href="javascript:;"><img src="../static/images/15.jpg" alt=" " class="img-responsive"/></a>
+                    <img src="../static/images/15.jpg" alt=" " class="img-responsive"/>
                 </div>
                 <div class="footer-grid-left">
-                    <a href="javascript:;"><img src="../static/images/16.jpg" alt=" " class="img-responsive"/></a>
+                    <img src="../static/images/16.jpg" alt=" " class="img-responsive"/>
                 </div>
                 <div class="footer-grid-left">
-                    <a href="javascript:;"><img src="../static/images/13.jpg" alt=" " class="img-responsive"/></a>
+                    <img src="../static/images/13.jpg" alt=" " class="img-responsive"/>
                 </div>
                 <div class="footer-grid-left">
-                    <a href="javascript:;"><img src="../static/images/14.jpg" alt=" " class="img-responsive"/></a>
+                    <img src="../static/images/14.jpg" alt=" " class="img-responsive"/>
                 </div>
                 <div class="footer-grid-left">
-                    <a href="javascript:;"><img src="../static/images/15.jpg" alt=" " class="img-responsive"/></a>
+                    <img src="../static/images/15.jpg" alt=" " class="img-responsive"/>
                 </div>
                 <div class="footer-grid-left">
-                    <a href="javascript:;"><img src="../static/images/16.jpg" alt=" " class="img-responsive"/></a>
+                    <img src="../static/images/16.jpg" alt=" " class="img-responsive"/>
                 </div>
                 <div class="footer-grid-left">
-                    <a href="javascript:;"><img src="../static/images/13.jpg" alt=" " class="img-responsive"/></a>
+                    <img src="../static/images/13.jpg" alt=" " class="img-responsive"/>
                 </div>
                 <div class="footer-grid-left">
-                    <a href="javascript:;"><img src="../static/images/14.jpg" alt=" " class="img-responsive"/></a>
+                    <img src="../static/images/14.jpg" alt=" " class="img-responsive"/>
                 </div>
                 <div class="footer-grid-left">
-                    <a href="javascript:;"><img src="../static/images/15.jpg" alt=" " class="img-responsive"/></a>
+                    <img src="../static/images/15.jpg" alt=" " class="img-responsive"/>
                 </div>
                 <div class="footer-grid-left">
-                    <a href="javascript:;"><img src="../static/images/16.jpg" alt=" " class="img-responsive"/></a>
+                    <img src="../static/images/16.jpg" alt=" " class="img-responsive"/>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -591,20 +449,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <h3>Blog Posts</h3>
                 <div class="footer-grid-sub-grids">
                     <div class="footer-grid-sub-grid-left">
-                        <a href="javascript:;"><img src="../static/images/9.jpg" alt=" " class="img-responsive"/></a>
+                        <img src="../static/images/9.jpg" alt=" " class="img-responsive"/>
                     </div>
                     <div class="footer-grid-sub-grid-right">
-                        <h4><a href="javascript:;">culpa qui officia deserunt</a></h4>
+                        <h4>culpa qui officia deserunt</h4>
                         <p>Posted On 25/3/2016</p>
                     </div>
                     <div class="clearfix"></div>
                 </div>
                 <div class="footer-grid-sub-grids">
                     <div class="footer-grid-sub-grid-left">
-                        <a href="javascript:;"><img src="../static/images/10.jpg" alt=" " class="img-responsive"/></a>
+                        <img src="../static/images/10.jpg" alt=" " class="img-responsive"/>
                     </div>
                     <div class="footer-grid-sub-grid-right">
-                        <h4><a href="javascript:;">Quis autem vel eum iure</a></h4>
+                        <h4>Quis autem vel eum iure</h4>
                         <p>Posted On 25/3/2016</p>
                     </div>
                     <div class="clearfix"></div>
@@ -619,7 +477,76 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
     </div>
 </div>
-<!-- //footer -->
+<script>
+    $(".add1").each(function () {
+        $(this).click(function () {
+            console.log($(this).parent().prev().text())
+                var data = $(this).parent().prev().text();
 
+            $.post("/toAddCart", {id:data}, function (data) {
+                if (data.result) {
+                    swal({
+                        title: "Addition Succeed",
+                        type: "success",
+                        confirmButtonText: "ok",
+                        closeOnConfirm: false
+                    }, function () {
+                        window.location.reload()
+                    });
+                } else {
+                    swal("Addition Failed", "Please Login in", 'error');
+                }
+            });
+        });
+    });
+    $(".add2").each(function () {
+        $(this).click(function () {
+            console.log($(this).parent().prev().text())
+            var data = $(this).parent().prev().text();
+
+            $.post("/toAddCart", {id:data}, function (data) {
+                if (data.result) {
+                    swal({
+                        title: "Addition Succeed",
+                        type: "success",
+                        confirmButtonText: "ok",
+                        closeOnConfirm: false
+                    }, function () {
+                        window.location.reload()
+                    });
+                } else {
+                    swal("Addition Failed", "Please Login in", 'error');
+                }
+            });
+        });
+    });
+</script>
+
+<!-- //footer -->
+<!--引入弹窗-->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<script th:inline="javascript">
+    var respinfo = [[${respinfo}]];
+    if (respinfo == "true") {
+        swal({
+            title: "You are logged in, please log out first ！",
+            type: "error",
+            confirmButtonText: "ok",
+            closeOnConfirm: false
+        });
+    }
+</script>
+<script th:inline="javascript">
+    var respinfo = [[${respinfo}]];
+    if (respinfo == "true") {
+        swal({
+            title: "You are logged in, please log out first ！",
+            type: "error",
+            confirmButtonText: "ok",
+            closeOnConfirm: false
+        });
+    }
+</script>
 </body>
 </html>

@@ -51,12 +51,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</ul>
 				</div>
 				<div class="header-grid-right animated wow slideInRight" data-wow-delay=".5s">
-					<ul class="social-icons">
-						<li><a href="#" class="facebook"></a></li>
-						<li><a href="#" class="twitter"></a></li>
-						<li><a href="#" class="g"></a></li>
-						<li><a href="#" class="instagram"></a></li>
-					</ul>
+					<div class="header-grid-right animated wow slideInRight" data-wow-delay=".5s">
+						<div class="dropdown">
+						<span class="btn dropdown-toggle" type="button" id="dropdownMenu1"
+							  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                <a href="/toMyProfile"><img src="../static/images/jm.jpg"
+											style="width:44px; height:44px; border-radius:50%;">
+                <span> </span>
+                <span th:text="${session.USER_INFO==null? 'Please Login':(session.USER_INFO.getNickname())}">Please Login</span>
+                </a>
+
+							<span class="caret"></span>
+						</span>
+							<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+
+								<li><a href="/toMyProfile">Personal Center</a></li>
+								<li><a href="/logout">Log Out</a></li>
+							</ul>
+						</div>
+					</div>
 				</div>
 				<div class="clearfix"> </div>
 			</div>
@@ -126,32 +140,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<div class="row">
 										<div class="col-sm-4">
 											<ul class="multi-column-dropdown">
-												<h6>Home Collection</h6>
-												<li><a href="/toFurniture">Cookware</a></li>
-												<li><a href="/toFurniture">Sofas</a></li>
-												<li><a href="/toFurniture">Dining Tables</a></li>
-												<li><a href="/toFurniture">Shoe Racks</a></li>
-												<li><a href="/toFurniture">Home Decor</a></li>
+
 											</ul>
 										</div>
 										<div class="col-sm-4">
 											<ul class="multi-column-dropdown">
-												<h6>Office Collection</h6>
-												<li><a href="/toFurniture">Carpets</a></li>
-												<li><a href="/toFurniture">Tables</a></li>
-												<li><a href="/toFurniture">Sofas</a></li>
-												<li><a href="/toFurniture">Shoe Racks</a></li>
-												<li><a href="/toFurniture">Sockets</a></li>
-												<li><a href="/toFurniture">Electrical Machines</a></li>
+
 											</ul>
 										</div>
 										<div class="col-sm-4">
 											<ul class="multi-column-dropdown">
-												<h6>Decorations</h6>
-												<li><a href="/toFurniture">Toys</a></li>
-												<li><a href="/toFurniture">Wall Clock</a></li>
-												<li><a href="/toFurniture">Lighting</a></li>
-												<li><a href="/toFurniture">Top Brands</a></li>
+
 											</ul>
 										</div>
 										<div class="clearfix"></div>
@@ -222,7 +221,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<input type="email" placeholder="Email Address" required=" " name="email">
 				<input type="password" placeholder="Password" required=" " name="password">
 				<div class="forgot">
-					<a href="#">Forgot Password?</a>
+					<a href="/toForgotPassword.html">Forgot Password?</a>
 					&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 					&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 					<label>
@@ -259,40 +258,40 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".7s">
 				<h3>Flickr Posts</h3>
 				<div class="footer-grid-left">
-					<a href="javascript:;"><img src="../static/images/13.jpg" alt=" " class="img-responsive"/></a>
+					<img src="../static/images/13.jpg" alt=" " class="img-responsive"/>
 				</div>
 				<div class="footer-grid-left">
-					<a href="javascript:;"><img src="../static/images/14.jpg" alt=" " class="img-responsive"/></a>
+					<img src="../static/images/14.jpg" alt=" " class="img-responsive"/>
 				</div>
 				<div class="footer-grid-left">
-					<a href="javascript:;"><img src="../static/images/15.jpg" alt=" " class="img-responsive"/></a>
+					<img src="../static/images/15.jpg" alt=" " class="img-responsive"/>
 				</div>
 				<div class="footer-grid-left">
-					<a href="javascript:;"><img src="../static/images/16.jpg" alt=" " class="img-responsive"/></a>
+					<img src="../static/images/16.jpg" alt=" " class="img-responsive"/>
 				</div>
 				<div class="footer-grid-left">
-					<a href="javascript:;"><img src="../static/images/13.jpg" alt=" " class="img-responsive"/></a>
+					<img src="../static/images/13.jpg" alt=" " class="img-responsive"/>
 				</div>
 				<div class="footer-grid-left">
-					<a href="javascript:;"><img src="../static/images/14.jpg" alt=" " class="img-responsive"/></a>
+					<img src="../static/images/14.jpg" alt=" " class="img-responsive"/>
 				</div>
 				<div class="footer-grid-left">
-					<a href="javascript:;"><img src="../static/images/15.jpg" alt=" " class="img-responsive"/></a>
+					<img src="../static/images/15.jpg" alt=" " class="img-responsive"/>
 				</div>
 				<div class="footer-grid-left">
-					<a href="javascript:;"><img src="../static/images/16.jpg" alt=" " class="img-responsive"/></a>
+					<img src="../static/images/16.jpg" alt=" " class="img-responsive"/>
 				</div>
 				<div class="footer-grid-left">
-					<a href="javascript:;"><img src="../static/images/13.jpg" alt=" " class="img-responsive"/></a>
+					<img src="../static/images/13.jpg" alt=" " class="img-responsive"/>
 				</div>
 				<div class="footer-grid-left">
-					<a href="javascript:;"><img src="../static/images/14.jpg" alt=" " class="img-responsive"/></a>
+					<img src="../static/images/14.jpg" alt=" " class="img-responsive"/>
 				</div>
 				<div class="footer-grid-left">
-					<a href="javascript:;"><img src="../static/images/15.jpg" alt=" " class="img-responsive"/></a>
+					<img src="../static/images/15.jpg" alt=" " class="img-responsive"/>
 				</div>
 				<div class="footer-grid-left">
-					<a href="javascript:;"><img src="../static/images/16.jpg" alt=" " class="img-responsive"/></a>
+					<img src="../static/images/16.jpg" alt=" " class="img-responsive"/>
 				</div>
 				<div class="clearfix"></div>
 			</div>
@@ -310,10 +309,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="footer-grid-sub-grids">
 					<div class="footer-grid-sub-grid-left">
-						<a href="javascript:;"><img src="../static/images/10.jpg" alt=" " class="img-responsive"/></a>
+						<img src="../static/images/10.jpg" alt=" " class="img-responsive"/>
 					</div>
 					<div class="footer-grid-sub-grid-right">
-						<h4><a href="javascript:;">Quis autem vel eum iure</a></h4>
+						<h4>Quis autem vel eum iure</h4>
 						<p>Posted On 25/3/2016</p>
 					</div>
 					<div class="clearfix"></div>

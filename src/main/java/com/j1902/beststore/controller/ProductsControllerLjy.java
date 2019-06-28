@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.j1902.beststore.pojo.BsItem;
 import com.j1902.beststore.service.ItemServiceLjy;
+import net.sf.jsqlparser.statement.select.Fetch;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,10 +23,18 @@ public class ProductsControllerLjy {
 
     @RequestMapping("/toProducts.html")
     public String toForgotPassword( Map<String, Object> map) {
-        PageHelper.startPage(1,9);
+        PageHelper.startPage(1,6);
         List<BsItem> bsItems = itemService.selectAll();
-        PageInfo info = new PageInfo(bsItems,9);
+        PageInfo info = new PageInfo(bsItems,6);
         List<BsItem> b = info.getList();
+
+        List<BsItem> a = new ArrayList();
+
+        a.add(b.get(0));
+        a.add(b.get(2));
+        a.add(b.get(3));
+
+        System.out.println("a = " + a);
         System.out.println("bsItems = " + bsItems);
         System.out.println("info = " + info);
 
@@ -37,6 +46,7 @@ public class ProductsControllerLjy {
         map.put("INFO",info);
         map.put("BSITEMS", b);
         map.put("LIST",list);
+        map.put("A",a);
         return "products";
     }
 
@@ -53,12 +63,19 @@ public class ProductsControllerLjy {
         Integer pageNum = Integer.valueOf(req.getParameter("pageNum"));
         System.out.println("pageNum = " + pageNum);
 
-       PageHelper.startPage(pageNum,9);
+       PageHelper.startPage(pageNum,6);
 
         List<BsItem> bsItems = itemService.selectAllGroupByName(bsItem);
 
-        PageInfo info = new PageInfo(bsItems,9);
+        PageInfo info = new PageInfo(bsItems,6);
         List<BsItem> b = info.getList();
+        List<BsItem> c = itemService.selectAll();
+        List<BsItem> a = new ArrayList();
+
+        a.add(c.get(0));
+        a.add(c.get(2));
+        a.add(c.get(3));
+
         System.out.println("bsItems = " + bsItems);
         System.out.println("info = " + info);
 
@@ -72,6 +89,8 @@ public class ProductsControllerLjy {
         map.put("suitablePeople",suitablePeople);
         map.put("type",type);
         map.put("LIST",list);
+        map.put("A",a);
+//        session.setAttribute("BSITEMS",bsItems);
         return "products";
     }
 
