@@ -13,7 +13,6 @@ public class EmailUsServiceImpl implements EmailUsService {
     @Override
     public boolean emailUs(BsEmail bsEmail) {
         int insert = bsEmailMapper.insert(bsEmail);
-        System.out.println("insert = " + insert);
         if(insert ==1){
             return true;
         }else {

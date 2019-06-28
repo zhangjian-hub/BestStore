@@ -1,6 +1,5 @@
 package com.j1902.beststore.service.impl;
 
-import com.alibaba.druid.sql.visitor.SQLASTOutputVisitor;
 import com.j1902.beststore.mapper.BsUserMapper;
 import com.j1902.beststore.pojo.BsUser;
 import com.j1902.beststore.pojo.BsUserExample;
@@ -11,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.List;
 
@@ -60,7 +58,6 @@ public class BsUserServiceImpl implements BsUserService {
         BsUserExample.Criteria criteria1 = userExample.or();
         criteria1.andEmailEqualTo(email);
         List<BsUser> bsUsers = bsUserMapper.selectByExample(userExample);
-        System.out.println(bsUsers != null && bsUsers.size() > 0);
         return bsUsers != null && bsUsers.size() > 0;
     }
     @Override
@@ -69,7 +66,6 @@ public class BsUserServiceImpl implements BsUserService {
         BsUserExample.Criteria criteria1 = userExample.or();
         criteria1.andPhoneEqualTo(phone);
         List<BsUser> bsUsers = bsUserMapper.selectByExample(userExample);
-        System.out.println(bsUsers != null && bsUsers.size() > 0);
         return bsUsers != null && bsUsers.size() > 0;
     }
 

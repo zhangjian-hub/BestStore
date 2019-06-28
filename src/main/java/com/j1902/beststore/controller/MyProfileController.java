@@ -31,53 +31,57 @@ public class MyProfileController {
     //    去个人中心
     @RequestMapping("/toMyProfile")
     public String toMyProfile(HttpServletRequest request, Integer pageNum, Integer pageNum1, Map<String, Object> map) {
-        BsUser user_info = (BsUser) request.getSession().getAttribute("USER_INFO");
-        if (user_info == null) {
-            return "redirect:/toLogin";
-        }
-        Integer id = user_info.getId();
-        if (id == null) {
-            return "redirect:/toLogin";
-        }
-        if (pageNum == null) {
-            pageNum = 1;
-        }
-        if (pageNum1 == null) {
-            pageNum1 = 1;
-        }
+        try {
+            BsUser user_info = (BsUser) request.getSession().getAttribute("USER_INFO");
+            if (user_info == null) {
+                return "redirect:/toLogin";
+            }
+            Integer id = user_info.getId();
+            if (id == null) {
+                return "redirect:/toLogin";
+            }
+            if (pageNum == null) {
+                pageNum = 1;
+            }
+            if (pageNum1 == null) {
+                pageNum1 = 1;
+            }
 //        订单表的分页
-        PageInfo<BsOrderForm> pageInfo = bsMyProfileService.pageBsOrderForm(id, pageNum, 3);
-        map.put("PAGEINFO", pageInfo);
-        List<MyProfileItemFull> myProfileItemFulls = new ArrayList<>();
-        for (BsOrderForm bsOrderForm : pageInfo.getList()) {
-            Integer itemId = bsOrderForm.getItemId();
-            MyProfileItemFull myProfileItemFull = new MyProfileItemFull();
-            BsItem bsItem = bsMyProfileService.getItem(itemId);
-            myProfileItemFull.setId(bsOrderForm.getId());
-            myProfileItemFull.setOrderId(bsOrderForm.getOrderId());
-            myProfileItemFull.setImg(bsItem.getImage());
-            myProfileItemFull.setStatus(bsOrderForm.getState());
-            myProfileItemFulls.add(myProfileItemFull);
-        }
+            PageInfo<BsOrderForm> pageInfo = bsMyProfileService.pageBsOrderForm(id, pageNum, 3);
+            map.put("PAGEINFO", pageInfo);
+            List<MyProfileItemFull> myProfileItemFulls = new ArrayList<>();
+            for (BsOrderForm bsOrderForm : pageInfo.getList()) {
+                Integer itemId = bsOrderForm.getItemId();
+                MyProfileItemFull myProfileItemFull = new MyProfileItemFull();
+                BsItem bsItem = bsMyProfileService.getItem(itemId);
+                myProfileItemFull.setId(bsOrderForm.getId());
+                myProfileItemFull.setOrderId(bsOrderForm.getOrderId());
+                myProfileItemFull.setImg(bsItem.getImage());
+                myProfileItemFull.setStatus(bsOrderForm.getState());
+                myProfileItemFulls.add(myProfileItemFull);
+            }
 //        记录表的分页
-        PageInfo<BsShoppingRecord> pageInfo1 = bsMyProfileService.pageShoppingRecord(id, pageNum1, 3);
-        map.put("PAGEINFO1", pageInfo1);
-        List<ShoppingRecordResult> shoppingRecordResults = new ArrayList<>();
-        for (BsShoppingRecord bsShoppingRecord : pageInfo1.getList()) {
-            String itemInfo = bsShoppingRecord.getItemInfo();
-            Date createTime = bsShoppingRecord.getCreateTime();
-            String[] split = itemInfo.split(",");
-            String name = split[0];
-            String img = split[1];
-            ShoppingRecordResult shoppingRecordResult = new ShoppingRecordResult();
-            shoppingRecordResult.setName(name);
-            shoppingRecordResult.setImg(img);
-            shoppingRecordResult.setTime(new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(createTime));
-            shoppingRecordResults.add(shoppingRecordResult);
+            PageInfo<BsShoppingRecord> pageInfo1 = bsMyProfileService.pageShoppingRecord(id, pageNum1, 3);
+            map.put("PAGEINFO1", pageInfo1);
+            List<ShoppingRecordResult> shoppingRecordResults = new ArrayList<>();
+            for (BsShoppingRecord bsShoppingRecord : pageInfo1.getList()) {
+                String itemInfo = bsShoppingRecord.getItemInfo();
+                Date createTime = bsShoppingRecord.getCreateTime();
+                String[] split = itemInfo.split(",");
+                String name = split[0];
+                String img = split[1];
+                ShoppingRecordResult shoppingRecordResult = new ShoppingRecordResult();
+                shoppingRecordResult.setName(name);
+                shoppingRecordResult.setImg(img);
+                shoppingRecordResult.setTime(new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(createTime));
+                shoppingRecordResults.add(shoppingRecordResult);
+            }
+            map.put("ITEM_LIST_PROFILE", myProfileItemFulls);
+            map.put("ITEM_LIST_SHOPPING", shoppingRecordResults);
+            return "myProfile";
+        } catch (Exception e) {
+            return "error/index";
         }
-        map.put("ITEM_LIST_PROFILE", myProfileItemFulls);
-        map.put("ITEM_LIST_SHOPPING", shoppingRecordResults);
-        return "myProfile";
     }
 
     //    确认收货
@@ -93,7 +97,7 @@ public class MyProfileController {
 //        准备操作购物记录表
         BsShoppingRecord bsShoppingRecord = new BsShoppingRecord();
         bsShoppingRecord.setUserId(userId);
-        bsShoppingRecord.setItemInfo(item.getName() + "," +item.getImage()+","+ item.getType() + "," + item.getColor() + "," + item.getSize() + "," + item.getPrice());
+        bsShoppingRecord.setItemInfo(item.getName() + "," + item.getImage() + "," + item.getType() + "," + item.getColor() + "," + item.getSize() + "," + item.getPrice());
         bsShoppingRecord.setCreateTime(new Date());
         boolean b = bsMyProfileService.addBsShoppingRecord(bsShoppingRecord);
         ShoppingCartResult shoppingCartResult = new ShoppingCartResult();

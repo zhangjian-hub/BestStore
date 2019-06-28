@@ -42,54 +42,66 @@ public class AdminBsItemController {
     }
 
     @RequestMapping("/addItem.back")
-    public String addItem(Map<String,Object> map, BsItem item, @RequestParam(value = "file") MultipartFile file, HttpServletRequest request) {
-        if (file.isEmpty()) {
-            System.out.println("文件为空空");
-            return "admin/admin-add-item";
-        }
-        String fileName = file.getOriginalFilename();  // 文件名
-        String suffixName = fileName.substring(fileName.lastIndexOf("."));  // 后缀名
-        String filePath = "E://temp-rainy//"; // 上传后的路径
-        fileName = UUID.randomUUID() + suffixName; // 新文件名
-        File dest = new File(filePath + fileName);
-        if (!dest.getParentFile().exists()) {
-            dest.getParentFile().mkdirs();
-        }
+    public String addItem(Map<String, Object> map, BsItem item, @RequestParam(value = "file") MultipartFile file, HttpServletRequest request) {
         try {
-            file.transferTo(dest);
-        } catch (IOException e) {
-            e.printStackTrace();
+            if (file.isEmpty()) {
+                return "admin/admin-add-item";
+            }
+            String fileName = file.getOriginalFilename();  // 文件名
+            String suffixName = fileName.substring(fileName.lastIndexOf("."));  // 后缀名
+            String filePath = "E://temp-rainy//"; // 上传后的路径
+            fileName = UUID.randomUUID() + suffixName; // 新文件名
+            File dest = new File(filePath + fileName);
+            if (!dest.getParentFile().exists()) {
+                dest.getParentFile().mkdirs();
+            }
+            try {
+                file.transferTo(dest);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            String filename = "/temp-rainy/" + fileName;
+
+            item.setImage(filename);
+            item.setSalesVolume(0);
+            itemService.addItem(item);
+            State state = new State();
+            state.setState(true);
+            map.put("ADD_ITEM_STATE", true);
+            return "admin/admin-add-item";
+        } catch (Exception e) {
+            return "error/index";
         }
-        String filename = "/temp-rainy/" + fileName;
 
-        item.setImage(filename);
-        item.setSalesVolume(0);
-        itemService.addItem(item);
-        State state = new State();
-        state.setState(true);
-        map.put("ADD_ITEM_STATE", true);
-        return "admin/admin-add-item";
     }
-
 
 
     @RequestMapping("/updateItem.back")
     public String updateItem(UpdateItemsInfo updateItemsInfo) {
-        if (updateItemsInfo.getItems() != null && updateItemsInfo.getIds() != null) {
-            for (Integer id : updateItemsInfo.getIds()) {
-                for (BsItem item : updateItemsInfo.getItems()) {
-                    if (id == item.getId()) {
-                        itemService.setItem(item);
+        try {
+            if (updateItemsInfo.getItems() != null && updateItemsInfo.getIds() != null) {
+                for (Integer id : updateItemsInfo.getIds()) {
+                    for (BsItem item : updateItemsInfo.getItems()) {
+                        if (id == item.getId()) {
+                            itemService.setItem(item);
+                        }
                     }
                 }
             }
+            return "redirect:toAdminItems.back";
+        } catch (Exception e) {
+            return "error/index";
         }
-        return "redirect:toAdminItems.back";
+
     }
 
     @RequestMapping("/deleteItem.back")
     public String deleteItem(Integer id) {
-        itemService.removeItem(id);
-        return "redirect:toAdminItems.back";
+        try {
+            itemService.removeItem(id);
+            return "redirect:toAdminItems.back";
+        } catch (Exception e) {
+            return "error/index";
+        }
     }
 }

@@ -28,52 +28,55 @@ public class BsShoppingCartController {
     //    到购物车
     @RequestMapping("/toCheckout")
     public String toCheckout(HttpServletRequest request, Integer pageNum, Map<String, Object> map) {
-        BsUser user_info = (BsUser) request.getSession().getAttribute("USER_INFO");
-        if(user_info ==null){
-            return "redirect:/toLogin";
-        }
-        Integer id = user_info.getId();
-        if (id == null) {
-            return "redirect:/toLogin";
-        }
-        if (pageNum == null) {
-            pageNum = 1;
-        }
-//        List<BsShoppingCart> bsShoppingCart = bsItemService.getBsShoppingCart(id);
-//        System.out.println("bsShoppingCart = " + bsShoppingCart);
-        PageInfo<BsShoppingCart> pageInfo = bsItemService.pageBsShoppingCart(id, pageNum, 3);
-        int[] navigatepageNums = pageInfo.getNavigatepageNums();
-        for (int navigatepageNum : navigatepageNums) {
-        }
-        map.put("PAGEINFO", pageInfo);
-        if (pageInfo == null) {
+        try {
+            BsUser user_info = (BsUser) request.getSession().getAttribute("USER_INFO");
+            if (user_info == null) {
+                return "redirect:/toLogin";
+            }
+            Integer id = user_info.getId();
+            if (id == null) {
+                return "redirect:/toLogin";
+            }
+            if (pageNum == null) {
+                pageNum = 1;
+            }
+
+            PageInfo<BsShoppingCart> pageInfo = bsItemService.pageBsShoppingCart(id, pageNum, 3);
+            int[] navigatepageNums = pageInfo.getNavigatepageNums();
+            for (int navigatepageNum : navigatepageNums) {
+            }
+            map.put("PAGEINFO", pageInfo);
+            if (pageInfo == null) {
+                return "checkout";
+            }
+            List<ItemFull> itemFulls = new ArrayList<>();
+            for (BsShoppingCart shoppingCart : pageInfo.getList()) {
+                Integer shoppingCartId = shoppingCart.getId();
+                Integer itemId = shoppingCart.getItemId();
+                Integer number = shoppingCart.getNumber();
+                BsItem item = bsItemService.getItem(itemId);
+                ItemFull itemFull = new ItemFull();
+                itemFull.setShoppingCartId(shoppingCartId);
+                itemFull.setId(item.getId());
+                itemFull.setName(item.getName());
+                itemFull.setSuitablePeople(item.getSuitablePeople());
+                itemFull.setType(item.getType());
+                itemFull.setSize(item.getSize());
+                itemFull.setColor(item.getColor());
+                itemFull.setPrice(item.getPrice());
+                itemFull.setInventory(item.getInventory());
+                itemFull.setImage(item.getImage());
+                itemFull.setSalesVolume(item.getSalesVolume());
+                itemFull.setDescription(item.getDescription());
+                itemFull.setSupplier(item.getSupplier());
+                itemFull.setNumber(number);
+                itemFulls.add(itemFull);
+            }
+            map.put("ITEM_LIST_SHOPPING", itemFulls);
             return "checkout";
+        } catch (Exception e) {
+            return "error/index";
         }
-        List<ItemFull> itemFulls = new ArrayList<>();
-        for (BsShoppingCart shoppingCart : pageInfo.getList()) {
-            Integer shoppingCartId = shoppingCart.getId();
-            Integer itemId = shoppingCart.getItemId();
-            Integer number = shoppingCart.getNumber();
-            BsItem item = bsItemService.getItem(itemId);
-            ItemFull itemFull = new ItemFull();
-            itemFull.setShoppingCartId(shoppingCartId);
-            itemFull.setId(item.getId());
-            itemFull.setName(item.getName());
-            itemFull.setSuitablePeople(item.getSuitablePeople());
-            itemFull.setType(item.getType());
-            itemFull.setSize(item.getSize());
-            itemFull.setColor(item.getColor());
-            itemFull.setPrice(item.getPrice());
-            itemFull.setInventory(item.getInventory());
-            itemFull.setImage(item.getImage());
-            itemFull.setSalesVolume(item.getSalesVolume());
-            itemFull.setDescription(item.getDescription());
-            itemFull.setSupplier(item.getSupplier());
-            itemFull.setNumber(number);
-            itemFulls.add(itemFull);
-        }
-        map.put("ITEM_LIST_SHOPPING", itemFulls);
-        return "checkout";
     }
 
     //    修改购物车商品数量
@@ -140,11 +143,6 @@ public class BsShoppingCartController {
                 orderForm.setState("1");
                 b = orderFormService.addOrderForms(orderForm);
             }
-//            BsShoppingRecord bsShoppingRecord = new BsShoppingRecord();
-//            bsShoppingRecord.setUserId(userId);
-//            bsShoppingRecord.setItemInfo(item.getName() + "," + item.getType() + "," + item.getColor() + "," + item.getSize() + "," + item.getPrice() + "," + number);
-//            bsShoppingRecord.setCreateTime(new Date());
-//            b = bsItemService.addBsShoppingRecord(bsShoppingRecord);
             b1 = bsItemService.removeShoppingCart(integer);
 
         }

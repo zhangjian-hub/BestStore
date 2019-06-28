@@ -22,10 +22,6 @@ public class ItemServiceImplLjy implements ItemServiceLjy {
 
     @Override
     public List<BsItem> selectAll() {
-//        BsUserExample userExample = new BsUserExample();
-//        BsUserExample.Criteria criteria = userExample.or();
-//        criteria.andEmailEqualTo(null);
-
         return bsItemMapper.selectAll();
     }
 
