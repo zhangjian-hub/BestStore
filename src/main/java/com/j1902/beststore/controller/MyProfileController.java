@@ -1,7 +1,6 @@
 package com.j1902.beststore.controller;
 
 import com.github.pagehelper.PageInfo;
-import com.j1902.beststore.modle.ItemFull;
 import com.j1902.beststore.modle.MyProfileItemFull;
 import com.j1902.beststore.modle.ShoppingCartResult;
 import com.j1902.beststore.modle.ShoppingRecordResult;
@@ -61,7 +60,7 @@ public class MyProfileController {
             myProfileItemFulls.add(myProfileItemFull);
         }
 //        记录表的分页
-        PageInfo<BsShoppingRecord> pageInfo1 = bsMyProfileService.pageShoppingRecord(id, pageNum1, 5);
+        PageInfo<BsShoppingRecord> pageInfo1 = bsMyProfileService.pageShoppingRecord(id, pageNum1, 3);
         map.put("PAGEINFO1", pageInfo1);
         List<ShoppingRecordResult> shoppingRecordResults = new ArrayList<>();
         for (BsShoppingRecord bsShoppingRecord : pageInfo1.getList()) {

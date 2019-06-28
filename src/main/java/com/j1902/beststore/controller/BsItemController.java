@@ -16,6 +16,9 @@ public class BsItemController {
     private BsItemService bsItemService;
     @RequestMapping("/toSingle")
     public String toSingle( Map<String, Object> map ,BsItem bsItem ){
+        if(bsItem==null){
+            return "index";
+        }
         List<BsItem> bsItems = bsItemService.toCommodityDetails(bsItem);
         BsItem bsItem1 = bsItemService.toCommodityDetail(bsItem);
         List<String> color=new ArrayList<>();
