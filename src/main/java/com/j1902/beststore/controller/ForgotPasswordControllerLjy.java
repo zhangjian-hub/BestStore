@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import sun.plugin.com.Utils;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -38,16 +37,29 @@ public class ForgotPasswordControllerLjy {
     }
     @RequestMapping("/toForgotPassword")
     @ResponseBody
-    public State forgotPassword(HttpServletRequest req, HttpSession session) {
+    public State forgotPassword(HttpServletRequest req) {
         String email = req.getParameter("email");
         String phone1 = req.getParameter("phone");
         String password1 = req.getParameter("password1");
         String password2 = req.getParameter("password2");
-        BsUser bsUser = new BsUser();
         State state = new State();
-        if(password1==password2){
+        if (email!=null&&!"".equals(email)&&phone1!=null&&!"".equals(phone1)&&password1!=null&&!"".equals(password1)&&password2!=null&&!"".equals(password2)){
+            System.out.println("password1.equals(password2) = " + password1.equals(password2));
+            if((password1.equals(password2))&&(password1.length()<5||password1.length()>16)){
+                state.setState(false);
+                return state;
+            }
+            if(!(password1.equals(password2))){
+                state.setState(false);
+                return state;
+            }
+            BsUser bsUser = new BsUser();
             bsUser.setPassword(password1);
             List<String> list = forgotPasswordService.selectBsUserid(email);
+            if (list==null){
+                state.setState(false);
+                return state;
+            }
             Integer id = Integer.valueOf(list.get(0));
             String phone = list.get(1);
             bsUser.setId(id);
@@ -63,14 +75,9 @@ public class ForgotPasswordControllerLjy {
                 state.setState(false);
                 return state;
             }
-        }else {
-            state.setState(false);
-            return state;
         }
-
-
-
-
+        state.setState(false);
+        return state;
 
     }
 }

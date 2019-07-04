@@ -25,12 +25,17 @@ public class ForgotPasswordServiceImplLjy implements ForgotPasswordServiceLjy {
         BsUserExample.Criteria criteria = userExample.or();
         criteria.andEmailEqualTo(email);
         List<BsUser> bsUsers = bsUserMapper.selectByExample(userExample);
-        Integer id = bsUsers.get(0).getId();
-        String phone = bsUsers.get(0).getPhone();
-        List<String> list = new ArrayList<>();
-        list.add(0, id + "");
-        list.add(1, phone);
-        return list;
+        if (bsUsers.size()>0){
+            Integer id = bsUsers.get(0).getId();
+            String phone = bsUsers.get(0).getPhone();
+            List<String> list = new ArrayList<>();
+            list.add(0, id + "");
+            list.add(1, phone);
+            return list;
+        }else {
+            return null;
+        }
+
     }
 
     @Override
