@@ -67,9 +67,9 @@ public class BsUserController {
                 }
                 if (bsUser.getEmail().equals("15927147398@qq.com")) {
                     bsUser.setPassword(null);
-                    session.setAttribute("ADMIN_USER_INFO", bsUserService.login(bsUser, req));
+                    session.setAttribute("ADMIN_USER_INFO", bsUser);
+                    System.out.println("ADMIN_USER_INFO" + session.getAttribute("ADMIN_USER_INFO"));
                     return "admin/admin-index";
-
                 }
                 session.setAttribute("USER_INFO", bsUserService.login(bsUser, req));
                 bsUser.setPassword(null);
@@ -111,6 +111,12 @@ public class BsUserController {
     @RequestMapping("/logout")
     public String logout(HttpSession session) {
         session.removeAttribute("USER_INFO");
+        return "login";
+    }
+
+    @RequestMapping("/adminLogout.back")
+    public String adminLogout(HttpSession session) {
+        session.removeAttribute("ADMIN_USER_INFO");
         return "login";
     }
 }

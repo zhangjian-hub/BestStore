@@ -118,4 +118,9 @@ public class AdminPageJumpController {
     public String toShortCodes() {
         return "short-codes";
     }
+
+    @RequestMapping("/toErrorIndex")
+    public String toErrorIndex() {
+        return "error/index";
+    }
 }
