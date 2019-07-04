@@ -58,7 +58,6 @@ public class BsUserController {
     @ResponseBody
     public boolean login(BsUser bsUser, HttpServletRequest req, HttpServletResponse resp, HttpSession session) throws UnsupportedEncodingException {
         String checkbox = req.getParameter("checkbox");
-        System.out.println("remember = " + checkbox);
         if (bsUserService.login(bsUser,req)!=null ) {
             if ("true".equals(checkbox)) {
                 String s = JsonUtils.objectToJson(bsUserService.login(bsUser,req));
@@ -98,6 +97,7 @@ public class BsUserController {
     @RequestMapping("/logout")
     public String logout(HttpSession session){
         session.removeAttribute("USER_INFO");
+        session.setAttribute("info","true");
         return  "login";
     }
 

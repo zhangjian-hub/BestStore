@@ -9,6 +9,8 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
         AutoLogin testHandlerInterceptor = new AutoLogin();
-        registry.addInterceptor(testHandlerInterceptor).addPathPatterns("/**");
+        registry.addInterceptor(testHandlerInterceptor).addPathPatterns("/**").excludePathPatterns("/**/*.css",
+                "/**/*.js", "/**/*.png", "/**/*.jpg",
+                "/**/*.jpeg", "/**/*.gif", "/**/fonts/*");
     }
 }
