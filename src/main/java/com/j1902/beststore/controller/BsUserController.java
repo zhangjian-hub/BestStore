@@ -94,6 +94,4 @@ public class BsUserController {
         session.setAttribute("info","true");
         return  "login";
     }
-
-
 }

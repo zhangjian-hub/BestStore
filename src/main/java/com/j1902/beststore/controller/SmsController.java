@@ -27,18 +27,6 @@ public class SmsController {
 //        getPhonemsg(phone);
 //
 //    }
-//    依赖
-//     <!--阿里云短信依赖-->
-//        <dependency>
-//            <groupId>com.aliyun</groupId>
-//            <artifactId>aliyun-java-sdk-core</artifactId>
-//            <version>3.2.8</version>
-//        </dependency>
-//        <dependency>
-//            <groupId>com.aliyun</groupId>
-//            <artifactId>aliyun-java-sdk-dysmsapi</artifactId>
-//            <version>1.1.0</version>
-//        </dependency>
 
     @RequestMapping("/button")
     @ResponseBody

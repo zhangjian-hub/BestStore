@@ -123,4 +123,9 @@ public class AdminPageJumpController {
     public String toErrorIndex() {
         return "error/index";
     }
+
+    @RequestMapping("/adminLogout")
+    public String adminLogout() {
+        return "redirect:toIndex";
+    }
 }

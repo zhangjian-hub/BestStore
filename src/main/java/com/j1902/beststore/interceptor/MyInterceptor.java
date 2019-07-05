@@ -16,14 +16,18 @@ public class MyInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         HttpSession session = request.getSession();
-        BsUser user = (BsUser) session.getAttribute("ADMIN_USER_INFO");
+        BsUser user = (BsUser) session.getAttribute("USER_INFO");
         if (user != null) {
             if (user.getEmail() != null) {
                 if (user.getEmail().equals("15927147398@qq.com")) {
+                    System.out.print("打印1");
+
                     return true;
                 }
             }
         }
+        System.out.print("打印2");
+
         response.sendRedirect("/toErrorIndex");
         return false;
     }

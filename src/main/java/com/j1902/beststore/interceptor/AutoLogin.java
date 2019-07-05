@@ -1,4 +1,4 @@
-package com.j1902.beststore.config;
+package com.j1902.beststore.interceptor;
 
 import com.j1902.beststore.pojo.BsUser;
 import com.j1902.beststore.utils.JsonUtils;
