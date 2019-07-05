@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Amaze后台管理系统模板HTML 表格页面 - cssmoban</title>
+  <title>BestStore后台管理系统 邮件页面 - cssmoban</title>
   <meta name="description" content="这是一个 table 页面">
   <meta name="keywords" content="table">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -97,11 +97,10 @@
 
     <div class="am-g">
       <div class="am-u-sm-12">
-        <form class="am-form">
+        <form class="am-form" action="#">
           <table class="am-table am-table-striped am-table-hover table-main">
             <thead>
               <tr>
-                <th class="table-check"><input type="checkbox" /></th>
 				<th class="table-id">ID</th>
 				<th class="table-title">UserEmail</th>
 				<th class="table-title">Content</th>
@@ -111,15 +110,14 @@
           </thead>
           <tbody>
             <tr th:each="email:${ALL_EMAILS.getList()}">
-              <td><input type="checkbox" /></td>
-              <td th:text="${email.id}">1</td>
+              <td th:text="${emailStat.index+1}">1</td>
               <td th:text="${email.userEmail}">1</td>
               <td th:text="${email.content}">1</td>
               <td th:text="${email.createTime}">1</td>
               <td>
                 <div class="am-btn-toolbar">
                   <div class="am-btn-group am-btn-group-xs">
-                    <button class="am-btn am-btn-default am-btn-xs am-text-danger"><span class="am-icon-trash-o"></span> 删除</button>
+                    <a th:href="'/deleteEmail.back?id='+${email.id} + '&&pageNum=' + ${ALL_EMAILS.getPageNum()}" class="delete am-btn am-btn-default am-btn-xs am-text-danger"><span class="am-icon-trash-o"></span> DELETE</a>
                   </div>
                 </div>
               </td>
@@ -130,9 +128,9 @@
             <span>There are [[${ALL_EMAILS.getTotal()}]] pieces of data </span>
   <div class="am-fr">
     <ul class="am-pagination">
-      <li><a th:href="@{'toAdminEmail.back?pageNum=' + ${ALL_EMAILS.getPageNum() - 1}}">last</a></li>
-      <li th:each="index : ${ALL_EMAILS.getNavigatepageNums()}" th:class="${ALL_EMAILS.getPageNum()== index}?'active' : ''" ><a th:href="@{'toAdminEmail.back?pageNum=' + ${index}}" th:text="${index}" >1</a></li>
-      <li ><a th:href="@{'toAdminEmail.back?pageNum=' + ${ALL_EMAILS.getPageNum() + 1}}">next</a></li>
+      <li><a th:href="'toAdminEmail.back?pageNum=' + ${ALL_EMAILS.getPageNum() - 1}">last</a></li>
+      <li th:each="index : ${ALL_EMAILS.getNavigatepageNums()}" th:class="${ALL_EMAILS.getPageNum() == index}? 'am-active' : ''" ><a th:href="'toAdminEmail.back?pageNum=' + ${index}" th:text="${index}" >1</a></li>
+      <li ><a th:href="'toAdminEmail.back?pageNum=' + ${ALL_EMAILS.getPageNum() + 1}">next</a></li>
     </ul>
   </div>
 </div>
@@ -163,5 +161,14 @@
 <script src="../../static/assets/js/amazeui.min.js"></script>
 <!--<![endif]-->
 <script src="../../static/assets/js/app.js"></script>
+
+<script>
+  $(".delete").click(function () {
+    if (confirm("Please confirm whether the goods have been delivered ? ")) {
+      return true;
+    }
+    return false;
+  })
+</script>
 </body>
 </html>

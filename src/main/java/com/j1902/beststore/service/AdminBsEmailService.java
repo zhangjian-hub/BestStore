@@ -14,4 +14,6 @@ public interface AdminBsEmailService {
     public BsEmail selectById(Integer id);
 
     public int getCountOfAllEmails();
+
+    public void removeEmail(Integer id);
 }

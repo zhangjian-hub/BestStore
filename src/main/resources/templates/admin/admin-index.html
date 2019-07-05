@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Amaze后台管理系统模板HTML首页 - cssmoban</title>
+  <title>BestStore后台管理系统  首页 - cssmoban</title>
   <meta name="description" content="这是一个 index 页面">
   <meta name="keywords" content="index">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -103,29 +103,27 @@
             <thead>
               <tr>
 				<th class="table-id">ID</th>
-				<th class="table-title">交易信息</th>
+				<th class="table-title">Info</th>
+				<th class="table-type">Time</th>
               </tr>
           </thead>
           <tbody>
-            <tr>
-              <td><a href="#">Business management</a></td>
-              <td>default</td>
+            <tr th:each="record : ${ALL_RECORDS.getList()}">
+              <td th:text="${recordStat.index+1}"></td>
+              <td th:text="${record.itemInfo}"></td>
+              <td th:text="${record.createTime}">default</td>
               <td>             
               </td>
             </tr>
           </tbody>
         </table>
           <div class="am-cf">
-  共 15 条记录
+            <span>There are [[${ALL_RECORDS.getTotal()}]] pieces of data </span>
   <div class="am-fr">
     <ul class="am-pagination">
-      <li class="am-disabled"><a href="#">«</a></li>
-      <li class="am-active"><a href="#">1</a></li>
-      <li><a href="#">2</a></li>
-      <li><a href="#">3</a></li>
-      <li><a href="#">4</a></li>
-      <li><a href="#">5</a></li>
-      <li><a href="#">»</a></li>
+      <li><a th:href="@{'toAdminIndex.back?pageNum=' + ${ALL_RECORDS.getPageNum() - 1}}">LAST</a></li>
+      <li th:each="index : ${ALL_RECORDS.getNavigatepageNums()}" th:class="${ALL_RECORDS.getPageNum() == index}? 'am-active' : ''" ><a th:href="@{'toAdminIndex.back?pageNum=' + ${index}}" th:text="${index}" >1</a></li>
+      <li ><a th:href="@{'toAdminIndex.back?pageNum=' + ${ALL_RECORDS.getPageNum() + 1}}">NEXT</a></li>
     </ul>
   </div>
 </div>

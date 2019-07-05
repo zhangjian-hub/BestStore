@@ -1,5 +1,7 @@
 package com.j1902.beststore.service;
 
+import com.github.pagehelper.PageInfo;
+
 /**
  * @author zj
  * @version 1.0
@@ -8,4 +10,6 @@ package com.j1902.beststore.service;
 public interface AdminBsShoppingRecordService {
 
     public int getCountOfAll();
+
+    public PageInfo getAll(int pageNum, int pageSize);
 }

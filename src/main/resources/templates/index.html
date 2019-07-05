@@ -70,7 +70,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <a href="/toMyProfile"><img src="../static/images/jm.jpg"
                                             style="width:44px; height:44px; border-radius:50%;">
                 <span> </span>
-                <span th:text="${session.USER_INFO==null? 'Please Login':(session.USER_INFO.getNickname())}">Please Login</span>
+                <span th:text="${session.USER_INFO!=null? (session.USER_INFO.getNickname()):'Please Login'}">Please Login</span>
                 </a>
 
 							<span class="caret"></span>

@@ -20,29 +20,29 @@ public class AddCartController {
     @RequestMapping("/toAddCart")
     @ResponseBody
     private AddCartResult addCart(Integer id, HttpServletRequest request) {
-            HttpSession session = request.getSession();
-
-            BsUser user_info = (BsUser) session.getAttribute("USER_INFO");
-            AddCartResult addCartResult = new AddCartResult();
-            if (user_info != null && !"".equals(user_info)) {
-                BsShoppingCart bsShoppingCart = new BsShoppingCart();
-                bsShoppingCart.setItemId(id);
-                BsShoppingCart bsShoppingCart1 = addService.selectShopping(bsShoppingCart);
-                if (bsShoppingCart1 == null) {
-                    bsShoppingCart.setNumber(1);
-                    bsShoppingCart.setUserId(user_info.getId());
-                    addService.addCart(bsShoppingCart);
-                    addCartResult.setResult(true);
-                    return addCartResult;
-                } else if (id == bsShoppingCart1.getItemId()) {
-                    bsShoppingCart1.setNumber(bsShoppingCart1.getNumber() + 1);
-                    addService.updateShopping(bsShoppingCart1);
-                    addCartResult.setResult(true);
-                    return addCartResult;
-                }
+        HttpSession session = request.getSession();
+        BsUser user_info = (BsUser) session.getAttribute("USER_INFO");
+        System.out.println("user_info = " + user_info);
+        AddCartResult addCartResult = new AddCartResult();
+        if (user_info != null && !"".equals(user_info.getEmail())) {
+            BsShoppingCart bsShoppingCart = new BsShoppingCart();
+            bsShoppingCart.setItemId(id);
+            BsShoppingCart bsShoppingCart1 = addService.selectShopping(bsShoppingCart);
+            if (bsShoppingCart1 == null || bsShoppingCart1.getUserId() != user_info.getId()) {
+                bsShoppingCart.setNumber(1);
+                bsShoppingCart.setUserId(user_info.getId());
+                addService.addCart(bsShoppingCart);
+                addCartResult.setResult(true);
+                return addCartResult;
+            } else if (id == bsShoppingCart1.getItemId()) {
+                bsShoppingCart1.setNumber(bsShoppingCart1.getNumber() + 1);
+                addService.updateShopping(bsShoppingCart1);
+                addCartResult.setResult(true);
+                return addCartResult;
             }
-            addCartResult.setResult(false);
-            return addCartResult;
+        }
+        addCartResult.setResult(false);
+        return addCartResult;
     }
 }
 

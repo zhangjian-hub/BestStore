@@ -38,7 +38,7 @@ public class AdminPageJumpController {
     private AdminBsOrderFormService orderFormService;
 
     @RequestMapping("/toAdminIndex.back")
-    public String toAdminIndex(Map<String, Object> map) {
+    public String toAdminIndex(Map<String, Object> map,@RequestParam(defaultValue = "1") int pageNum) {
         try {
             int itemsCount = itemService.getAllItems().size();
             map.put("ITEMS_COUNT", itemsCount);
@@ -48,6 +48,8 @@ public class AdminPageJumpController {
             map.put("RECORDS_COUNT", recordsCount);
             int emailsCount = emailService.getCountOfAllEmails();
             map.put("EMAILS_COUNT", emailsCount);
+            PageInfo all = shoppingRecordService.getAll(pageNum, 5);
+            map.put("ALL_RECORDS", all);
             return "admin/admin-index";
         } catch (Exception e) {
             return "error/index";
@@ -55,9 +57,9 @@ public class AdminPageJumpController {
     }
 
     @RequestMapping("/toOrderForm.back")
-    public String toOrderForm(Map<String, Object> map, @RequestParam(defaultValue = "1") int pageSum, @RequestParam(defaultValue = "10") int pageSize) {
+    public String toOrderForm(Map<String, Object> map, @RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "10") int pageSize) {
         try {
-            PageInfo allOrderForms = orderFormService.getAllOrderForms(pageSum, pageSize);
+            PageInfo allOrderForms = orderFormService.getAllOrderForms(pageNum, pageSize);
             map.put("ALL_ORDER_FORMS", allOrderForms);
             return "admin/order-form";
         } catch (Exception e) {
@@ -66,7 +68,7 @@ public class AdminPageJumpController {
     }
 
     @RequestMapping("/updateOrderFormState.back")
-    public String updateOrderFormState(UpdateOrderFormInfo updateOrderFormInfo) {
+    public String updateOrderFormState(UpdateOrderFormInfo updateOrderFormInfo,@RequestParam(defaultValue = "1")int pageNum) {
         try {
             if (updateOrderFormInfo != null) {
                 List<Integer> ids = updateOrderFormInfo.getIds();
@@ -81,23 +83,25 @@ public class AdminPageJumpController {
                         }
                     }
                 }
-                return "redirect:/toOrderForm.back";
+                return "redirect:/toOrderForm.back?pageNum=" + pageNum;
             }
-            return "redirect:/toOrderForm.back";
+            return "redirect:/toOrderForm.back?pageNum=" + pageNum;
         } catch (Exception e) {
             return "error/index.back";
         }
     }
 
     @RequestMapping("/deleteOrderForm.back")
-    public String deleteOrderForm(Integer id) {
+    public String deleteOrderForm(Integer id,@RequestParam(defaultValue = "1")int pageNum) {
         try {
             orderFormService.removeItem(id);
-            return "redirect:/toOrderForm.back";
+            return "redirect:/toOrderForm.back?pageNum=" + pageNum;
         } catch (Exception e) {
             return "error/index";
         }
     }
+
+
 
     @RequestMapping("/toAdminAddItem.back")
     public String toAdminAddItem() {

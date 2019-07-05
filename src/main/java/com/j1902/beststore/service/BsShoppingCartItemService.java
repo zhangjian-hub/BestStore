@@ -24,4 +24,6 @@ public interface BsShoppingCartItemService {
 
     public boolean addBsShoppingRecord(BsShoppingRecord bsShoppingRecord);
 
+    public boolean setNumber(BsItem item);
+
 }

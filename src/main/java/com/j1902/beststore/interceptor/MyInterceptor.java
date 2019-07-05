@@ -20,14 +20,10 @@ public class MyInterceptor implements HandlerInterceptor {
         if (user != null) {
             if (user.getEmail() != null) {
                 if (user.getEmail().equals("15927147398@qq.com")) {
-                    System.out.print("打印1");
-
                     return true;
                 }
             }
         }
-        System.out.print("打印2");
-
         response.sendRedirect("/toErrorIndex");
         return false;
     }

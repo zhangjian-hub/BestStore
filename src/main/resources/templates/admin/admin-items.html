@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Amaze后台管理系统模板HTML 表格页面 - cssmoban</title>
+    <title>BestStore后台管理系统 商品页面 - cssmoban</title>
     <meta name="description" content="这是一个 table 页面">
     <meta name="keywords" content="table">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -115,7 +115,7 @@
                     <table class="am-table am-table-striped am-table-hover table-main">
                         <thead>
                         <tr>
-                            <th class="table-check"><input type="checkbox"/></th>
+                            <th class="table-check"><input class="allCheck" type="checkbox"/></th>
                             <th class="table-id">ID</th>
                             <th class="table-title">Name</th>
                             <th class="table-title">Suitable_People</th>
@@ -133,7 +133,8 @@
                         </thead>
                         <tbody>
                         <tr th:each="item : ${PAGE_INFO.getList()}">
-                            <td><input type="checkbox" th:value="${item.id}" name="ids"></td>
+                            <span hidden="hidden"><input type="text" th:value="${PAGE_INFO.getPageNum()}" name="pageNum"/></span>
+                            <td><input class="oneCheck" type="checkbox" th:value="${item.id}" name="ids"></td>
                             <td th:text="${itemStat.index+1}"></td>
                             <td hidden="hidden"><input type="text" th:value="${item.id}" th:name="'items['+${itemStat.index}+'].id'"></td>
                             <td><input type="text" th:value="${item.name}" th:name="'items['+${itemStat.index}+'].name'" autocomplete="off"></td>
@@ -150,7 +151,7 @@
                             <td>
                                 <div class="am-btn-toolbar">
                                     <div class="am-btn-group am-btn-group-xs">
-                                        <a th:name="${item.id}" th:href="'deleteItem.back?id='+${item.id}" class="am-btn am-btn-default am-btn-xs am-text-danger"><span
+                                        <a th:name="${item.id}" th:href="'deleteItem.back?id='+${item.id}+'&&pageNum='+ ${PAGE_INFO.getPageNum()}" class="delete am-btn am-btn-default am-btn-xs am-text-danger"><span
                                                 class="am-icon-trash-o"></span> DELETE
                                         </a>
                                     </div>
@@ -160,7 +161,7 @@
                         </tbody>
                     </table>
                     <div class="am-btn-group am-btn-group-xs">
-                        <button type="submit" class="am-btn am-btn-default am-btn-xs am-text-secondary">
+                        <button type="submit" class="update am-btn am-btn-default am-btn-xs am-text-secondary">
                             <span class="am-icon-pencil-square-o"></span> UPDATE
                         </button>
                     </div>
@@ -169,7 +170,7 @@
                         <div class="am-fr">
                             <ul class="am-pagination" >
                                 <li><a th:href="@{'toAdminItems.back?pageNum=' + ${PAGE_INFO.getPageNum() - 1}}">LAST</a></li>
-                                <li th:each="index : ${PAGE_INFO.getNavigatepageNums()}" th:class="${PAGE_INFO.getPageNum() == 1}? 'active' : ''" ><a th:href="@{'toAdminItems.back?pageNum=' + ${index}}" th:text="${index}" >1</a></li>
+                                <li th:each="index : ${PAGE_INFO.getNavigatepageNums()}" th:class="${PAGE_INFO.getPageNum() == index}? 'am-active' : ''" ><a th:href="@{'toAdminItems.back?pageNum=' + ${index}}" th:text="${index}" >1</a></li>
                                 <li ><a th:href="@{'toAdminItems.back?pageNum=' + ${PAGE_INFO.getPageNum() + 1}}">NEXT</a></li>
                             </ul>
                         </div>
@@ -210,7 +211,28 @@
 <script src="../../static/assets/js/app.js"></script>
 <script src="../../static/assets/js/jquery.serializejson.min.js"></script>
 <script>
+ $(".delete").click(function () {
+     if (confirm("Are you sure you want to delete it ?")) {
+         return true;
+     }
+     return false;
+ });
 
+ $(".update").click(function () {
+     if (confirm("Please confirm whether the goods have been delivered ? ")) {
+         return true;
+     }
+     return false;
+ });
+
+ $(".allCheck").click(function () {
+     $(".allCheck").attr("checked", !$(".allCheck").attr());
+     if ($(".allCheck").attr("checked")) {
+         $(".oneCheck").attr("checked", true);
+     }else {
+         $(".oneCheck").attr("checked", false);
+     }
+ })
 </script>
 </body>
 </html>

@@ -28,10 +28,17 @@ public class AdminBsEmailController {
             PageInfo<BsEmail> pageInfo = emailService.getAllEmails(pageNum);
             map.put("ALL_EMAILS", pageInfo);
             return "admin/admin-email";
-
         } catch (Exception e) {
             return "error/index";
         }
-
+    }
+    @RequestMapping("/deleteEmail.back")
+    public String deleteEmail(Integer id,@RequestParam(defaultValue = "1")int pageNum) {
+        try {
+            emailService.removeEmail(id);
+            return "redirect:/toAdminEmail.back?pageNum=" + pageNum;
+        } catch (Exception e) {
+            return "error/index";
+        }
     }
 }

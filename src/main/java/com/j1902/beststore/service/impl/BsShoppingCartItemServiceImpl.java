@@ -70,7 +70,7 @@ public class BsShoppingCartItemServiceImpl implements BsShoppingCartItemService 
     @Override
     public boolean removeShoppingCart(Integer id) {
         int i = bsShoppingCartMapper.deleteByPrimaryKey(id);
-        return i > 0 ;
+        return i > 0;
     }
 
     //    根据ID查询购物车
@@ -83,6 +83,13 @@ public class BsShoppingCartItemServiceImpl implements BsShoppingCartItemService 
     @Override
     public boolean addBsShoppingRecord(BsShoppingRecord bsShoppingRecord) {
         int i = bsShoppingRecordMapper.insertSelective(bsShoppingRecord);
+        return i > 0;
+    }
+
+    //    修改库存和销量
+    @Override
+    public boolean setNumber(BsItem item) {
+        int i = bsItemMapper.updateByPrimaryKeySelective(item);
         return i > 0;
     }
 }

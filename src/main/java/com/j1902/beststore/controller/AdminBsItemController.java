@@ -77,8 +77,9 @@ public class AdminBsItemController {
 
 
     @RequestMapping("/updateItem.back")
-    public String updateItem(UpdateItemsInfo updateItemsInfo) {
+    public String updateItem(UpdateItemsInfo updateItemsInfo,@RequestParam(defaultValue = "1") int pageNum) {
         try {
+            System.out.println("updateItemsInfo = [" + updateItemsInfo + "], pageNum = [" + pageNum + "]");
             if (updateItemsInfo.getItems() != null && updateItemsInfo.getIds() != null) {
                 for (Integer id : updateItemsInfo.getIds()) {
                     for (BsItem item : updateItemsInfo.getItems()) {
@@ -88,7 +89,7 @@ public class AdminBsItemController {
                     }
                 }
             }
-            return "redirect:toAdminItems.back";
+            return "redirect:toAdminItems.back?pageNum="+ pageNum;
         } catch (Exception e) {
             return "error/index";
         }
@@ -96,10 +97,11 @@ public class AdminBsItemController {
     }
 
     @RequestMapping("/deleteItem.back")
-    public String deleteItem(Integer id) {
+    public String deleteItem(Integer id,@RequestParam(defaultValue = "1") int pageNum) {
         try {
+            System.out.println("id = [" + id + "], pageNum = [" + pageNum + "]");
             itemService.removeItem(id);
-            return "redirect:toAdminItems.back";
+            return "redirect:toAdminItems.back?pageNum="+ pageNum;
         } catch (Exception e) {
             return "error/index";
         }

@@ -135,6 +135,11 @@ public class BsShoppingCartController {
             BsItem item = bsItemService.getItem(itemId);
             BsUser user = (BsUser) session.getAttribute("USER_INFO");
             for (int i = 1; i <= number; i++) {
+                BsItem item1 = bsItemService.getItem(itemId);
+                item1.setId(itemId);
+                item1.setInventory(item1.getInventory() - 1);
+                item1.setSalesVolume(item1.getSalesVolume() + 1);
+                boolean b2 = bsItemService.setNumber(item1);
                 BsOrderForm orderForm = new BsOrderForm();
                 orderForm.setUserId(user.getId());
                 orderForm.setItemId(itemId);
@@ -167,6 +172,11 @@ public class BsShoppingCartController {
         Integer number = bsShoppingCartById.getNumber();
 
         for (int i = 1; i <= number; i++) {
+            BsItem item1 = bsItemService.getItem(itemId);
+            item1.setId(itemId);
+            item1.setInventory(item1.getInventory() - 1);
+            item1.setSalesVolume(item1.getSalesVolume() + 1);
+            boolean b2 = bsItemService.setNumber(item1);
             BsOrderForm orderForm = new BsOrderForm();
             orderForm.setUserId(userId);
             orderForm.setItemId(itemId);
