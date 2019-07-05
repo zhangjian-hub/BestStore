@@ -1,6 +1,7 @@
 package com.j1902.beststore.service.impl;
 
 import com.j1902.beststore.mapper.BsUserMapper;
+import com.j1902.beststore.pojo.BsUser;
 import com.j1902.beststore.service.AdminBsUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,5 +19,10 @@ public class AdminBsUserServiceImpl implements AdminBsUserService {
     @Override
     public int getCountOfBsUsers() {
         return userMapper.selectByExample(null).size();
+    }
+
+    @Override
+    public void setBsUSer(BsUser user) {
+        userMapper.updateByPrimaryKeySelective(user);
     }
 }
